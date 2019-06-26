@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MISP core format</title>
+  <meta name="GENERATOR" content="Mmark Markdown Processor v1.3.6">
+  <meta charset="utf-8">
+</head>
+<body>
+<h1 class="abstract" id="abstract">Abstract</h1>
+
+<p>This document describes the MISP core format used to exchange indicators and threat information between
+MISP (Malware Information and threat Sharing Platform) instances.
+The JSON format includes the overall structure along with the semantic associated for each
+respective key. The format is described to support other implementations which reuse the
+format and ensuring an interoperability with existing MISP <a class="cite" href="#misp-p"></a> software and other Threat Intelligence Platforms.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Sharing threat information became a fundamental requirements in the Internet, security and intelligence community at large. Threat
+information can include indicators of compromise, malicious file indicators, financial fraud indicators
+or even detailed information about a threat actor. MISP <a class="cite" href="#misp-p"></a> started as an open source project in late 2011 and
+the MISP format started to be widely used as an exchange format within the community in the past years. The aim of this document
+is to describe the specification and the MISP core format.</p>
+
+<h2 id="conventions-and-terminology">Conventions and Terminology</h2>
+
+<p>The key words &quot;<strong>MUST</strong>&quot;, &quot;<strong>MUST NOT</strong>&quot;, &quot;<strong>REQUIRED</strong>&quot;, &quot;<strong>SHALL</strong>&quot;, &quot;<strong>SHALL NOT</strong>&quot;,
+&quot;<strong>SHOULD</strong>&quot;, &quot;<strong>SHOULD NOT</strong>&quot;, &quot;<strong>RECOMMENDED</strong>&quot;, &quot;<strong>MAY</strong>&quot;, and &quot;<strong>OPTIONAL</strong>&quot; in this
+document are to be interpreted as described in RFC 2119 <a class="cite" href="#rfc2119"></a>.</p>
+
+<h1 id="format">Format</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>The MISP core format is in the JSON <a class="cite" href="#rfc4627"></a> format. In MISP, an event is composed of a single JSON object.</p>
+
+<p>A capitalized key (like Event, Org) represent a data model and a non-capitalised key is just an attribute. This nomenclature
+can support an implementation to represent the MISP format in another data structure.</p>
+
+<h2 id="event">Event</h2>
+
+<p>An event is a simple meta structure scheme where attributes and meta-data are embedded to compose a coherent set
+of indicators. An event can be composed from an incident, a security analysis report or a specific threat actor
+analysis. The meaning of an event only depends of the information embedded in the event.</p>
+
+<h3 id="event-attributes">Event Attributes</h3>
+
+<h4 id="uuid">uuid</h4>
+
+<p>uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the event. The uuid <strong>MUST</strong> be preserved
+for any updates or transfer of the same event. UUID version 4 is <strong>RECOMMENDED</strong> when assigning it to a new event.</p>
+
+<p>uuid is represented as a JSON string. uuid <strong>MUST</strong> be present.</p>
+
+<h4 id="id">id</h4>
+
+<p>id represents the human-readable identifier associated to the event for a specific MISP instance.  A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>id is represented as a JSON string. id <strong>SHALL</strong> be present.</p>
+
+<h4 id="published">published</h4>
+
+<p>published represents the event publication state. If the event was published, the published value <strong>MUST</strong> be true.
+In any other publication state, the published value <strong>MUST</strong> be false.</p>
+
+<p>published is represented as a JSON boolean. published <strong>MUST</strong> be present.</p>
+
+<h4 id="info">info</h4>
+
+<p>info represents the information field of the event. info is a free-text value to provide a human-readable summary
+of the event. info <strong>SHOULD</strong> NOT be bigger than 256 characters and <strong>SHOULD</strong> NOT include new-lines.</p>
+
+<p>info is represented as a JSON string. info <strong>MUST</strong> be present.</p>
+
+<h4 id="threatlevelid">threat_level_id</h4>
+
+<p>threat_level_id represents the threat level.</p>
+
+<dl>
+<dt>4:</dt><dd>Undefined</dd>
+<dt>3:</dt><dd>Low</dd>
+<dt>2:</dt><dd>Medium</dd>
+<dt>1:</dt><dd>High</dd>
+</dl>
+
+<p>If a higher granularity is required, a MISP taxonomy applied as a Tag <strong>SHOULD</strong> be preferred.</p>
+
+<p>threat_level_id is represented as a JSON string. threat_level_id <strong>SHALL</strong> be present.</p>
+
+<h4 id="analysis">analysis</h4>
+
+<p>analysis represents the analysis level.</p>
+
+<dl>
+<dt>0:</dt><dd>Initial</dd>
+<dt>1:</dt><dd>Ongoing</dd>
+<dt>2:</dt><dd>Complete</dd>
+</dl>
+
+<p>If a higher granularity is required, a MISP taxonomy applied as a Tag <strong>SHOULD</strong> be preferred.</p>
+
+<p>analysis is represented as a JSON string. analysis <strong>SHALL</strong> be present.</p>
+
+<h4 id="date">date</h4>
+
+<p>date represents a reference date to the event in ISO 8601 format (date only: YYYY-MM-DD). This date corresponds to the date the event occurred, which may be in the past.</p>
+
+<p>date is represented as a JSON string. date <strong>MUST</strong> be present.</p>
+
+<h4 id="timestamp">timestamp</h4>
+
+<p>timestamp represents a reference time when the event, or one of the attributes within the event was created, or last updated/edited on the instance. timestamp is expressed in seconds (decimal) since 1st of January 1970 (Unix timestamp). The time zone <strong>MUST</strong> be UTC.</p>
+
+<p>timestamp is represented as a JSON string. timestamp <strong>MUST</strong> be present.</p>
+
+<h4 id="publishtimestamp">publish_timestamp</h4>
+
+<p>publish_timestamp represents a reference time when the event was published on the instance. published_timestamp is expressed in seconds (decimal) since 1st of January 1970 (Unix timestamp). At each publication of an event, publish_timestamp <strong>MUST</strong> be updated. The time zone <strong>MUST</strong> be UTC. If the published_timestamp is present and the published flag is set to false, the publish_timestamp represents the previous publication timestamp. If the event was never published, the published_timestamp <strong>MUST</strong> be set to 0.</p>
+
+<p>publish_timestamp is represented as a JSON string. publish_timestamp <strong>MUST</strong> be present.</p>
+
+<h4 id="orgid">org_id</h4>
+
+<p>org_id represents a human-readable identifier referencing an Org object of the organisation which generated the event. A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>The org_id <strong>MUST</strong> be updated when the event is generated by a new instance.</p>
+
+<p>org_id is represented as a JSON string. org_id <strong>MUST</strong> be present.</p>
+
+<h4 id="orgcid">orgc_id</h4>
+
+<p>orgc_id represents a human-readable identifier referencing an Orgc object of the organisation which created the event.</p>
+
+<p>The orgc_id and Org object <strong>MUST</strong> be preserved for any updates or transfer of the same event.</p>
+
+<p>orgc_id is represented as a JSON string. orgc_id <strong>MUST</strong> be present.</p>
+
+<h4 id="attributecount">attribute_count</h4>
+
+<p>attribute_count represents the number of attributes in the event. attribute_count is expressed in decimal.</p>
+
+<p>attribute_count is represented as a JSON string. attribute_count <strong>SHALL</strong> be present.</p>
+
+<h4 id="distribution">distribution</h4>
+
+<p>distribution represents the basic distribution rules of the event. The system must adhere to the distribution setting for access control and for dissemination of the event.</p>
+
+<p>distribution is represented by a JSON string. distribution <strong>MUST</strong> be present and be one of the following options:</p>
+
+<dl>
+<dt>0</dt><dd>Your Organisation Only</dd>
+<dt>1</dt><dd>This Community Only</dd>
+<dt>2</dt><dd>Connected Communities</dd>
+<dt>3</dt><dd>All Communities</dd>
+<dt>4</dt><dd>Sharing Group</dd>
+</dl>
+
+<h4 id="sharinggroupid">sharing_group_id</h4>
+
+<p>sharing_group_id represents a human-readable identifier referencing a Sharing Group object that defines the distribution of the event, if distribution level &quot;4&quot; is set. A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<p>sharing_group_id is represented by a JSON string and <strong>SHOULD</strong> be present. If a distribution level other than &quot;4&quot; is chosen the sharing_group_id <strong>MUST</strong> be set to &quot;0&quot;.</p>
+
+<h4 id="extendsuuid">extends_uuid</h4>
+
+<p>extends_uuid represents which event is extended by this event. The extends_uuid is described as a Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> with the UUID of the extended event.</p>
+
+<p>extends_uuid is represented as a JSON string. extends_uuid <strong>SHOULD</strong> be present.</p>
+
+<h2 id="objects">Objects</h2>
+
+<h3 id="org">Org</h3>
+
+<p>An Org object is composed of an uuid, name and id.</p>
+
+<p>The uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the organisation.
+The organisation UUID is globally assigned to an organisation and <strong>SHALL</strong> be kept overtime.</p>
+
+<p>The name is a readable description of the organisation and <strong>SHOULD</strong> be present.
+The id is a human-readable identifier generated by the instance and used as reference in the event.
+A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<p>uuid, name and id are represented as a JSON string. uuid, name and id <strong>MUST</strong> be present.</p>
+
+<h4 id="sample-org-object">Sample Org Object</h4>
+
+<pre><code>&quot;Org&quot;: {
+        &quot;id&quot;: &quot;2&quot;,
+        &quot;name&quot;: &quot;CIRCL&quot;,
+        &quot;uuid&quot;: &quot;55f6ea5e-2c60-40e5-964f-47a8950d210f&quot;
+       }
+</code></pre>
+
+<h3 id="orgc">Orgc</h3>
+
+<p>An Orgc object is composed of an uuid, name and id.</p>
+
+<p>The uuid <strong>MUST</strong> be preserved for any updates or transfer of the same event. UUID version 4 is <strong>RECOMMENDED</strong> when assigning it to a new event.
+The organisation UUID is globally assigned to an organisation and <strong>SHALL</strong> be kept overtime.</p>
+
+<p>The name is a readable description of the organisation and <strong>SHOULD</strong> be present.
+The id is a human-readable identifier generated by the instance and used as reference in the event.
+A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<p>uuid, name and id are represented as a JSON string. uuid, name and id <strong>MUST</strong> be present.</p>
+
+<h2 id="attribute">Attribute</h2>
+
+<p>Attributes are used to describe the indicators and contextual data of an event. The main information contained in an attribute is made up of a category-type-value triplet,
+where the category and type give meaning and context to the value. Through the various category-type combinations a wide range of information can be conveyed.</p>
+
+<p>A MISP document <strong>MUST</strong> at least includes category-type-value triplet described in section &quot;Attribute Attributes&quot;.</p>
+
+<h3 id="sample-attribute-object">Sample Attribute Object</h3>
+
+<pre><code>&quot;Attribute&quot;: {
+              &quot;id&quot;: &quot;346056&quot;,
+              &quot;type&quot;: &quot;comment&quot;,
+              &quot;category&quot;: &quot;Other&quot;,
+              &quot;to_ids&quot;: false,
+              &quot;uuid&quot;: &quot;57f4f6d9-cd20-458b-84fd-109ec0a83869&quot;,
+              &quot;event_id&quot;: &quot;3357&quot;,
+              &quot;distribution&quot;: &quot;5&quot;,
+              &quot;timestamp&quot;: &quot;1475679332&quot;,
+              &quot;comment&quot;: &quot;&quot;,
+              &quot;sharing_group_id&quot;: &quot;0&quot;,
+              &quot;deleted&quot;: false,
+              &quot;value&quot;: &quot;Hello world&quot;,
+              &quot;SharingGroup&quot;: [],
+              &quot;ShadowAttribute&quot;: [],
+              &quot;RelatedAttribute&quot;: []
+             }
+</code></pre>
+
+<h3 id="attribute-attributes">Attribute Attributes</h3>
+
+<h4 id="uuid-1">uuid</h4>
+
+<p>uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the event. The uuid <strong>MUST</strong> be preserved
+for any updates or transfer of the same event. UUID version 4 is <strong>RECOMMENDED</strong> when assigning it to a new event.</p>
+
+<p>uuid is represented as a JSON string. uuid <strong>MUST</strong> be present.</p>
+
+<h4 id="id-1">id</h4>
+
+<p>id represents the human-readable identifier associated to the event for a specific MISP instance. A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>id is represented as a JSON string. id <strong>SHALL</strong> be present.</p>
+
+<h4 id="type">type</h4>
+
+<p>type represents the means through which an attribute tries to describe the intent of the attribute creator, using a list of pre-defined attribute types.</p>
+
+<p>type is represented as a JSON string. type <strong>MUST</strong> be present and it <strong>MUST</strong> be a valid selection for the chosen category. The list of valid category-type combinations is as follows:</p>
+
+<dl>
+<dt><strong>Antivirus detection</strong></dt><dd>link, comment, text, hex, attachment, other, anonymised</dd>
+<dt><strong>Artifacts dropped</strong></dt><dd>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, regkey, regkey|value, pattern-in-file, pattern-in-memory, pdb, stix2-pattern, yara, sigma, attachment, malware-sample, named pipe, mutex, windows-scheduled-task, windows-service-name, windows-service-displayname, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, cookie, gene, mime-type, anonymised</dd>
+<dt><strong>Attribution</strong></dt><dd>threat-actor, campaign-name, campaign-id, whois-registrant-phone, whois-registrant-email, whois-registrant-name, whois-registrant-org, whois-registrar, whois-creation-date, comment, text, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, dns-soa-email, anonymised</dd>
+<dt><strong>External analysis</strong></dt><dd>md5, sha1, sha256, filename, filename|md5, filename|sha1, filename|sha256, ip-src, ip-dst, ip-dst|port, ip-src|port, mac-address, mac-eui-64, hostname, domain, domain|ip, url, user-agent, regkey, regkey|value, AS, snort, bro, zeek, pattern-in-file, pattern-in-traffic, pattern-in-memory, vulnerability, attachment, malware-sample, link, comment, text, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, github-repository, other, cortex, anonymised</dd>
+<dt><strong>Financial fraud</strong></dt><dd>btc, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number, prtn, phone-number, comment, text, other, hex, anonymised</dd>
+<dt><strong>Internal reference</strong></dt><dd>text, link, comment, other, hex, anonymised</dd>
+<dt><strong>Network activity</strong></dt><dd>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised</dd>
+<dt><strong>Other</strong></dt><dd>comment, text, other, size-in-bytes, counter, datetime, cpe, port, float, hex, phone-number, boolean, anonymised</dd>
+<dt><strong>Payload delivery</strong></dt><dd>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, pehash, tlsh, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, mac-address, mac-eui-64, ip-src, ip-dst, ip-dst|port, ip-src|port, hostname, domain, email-src, email-dst, email-subject, email-attachment, email-body, url, user-agent, AS, pattern-in-file, pattern-in-traffic, stix2-pattern, yara, sigma, mime-type, attachment, malware-sample, link, malware-type, comment, text, hex, vulnerability, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hostname|port, email-dst-display-name, email-src-display-name, email-header, email-reply-to, email-x-mailer, email-mime-boundary, email-thread-index, email-message-id, mobile-application-id, whois-registrant-email, anonymised</dd>
+<dt><strong>Payload installation</strong></dt><dd>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, pehash, tlsh, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, pattern-in-file, pattern-in-traffic, pattern-in-memory, stix2-pattern, yara, sigma, vulnerability, attachment, malware-sample, malware-type, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, mobile-application-id, other, mime-type, anonymised</dd>
+<dt><strong>Payload type</strong></dt><dd>comment, text, other, anonymised</dd>
+<dt><strong>Persistence mechanism</strong></dt><dd>filename, regkey, regkey|value, comment, text, other, hex, anonymised</dd>
+<dt><strong>Person</strong></dt><dd>first-name, middle-name, last-name, date-of-birth, place-of-birth, gender, passport-number, passport-country, passport-expiration, redress-number, nationality, visa-number, issue-date-of-the-visa, primary-residence, country-of-residence, special-service-request, frequent-flyer-number, travel-details, payment-details, place-port-of-original-embarkation, place-port-of-clearance, place-port-of-onward-foreign-destination, passenger-name-record-locator-number, comment, text, other, phone-number, identity-card-number, anonymised</dd>
+<dt><strong>Social network</strong></dt><dd>github-username, github-repository, github-organisation, jabber-id, twitter-id, email-src, email-dst, comment, text, other, whois-registrant-email, anonymised</dd>
+<dt><strong>Support Tool</strong></dt><dd>link, text, attachment, comment, other, hex, anonymised</dd>
+<dt><strong>Targeting data</strong></dt><dd>target-user, target-email, target-machine, target-org, target-location, target-external, comment, anonymised</dd>
+</dl>
+
+<p>Attributes are based on the usage within their different communities. Attributes can be extended on a regular basis and this reference document is updated accordingly.</p>
+
+<h4 id="category">category</h4>
+
+<p>category represents the intent of what the attribute is describing as selected by the attribute creator, using a list of pre-defined attribute categories.</p>
+
+<p>category is represented as a JSON string. category <strong>MUST</strong> be present and it <strong>MUST</strong> be a valid selection for the chosen type. The list of valid category-type combinations is mentioned above.</p>
+
+<h4 id="toids">to_ids</h4>
+
+<p>to_ids represents whether the attribute is meant to be actionable. Actionable defined attributes that can be used in automated processes as a pattern for detection in Local or Network Intrusion Detection System, log analysis tools or even filtering mechanisms.</p>
+
+<p>to_ids is represented as a JSON boolean. to_ids <strong>MUST</strong> be present.</p>
+
+<h4 id="eventid">event_id</h4>
+
+<p>event_id represents a human-readable identifier referencing the Event object that the attribute belongs to. A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>The event_id <strong>SHOULD</strong> be updated when the event is imported to reflect the newly created event's id on the instance.</p>
+
+<p>event_id is represented as a JSON string. event_id <strong>MUST</strong> be present.</p>
+
+<h4 id="distribution-1">distribution</h4>
+
+<p>distribution represents the basic distribution rules of the attribute. The system must adhere to the distribution setting for access control and for dissemination of the attribute.</p>
+
+<p>distribution is represented by a JSON string. distribution <strong>MUST</strong> be present and be one of the following options:</p>
+
+<dl>
+<dt>0</dt><dd>Your Organisation Only</dd>
+<dt>1</dt><dd>This Community Only</dd>
+<dt>2</dt><dd>Connected Communities</dd>
+<dt>3</dt><dd>All Communities</dd>
+<dt>4</dt><dd>Sharing Group</dd>
+<dt>5</dt><dd>Inherit Event</dd>
+</dl>
+
+<h4 id="timestamp-1">timestamp</h4>
+
+<p>timestamp represents a reference time when the attribute was created or last modified. timestamp is expressed in seconds (decimal) since 1st of January 1970 (Unix timestamp). The time zone <strong>MUST</strong> be UTC.</p>
+
+<p>timestamp is represented as a JSON string. timestamp <strong>MUST</strong> be present.</p>
+
+<h4 id="comment">comment</h4>
+
+<p>comment is a contextual comment field.</p>
+
+<p>comment is represented by a JSON string. comment <strong>MAY</strong> be present.</p>
+
+<h4 id="sharinggroupid-1">sharing_group_id</h4>
+
+<p>sharing_group_id represents a human-readable identifier referencing a Sharing Group object that defines the distribution of the attribute, if distribution level &quot;4&quot; is set. A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<p>sharing_group_id is represented by a JSON string and <strong>SHOULD</strong> be present. If a distribution level other than &quot;4&quot; is chosen the sharing_group_id <strong>MUST</strong> be set to &quot;0&quot;.</p>
+
+<h4 id="deleted">deleted</h4>
+
+<p>deleted represents a setting that allows attributes to be revoked. Revoked attributes are not actionable and exist merely to inform other instances of a revocation.</p>
+
+<p>deleted is represented by a JSON boolean. deleted <strong>MUST</strong> be present.</p>
+
+<h4 id="data">data</h4>
+
+<p>data contains the base64 encoded contents of an attachment or a malware sample. For malware samples,
+the sample <strong>MUST</strong> be encrypted using a password protected zip archive, with the password being &quot;infected&quot;.</p>
+
+<p>data is represented by a JSON string in base64 encoding. data <strong>MUST</strong> be set for attributes of type malware-sample and attachment.</p>
+
+<h4 id="relatedattribute">RelatedAttribute</h4>
+
+<p>RelatedAttribute is an array of attributes correlating with the current attribute. Each element in the array represents an JSON object which contains an Attribute dictionnary with the external attributes who correlate. Each Attribute <strong>MUST</strong> include the id, org_id, info and a value. Only the correlations found on the local instance are shown in RelatedAttribute.</p>
+
+<p>RelatedAttribute <strong>MAY</strong> be present.</p>
+
+<h4 id="shadowattribute">ShadowAttribute</h4>
+
+<p>ShadowAttribute is an array of shadow attributes that serve as proposals by third parties to alter the containing attribute. The structure of a ShadowAttribute is similar to that of an Attribute,
+which can be accepted or discarded by the event creator. If accepted, the original attribute containing the shadow attribute is removed and the shadow attribute is converted into an attribute.</p>
+
+<p>Each shadow attribute that references an attribute <strong>MUST</strong> contain the containing attribute's ID in the old_id field and the event's ID in the event_id field.</p>
+
+<h4 id="value">value</h4>
+
+<p>value represents the payload of an attribute. The format of the value is dependent on the type of the attribute.</p>
+
+<p>value is represented by a JSON string. value <strong>MUST</strong> be present.</p>
+
+<h2 id="shadowattribute-1">ShadowAttribute</h2>
+
+<p>ShadowAttributes are 3rd party created attributes that either propose to add new information to an event or modify existing information. They are not meant to be actionable until the event creator accepts them - at which point they will be converted into attributes or modify an existing attribute.</p>
+
+<p>They are similar in structure to Attributes but additionally carry a reference to the creator of the ShadowAttribute as well as a revocation flag.</p>
+
+<h3 id="sample-attribute-object-1">Sample Attribute Object</h3>
+
+<pre><code>&quot;ShadowAttribute&quot;:  {
+                       &quot;id&quot;: &quot;8&quot;,
+                       &quot;type&quot;: &quot;ip-src&quot;,
+                       &quot;category&quot;: &quot;Network activity&quot;,
+                       &quot;to_ids&quot;: false,
+                       &quot;uuid&quot;: &quot;57d475f1-da78-4569-89de-1458c0a83869&quot;,
+                       &quot;event_uuid&quot;: &quot;57d475e6-41c4-41ca-b450-145ec0a83869&quot;,
+                       &quot;event_id&quot;: &quot;9&quot;,
+                       &quot;old_id&quot;: &quot;319&quot;,
+                       &quot;comment&quot;: &quot;&quot;,
+                       &quot;org_id&quot;: &quot;1&quot;,
+                       &quot;proposal_to_delete&quot;: false,
+                       &quot;value&quot;: &quot;5.5.5.5&quot;,
+                       &quot;deleted&quot;: false,
+                       &quot;Org&quot;: {
+                           &quot;id&quot;: &quot;1&quot;,
+                           &quot;name&quot;: &quot;MISP&quot;,
+                           &quot;uuid&quot;: &quot;568cce5a-0c80-412b-8fdf-1ffac0a83869&quot;
+                       }
+                   }
+</code></pre>
+
+<h3 id="shadowattribute-attributes">ShadowAttribute Attributes</h3>
+
+<h4 id="uuid-2">uuid</h4>
+
+<p>uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the event. The uuid <strong>MUST</strong> be preserved
+for any updates or transfer of the same event. UUID version 4 is <strong>RECOMMENDED</strong> when assigning it to a new event.</p>
+
+<p>uuid is represented as a JSON string. uuid <strong>MUST</strong> be present.</p>
+
+<h4 id="id-2">id</h4>
+
+<p>id represents the human-readable identifier associated to the event for a specific MISP instance. human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.
+id is represented as a JSON string. id <strong>SHALL</strong> be present.</p>
+
+<h4 id="type-1">type</h4>
+
+<p>type represents the means through which an attribute tries to describe the intent of the attribute creator, using a list of pre-defined attribute types.</p>
+
+<p>type is represented as a JSON string. type <strong>MUST</strong> be present and it <strong>MUST</strong> be a valid selection for the chosen category. The list of valid category-type combinations is as follows:</p>
+
+<dl>
+<dt><strong>Antivirus detection</strong></dt><dd>link, comment, text, hex, attachment, other, anonymised</dd>
+<dt><strong>Artifacts dropped</strong></dt><dd>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, regkey, regkey|value, pattern-in-file, pattern-in-memory, pdb, stix2-pattern, yara, sigma, attachment, malware-sample, named pipe, mutex, windows-scheduled-task, windows-service-name, windows-service-displayname, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, cookie, gene, mime-type, anonymised</dd>
+<dt><strong>Attribution</strong></dt><dd>threat-actor, campaign-name, campaign-id, whois-registrant-phone, whois-registrant-email, whois-registrant-name, whois-registrant-org, whois-registrar, whois-creation-date, comment, text, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, dns-soa-email, anonymised</dd>
+<dt><strong>External analysis</strong></dt><dd>md5, sha1, sha256, filename, filename|md5, filename|sha1, filename|sha256, ip-src, ip-dst, ip-dst|port, ip-src|port, mac-address, mac-eui-64, hostname, domain, domain|ip, url, user-agent, regkey, regkey|value, AS, snort, bro, zeek, pattern-in-file, pattern-in-traffic, pattern-in-memory, vulnerability, attachment, malware-sample, link, comment, text, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, github-repository, other, cortex, anonymised</dd>
+<dt><strong>Financial fraud</strong></dt><dd>btc, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number, prtn, phone-number, comment, text, other, hex, anonymised</dd>
+<dt><strong>Internal reference</strong></dt><dd>text, link, comment, other, hex, anonymised</dd>
+<dt><strong>Network activity</strong></dt><dd>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised</dd>
+<dt><strong>Other</strong></dt><dd>comment, text, other, size-in-bytes, counter, datetime, cpe, port, float, hex, phone-number, boolean, anonymised</dd>
+<dt><strong>Payload delivery</strong></dt><dd>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, pehash, tlsh, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, mac-address, mac-eui-64, ip-src, ip-dst, ip-dst|port, ip-src|port, hostname, domain, email-src, email-dst, email-subject, email-attachment, email-body, url, user-agent, AS, pattern-in-file, pattern-in-traffic, stix2-pattern, yara, sigma, mime-type, attachment, malware-sample, link, malware-type, comment, text, hex, vulnerability, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hostname|port, email-dst-display-name, email-src-display-name, email-header, email-reply-to, email-x-mailer, email-mime-boundary, email-thread-index, email-message-id, mobile-application-id, whois-registrant-email, anonymised</dd>
+<dt><strong>Payload installation</strong></dt><dd>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, pehash, tlsh, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, pattern-in-file, pattern-in-traffic, pattern-in-memory, stix2-pattern, yara, sigma, vulnerability, attachment, malware-sample, malware-type, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, mobile-application-id, other, mime-type, anonymised</dd>
+<dt><strong>Payload type</strong></dt><dd>comment, text, other, anonymised</dd>
+<dt><strong>Persistence mechanism</strong></dt><dd>filename, regkey, regkey|value, comment, text, other, hex, anonymised</dd>
+<dt><strong>Person</strong></dt><dd>first-name, middle-name, last-name, date-of-birth, place-of-birth, gender, passport-number, passport-country, passport-expiration, redress-number, nationality, visa-number, issue-date-of-the-visa, primary-residence, country-of-residence, special-service-request, frequent-flyer-number, travel-details, payment-details, place-port-of-original-embarkation, place-port-of-clearance, place-port-of-onward-foreign-destination, passenger-name-record-locator-number, comment, text, other, phone-number, identity-card-number, anonymised</dd>
+<dt><strong>Social network</strong></dt><dd>github-username, github-repository, github-organisation, jabber-id, twitter-id, email-src, email-dst, comment, text, other, whois-registrant-email, anonymised</dd>
+<dt><strong>Support Tool</strong></dt><dd>link, text, attachment, comment, other, hex, anonymised</dd>
+<dt><strong>Targeting data</strong></dt><dd>target-user, target-email, target-machine, target-org, target-location, target-external, comment, anonymised</dd>
+</dl>
+
+<p>Attributes are based on the usage within their different communities. Attributes can be extended on a regular basis and this reference document is updated accordingly.</p>
+
+<h4 id="category-1">category</h4>
+
+<p>category represents the intent of what the attribute is describing as selected by the attribute creator, using a list of pre-defined attribute categories.</p>
+
+<p>category is represented as a JSON string. category <strong>MUST</strong> be present and it <strong>MUST</strong> be a valid selection for the chosen type. The list of valid category-type combinations is mentioned above.</p>
+
+<h4 id="toids-1">to_ids</h4>
+
+<p>to_ids represents whether the Attribute to be created if the ShadowAttribute is accepted is meant to be actionable. Actionable defined attributes that can be used in automated processes as a pattern for detection in Local or Network Intrusion Detection System, log analysis tools or even filtering mechanisms.</p>
+
+<p>to_ids is represented as a JSON boolean. to_ids <strong>MUST</strong> be present.</p>
+
+<h4 id="eventid-1">event_id</h4>
+
+<p>event_id represents a human-readable identifier referencing the Event object that the ShadowAttribute belongs to.</p>
+
+<p>The event_id <strong>SHOULD</strong> be updated when the event is imported to reflect the newly created event's id on the instance.</p>
+
+<p>event_id is represented as a JSON string. event_id <strong>MUST</strong> be present.</p>
+
+<h4 id="oldid">old_id</h4>
+
+<p>old_id represents a human-readable identifier referencing the Attribute object that the ShadowAttribute belongs to. A ShadowAttribute can this way target an existing Attribute, implying that it is a proposal to modify an existing Attribute, or alternatively it can be a proposal to create a new Attribute for the containing Event.</p>
+
+<p>The old_id <strong>SHOULD</strong> be updated when the event is imported to reflect the newly created Attribute's id on the instance. Alternatively, if the ShadowAttribute proposes the creation of a new Attribute, it should be set to 0.</p>
+
+<p>old_id is represented as a JSON string. old_id <strong>MUST</strong> be present.</p>
+
+<h4 id="timestamp-2">timestamp</h4>
+
+<p>timestamp represents a reference time when the attribute was created or last modified. timestamp is expressed in seconds (decimal) since 1st of January 1970 (Unix timestamp). The time zone <strong>MUST</strong> be UTC.</p>
+
+<p>timestamp is represented as a JSON string. timestamp <strong>MUST</strong> be present.</p>
+
+<h4 id="comment-1">comment</h4>
+
+<p>comment is a contextual comment field.</p>
+
+<p>comment is represented by a JSON string. comment <strong>MAY</strong> be present.</p>
+
+<h4 id="orgid-1">org_id</h4>
+
+<p>org_id represents a human-readable identifier referencing the proposal creator's Organisation object. A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<p>Whilst attributes can only be created by the event creator organisation, shadow attributes can be created by third parties. org_id tracks the creator organisation.</p>
+
+<p>org_id is represented by a JSON string and <strong>MUST</strong> be present.</p>
+
+<h4 id="proposaltodelete">proposal_to_delete</h4>
+
+<p>proposal_to_delete is a boolean flag that sets whether the shadow attribute proposes to alter an attribute, or whether it proposes to remove it completely.</p>
+
+<p>Accepting a shadow attribute with this flag set will remove the target attribute.</p>
+
+<p>proposal_to_delete is a JSON boolean and it <strong>MUST</strong> be present. If proposal_to_delete is set to true, old_id <strong>MUST NOT</strong> be 0.</p>
+
+<h4 id="deleted-1">deleted</h4>
+
+<p>deleted represents a setting that allows shadow attributes to be revoked. Revoked shadow attributes only serve to inform other instances that the shadow attribute is no longer active.</p>
+
+<p>deleted is represented by a JSON boolean. deleted <strong>SHOULD</strong> be present.</p>
+
+<h4 id="data-1">data</h4>
+
+<p>data contains the base64 encoded contents of an attachment or a malware sample. For malware samples,
+the sample <strong>MUST</strong> be encrypted using a password protected zip archive, with the password being &quot;infected&quot;.</p>
+
+<p>data is represented by a JSON string in base64 encoding. data <strong>MUST</strong> be set for shadow attributes of type malware-sample and attachment.</p>
+
+<h3 id="org-1">Org</h3>
+
+<p>An Org object is composed of an uuid, name and id.</p>
+
+<p>The uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the organization.
+The organization UUID is globally assigned to an organization and <strong>SHALL</strong> be kept overtime.</p>
+
+<p>The name is a readable description of the organization and <strong>SHOULD</strong> be present.
+The id is a human-readable identifier generated by the instance and used as reference in the event.
+A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<p>uuid, name and id are represented as a JSON string. uuid, name and id <strong>MUST</strong> be present.</p>
+
+<h4 id="sample-org-object-1">Sample Org Object</h4>
+
+<pre><code>&quot;Org&quot;: {
+        &quot;id&quot;: &quot;2&quot;,
+        &quot;name&quot;: &quot;CIRCL&quot;,
+        &quot;uuid&quot;: &quot;55f6ea5e-2c60-40e5-964f-47a8950d210f&quot;
+       }
+</code></pre>
+
+<h4 id="value-1">value</h4>
+
+<p>value represents the payload of an attribute. The format of the value is dependent on the type of the attribute.</p>
+
+<p>value is represented by a JSON string. value <strong>MUST</strong> be present.</p>
+
+<h2 id="object">Object</h2>
+
+<p>Objects serve as a contextual bond between a list of attributes within an event. Their main purpose is to describe more complex structures than can be described by a single attribute
+Each object is created using an Object Template and carries the meta-data of the template used for its creation within. Objects belong to a meta-category and are defined by a name.</p>
+
+<p>The schema used is described by the template_uuid and template_version fields.</p>
+
+<p>A MISP document containing an Object <strong>MUST</strong> contain a name, a meta-category, a description, a template_uuid and a template_version as described in the &quot;Object Attributes&quot; section.</p>
+
+<h3 id="sample-object-object">Sample Object object</h3>
+
+<pre><code>&quot;Object&quot;: {
+   &quot;id&quot;: &quot;588&quot;,
+   &quot;name&quot;: &quot;file&quot;,
+   &quot;meta-category&quot;: &quot;file&quot;,
+   &quot;description&quot;: &quot;File object describing a file with meta-information&quot;,
+   &quot;template_uuid&quot;: &quot;688c46fb-5edb-40a3-8273-1af7923e2215&quot;,
+   &quot;template_version&quot;: &quot;3&quot;,
+   &quot;event_id&quot;: &quot;56&quot;,
+   &quot;uuid&quot;: &quot;398b0094-0384-4c48-9bf0-22b3dff9c4d3&quot;,
+   &quot;timestamp&quot;: &quot;1505747965&quot;,
+   &quot;distribution&quot;: &quot;5&quot;,
+   &quot;sharing_group_id&quot;: &quot;0&quot;,
+   &quot;comment&quot;: &quot;&quot;,
+   &quot;deleted&quot;: false,
+   &quot;ObjectReference&quot;: [],
+   &quot;Attribute&quot;: [
+     {
+                 &quot;id&quot;: &quot;7822&quot;,
+                 &quot;type&quot;: &quot;filename&quot;,
+                 &quot;category&quot;: &quot;Payload delivery&quot;,
+                 &quot;to_ids&quot;: true,
+                 &quot;uuid&quot;: &quot;59bfe3fb-bde0-4dfe-b5b1-2b10a07724d1&quot;,
+                 &quot;event_id&quot;: &quot;56&quot;,
+                 &quot;distribution&quot;: &quot;0&quot;,
+                 &quot;timestamp&quot;: &quot;1505747963&quot;,
+                 &quot;comment&quot;: &quot;&quot;,
+                 &quot;sharing_group_id&quot;: &quot;0&quot;,
+                 &quot;deleted&quot;: false,
+                 &quot;disable_correlation&quot;: false,
+                 &quot;object_id&quot;: &quot;588&quot;,
+                 &quot;object_relation&quot;: &quot;filename&quot;,
+                 &quot;value&quot;: &quot;StarCraft.exe&quot;,
+                 &quot;ShadowAttribute&quot;: []
+     }
+   ]
+}
+</code></pre>
+
+<h3 id="object-attributes">Object Attributes</h3>
+
+<h4 id="uuid-3">uuid</h4>
+
+<p>uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the object. The uuid <strong>MUST</strong> be preserved
+for any updates or transfer of the same object. UUID version 4 is <strong>RECOMMENDED</strong> when assigning it to a new object.</p>
+
+<h4 id="id-3">id</h4>
+
+<p>id represents the human-readable identifier associated to the object for a specific MISP instance. A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>id is represented as a JSON string. id <strong>SHALL</strong> be present.</p>
+
+<h4 id="name">name</h4>
+
+<p>name represents the human-readable name of the object describing the intent of the object package.</p>
+
+<p>name is represented as a JSON string. name <strong>MUST</strong> be present</p>
+
+<h4 id="metacategory">meta-category</h4>
+
+<p>meta-category represents the sub-category of objects that the given object belongs to. meta-categories are not
+tied to a fixed list of options but can be created on the fly.</p>
+
+<p>meta-category is represented as a JSON string. meta-category <strong>MUST</strong> be present</p>
+
+<h4 id="description">description</h4>
+
+<p>description is a human-readable description of the given object type, as derived from the template used for creation.</p>
+
+<p>description is represented as a JSON string. id <strong>SHALL</strong> be present.</p>
+
+<h4 id="templateuuid">template_uuid</h4>
+
+<p>uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the template used to create the object. The uuid <strong>MUST</strong> be preserved
+to preserve the object's association with the correct template used for creation. UUID version 4 is <strong>RECOMMENDED</strong> when assigning it to a new object.</p>
+
+<h4 id="templateversion">template_version</h4>
+
+<p>template_version represents a numeric incrementing version of the template used to create the object. It is used to associate the object to the
+correct version of the template and together with the template_uuid forms an association to the correct template type and version.</p>
+
+<p>version is represented as a JSON string. version <strong>MUST</strong> be present.</p>
+
+<h4 id="eventid-2">event_id</h4>
+
+<p>event_id represents the human-readable identifier of the event that the object belongs to on a specific MISP instance. A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>event_id is represented as a JSON string. event_id <strong>SHALL</strong> be present.</p>
+
+<h4 id="timestamp-3">timestamp</h4>
+
+<p>timestamp represents a reference time when the object was created or last modified. timestamp is expressed in seconds (decimal) since 1st of January 1970 (Unix timestamp). The time zone <strong>MUST</strong> be UTC.</p>
+
+<p>timestamp is represented as a JSON string. timestamp <strong>MUST</strong> be present.</p>
+
+<h4 id="distribution-2">distribution</h4>
+
+<p>distribution represents the basic distribution rules of the object. The system must adhere to the distribution setting for access control and for dissemination of the object.</p>
+
+<p>distribution is represented by a JSON string. distribution <strong>MUST</strong> be present and be one of the following options:</p>
+
+<dl>
+<dt>0</dt><dd>Your Organisation Only</dd>
+<dt>1</dt><dd>This Community Only</dd>
+<dt>2</dt><dd>Connected Communities</dd>
+<dt>3</dt><dd>All Communities</dd>
+<dt>4</dt><dd>Sharing Group</dd>
+</dl>
+
+<h4 id="sharinggroupid-2">sharing_group_id</h4>
+
+<p>sharing_group_id represents a human-readable identifier referencing a Sharing Group object that defines the distribution of the object, if distribution level &quot;4&quot; is set. A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<p>sharing_group_id is represented by a JSON string and <strong>SHOULD</strong> be present. If a distribution level other than &quot;4&quot; is chosen the sharing_group_id <strong>MUST</strong> be set to &quot;0&quot;.</p>
+
+<h4 id="comment-2">comment</h4>
+
+<p>comment is a contextual comment field.</p>
+
+<p>comment is represented by a JSON string. comment <strong>MAY</strong> be present.</p>
+
+<h4 id="deleted-2">deleted</h4>
+
+<p>deleted represents a setting that allows attributes to be revoked. Revoked attributes are not actionable and exist merely to inform other instances of a revocation.</p>
+
+<p>deleted is represented by a JSON boolean. deleted <strong>MUST</strong> be present.</p>
+
+<h4 id="attribute-1">Attribute</h4>
+
+<p>Attribute is an array of attributes that describe the object with data.</p>
+
+<p>Each attribute in an object <strong>MUST</strong> contain the parent event's ID in the event_id field and the parent object's ID in the object_id field.</p>
+
+<h2 id="object-references">Object References</h2>
+
+<p>Object References serve as a logical link between an Object and another referenced Object or Attribute. The relationship is categorised by an enumerated value from a fixed vocabulary.</p>
+
+<p>The relationship_type is recommended to be taken from the MISP object relationship list [<a class="cite" href="#misp-r"></a>] is <strong>RECOMMENDED</strong> to ensure a coherent naming of the tags</p>
+
+<p>All Object References <strong>MUST</strong> contain an object_uuid, a referenced_uuid and a relationship type.</p>
+
+<h3 id="sample-objectreference-object">Sample ObjectReference object</h3>
+
+<pre><code>&quot;ObjectReference&quot;: {
+                    &quot;id&quot;: &quot;195&quot;,
+                    &quot;uuid&quot;: &quot;59c21a2c-c0ac-4083-93b3-363da07724d1&quot;,
+                    &quot;timestamp&quot;: &quot;1505892908&quot;,
+                    &quot;object_id&quot;: &quot;591&quot;,
+                    &quot;event_id&quot;: &quot;113&quot;,
+                    &quot;referenced_id&quot;: &quot;590&quot;,
+                    &quot;referenced_type&quot;: &quot;1&quot;,
+                    &quot;relationship_type&quot;: &quot;derived-from&quot;,
+                    &quot;comment&quot;: &quot;&quot;,
+                    &quot;deleted&quot;: false,
+                    &quot;object_uuid&quot;: &quot;59c1134d-8a40-4c14-ad94-0f7ba07724d1&quot;,
+                    &quot;referenced_uuid&quot;: &quot;59c1133c-9adc-4d06-a34b-0f7ca07724d1&quot;,
+                   }
+</code></pre>
+
+<h3 id="objectreference-attributes">ObjectReference Attributes</h3>
+
+<h4 id="uuid-4">uuid</h4>
+
+<p>uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the object reference. The uuid <strong>MUST</strong> be preserved
+for any updates or transfer of the same object reference. UUID version 4 is <strong>RECOMMENDED</strong> when assigning it to a new object reference.</p>
+
+<h4 id="id-4">id</h4>
+
+<p>id represents the human-readable identifier associated to the object reference for a specific MISP instance.</p>
+
+<p>id is represented as a JSON string. id <strong>SHALL</strong> be present.</p>
+
+<h4 id="timestamp-4">timestamp</h4>
+
+<p>timestamp represents a reference time when the object was created or last modified. timestamp is expressed in seconds (decimal) since 1st of January 1970 (Unix timestamp). The time zone <strong>MUST</strong> be UTC.</p>
+
+<p>timestamp is represented as a JSON string. timestamp <strong>MUST</strong> be present.</p>
+
+<h4 id="objectid">object_id</h4>
+
+<p>object_id represents the human-readable identifier of the object that the object reference belongs to on a specific MISP instance. A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>event_id is represented as a JSON string. event_id <strong>SHALL</strong> be present.</p>
+
+<h4 id="eventid-3">event_id</h4>
+
+<p>event_id represents the human-readable identifier of the event that the object reference belongs to on a specific MISP instance. A human-readable identifier <strong>MUST</strong> be
+represented as an unsigned integer.</p>
+
+<p>event_id is represented as a JSON string. event_id <strong>SHALL</strong> be present.</p>
+
+<h4 id="referencedid">referenced_id</h4>
+
+<p>referenced_id represents the human-readable identifier of the object or attribute that the parent object  of the object reference points to on a specific MISP instance.</p>
+
+<p>referenced_id is represented as a JSON string. referenced_id <strong>MAY</strong> be present.</p>
+
+<h4 id="referencedtype">referenced_type</h4>
+
+<p>referenced_type represents the numeric value describing what the object reference points to, &quot;0&quot; representing an attribute and &quot;1&quot; representing an object</p>
+
+<p>referenced_type is represented as a JSON string. referenced_type <strong>MAY</strong> be present.</p>
+
+<h4 id="relationshiptype">relationship_type</h4>
+
+<p>relationship_type represents the human-readable context of the relationship between an object and another object or attribute as described by the object_reference.</p>
+
+<p>referenced_type is represented as a JSON string. relationship_type <strong>MUST</strong> be present.</p>
+
+<h4 id="comment-3">comment</h4>
+
+<p>comment is a contextual comment field.</p>
+
+<p>comment is represented by a JSON string. comment <strong>MAY</strong> be present.</p>
+
+<h4 id="deleted-3">deleted</h4>
+
+<p>deleted represents a setting that allows object references to be revoked. Revoked object references are not actionable and exist merely to inform other instances of a revocation.</p>
+
+<p>deleted is represented by a JSON boolean. deleted <strong>MUST</strong> be present.</p>
+
+<h4 id="objectuuid">object_uuid</h4>
+
+<p>object_uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the object that the given object reference belongs to. The object_uuid <strong>MUST</strong> be preserved
+to preserve the object reference's association with the object.</p>
+
+<h4 id="referenceduuid">referenced_uuid</h4>
+
+<p>referenced_uuid represents the Universally Unique IDentifier (UUID) <a class="cite" href="#rfc4122"></a> of the object or attribute that is being referenced by the object reference. The referenced_uuid <strong>MUST</strong> be preserved
+to preserve the object reference's association with the object or attribute.</p>
+
+<h2 id="tag">Tag</h2>
+
+<p>A tag is a simple method to classify an event with a simple string. The tag name can be freely chosen. The tag name can be also chosen from a fixed machine-tag vocabulary called MISP taxonomies[<a class="cite" href="#misp-t"></a>]. When an event is distributed outside an organisation, the use of MISP taxonomies[<a class="cite" href="#misp-t"></a>] is <strong>RECOMMENDED</strong> to ensure a coherent naming of the tags. A tag is represented as a JSON array where each element describes each tag associated. A tag array <strong>SHALL</strong> be at event level or attribute level. A tag element is described with a name, id, colour and exportable flag.</p>
+
+<p>exportable represents a setting if the tag is kept local or exportable to other MISP instances. exportable is represented by a JSON boolean. id is a human-readable identifier that references the tag on the local instance. colour represents an RGB value of the tag.</p>
+
+<p>name <strong>MUST</strong> be present. colour, id and exportable <strong>SHALL</strong> be present.</p>
+
+<h3 id="sample-tag">Sample Tag</h3>
+
+<pre><code>&quot;Tag&quot;: [{
+        &quot;exportable&quot;: true,
+        &quot;colour&quot;: &quot;#ffffff&quot;,
+        &quot;name&quot;: &quot;tlp:white&quot;,
+        &quot;id&quot;: &quot;2&quot; }]
+</code></pre>
+
+<h2 id="sighting">Sighting</h2>
+
+<p>A sighting is an ascertainment which describes whether an attribute has been seen under a given set of conditions. The sighting can include the organisation who sighted the attribute or can
+be anonymised. Sighting is composed of a JSON array in which each element describes one singular instance of a sighting. A sighting element is a JSON object composed of the following values:</p>
+
+<p>type <strong>MUST</strong> be present. type describes the type of a sighting. MISP allows 3 default types:</p>
+
+<table>
+<thead>
+<tr>
+<th>Sighting type</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td align="center">denotes an attribute which has been seen</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td align="center">denotes an attribute which has been seen and confirmed as false-positive</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td align="center">denotes an attribute which will be expired at the time of the sighting</td>
+</tr>
+</tbody>
+</table>
+
+<p>uuid <strong>MUST</strong> be present. uuid references the uuid of the sighted attribute.</p>
+
+<p>date_sighting <strong>MUST</strong> be present. date_sighting is expressed in seconds (decimal) elapsed since 1st of January 1970 (Unix timestamp). date_sighting represents when the referenced attribute, designated by its uuid, is sighted.</p>
+
+<p>source <strong>MAY</strong> be present. source is represented as a JSON string and represents the human-readable version of the sighting source, which can be a given piece of software (e.g. SIEM), device or a specific analytical process.</p>
+
+<p>id, event_id and attribute_id <strong>MAY</strong> be present.</p>
+
+<p>id represents the human-readable identifier of the sighting reference which belongs to a specific MISP instance.
+event_id represents the human-readable identifier of the event referenced by the sighting and belongs to a specific MISP instance.
+attribute_id represents the human-readable identifier of the attribute referenced by the sighting and belongs to a specific MISP instance.</p>
+
+<p>org_id <strong>MAY</strong> be present along the JSON object describing the organisation. If the org_id is not present, the sighting is considered as anonymised.</p>
+
+<p>org_id represents the human-readable identifier of the organisation which did the sighting and belongs to a specific MISP instance.</p>
+
+<p>A human-readable identifier <strong>MUST</strong> be represented as an unsigned integer.</p>
+
+<h3 id="sample-sighting">Sample Sighting</h3>
+
+<pre><code>&quot;Sighting&quot;: [
+		   {
+				&quot;id&quot;: &quot;13599&quot;,
+				&quot;attribute_id&quot;: &quot;1201615&quot;,
+				&quot;event_id&quot;: &quot;10164&quot;,
+				&quot;org_id&quot;: &quot;2&quot;,
+				&quot;date_sighting&quot;: &quot;1517581400&quot;,
+				&quot;uuid&quot;: &quot;5a747459-41b4-4826-9b29-42dd950d210f&quot;,
+				&quot;source&quot;: &quot;M2M-CIRCL&quot;,
+				&quot;type&quot;: &quot;0&quot;,
+				&quot;Organisation&quot;: {
+					&quot;id&quot;: &quot;2&quot;,
+					&quot;uuid&quot;: &quot;55f6ea5e-2c60-40e5-964f-47a8950d210f&quot;,
+					&quot;name&quot;: &quot;CIRCL&quot;
+				}
+			},
+			{
+				&quot;id&quot;: &quot;13601&quot;,
+				&quot;attribute_id&quot;: &quot;1201615&quot;,
+				&quot;event_id&quot;: &quot;10164&quot;,
+				&quot;org_id&quot;: &quot;2&quot;,
+				&quot;date_sighting&quot;: &quot;1517581401&quot;,
+				&quot;uuid&quot;: &quot;5a74745a-a190-4d04-b719-4916950d210f&quot;,
+				&quot;source&quot;: &quot;M2M-CIRCL&quot;,
+				&quot;type&quot;: &quot;0&quot;,
+				&quot;Organisation&quot;: {
+					&quot;id&quot;: &quot;2&quot;,
+					&quot;uuid&quot;: &quot;55f6ea5e-2c60-40e5-964f-47a8950d210f&quot;,
+					&quot;name&quot;: &quot;CIRCL&quot;
+				}
+			}
+		]
+</code></pre>
+
+<h2 id="galaxy">Galaxy</h2>
+
+<p>A galaxy is a simple method to express a large object called cluster that can be attached to MISP events. A cluster can be composed of one or more elements. Elements are expressed as key-values.</p>
+
+<h3 id="sample-galaxy">Sample Galaxy</h3>
+
+<pre><code>&quot;Galaxy&quot;: [ {
+           &quot;id&quot;: &quot;18&quot;,
+           &quot;uuid&quot;: &quot;698774c7-8022-42c4-917f-8d6e4f06ada3&quot;,
+           &quot;name&quot;: &quot;Threat Actor&quot;,
+           &quot;type&quot;: &quot;threat-actor&quot;,
+           &quot;description&quot;: &quot;Threat actors are characteristics of malicious actors
+                          (or adversaries) representing a cyber attack threat
+                          including presumed intent and historically observed behaviour.&quot;,
+                &quot;version&quot;: &quot;1&quot;,
+        &quot;GalaxyCluster&quot;: [
+            {
+                &quot;id&quot;: &quot;1699&quot;,
+                &quot;uuid&quot;: &quot;7cdff317-a673-4474-84ec-4f1754947823&quot;,
+                &quot;type&quot;: &quot;threat-actor&quot;,
+                &quot;value&quot;: &quot;Anunak&quot;,
+                &quot;tag_name&quot;: &quot;misp-galaxy:threat-actor=\&quot;Anunak\&quot;&quot;,
+                &quot;description&quot;: &quot;Groups targeting financial organizations
+                    or people with significant financial assets.&quot;,
+                &quot;galaxy_id&quot;: &quot;18&quot;,
+                &quot;source&quot;: &quot;MISP Project&quot;,
+                &quot;authors&quot;: [
+                    &quot;Alexandre Dulaunoy&quot;,
+                    &quot;Florian Roth&quot;,
+                    &quot;Thomas Schreck&quot;,
+                    &quot;Timo Steffens&quot;,
+                    &quot;Various&quot;
+                ],
+                &quot;tag_id&quot;: &quot;111&quot;,
+                        &quot;meta&quot;: {
+                            &quot;synonyms&quot;: [
+                                &quot;Carbanak&quot;,
+                                &quot;Carbon Spider&quot;
+                            ],
+                            &quot;country&quot;: [
+                                &quot;RU&quot;
+                            ],
+                            &quot;motive&quot;: [
+                                &quot;Cybercrime&quot;
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+</code></pre>
+
+<h1 id="json-schema">JSON Schema</h1>
+
+<p>The JSON Schema <a class="cite" href="#json-schema"></a> below defines the structure of the MISP core format
+as literally described before. The JSON Schema is used to validate MISP events at creation time
+or parsing.</p>
+
+<pre><code>{
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-04/schema#&quot;,
+  &quot;title&quot;: &quot;Validator for misp events&quot;,
+  &quot;id&quot;: &quot;https://github.com/MISP/MISP/blob/2.4/format/2.4/schema.json&quot;,
+  &quot;defs&quot;: {
+    &quot;org&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;required&quot;: [
+        &quot;uuid&quot;
+      ]
+    },
+    &quot;orgc&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;required&quot;: [
+        &quot;uuid&quot;
+      ]
+    },
+    &quot;sharing_group&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;releasability&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;organisation_uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;org_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sync_user_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;active&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;created&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;modified&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;local&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;roaming&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;Organisation&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/org&quot;
+        },
+        &quot;SharingGroupOrg&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/sharing_group_org&quot;
+          }
+        },
+        &quot;SharingGroupServer&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/sharing_group_server&quot;
+          }
+        },
+        &quot;required&quot;: [
+          &quot;uuid&quot;
+        ]
+      },
+      &quot;required&quot;: [
+        &quot;uuid&quot;
+      ]
+    },
+    &quot;sharing_group_org&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sharing_group_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;org_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;extend&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;Organisation&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/org&quot;
+        }
+      }
+    },
+    &quot;sharing_group_server&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sharing_group_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;server_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;all_orgs&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;Server&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/server&quot;
+        }
+      }
+    },
+    &quot;server&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;url&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      }
+    },
+    &quot;object&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;event_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;template_uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;template_version&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;meta-category&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;deleted&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;timestamp&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;distribution&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sharing_group_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;comment&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;ObjectReference&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;uniqueItems&quot;: true,
+            &quot;items&quot;: {
+              &quot;$ref&quot;: &quot;#/defs/objectreference&quot;
+            }
+        },
+        &quot;Attribute&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/attribute&quot;
+          }
+        }
+      }
+    },
+    &quot;sighthing&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;attribute_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;event_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;source&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;type&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;org_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;date_sighting&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;Organisation&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/organisation&quot;
+        }
+      }
+    },
+    &quot;organisation&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      }
+    },
+    &quot;objectreference&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;deleted&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;object_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;event_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;timestamp&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;type&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;referenced_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;referenced_uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;referenced_type&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;relationship_type&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;object_uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;comment&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;Object&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/object&quot;
+        }
+      }
+    },
+    &quot;attribute&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;old_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;type&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;category&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;to_ids&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;event_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;event_uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;proposal_to_delete&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;validationIssue&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;Org&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/organisation&quot;
+        },
+        &quot;org_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;distribution&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;timestamp&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;comment&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sharing_group_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;deleted&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;disable_correlation&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;value&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;data&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;object_relation&quot;: {
+          &quot;type&quot;: [&quot;string&quot;, &quot;null&quot;]
+        },
+        &quot;object_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;SharingGroup&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/sharing_group&quot;
+        },
+        &quot;ShadowAttribute&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/attribute&quot;
+          }
+        },
+        &quot;Sighting&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;uniqueItems&quot;: true,
+            &quot;items&quot;: {
+              &quot;$ref&quot;: &quot;#/defs/sighthing&quot;
+            }
+        },
+        &quot;Galaxy&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/galaxy&quot;
+          }
+        },
+        &quot;Tag&quot;: {
+          &quot;uniqueItems&quot;: true,
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/tag&quot;
+          }
+        }
+      }
+    },
+    &quot;event&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;orgc_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;org_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;date&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;extends_uuid&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;threat_level_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;info&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;published&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;attribute_count&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;analysis&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;timestamp&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;distribution&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;proposal_email_lock&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;locked&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;publish_timestamp&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sharing_group_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;disable_correlation&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;event_creator_email&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;Org&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/org&quot;
+        },
+        &quot;Orgc&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/org&quot;
+        },
+        &quot;SharingGroup&quot;: {
+          &quot;$ref&quot;: &quot;#/defs/sharing_group&quot;
+        },
+        &quot;Attribute&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/attribute&quot;
+          }
+        },
+        &quot;ShadowAttribute&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/attribute&quot;
+          }
+        },
+        &quot;RelatedEvent&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;additionalProperties&quot;: false,
+            &quot;properties&quot;: {
+                &quot;Event&quot;:{
+                  &quot;$ref&quot;: &quot;#/defs/event&quot;
+                }
+            }
+          }
+        },
+        &quot;Galaxy&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/galaxy&quot;
+          }
+        },
+        &quot;Object&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;uniqueItems&quot;: true,
+            &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/defs/object&quot;
+            }
+        },
+        &quot;Tag&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/tag&quot;
+          }
+        }
+      }
+    },
+    &quot;tag&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;colour&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;exportable&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;hide_tag&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;user_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      }
+    },
+    &quot;galaxy&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;type&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;icon&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;namespace&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;GalaxyCluster&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/defs/galaxy_cluster&quot;
+          }
+        }
+      }
+    },
+    &quot;galaxy_cluster&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;additionalProperties&quot;: false,
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uuid&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;type&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;value&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;tag_name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;galaxy_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;source&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;authors&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;uniqueItems&quot;: true,
+          &quot;items&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          }
+        },
+        &quot;tag_id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;meta&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        }
+      }
+    }
+  },
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;Event&quot;: {
+      &quot;$ref&quot;: &quot;#/defs/event&quot;
+    }
+  },
+  &quot;required&quot;: [
+    &quot;Event&quot;
+  ]
+}
+</code></pre>
+
+<h1 id="manifest">Manifest</h1>
+
+<p>MISP events can be shared over an HTTP repository, a file package or USB key. A manifest file is used to
+provide an index of MISP events allowing to only fetch the recently updated files without the need to parse
+each json file.</p>
+
+<h2 id="format-1">Format</h2>
+
+<p>A manifest file is a simple JSON file named manifest.json in a directory where the MISP events are located.
+Each MISP event is a file located in the same directory with the event uuid as filename with the json extension.</p>
+
+<p>The manifest format is a JSON object composed of a dictionary where the field is the uuid of the event.</p>
+
+<p>Each uuid is composed of a JSON object with the following fields which came from the original event referenced
+by the same uuid:</p>
+
+<ul>
+<li>info (<strong>MUST</strong>)</li>
+<li>Orgc object (<strong>MUST</strong>)</li>
+<li>analysis (<strong>SHALL</strong>)</li>
+<li>timestamp (<strong>MUST</strong>)</li>
+<li>date (<strong>MUST</strong>)</li>
+<li>threat_level_id (<strong>SHALL</strong>)</li>
+</ul>
+
+<p>In addition to the fields originating from the event, the following fields can be added:</p>
+
+<ul>
+<li>integrity:sha256 represents the SHA256 value in hexadecimal representation of the associated MISP event file to ensure integrity of the file. (<strong>SHOULD</strong>)</li>
+<li>integrity:pgp represents a detached PGP signature <a class="cite" href="#rfc4880"></a> of the associated MISP event file to ensure integrity of the file. (<strong>SHOULD</strong>)</li>
+</ul>
+
+<p>If a detached PGP signature is used for each MISP event, a detached PGP signature is a <strong>MUST</strong> to ensure integrity of the manifest file.
+A detached PGP signature for a manifest file is a manifest.json.asc file containing the PGP signature.</p>
+
+<h3 id="sample-manifest">Sample Manifest</h3>
+
+<pre><code>{
+  &quot;57c6ac4c-c60c-4f79-a38f-b666950d210f&quot;: {
+    &quot;info&quot;: &quot;Malspam 2016-08-31 (.wsf in .zip) - campaign: Photo&quot;,
+    &quot;Orgc&quot;: {
+      &quot;id&quot;: &quot;2&quot;,
+      &quot;name&quot;: &quot;CIRCL&quot;,
+      &quot;uuid&quot;: &quot;55f6ea5e-2c60-40e5-964f-47a8950d210f&quot;
+    },
+    &quot;analysis&quot;: &quot;0&quot;,
+    &quot;Tag&quot;: [
+      {
+        &quot;colour&quot;: &quot;#3d7a00&quot;,
+        &quot;name&quot;: &quot;circl:incident-classification=\&quot;malware\&quot;&quot;
+      },
+      {
+        &quot;colour&quot;: &quot;#ffffff&quot;,
+        &quot;name&quot;: &quot;tlp:white&quot;
+      }
+    ],
+    &quot;timestamp&quot;: &quot;1472638251&quot;,
+    &quot;date&quot;: &quot;2016-08-31&quot;,
+    &quot;threat_level_id&quot;: &quot;3&quot;
+  },
+  &quot;5720accd-dd28-45f8-80e5-4605950d210f&quot;: {
+    &quot;info&quot;: &quot;Malspam 2016-04-27 - Locky&quot;,
+    &quot;Orgc&quot;: {
+      &quot;id&quot;: &quot;2&quot;,
+      &quot;name&quot;: &quot;CIRCL&quot;
+    },
+    &quot;analysis&quot;: &quot;2&quot;,
+    &quot;Tag&quot;: [
+      {
+        &quot;colour&quot;: &quot;#ffffff&quot;,
+        &quot;name&quot;: &quot;tlp:white&quot;
+      },
+      {
+        &quot;colour&quot;: &quot;#3d7a00&quot;,
+        &quot;name&quot;: &quot;circl:incident-classification=\&quot;malware\&quot;&quot;
+      },
+      {
+        &quot;colour&quot;: &quot;#2c4f00&quot;,
+        &quot;name&quot;: &quot;malware_classification:malware-category=\&quot;Ransomware\&quot;&quot;
+      }
+    ],
+    &quot;timestamp&quot;: &quot;1461764231&quot;,
+    &quot;date&quot;: &quot;2016-04-27&quot;,
+    &quot;threat_level_id&quot;: &quot;3&quot;
+  }
+}
+</code></pre>
+
+<h1 id="implementation">Implementation</h1>
+
+<p>MISP format is implemented by different software including the MISP threat sharing
+platform and libraries like PyMISP <a class="cite" href="#misp-p"></a>. Implementations use the format
+as an export/import mechanism, staging transport format or synchronisation format
+as used in the MISP core platform. MISP format doesn't impose any restriction on
+the data representation of the format in data-structure of other implementations.</p>
+
+<h1 id="security-considerations">Security Considerations</h1>
+
+<p>MISP events might contain sensitive or confidential information. Adequate
+access control and encryption measures shall be implemented to ensure
+the confidentiality of the MISP events.</p>
+
+<p>Adversaries might include malicious content in MISP events and attributes.
+Implementation <strong>MUST</strong> consider the input of malicious inputs beside the
+standard threat information that might already include malicious intended inputs.</p>
+
+<h1 id="acknowledgements">Acknowledgements</h1>
+
+<p>The authors wish to thank all the MISP community who are supporting the creation
+of open standards in threat intelligence sharing. A special thank to Nicolas Bareil
+for the review of the JSON Schema.</p>
+
+<h1 id="references">References</h1>
+
+<h1 id="bibliography" class="appendix bibliography">Bibliography</h1>
+<ol class="bibliography">
+<li class="bibliography" id="MISP-R">
+  <span class="bibliography-details">MISP Community. MISP Object Relationship Types - common vocabulary of relationships. <a href=""></a>
+  .</span>
+</li>
+<li class="bibliography" id="MISP-T">
+  <span class="bibliography-details">MISP Community. MISP Taxonomies - shared and common vocabularies of tags. <a href=""></a>
+  .</span>
+</li>
+<li class="bibliography" id="JSON-SCHEMA">
+  <span class="bibliography-details">Austin Wright. JSON Schema: A Media Type for Describing JSON Documents. <a href=""></a>
+  2016.</span>
+</li>
+<li class="bibliography" id="MISP-P">
+  <span class="bibliography-details">MISP Community. MISP Project - Malware Information Sharing Platform and Threat Sharing. <a href=""></a>
+  .</span>
+</li>
+</ol>
+
+</body>
+</html>
