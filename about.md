@@ -36,4 +36,13 @@ A host of proprietary and open source software are implementing and using the MI
 ![](https://www.misp-project.org/assets/images/logo.png)
 ![](https://www.misp-project.org/assets/images/en_cef.png)
 
+# Contact
+
+CIRCL
+c/o securitymadein.lu
+16, bd d'Avranches
+Luxembourg, L-1160
+Luxembourg
+(+352) 247 88444
+info@misp-project.org
 
