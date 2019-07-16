@@ -1,0 +1,1371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>MISP taxonomy format</title>
+
+  <style type="text/css" title="Xml2Rfc (sans serif)">
+  /*<![CDATA[*/
+	  a {
+	  text-decoration: none;
+	  }
+      /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+      a.info {
+          /* This is the key. */
+          position: relative;
+          z-index: 24;
+          text-decoration: none;
+      }
+      a.info:hover {
+          z-index: 25;
+          color: #FFF; background-color: #900;
+      }
+      a.info span { display: none; }
+      a.info:hover span.info {
+          /* The span will display just on :hover state. */
+          display: block;
+          position: absolute;
+          font-size: smaller;
+          top: 2em; left: -5em; width: 15em;
+          padding: 2px; border: 1px solid #333;
+          color: #900; background-color: #EEE;
+          text-align: left;
+      }
+	  a.smpl {
+	  color: black;
+	  }
+	  a:hover {
+	  text-decoration: underline;
+	  }
+	  a:active {
+	  text-decoration: underline;
+	  }
+	  address {
+	  margin-top: 1em;
+	  margin-left: 2em;
+	  font-style: normal;
+	  }
+	  body {
+	  color: black;
+	  font-family: verdana, helvetica, arial, sans-serif;
+	  font-size: 10pt;
+	  max-width: 55em;
+	  
+	  }
+	  cite {
+	  font-style: normal;
+	  }
+	  dd {
+	  margin-right: 2em;
+	  }
+	  dl {
+	  margin-left: 2em;
+	  }
+	
+	  ul.empty {
+	  list-style-type: none;
+	  }
+	  ul.empty li {
+	  margin-top: .5em;
+	  }
+	  dl p {
+	  margin-left: 0em;
+	  }
+	  dt {
+	  margin-top: .5em;
+	  }
+	  h1 {
+	  font-size: 14pt;
+	  line-height: 21pt;
+	  page-break-after: avoid;
+	  }
+	  h1.np {
+	  page-break-before: always;
+	  }
+	  h1 a {
+	  color: #333333;
+	  }
+	  h2 {
+	  font-size: 12pt;
+	  line-height: 15pt;
+	  page-break-after: avoid;
+	  }
+	  h3, h4, h5, h6 {
+	  font-size: 10pt;
+	  page-break-after: avoid;
+	  }
+	  h2 a, h3 a, h4 a, h5 a, h6 a {
+	  color: black;
+	  }
+	  img {
+	  margin-left: 3em;
+	  }
+	  li {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  ol p {
+	  margin-left: 0em;
+	  }
+	  p {
+	  margin-left: 2em;
+	  margin-right: 2em;
+	  }
+	  pre {
+	  margin-left: 3em;
+	  background-color: lightyellow;
+	  padding: .25em;
+	  }
+	  pre.text2 {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f0f0f0;
+	  width: 69em;
+	  }
+	  pre.inline {
+	  background-color: white;
+	  padding: 0em;
+	  }
+	  pre.text {
+	  border-style: dotted;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  width: 69em;
+	  }
+	  pre.drawing {
+	  border-style: solid;
+	  border-width: 1px;
+	  background-color: #f8f8f8;
+	  padding: 2em;
+	  }
+	  table {
+	  margin-left: 2em;
+	  }
+	  table.tt {
+	  vertical-align: top;
+	  }
+	  table.full {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.headers {
+	  border-style: outset;
+	  border-width: 1px;
+	  }
+	  table.tt td {
+	  vertical-align: top;
+	  }
+	  table.full td {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.tt th {
+	  vertical-align: top;
+	  }
+	  table.full th {
+	  border-style: inset;
+	  border-width: 1px;
+	  }
+	  table.headers th {
+	  border-style: none none inset none;
+	  border-width: 1px;
+	  }
+	  table.left {
+	  margin-right: auto;
+	  }
+	  table.right {
+	  margin-left: auto;
+	  }
+	  table.center {
+	  margin-left: auto;
+	  margin-right: auto;
+	  }
+	  caption {
+	  caption-side: bottom;
+	  font-weight: bold;
+	  font-size: 9pt;
+	  margin-top: .5em;
+	  }
+	
+	  table.header {
+	  border-spacing: 1px;
+	  width: 95%;
+	  font-size: 10pt;
+	  color: white;
+	  }
+	  td.top {
+	  vertical-align: top;
+	  }
+	  td.topnowrap {
+	  vertical-align: top;
+	  white-space: nowrap; 
+	  }
+	  table.header td {
+	  background-color: gray;
+	  width: 50%;
+	  }
+	  table.header a {
+	  color: white;
+	  }
+	  td.reference {
+	  vertical-align: top;
+	  white-space: nowrap;
+	  padding-right: 1em;
+	  }
+	  thead {
+	  display:table-header-group;
+	  }
+	  ul.toc, ul.toc ul {
+	  list-style: none;
+	  margin-left: 1.5em;
+	  margin-right: 0em;
+	  padding-left: 0em;
+	  }
+	  ul.toc li {
+	  line-height: 150%;
+	  font-weight: bold;
+	  font-size: 10pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  ul.toc li li {
+	  line-height: normal;
+	  font-weight: normal;
+	  font-size: 9pt;
+	  margin-left: 0em;
+	  margin-right: 0em;
+	  }
+	  li.excluded {
+	  font-size: 0pt;
+	  }
+	  ul p {
+	  margin-left: 0em;
+	  }
+	
+	  .comment {
+	  background-color: yellow;
+	  }
+	  .center {
+	  text-align: center;
+	  }
+	  .error {
+	  color: red;
+	  font-style: italic;
+	  font-weight: bold;
+	  }
+	  .figure {
+	  font-weight: bold;
+	  text-align: center;
+	  font-size: 9pt;
+	  }
+	  .filename {
+	  color: #333333;
+	  font-weight: bold;
+	  font-size: 12pt;
+	  line-height: 21pt;
+	  text-align: center;
+	  }
+	  .fn {
+	  font-weight: bold;
+	  }
+	  .hidden {
+	  display: none;
+	  }
+	  .left {
+	  text-align: left;
+	  }
+	  .right {
+	  text-align: right;
+	  }
+	  .title {
+	  color: #990000;
+	  font-size: 18pt;
+	  line-height: 18pt;
+	  font-weight: bold;
+	  text-align: center;
+	  margin-top: 36pt;
+	  }
+	  .vcardline {
+	  display: block;
+	  }
+	  .warning {
+	  font-size: 14pt;
+	  background-color: yellow;
+	  }
+	
+	
+	  @media print {
+	  .noprint {
+		display: none;
+	  }
+	
+	  a {
+		color: black;
+		text-decoration: none;
+	  }
+	
+	  table.header {
+		width: 90%;
+	  }
+	
+	  td.header {
+		width: 50%;
+		color: black;
+		background-color: white;
+		vertical-align: top;
+		font-size: 12pt;
+	  }
+	
+	  ul.toc a::after {
+		content: leader('.') target-counter(attr(href), page);
+	  }
+	
+	  ul.ind li li a {
+		content: target-counter(attr(href), page);
+	  }
+	
+	  .print2col {
+		column-count: 2;
+		-moz-column-count: 2;
+		column-fill: auto;
+	  }
+	  }
+	
+	  @page {
+	  @top-left {
+		   content: "Internet-Draft"; 
+	  } 
+	  @top-right {
+		   content: "December 2010"; 
+	  } 
+	  @top-center {
+		   content: "Abbreviated Title";
+	  } 
+	  @bottom-left {
+		   content: "Doe"; 
+	  } 
+	  @bottom-center {
+		   content: "Expires June 2011"; 
+	  } 
+	  @bottom-right {
+		   content: "[Page " counter(page) "]"; 
+	  } 
+	  }
+	
+	  @page:first { 
+		@top-left {
+		  content: normal;
+		}
+		@top-right {
+		  content: normal;
+		}
+		@top-center {
+		  content: normal;
+		}
+	  }
+  /*]]>*/
+  </style>
+
+  <link href="#rfc.toc" rel="Contents">
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Conventions and Terminology">
+<link href="#rfc.section.2" rel="Chapter" title="2 Format">
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 Overview">
+<link href="#rfc.section.2.2" rel="Chapter" title="2.2 predicates">
+<link href="#rfc.section.2.3" rel="Chapter" title="2.3 values">
+<link href="#rfc.section.2.4" rel="Chapter" title="2.4 optional fields">
+<link href="#rfc.section.2.4.1" rel="Chapter" title="2.4.1 colour">
+<link href="#rfc.section.2.4.2" rel="Chapter" title="2.4.2 description">
+<link href="#rfc.section.2.4.3" rel="Chapter" title="2.4.3 numerical_value">
+<link href="#rfc.section.3" rel="Chapter" title="3 Directory">
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Sample Manifest">
+<link href="#rfc.section.4" rel="Chapter" title="4 Sample Taxonomy in MISP taxonomy format">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Admiralty Scale Taxonomy">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 Open Source Intelligence - Classification">
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Available taxonomies in the public directory">
+<link href="#rfc.section.5" rel="Chapter" title="5 JSON Schema">
+<link href="#rfc.section.6" rel="Chapter" title="6 Acknowledgements">
+<link href="#rfc.references" rel="Chapter" title="7 References">
+<link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
+<link href="#rfc.authors" rel="Chapter">
+
+
+  <meta name="generator" content="xml2rfc version 2.23.1 - https://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Dulaunoy, A. and A. Iklody" />
+  <meta name="dct.identifier" content="urn:ietf:id:" />
+  <meta name="dct.issued" scheme="ISO8601" content="2017-11-29" />
+  <meta name="dct.abstract" content="This document describes the MISP taxonomy format which describes a simple JSON format to represent machine tags (also called triple tags) vocabularies. A public directory of common vocabularies called MISP taxonomies is available and relies on the MISP taxonomy format. MISP taxonomies are used to classify cyber security events, threats, suspicious events, or indicators." />
+  <meta name="description" content="This document describes the MISP taxonomy format which describes a simple JSON format to represent machine tags (also called triple tags) vocabularies. A public directory of common vocabularies called MISP taxonomies is available and relies on the MISP taxonomy format. MISP taxonomies are used to classify cyber security events, threats, suspicious events, or indicators." />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+<td class="left">Network Working Group</td>
+<td class="right">A. Dulaunoy</td>
+</tr>
+<tr>
+<td class="left">Internet-Draft</td>
+<td class="right">A. Iklody</td>
+</tr>
+<tr>
+<td class="left">Expires: June 2, 2018</td>
+<td class="right">CIRCL</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">November 29, 2017</td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">MISP taxonomy format<br />
+  <span class="filename"></span></p>
+  
+  <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+<p>This document describes the MISP taxonomy format which describes a simple JSON format to represent machine tags (also called triple tags) vocabularies. A public directory of common vocabularies called MISP taxonomies is available and relies on the MISP taxonomy format. MISP taxonomies are used to classify cyber security events, threats, suspicious events, or indicators.</p>
+<h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on June 2, 2018.</p>
+<h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
+<p>Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a>
+</li>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Conventions and Terminology</a>
+</li>
+</ul><li>2.   <a href="#rfc.section.2">Format</a>
+</li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">Overview</a>
+</li>
+<li>2.2.   <a href="#rfc.section.2.2">predicates</a>
+</li>
+<li>2.3.   <a href="#rfc.section.2.3">values</a>
+</li>
+<li>2.4.   <a href="#rfc.section.2.4">optional fields</a>
+</li>
+<ul><li>2.4.1.   <a href="#rfc.section.2.4.1">colour</a>
+</li>
+<li>2.4.2.   <a href="#rfc.section.2.4.2">description</a>
+</li>
+<li>2.4.3.   <a href="#rfc.section.2.4.3">numerical_value</a>
+</li>
+</ul></ul><li>3.   <a href="#rfc.section.3">Directory</a>
+</li>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Sample Manifest</a>
+</li>
+</ul><li>4.   <a href="#rfc.section.4">Sample Taxonomy in MISP taxonomy format</a>
+</li>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Admiralty Scale Taxonomy</a>
+</li>
+<li>4.2.   <a href="#rfc.section.4.2">Open Source Intelligence - Classification</a>
+</li>
+<li>4.3.   <a href="#rfc.section.4.3">Available taxonomies in the public directory</a>
+</li>
+</ul><li>5.   <a href="#rfc.section.5">JSON Schema</a>
+</li>
+<li>6.   <a href="#rfc.section.6">Acknowledgements</a>
+</li>
+<li>7.   <a href="#rfc.references">References</a>
+</li>
+<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>7.2.   <a href="#rfc.references.2">Informative References</a>
+</li>
+</ul><li><a href="#rfc.authors">Authors' Addresses</a>
+</li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1">
+<a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a>
+</h1>
+<p id="rfc.section.1.p.1">Sharing threat information became a fundamental requirements on the Internet, security and intelligence community at large. Threat information can include indicators of compromise, malicious file indicators, financial fraud indicators or even detailed information about a threat actor. While sharing such indicators or information, classification plays an important role to ensure adequate distribution, understanding, validation or action of the shared information. MISP taxonomies is a public repository of known vocabularies that can be used in threat information sharing.</p>
+<p id="rfc.section.1.p.2">Machine tags were introduced in 2007 <a href="#machine-tags" class="xref">[machine-tags]</a> to allow users to be more precise when tagging their pictures with geolocation.  So a machine tag is a tag which uses a special syntax to provide more information to users and machines. Machine tags are also known as triple tags due to their format.</p>
+<p id="rfc.section.1.p.3">In the MISP taxonomy context, machine tags help analysts to classify their cybersecurity events, indicators or threats. MISP taxonomies can be used for classification, filtering, triggering actions or visualisation depending on their use in threat intelligence platforms such as MISP <a href="#MISP-P" class="xref">[MISP-P]</a>.</p>
+<h1 id="rfc.section.1.1">
+<a href="#rfc.section.1.1">1.1.</a> <a href="#conventions-and-terminology" id="conventions-and-terminology">Conventions and Terminology</a>
+</h1>
+<p id="rfc.section.1.1.p.1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 <a href="#RFC2119" class="xref">[RFC2119]</a>.</p>
+<h1 id="rfc.section.2">
+<a href="#rfc.section.2">2.</a> <a href="#format" id="format">Format</a>
+</h1>
+<p id="rfc.section.2.p.1">A machine tag is composed of a namespace (MUST), a predicate (MUST) and an optional value (OPTIONAL).</p>
+<p id="rfc.section.2.p.2">Machine tags are represented as a string. Below listed are a set of sample machine tags for different namespaces such as tlp, admiralty-scale and osint.</p>
+<pre>tlp:amber
+admiralty-scale:information-credibility="1"
+osint:source-type="blog-post"
+</pre>
+<p id="rfc.section.2.p.3">The MISP taxonomy format describes how to define a machine tag namespace in a parseable format. The objective is to provide a simple format to describe machine tag (aka triple tag) vocabularies.</p>
+<h1 id="rfc.section.2.1">
+<a href="#rfc.section.2.1">2.1.</a> <a href="#overview" id="overview">Overview</a>
+</h1>
+<p id="rfc.section.2.1.p.1">The MISP taxonomy format uses the JSON <a href="#RFC8259" class="xref">[RFC8259]</a> format. Each namespace is represented as a JSON object with meta information including the following fields: namespace, description, version, type.</p>
+<p id="rfc.section.2.1.p.2">namespace defines the overall namespace of the machine tag. The namespace is represented as a string and MUST be present. The description is represented as a string and MUST be present. A version is represented as a unsigned integer MUST be present. A type defines where a specific taxonomy is applicable and a type can be applicable at event, user or org level. The type is represented as an array containing one or more type and SHOULD be present. If a type is not mentioned, by default, the taxonomy is applicable at event level only. An exclusive boolean property MAY be present and defines at namespace level if the predicates are mutually exclusive.</p>
+<p id="rfc.section.2.1.p.3">predicates defines all the predicates available in the namespace defined. predicates is represented as an array of JSON objects. predicates MUST be present and MUST at least content one element.</p>
+<p id="rfc.section.2.1.p.4">values defines all the values for each predicate in the namespace defined. values SHOULD be present.</p>
+<h1 id="rfc.section.2.2">
+<a href="#rfc.section.2.2">2.2.</a> <a href="#predicates" id="predicates">predicates</a>
+</h1>
+<p id="rfc.section.2.2.p.1">The predicates array contains one or more JSON objects which lists all the possible predicates. The JSON object contains two fields: value and expanded. value MUST be present. expanded SHOULD be present. value is represented as a string and describes the predicate value. The predicate value MUST not contain spaces or colons. expanded is represented as a string and describes the human-readable version of the predicate value. An exclusive property MAY be present and defines at namespace level if the values are mutually exclusive.</p>
+<h1 id="rfc.section.2.3">
+<a href="#rfc.section.2.3">2.3.</a> <a href="#values" id="values">values</a>
+</h1>
+<p id="rfc.section.2.3.p.1">The values array contain one or more JSON objects which lists all the possible values of a predicate. The JSON object contains two fields: predicate and entry. predicate is represented as a string and describes the predicate value. entry is an array with one or more JSON objects. The JSON object contains two fields: value and expanded. value MUST be present. expanded SHOULD be present. value is represented as a string and describes the machine parsable value. expanded is represented as a string and describes the human-readable version of the value.</p>
+<h1 id="rfc.section.2.4">
+<a href="#rfc.section.2.4">2.4.</a> <a href="#optional-fields" id="optional-fields">optional fields</a>
+</h1>
+<h1 id="rfc.section.2.4.1">
+<a href="#rfc.section.2.4.1">2.4.1.</a> <a href="#colour" id="colour">colour</a>
+</h1>
+<p id="rfc.section.2.4.1.p.1">colour fields MAY be used at predicates or values level to set a specify colour that MAY be used by the implementation. The colour field is described as an RGB colour fill in hexadecimal representation.</p>
+<p id="rfc.section.2.4.1.p.2">Example use of the colour field in the Traffic Light Protocol (TLP):</p>
+<pre>"predicates": [
+    {
+      "colour": "#CC0033",
+      "expanded": "(TLP:RED) Information exclusively and directly
+                   given to (a group of) individual recipients.
+                   Sharing outside is not legitimate.",
+      "value": "red"
+    },
+    {
+      "colour": "#FFC000",
+      "expanded": "(TLP:AMBER) Information exclusively given
+                   to an organization; sharing limited within
+                   the organization to be effectively acted upon.",
+      "value": "amber"
+    }...]
+</pre>
+<h1 id="rfc.section.2.4.2">
+<a href="#rfc.section.2.4.2">2.4.2.</a> <a href="#description" id="description">description</a>
+</h1>
+<p id="rfc.section.2.4.2.p.1">description fields MAY be used at predicates or values level to add a descriptive and human-readable information about the specific predicate or value. The field is represented as a string. Implementations MAY use the description field to improve more contextual information. The description at the namespace level is a MUST as described above.</p>
+<h1 id="rfc.section.2.4.3">
+<a href="#rfc.section.2.4.3">2.4.3.</a> <a href="#numerical-value" id="numerical-value">numerical_value</a>
+</h1>
+<p id="rfc.section.2.4.3.p.1">numerical_value fields MAY be used at a predicate or value level to add a machine-readable numeric value to a specific predicate or value.  The field is represented as a JSON number. Implementations SHOULD use the decimal value provided to support scoring or filtering.</p>
+<p id="rfc.section.2.4.3.p.2">The decimal range for numerical_value SHOULD use a range from 0 up to 100. The range is recommended to support common mathematical properties among taxonomies.</p>
+<p id="rfc.section.2.4.3.p.3">Example use of the numerical_value in the MISP confidence level:</p>
+<pre>    {
+     "predicate": "confidence-level",
+     "entry": [
+        {
+          "expanded": "Completely confident",
+          "value": "completely-confident",
+          "numerical_value": 100
+        },
+        {
+          "expanded": "Usually confident",
+          "value": "usually-confident",
+          "numerical_value": 75
+        },
+        {
+          "expanded": "Fairly confident",
+          "value": "fairly-confident",
+          "numerical_value": 50
+        },
+        {
+          "expanded": "Rarely confident",
+          "value": "rarely-confident",
+          "numerical_value": 25
+        },
+        {
+          "expanded": "Unconfident",
+          "value": "unconfident",
+          "numerical_value": 0
+        },
+        {
+          "expanded": "Confidence cannot be evaluated",
+          "value": "confidence-cannot-be-evalued"
+        }
+     ]
+     }
+</pre>
+<h1 id="rfc.section.3">
+<a href="#rfc.section.3">3.</a> <a href="#directory" id="directory">Directory</a>
+</h1>
+<p id="rfc.section.3.p.1">The MISP taxonomies directory is publicly available <a href="#MISP-T" class="xref">[MISP-T]</a> in a git repository. The repository contains a directory per namespace then a file machinetag.json which contains the taxonomy as described in the format above. In the root of the repository, a MANIFEST.json exists containing a list of all the taxonomies.</p>
+<p id="rfc.section.3.p.2">The MANIFEST.json file is composed of an JSON object with metadata like version, license, description, url and path.  A taxonomies array describes the taxonomy available with the description, name and version field.</p>
+<h1 id="rfc.section.3.1">
+<a href="#rfc.section.3.1">3.1.</a> <a href="#sample-manifest" id="sample-manifest">Sample Manifest</a>
+</h1>
+<pre>{
+  "version": "20161009",
+  "license": "CC-0",
+  "description": "Manifest file of MISP taxonomies available.",
+  "url":
+    "https://raw.githubusercontent.com/MISP/misp-taxonomies/master/",
+  "path": "machinetag.json",
+  "taxonomies": [
+    {
+      "description": "The Admiralty Scale (also called the NATO System)
+                      is used to rank the reliability of a source and
+                      the credibility of an information.",
+      "name": "admiralty-scale",
+      "version": 1
+    },
+    {
+      "description": "Open Source Intelligence - Classification.",
+      "name": "osint",
+      "version": 2
+    }]
+}
+</pre>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#sample-taxonomy-in-misp-taxonomy-format" id="sample-taxonomy-in-misp-taxonomy-format">Sample Taxonomy in MISP taxonomy format</a>
+</h1>
+<h1 id="rfc.section.4.1">
+<a href="#rfc.section.4.1">4.1.</a> <a href="#admiralty-scale-taxonomy" id="admiralty-scale-taxonomy">Admiralty Scale Taxonomy</a>
+</h1>
+<pre>  "namespace": "admiralty-scale",
+  "description": "The Admiralty Scale (also called the NATO System)
+                  is used to rank the reliability of a source and
+                  the credibility of an information.",
+  "version": 1,
+  "predicates": [
+    {
+      "value": "source-reliability",
+      "expanded": "Source Reliability"
+    },
+    {
+      "value": "information-credibility",
+      "expanded": "Information Credibility"
+    }
+  ],
+  "values": [
+    {
+      "predicate": "source-reliability",
+      "entry": [
+        {
+          "value": "a",
+          "expanded": "Completely reliable"
+        },
+        {
+          "value": "b",
+          "expanded": "Usually reliable"
+        },
+        {
+          "value": "c",
+          "expanded": "Fairly reliable"
+        },
+        {
+          "value": "d",
+          "expanded": "Not usually reliable"
+        },
+        {
+          "value": "e",
+          "expanded": "Unreliable"
+        },
+        {
+          "value": "f",
+          "expanded": "Reliability cannot be judged"
+        }
+      ]
+    },
+    {
+      "predicate": "information-credibility",
+      "entry": [
+        {
+          "value": "1",
+          "expanded": "Confirmed by other sources"
+        },
+        {
+          "value": "2",
+          "expanded": "Probably true"
+        },
+        {
+          "value": "3",
+          "expanded": "Possibly true"
+        },
+        {
+          "value": "4",
+          "expanded": "Doubtful"
+        },
+        {
+          "value": "5",
+          "expanded": "Improbable"
+        },
+        {
+          "value": "6",
+          "expanded": "Truth cannot be judged"
+        }
+      ]
+    }
+  ]
+}
+</pre>
+<h1 id="rfc.section.4.2">
+<a href="#rfc.section.4.2">4.2.</a> <a href="#open-source-intelligence-classification" id="open-source-intelligence-classification">Open Source Intelligence - Classification</a>
+</h1>
+<pre>{
+  "values": [
+    {
+      "entry": [
+        {
+          "expanded": "Blog post",
+          "value": "blog-post"
+        },
+        {
+          "expanded": "Technical or analysis report",
+          "value": "technical-report"
+        },
+        {
+          "expanded": "News report",
+          "value": "news-report"
+        },
+        {
+          "expanded": "Pastie-like website",
+          "value": "pastie-website"
+        },
+        {
+          "expanded": "Electronic forum",
+          "value": "electronic-forum"
+        },
+        {
+          "expanded": "Mailing-list",
+          "value": "mailing-list"
+        },
+        {
+          "expanded": "Block or Filter List",
+          "value": "block-or-filter-list"
+        },
+        {
+          "expanded": "Expansion",
+          "value": "expansion"
+        }
+      ],
+      "predicate": "source-type"
+    },
+    {
+      "predicate": "lifetime",
+      "entry": [
+        {
+          "value": "perpetual",
+          "expanded": "Perpetual",
+          "description": "Information available publicly on long-term"
+        },
+        {
+          "value": "ephemeral",
+          "expanded": "Ephemeral",
+          "description": "Information available publicly on short-term"
+        }
+      ]
+    },
+    {
+      "predicate": "certainty",
+      "entry": [
+        {
+          "numerical_value": 100,
+          "value": "100",
+          "expanded": "100% Certainty",
+          "description": "100% Certainty"
+        },
+        {
+          "numerical_value": 93,
+          "value": "93",
+          "expanded": "93% Almost certain",
+          "description": "93% Almost certain"
+        },
+        {
+          "numerical_value": 75,
+          "value": "75",
+          "expanded": "75% Probable",
+          "description": "75% Probable"
+        },
+        {
+          "numerical_value": 50,
+          "value": "50",
+          "expanded": "50% Chances about even",
+          "description": "50% Chances about even"
+        },
+        {
+          "numerical_value": 30,
+          "value": "30",
+          "expanded": "30% Probably not",
+          "description": "30% Probably not"
+        },
+        {
+          "numerical_value": 7,
+          "value": "7",
+          "expanded": "7% Almost certainly not",
+          "description": "7% Almost certainly not"
+        },
+        {
+          "numerical_value": 0,
+          "value": "0",
+          "expanded": "0% Impossibility",
+          "description": "0% Impossibility"
+        }
+      ]
+    }
+  ],
+  "namespace": "osint",
+  "description": "Open Source Intelligence - Classification",
+  "version": 3,
+  "predicates": [
+    {
+      "value": "source-type",
+      "expanded": "Source Type"
+    },
+    {
+      "value": "lifetime",
+      "expanded": "Lifetime of the information
+                   as Open Source Intelligence"
+    },
+    {
+      "value": "certainty",
+      "expanded": "Certainty of the elements mentioned
+                   in this Open Source Intelligence"
+    }
+  ]
+}
+
+</pre>
+<h1 id="rfc.section.4.3">
+<a href="#rfc.section.4.3">4.3.</a> <a href="#available-taxonomies-in-the-public-directory" id="available-taxonomies-in-the-public-directory">Available taxonomies in the public directory</a>
+</h1>
+<p id="rfc.section.4.3.p.1">The public directory of MISP taxonomies <a href="#MISP-T" class="xref">[MISP-T]</a> contains a variety of taxonomy in various fields such as:</p>
+<p></p>
+
+<dl>
+<dt>CERT-XLM:</dt>
+<dd style="margin-left: 8">
+<br>CERT-XLM Security Incident Classification.</dd>
+<dt>DML:</dt>
+<dd style="margin-left: 8">
+<br>The Detection Maturity Level (DML) model is a capability maturity model for referencing ones maturity in detecting cyber attacks.  It's designed for organizations who perform intel-driven detection and response and who put an emphasis on having a mature detection program.</dd>
+<dt>PAP:</dt>
+<dd style="margin-left: 8">
+<br>The Permissible Actions Protocol - or short: PAP - was designed to indicate how the received information can be used.</dd>
+<dt>access-method:</dt>
+<dd style="margin-left: 8">
+<br>The access method used to remotely access a system.</dd>
+<dt>accessnow:</dt>
+<dd style="margin-left: 8">
+<br>Access Now classification to classify an issue (such as security, human rights, youth rights).</dd>
+<dt>action-taken:</dt>
+<dd style="margin-left: 8">
+<br>Action taken in the case of a security incident (CSIRT perspective).</dd>
+<dt>admiralty-scale:</dt>
+<dd style="margin-left: 8">
+<br>The Admiralty Scale (also called the NATO System) is used to rank the reliability of a source and the credibility of an information.</dd>
+<dt>adversary:</dt>
+<dd style="margin-left: 8">
+<br>An overview and description of the adversary infrastructure.</dd>
+<dt>ais-marking:</dt>
+<dd style="margin-left: 8">
+<br>AIS Marking Schema implementation is maintained by the National Cybersecurity and Communication Integration Center (NCCIC) of the U.S. Department of Homeland Security (DHS)</dd>
+<dt>analyst-assessment:</dt>
+<dd style="margin-left: 8">
+<br>A series of assessment predicates describing the analyst capabilities to perform analysis. These assessment can be assigned by the analyst him/herself or by another party evaluating the analyst.</dd>
+<dt>approved-category-of-action:</dt>
+<dd style="margin-left: 8">
+<br>A pre-approved category of action for indicators being shared with partners (MIMIC).</dd>
+<dt>binary-class:</dt>
+<dd style="margin-left: 8">
+<br>Custom taxonomy for types of binary file.</dd>
+<dt>cccs:</dt>
+<dd style="margin-left: 8">
+<br>Internal taxonomy for CCCS.</dd>
+<dt>circl:</dt>
+<dd style="margin-left: 8">
+<br>CIRCL Taxonomy is a simple scheme for incident classification and area topic where the incident took place.</dd>
+<dt>collaborative-intelligence:</dt>
+<dd style="margin-left: 8">
+<br>Collaborative intelligence support language is a common language to support analysts to perform their analysis to get crowdsourced support when using threat intelligence sharing platform like MISP.</dd>
+<dt>common-taxonomy:</dt>
+<dd style="margin-left: 8">
+<br>The Common Taxonomy for Law Enforcement and The National Network of CSIRTs bridges the gap between the CSIRTs and international Law Enforcement communities by adding a legislative framework to facilitate the harmonisation of incident reporting to competent authorities, the development of useful statistics and sharing information within the entire cybercrime ecosystem.</dd>
+<dt>copine-scale:</dt>
+<dd style="margin-left: 8">
+<br>The COPINE Scale is a rating system created in Ireland and used in the United Kingdom to categorise the severity of images of child sex abuse.</dd>
+<dt>cryptocurrency-threat:</dt>
+<dd style="margin-left: 8">
+<br>Threats targetting cryptocurrency, based on CipherTrace report.</dd>
+<dt>csirtcaseclassification:</dt>
+<dd style="margin-left: 8">
+<br>FIRST CSIRT Case Classification.</dd>
+<dt>cssa:</dt>
+<dd style="margin-left: 8">
+<br>The CSSA agreed sharing taxonomy.</dd>
+<dt>cyber-threat-framework:</dt>
+<dd style="margin-left: 8">
+<br>Cyber Threat Framework was developed by the US Government to enable consistent characterization and categorization of cyber threat events, and to identify trends or changes in the activities of cyber adversaries. <a href="https://www.dni.gov/index.php/cyber-threat-framework">https://www.dni.gov/index.php/cyber-threat-framework</a>
+</dd>
+<dt>data-classification:</dt>
+<dd style="margin-left: 8">
+<br>Data classification for data potentially at risk of exfiltration based on table 2.1 of Solving Cyber Risk book.</dd>
+<dt>dcso-sharing:</dt>
+<dd style="margin-left: 8">
+<br>DCSO Sharing Taxonomy to classify certain types of MISP events using the DCSO Event Guide</dd>
+<dt>ddos:</dt>
+<dd style="margin-left: 8">
+<br>Distributed Denial of Service - or short: DDoS - taxonomy supports the description of Denial of Service attacks and especially the types they belong too.</dd>
+<dt>de-vs:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy for the handling of protectively marked information in MISP with German (DE) Government classification markings (VS)</dd>
+<dt>dhs-ciip-sectors:</dt>
+<dd style="margin-left: 8">
+<br>DHS critical sectors as described in <a href="https://www.dhs.gov/critical-infrastructure-sectors">https://www.dhs.gov/critical-infrastructure-sectors</a>.</dd>
+<dt>diamond-model:</dt>
+<dd style="margin-left: 8">
+<br>The Diamond Model for Intrusion Analysis, a phase-based model developed by Lockheed Martin, aims to help categorise and identify the stage of an attack.</dd>
+<dt>dni-ism:</dt>
+<dd style="margin-left: 8">
+<br>ISM (Information Security Marking Metadata) V13 as described by DNI.gov (Director of National Intelligence - US).</dd>
+<dt>domain-abuse:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy to tag domain names used for cybercrime.</dd>
+<dt>drugs:</dt>
+<dd style="margin-left: 8">
+<br>A taxonomy based on the superclass and class of drugs, based on <a href="https://www.drugbank.ca/releases/latest">https://www.drugbank.ca/releases/latest</a>
+</dd>
+<dt>economical-impact:</dt>
+<dd style="margin-left: 8">
+<br>Economical impact is a taxonomy to describe the financial impact as positive or negative gain to the tagged information.</dd>
+<dt>ecsirt:</dt>
+<dd style="margin-left: 8">
+<br>eCSIRT incident classification Appendix C of the eCSIRT EU project including IntelMQ updates.</dd>
+<dt>enisa:</dt>
+<dd style="margin-left: 8">
+<br>ENISA Threat Taxonomy - A tool for structuring threat information as published in <a href="https://www.enisa.europa.eu/topics/threat-risk-management/threats-and-trends/enisa-threat-landscape/etl2015/enisa-threat-taxonomy-a-tool-for-structuring-threat-information">https://www.enisa.europa.eu/topics/threat-risk-management/threats-and-trends/enisa-threat-landscape/etl2015/enisa-threat-taxonomy-a-tool-for-structuring-threat-information</a>
+</dd>
+<dt>estimative-language:</dt>
+<dd style="margin-left: 8">
+<br>Estimative language - including likelihood or probability of event based on the Intelligence Community Directive 203 (ICD 203) (6.2.(a)) and JP 2-0, Joint Intelligence.</dd>
+<dt>eu-marketop-and-publicadmin:</dt>
+<dd style="margin-left: 8">
+<br>Market operators and public administrations that must comply to some notifications requirements under EU NIS directive.</dd>
+<dt>eu-nis-sector-and-subsectors:</dt>
+<dd style="margin-left: 8">
+<br>Sectors and sub sectors as identified by the NIS Directive.</dd>
+<dt>euci:</dt>
+<dd style="margin-left: 8">
+<br>EU classified information (EUCI) means any information or material designated by a EU security classification, the unauthorised disclosure of which could cause varying degrees of prejudice to the interests of the European Union or of one or more of the Member States as described in COUNCIL DECISION of 23 September 2013 on the security rules for protecting EU classified information</dd>
+<dt>europol-event:</dt>
+<dd style="margin-left: 8">
+<br>EUROPOL type of events taxonomy.</dd>
+<dt>europol-incident:</dt>
+<dd style="margin-left: 8">
+<br>EUROPOL class of incident taxonomy.</dd>
+<dt>event-assessment:</dt>
+<dd style="margin-left: 8">
+<br>A series of assessment predicates describing the event assessment performed to make judgement(s) under a certain level of uncertainty.</dd>
+<dt>event-classification:</dt>
+<dd style="margin-left: 8">
+<br>Event Classification.</dd>
+<dt>exercise:</dt>
+<dd style="margin-left: 8">
+<br>Exercise is a taxonomy to describe if the information is part of one or more cyber or crisis exercise.</dd>
+<dt>false-positive:</dt>
+<dd style="margin-left: 8">
+<br>This taxonomy aims to ballpark the expected amount of false positives.</dd>
+<dt>file-type:</dt>
+<dd style="margin-left: 8">
+<br>List of known file types.</dd>
+<dt>flesch-reading-ease:</dt>
+<dd style="margin-left: 8">
+<br>Flesch Reading Ease is a revised system for determining the comprehension difficulty of written material. The scoring of the flesh score can have a maximum of 121.22 and there is no limit on how low a score can be (negative score are valid).</dd>
+<dt>fpf:</dt>
+<dd style="margin-left: 8">
+<br>The Future of Privacy Forum (FPF) <a href="https://fpf.org/2016/04/25/a-visual-guide-to-practical-data-de-identification/">visual guide to practical de-identification</a> taxonomy is used to evaluate the degree of identifiability of personal data and the types of pseudonymous data, de-identified data and anonymous data. The work of FPF is licensed under a creative commons attribution 4.0 international license.</dd>
+<dt>fr-classif:</dt>
+<dd style="margin-left: 8">
+<br>French gov information classification system.</dd>
+<dt>gdpr:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy related to the REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)</dd>
+<dt>gsma-attack-category:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy used by GSMA for their information sharing program with telco describing the attack categories</dd>
+<dt>gsma-fraud:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy used by GSMA for their information sharing program with telco describing the various aspects of fraud</dd>
+<dt>gsma-network-technology:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy used by GSMA for their information sharing program with telco describing the types of infrastructure. WiP</dd>
+<dt>honeypot-basic:</dt>
+<dd style="margin-left: 8">
+<br>Christian Seifert, Ian Welch, Peter Komisarczuk, &#8216;Taxonomy of Honeypots&#8217;, Technical Report CS-TR-06/12, VICTORIA UNIVERSITY OF WELLINGTON, School of Mathematical and Computing Sciences, June 2006, <a href="http://www.mcs.vuw.ac.nz/comp/Publications/archive/CS-TR-06/CS-TR-06-12.pdf">http://www.mcs.vuw.ac.nz/comp/Publications/archive/CS-TR-06/CS-TR-06-12.pdf</a>
+</dd>
+<dt>iep:</dt>
+<dd style="margin-left: 8">
+<br>Forum of Incident Response and Security Teams (FIRST) Information Exchange Policy (IEP) framework.</dd>
+<dt>ifx-vetting:</dt>
+<dd style="margin-left: 8">
+<br>The IFX taxonomy is used to categorise information (MISP events and attributes) to aid in the intelligence vetting process</dd>
+<dt>incident-disposition:</dt>
+<dd style="margin-left: 8">
+<br>How an incident is classified in its process to be resolved. The taxonomy is inspired from NASA Incident Response and Management Handbook.</dd>
+<dt>infoleak:</dt>
+<dd style="margin-left: 8">
+<br>A taxonomy describing information leaks and especially information classified as being potentially leaked.</dd>
+<dt>information-security-data-source:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy to classify the information security data sources</dd>
+<dt>information-security-indicators:</dt>
+<dd style="margin-left: 8">
+<br>Information security indicators have been standardized by the ETSI Industrial Specification Group (ISG) ISI. These indicators provide the basis to switch from a qualitative to a quantitative culture in IT Security Scope of measurements: External and internal threats (attempt and success), user's deviant behaviours, nonconformities and/or vulnerabilities (software, configuration, behavioural, general security framework). ETSI GS ISI 001-1 (V1.1.2): ISI Indicators</dd>
+<dt>interception-method:</dt>
+<dd style="margin-left: 8">
+<br>The interception method used to intercept traffic.</dd>
+<dt>kill-chain:</dt>
+<dd style="margin-left: 8">
+<br>Cyber Kill Chain from Lockheed Martin as described in Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains.</dd>
+<dt>maec-delivery-vectors:</dt>
+<dd style="margin-left: 8">
+<br>Vectors used to deliver malware based on MAEC 5.0</dd>
+<dt>maec-malware-behavior:</dt>
+<dd style="margin-left: 8">
+<br>Malware behaviours based on MAEC 5.0</dd>
+<dt>maec-malware-capabilities:</dt>
+<dd style="margin-left: 8">
+<br>Malware Capabilities based on MAEC 5.0</dd>
+<dt>maec-malware-obfuscation-methods:</dt>
+<dd style="margin-left: 8">
+<br>Obfuscation methods used by malware based on MAEC 5.0</dd>
+<dt>malware_classification:</dt>
+<dd style="margin-left: 8">
+<br>Malware classification based on a SANS whitepaper about malware.</dd>
+<dt>misp:</dt>
+<dd style="margin-left: 8">
+<br>Internal MISP taxonomy.</dd>
+<dt>monarc-threat:</dt>
+<dd style="margin-left: 8">
+<br>MONARC threat taxonomy.</dd>
+<dt>ms-caro-malware:</dt>
+<dd style="margin-left: 8">
+<br>Malware Type and Platform classification based on Microsoft's implementation of the Computer Antivirus Research Organization (CARO) Naming Scheme and Malware Terminology.</dd>
+<dt>ms-caro-malware-full:</dt>
+<dd style="margin-left: 8">
+<br>Malware Type and Platform classification based on Microsoft's implementation of the Computer Antivirus Research Organization (CARO) Naming Scheme and Malware Terminology.</dd>
+<dt>nato:</dt>
+<dd style="margin-left: 8">
+<br>Marking of Classified and Unclassified materials as described by the North Atlantic Treaty Organization, NATO.</dd>
+<dt>nis:</dt>
+<dd style="margin-left: 8">
+<br>NIS Cybersecurity Incident Taxonomy.</dd>
+<dt>open_threat:</dt>
+<dd style="margin-left: 8">
+<br>Open Threat Taxonomy v1.1 base on James Tarala of SANS ref. - <a href="http://www.auditscripts.com/resources/open_threat_taxonomy_v1.1a.pdf">http://www.auditscripts.com/resources/open_threat_taxonomy_v1.1a.pdf</a>
+</dd>
+<dt>osint:</dt>
+<dd style="margin-left: 8">
+<br>Open Source Intelligence - Classification (MISP taxonomies).</dd>
+<dt>passivetotal:</dt>
+<dd style="margin-left: 8">
+<br>Tags for RiskIQ's passivetotal service</dd>
+<dt>pentest:</dt>
+<dd style="margin-left: 8">
+<br>Penetration test (pentest) classification.</dd>
+<dt>priority-level:</dt>
+<dd style="margin-left: 8">
+<br>After an incident is scored, it is assigned a priority level. The six levels listed below are aligned with NCCIC, DHS, and the CISS to help provide a common lexicon when discussing incidents. This priority assignment drives NCCIC urgency, pre-approved incident response offerings, reporting requirements, and recommendations for leadership escalation. Generally, incident priority distribution should follow a similar pattern to the graph below. Based on <a href="https://www.us-cert.gov/NCCIC-Cyber-Incident-Scoring-System">https://www.us-cert.gov/NCCIC-Cyber-Incident-Scoring-System</a>.</dd>
+<dt>rsit:</dt>
+<dd style="margin-left: 8">
+<br>Reference Security Incident Classification Taxonomy.</dd>
+<dt>rteventstatus:</dt>
+<dd style="margin-left: 8">
+<br>Status of events used in Request Tracker.</dd>
+<dt>runtime-packer:</dt>
+<dd style="margin-left: 8">
+<br>Runtime or software packer used to combine compressed data with the decompression code. The decompression code can add additional obfuscations mechanisms including polymorphic-packer or other obfuscation techniques. This taxonomy lists all the known or official packer used for legitimate use or for packing malicious binaries.</dd>
+<dt>smart-airports-threats:</dt>
+<dd style="margin-left: 8">
+<br>Threat taxonomy in the scope of securing smart airports by ENISA.</dd>
+<dt>stealth_malware:</dt>
+<dd style="margin-left: 8">
+<br>Classification based on malware stealth techniques.</dd>
+<dt>stix-ttp:</dt>
+<dd style="margin-left: 8">
+<br>Representation of the behavior or modus operandi of cyber adversaries (a.k.a TTP) as normalized in STIX</dd>
+<dt>targeted-threat-index:</dt>
+<dd style="margin-left: 8">
+<br>The Targeted Threat Index is a metric for assigning an overall threat ranking score to email messages that deliver malware to a victim&#8217;s computer. The TTI metric was first introduced at SecTor 2013 by Seth Hardy as part of the talk &#8220;RATastrophe: Monitoring a Malware Menagerie&#8221; along with Katie Kleemola and Greg Wiseman.</dd>
+<dt>tlp:</dt>
+<dd style="margin-left: 8">
+<br>The Traffic Light Protocol - or short: TLP - was designed with the objective to create a favorable classification scheme for sharing sensitive information while keeping the control over its distribution at the same time. Extended with TLP:EX:CHR.</dd>
+<dt>tor:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy to describe Tor network infrastructure</dd>
+<dt>type:</dt>
+<dd style="margin-left: 8">
+<br>Taxonomy to describe different types of intelligence gathering discipline which can be described the origin of intelligence.</dd>
+<dt>use-case-applicability:</dt>
+<dd style="margin-left: 8">
+<br>The Use Case Applicability categories reflect standard resolution categories, to clearly display alerting rule configuration problems.</dd>
+<dt>veris:</dt>
+<dd style="margin-left: 8">
+<br>Vocabulary for Event Recording and Incident Sharing (VERIS).</dd>
+<dt>vocabulaire-des-probabilites-estimatives:</dt>
+<dd style="margin-left: 8">
+<br>Vocabulaire des probabilit&#233;s estimatives</dd>
+<dt>workflow:</dt>
+<dd style="margin-left: 8">
+<br>Workflow support language is a common language to support intelligence analysts to perform their analysis on data and information.</dd>
+</dl>
+
+<p> </p>
+<h1 id="rfc.section.5">
+<a href="#rfc.section.5">5.</a> <a href="#json-schema" id="json-schema">JSON Schema</a>
+</h1>
+<p id="rfc.section.5.p.1">The JSON Schema <a href="#JSON-SCHEMA" class="xref">[JSON-SCHEMA]</a> below defines the structure of the MISP taxonomy document as literally described before. The JSON Schema is used validating a MISP taxonomy. The validation is a <em>MUST</em> if the taxonomy is included in the MISP taxonomies directory.</p>
+<pre>{
+  "$schema": "http://json-schema.org/schema#",
+  "title": "Validator for misp-taxonomies",
+  "id": "https://www.github.com/MISP/misp-taxonomies/schema.json",
+  "defs": {
+    "entry": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "numerical_value": {
+            "type": "number"
+          },
+          "expanded": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "colour": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "required": [
+            "value"
+          ]
+        }
+      }
+    },
+    "values": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "entry": {
+            "$ref": "#/defs/entry"
+          },
+          "predicate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "predicate"
+        ]
+      }
+    },
+    "predicates": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "numerical_value": {
+            "type": "number"
+          },
+          "colour": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "expanded": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "exclusive": {
+            "type": "boolean"
+          },
+          "required": [
+            "value"
+          ]
+        }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "expanded": {
+      "type": "string"
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "exclusive": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "org",
+          "user",
+          "attribute",
+          "event"
+        ]
+      }
+    },
+    "refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "predicates": {
+      "$ref": "#/defs/predicates"
+    },
+    "values": {
+      "$ref": "#/defs/values"
+    }
+  },
+  "required": [
+    "namespace",
+    "description",
+    "version",
+    "predicates"
+  ]
+}
+</pre>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
+</h1>
+<p id="rfc.section.6.p.1">The authors wish to thank all the MISP community who are supporting the creation of open standards in threat intelligence sharing.</p>
+<h1 id="rfc.references">
+<a href="#rfc.references">7.</a> References</h1>
+<h1 id="rfc.references.1">
+<a href="#rfc.references.1">7.1.</a> Normative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="RFC2119">[RFC2119]</b></td>
+<td class="top">
+<a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8259">[RFC8259]</b></td>
+<td class="top">
+<a>Bray, T.</a>, "<a href="https://tools.ietf.org/html/rfc8259">The JavaScript Object Notation (JSON) Data Interchange Format</a>", STD 90, RFC 8259, DOI 10.17487/RFC8259, December 2017.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.references.2">
+<a href="#rfc.references.2">7.2.</a> Informative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="JSON-SCHEMA">[JSON-SCHEMA]</b></td>
+<td class="top">
+<a>Wright, A.</a>, "<a href="https://tools.ietf.org/html/draft-wright-json-schema">JSON Schema: A Media Type for Describing JSON Documents</a>", 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="machine-tags">[machine-tags]</b></td>
+<td class="top">
+<a>Cope, A. S.</a>, "<a href="https://www.flickr.com/groups/51035612836@N01/discuss/72157594497877875/">Machine tags</a>", 2007.</td>
+</tr>
+<tr>
+<td class="reference"><b id="MISP-P">[MISP-P]</b></td>
+<td class="top">
+<a>Community, M.</a>, "<a href="https://github.com/MISP">MISP Project - Malware Information Sharing Platform and Threat Sharing</a>"</td>
+</tr>
+<tr>
+<td class="reference"><b id="MISP-T">[MISP-T]</b></td>
+<td class="top">
+<a>Community, M.</a>, "<a href="https://github.com/MISP/misp-taxonomies">MISP Taxonomies - shared and common vocabularies of tags</a>"</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Alexandre Dulaunoy</span> 
+	  <span class="n hidden">
+		<span class="family-name">Dulaunoy</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Computer Incident Response Center Luxembourg</span>
+	<span class="adr">
+	  <span class="vcardline">16, bd d'Avranches</span>
+
+	  <span class="vcardline">
+		<span class="locality">Luxembourg</span>,  
+		<span class="region"></span>
+		<span class="code">L-1611</span>
+	  </span>
+	  <span class="country-name vcardline">Luxembourg</span>
+	</span>
+	<span class="vcardline">Phone: +352 247 88444</span>
+
+<span class="vcardline">EMail: <a href="mailto:alexandre.dulaunoy@circl.lu">alexandre.dulaunoy@circl.lu</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Andras Iklody</span> 
+	  <span class="n hidden">
+		<span class="family-name">Iklody</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Computer Incident Response Center Luxembourg</span>
+	<span class="adr">
+	  <span class="vcardline">16, bd d'Avranches</span>
+
+	  <span class="vcardline">
+		<span class="locality">Luxembourg</span>,  
+		<span class="region"></span>
+		<span class="code">L-1611</span>
+	  </span>
+	  <span class="country-name vcardline">Luxembourg</span>
+	</span>
+	<span class="vcardline">Phone: +352 247 88444</span>
+
+<span class="vcardline">EMail: <a href="mailto:andras.iklody@circl.lu">andras.iklody@circl.lu</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>
