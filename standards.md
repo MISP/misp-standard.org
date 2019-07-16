@@ -1,6 +1,6 @@
 ---
 layout: splash
-title: MISP Standards
+title: MISP Published Standards
 excerpt: "Official Published MISP Standards"
 author_profile: false
 header:
