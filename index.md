@@ -10,11 +10,11 @@ feature_row:
   - url: https://github.com/CIRCL/AIL-framework
     image_path: /assets/images/ail.png
     alt: "AIL framework"
-    excerpt: "AIL is a modular framework to analyse potential information leaks from unstructured data sources like pastes from Pastebin or similar services or unstructured data streams. AIL framework is flexible and can be extended to support other functionalities to mine or process sensitive information (e.g. data leak prevention)."
+    excerpt: "AIL is a modular framework to analyse potential information leaks from unstructured data sources like pastes from Pastebin and similar services or unstructured data streams. The AIL framework is flexible and can be extended to support other functionalities to mine or process sensitive information (e.g. data leak prevention)."
   - url: https://www.misp-project.org/
     image_path: /assets/images/misp-small.png
     alt: "MISP Threat Intelligence Sharing Platform"
-    excerpt: "MISP is the leading Open Source Threat Intelligence and Sharing Platform (formely known as Malware Information Sharing Platform). The objective of MISP is to foster the sharing and exchange of structured information within the security, intelligence community and abroad. "
+    excerpt: "MISP is the leading Open Source Threat Intelligence and Sharing Platform (formely known as the Malware Information Sharing Platform). The objective of MISP is to foster the sharing and exchange of structured information within the security, intelligence community and abroad. "
   - url: https://thehive-project.org/
     image_path: /assets/images/thehive.png
     alt: "The Hive Project"
@@ -24,7 +24,7 @@ feature_row:
 
 # MISP Standard
 
-At misp-standard.org, we build a simple, efficient and flexible [set of standards](/standards/) to support information exchange and modeling in different fields such as:
+At misp-standard.org, we build a simple, efficient and flexible [set of standards](/standards/) to support information exchange and data modeling in different fields, such as:
 
 - Cybersecurity intelligence
 - Threat intelligence

@@ -4,7 +4,7 @@ layout: single
 author_profile: false
 ---
 
-MISP standard is a collaborative intelligence standard, powering intelligence and information exchange, sharing and modeling. The misp-standard.org is a standard body developing free and open standards through sane open-source collaboration.
+The MISP standard is a collaborative intelligence standard, powering intelligence and information exchange, sharing and modeling. The misp-standard.org is a standards body developing free and open standards through sane open-source collaboration.
 
 # History
 
@@ -19,7 +19,7 @@ In order to preserve and foster the standard and its evolution, the MISP project
 
 As of July 2019, [4 official standards](/standards) (MISP core format, MISP object template format, MISP taxonomy format and MISP galaxy format) are now published.
 
-Many proprietary and open source software are implementing and using the MISP standard in their respective software such as the [MISP Project](https://www.misp-project.org/), [The Hive](https://thehive-project.org/), [AIL Framework](https://github.com/CIRCL/AIL-framework), [PyMISP](https://github.com/MISP/PyMISP) and many more.
+A host of proprietary and open source software are implementing and using the MISP standard in their respective software such as the [MISP Project](https://www.misp-project.org/), [The Hive](https://thehive-project.org/), [AIL Framework](https://github.com/CIRCL/AIL-framework), [PyMISP](https://github.com/MISP/PyMISP) and many more.
 
 # Who
 
