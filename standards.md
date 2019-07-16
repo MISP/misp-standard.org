@@ -23,17 +23,23 @@ This document describes the MISP object template format which describes a simple
 
 Specification: [TXT](https://www.misp-standard.org/rfc/misp-standard-object-template-format.txt) - [HTML](https://www.misp-standard.org/rfc/misp-standard-object-template-format.html)
 
+Object template library: [HTML](https://www.misp-project.org/objects.html) - [PDF](https://www.misp-project.org/objects.pdf)
+
 ## MISP taxonomy format
 
 This document describes the MISP taxonomy format which describes a simple JSON format to represent machine tag (also called triple tag) vocabularies. A public directory of common vocabularies called MISP taxonomies is available and relies on the MISP taxonomy format. MISP taxonomies are used to classify cyber security events, threats, suspicious events, or indicators.
 
 Specification: [TXT](https://www.misp-standard.org/rfc/misp-standard-taxonomy-format.txt) - [HTML](https://www.misp-standard.org/rfc/misp-standard-taxonomy-format.html)
 
+Taxonomy library: [HTML](https://www.misp-project.org/taxonomies.html) - [PDF](https://www.misp-project.org/taxonomies.pdf)
+
 ## MISP galaxy format
 
 This document describes the MISP galaxy format which describes a simple JSON format to represent galaxies and clusters that can be attached to MISP events or attributes. A public directory of MISP galaxies is available and relies on the MISP galaxy format. MISP galaxies are used to attach additional information structures such as MISP events or attributes. MISP galaxy is a public repository of known malware, threats actors and various other collections of data that can be used to mark, classify or label data in threat information sharing.
 
 Specification: [TXT](https://www.misp-standard.org/rfc/misp-standard-galaxy-format.txt) - [HTML](https://www.misp-standard.org/rfc/misp-standard-galaxy-format.html)
+
+Galaxy library: [HTML](https://www.misp-project.org/galaxy.html) - [PDF](https://www.misp-project.org/galaxy.pdf)
 
 # Upcoming standards
 
