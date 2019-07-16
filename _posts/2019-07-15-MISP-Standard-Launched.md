@@ -15,5 +15,5 @@ header:
 
 In order to preserve and foster the standard and its evolution, the MISP project spun off a new structure in 2019, with the aim to standardise the format under the misp-standard.org.
 
-MISP standard is a collaborative intelligence standard, powering intelligence and information exchange, sharing and modeling. The misp-standard.org is a standard body developing free and open standards through sane open-source collaboration.
+The MISP standard is a collaborative intelligence standard, powering intelligence and information exchange, sharing and modeling. The misp-standard.org is a standard body developing free and open standards through sane open-source collaboration.
 
