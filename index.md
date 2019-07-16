@@ -31,6 +31,7 @@ At misp-standard.org, we build a simple, efficient and flexible [set of standard
 - Financial fraud
 - Vulnerability information
 - Border control information
+- Intelligence at large
 
 ## Software using MISP standards
 
