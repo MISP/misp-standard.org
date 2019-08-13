@@ -3,7 +3,7 @@ layout: posts
 title: "MISP-standard.org - the open source collaborative intelligence standard"
 modified:
 categories: blog
-excerpt:
+excerpt: In order to preserve and foster the standard and its evolution, the MISP project has spun off a new structure called MISP-standard.org in July 2019, with the aim to standardise the format.
 tags: []
 image:
   feature:
