@@ -9,8 +9,8 @@ image:
   feature:
 date: 2019-07-15T15:01:55-04:00
 header:
-  overlay_image: /assets/images/road.jpg
-  overlay_filter: 0.5 # same as adding an opacity of 0.5 to a black background
+  overlay_image: /assets/images/ball.jpg
+  overlay_filter: 0.4 # same as adding an opacity of 0.5 to a black background
 ---
 
 The MISP threat sharing platform is the leading free and open source threat intelligence platform. MISP supports and enables information sharing of a wide range of information related to threat intelligence, including, but not limited to, cyber security indicators, financial intelligence and any custom-defined intelligence between sharing communities. The MISP open source software is now a key component of the default toolchain of a wide range of organisations within the private sector, CSIRT/CERT community, military and intelligence sectors. The formats developed over the past 8 years within the MISP project framework are now the de-facto standards which allow interoperability between many open source and proprietary tools in an effort to support security operations.

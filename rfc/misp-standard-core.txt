@@ -535,11 +535,11 @@ Internet-Draft              MISP core format                 August 2018
       filename|sha256, ip-src, ip-dst, ip-dst|port, ip-src|port, mac-
       address, mac-eui-64, hostname, domain, domain|ip, url, user-agent,
       regkey, regkey|value, AS, snort, bro, zeek, pattern-in-file,
-      pattern-in-traffic, pattern-in-memory, vulnerability, attachment,
-      malware-sample, link, comment, text, x509-fingerprint-sha1, x509-
-      fingerprint-md5, x509-fingerprint-sha256, ja3-fingerprint-md5,
-      hassh-md5, hasshserver-md5, github-repository, other, cortex,
-      anonymised
+      pattern-in-traffic, pattern-in-memory, vulnerability, weakness,
+      attachment, malware-sample, link, comment, text, x509-fingerprint-
+      sha1, x509-fingerprint-md5, x509-fingerprint-sha256, ja3-
+      fingerprint-md5, hassh-md5, hasshserver-md5, github-repository,
+      other, cortex, anonymised, community-id
 
    Financial fraud
       btc, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number,
@@ -563,7 +563,7 @@ Internet-Draft              MISP core format                 August 2018
 
 
       fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie,
-      hostname|port, bro, zeek, anonymised
+      hostname|port, bro, zeek, anonymised, community-id, email-subject
 
    Other
       comment, text, other, size-in-bytes, counter, datetime, cpe, port,
@@ -581,9 +581,9 @@ Internet-Draft              MISP core format                 August 2018
       src, email-dst, email-subject, email-attachment, email-body, url,
       user-agent, AS, pattern-in-file, pattern-in-traffic,
       stix2-pattern, yara, sigma, mime-type, attachment, malware-sample,
-      link, malware-type, comment, text, hex, vulnerability, x509-
-      fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256,
-      ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other,
+      link, malware-type, comment, text, hex, vulnerability, weakness,
+      x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-
+      sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other,
       hostname|port, email-dst-display-name, email-src-display-name,
       email-header, email-reply-to, email-x-mailer, email-mime-boundary,
       email-thread-index, email-message-id, mobile-application-id,
@@ -598,9 +598,9 @@ Internet-Draft              MISP core format                 August 2018
       filename|ssdeep, filename|tlsh, filename|imphash,
       filename|impfuzzy, filename|pehash, pattern-in-file, pattern-in-
       traffic, pattern-in-memory, stix2-pattern, yara, sigma,
-      vulnerability, attachment, malware-sample, malware-type, comment,
-      text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-
-      fingerprint-sha256, mobile-application-id, other, mime-type,
+      vulnerability, weakness, attachment, malware-sample, malware-type,
+      comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5,
+      x509-fingerprint-sha256, mobile-application-id, other, mime-type,
       anonymised
 
    Payload type
@@ -931,11 +931,11 @@ Internet-Draft              MISP core format                 August 2018
       filename|sha256, ip-src, ip-dst, ip-dst|port, ip-src|port, mac-
       address, mac-eui-64, hostname, domain, domain|ip, url, user-agent,
       regkey, regkey|value, AS, snort, bro, zeek, pattern-in-file,
-      pattern-in-traffic, pattern-in-memory, vulnerability, attachment,
-      malware-sample, link, comment, text, x509-fingerprint-sha1, x509-
-      fingerprint-md5, x509-fingerprint-sha256, ja3-fingerprint-md5,
-      hassh-md5, hasshserver-md5, github-repository, other, cortex,
-      anonymised
+      pattern-in-traffic, pattern-in-memory, vulnerability, weakness,
+      attachment, malware-sample, link, comment, text, x509-fingerprint-
+      sha1, x509-fingerprint-md5, x509-fingerprint-sha256, ja3-
+      fingerprint-md5, hassh-md5, hasshserver-md5, github-repository,
+      other, cortex, anonymised, community-id
 
    Financial fraud
       btc, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number,
@@ -960,7 +960,7 @@ Internet-Draft              MISP core format                 August 2018
       pattern-in-traffic, attachment, comment, text, x509-fingerprint-
       md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-
       fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie,
-      hostname|port, bro, zeek, anonymised
+      hostname|port, bro, zeek, anonymised, community-id, email-subject
 
    Other
       comment, text, other, size-in-bytes, counter, datetime, cpe, port,
@@ -978,9 +978,9 @@ Internet-Draft              MISP core format                 August 2018
       src, email-dst, email-subject, email-attachment, email-body, url,
       user-agent, AS, pattern-in-file, pattern-in-traffic,
       stix2-pattern, yara, sigma, mime-type, attachment, malware-sample,
-      link, malware-type, comment, text, hex, vulnerability, x509-
-      fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256,
-      ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other,
+      link, malware-type, comment, text, hex, vulnerability, weakness,
+      x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-
+      sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other,
       hostname|port, email-dst-display-name, email-src-display-name,
       email-header, email-reply-to, email-x-mailer, email-mime-boundary,
       email-thread-index, email-message-id, mobile-application-id,
@@ -995,9 +995,9 @@ Internet-Draft              MISP core format                 August 2018
       filename|ssdeep, filename|tlsh, filename|imphash,
       filename|impfuzzy, filename|pehash, pattern-in-file, pattern-in-
       traffic, pattern-in-memory, stix2-pattern, yara, sigma,
-      vulnerability, attachment, malware-sample, malware-type, comment,
-      text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-
-      fingerprint-sha256, mobile-application-id, other, mime-type,
+      vulnerability, weakness, attachment, malware-sample, malware-type,
+      comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5,
+      x509-fingerprint-sha256, mobile-application-id, other, mime-type,
       anonymised
 
    Payload type
