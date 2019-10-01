@@ -542,8 +542,8 @@ Internet-Draft              MISP core format                 August 2018
       other, cortex, anonymised, community-id
 
    Financial fraud
-      btc, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number,
-      prtn, phone-number, comment, text, other, hex, anonymised
+      btc, dash, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-
+      number, prtn, phone-number, comment, text, other, hex, anonymised
 
    Internal reference
       text, link, comment, other, hex, anonymised
@@ -938,8 +938,8 @@ Internet-Draft              MISP core format                 August 2018
       other, cortex, anonymised, community-id
 
    Financial fraud
-      btc, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number,
-      prtn, phone-number, comment, text, other, hex, anonymised
+      btc, dash, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-
+      number, prtn, phone-number, comment, text, other, hex, anonymised
 
    Internal reference
       text, link, comment, other, hex, anonymised
