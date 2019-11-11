@@ -396,7 +396,7 @@
 
   <meta name="dct.creator" content="Dulaunoy, A., Iklody, A., and D. Servili" />
   <meta name="dct.identifier" content="urn:ietf:id:" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-09-20" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-10-04" />
   <meta name="dct.abstract" content="This document describes the MISP galaxy format which describes a simple JSON format to represent galaxies and clusters that can be attached to MISP events or attributes. A public directory of MISP galaxies is available and relies on the MISP galaxy format. MISP galaxies are used to add further informations on a MISP event. MISP galaxy is a public repository   of known malware, threats actors and various other collections of data that can be used to mark, classify or label data in threat information sharing." />
   <meta name="description" content="This document describes the MISP galaxy format which describes a simple JSON format to represent galaxies and clusters that can be attached to MISP events or attributes. A public directory of MISP galaxies is available and relies on the MISP galaxy format. MISP galaxies are used to add further informations on a MISP event. MISP galaxy is a public repository   of known malware, threats actors and various other collections of data that can be used to mark, classify or label data in threat information sharing." />
 
@@ -416,7 +416,7 @@
 <td class="right">A. Iklody</td>
 </tr>
 <tr>
-<td class="left">Expires: March 24, 2019</td>
+<td class="left">Expires: April 6, 2020</td>
 <td class="right">D. Servili</td>
 </tr>
 <tr>
@@ -425,7 +425,7 @@
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">September 20, 2018</td>
+<td class="right">October 4, 2019</td>
 </tr>
 
     	
@@ -441,9 +441,9 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on March 24, 2019.</p>
+<p>This Internet-Draft will expire on April 6, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
-<p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -522,7 +522,7 @@
 <h1 id="rfc.section.2.4">
 <a href="#rfc.section.2.4">2.4.</a> <a href="#meta" id="meta">meta</a>
 </h1>
-<p id="rfc.section.2.4.p.1">Meta contains a list of custom defined JSON key value pairs. Users SHOULD reuse commonly used keys such as complexity, effectiveness, country, possible_issues, colour, motive, impact, refs, synonyms, status, date, encryption, extensions, ransomnotes, ransomnotes-filenames, ransomnotes-refs, suspected-victims, suspected-state-sponsor, type-of-incident, target-category, cfr-suspected-victims, cfr-suspected-state-sponsor, cfr-type-of-incident, cfr-target-category, attribution-confidence, payment-method, price wherever applicable.</p>
+<p id="rfc.section.2.4.p.1">Meta contains a list of custom defined JSON key value pairs. Users SHOULD reuse commonly used keys such as complexity, effectiveness, country, possible_issues, colour, motive, impact, refs, synonyms, status, date, encryption, extensions, ransomnotes, ransomnotes-filenames, ransomnotes-refs, suspected-victims, suspected-state-sponsor, type-of-incident, target-category, cfr-suspected-victims, cfr-suspected-state-sponsor, cfr-type-of-incident, cfr-target-category, attribution-confidence, payment-method, price wherever applicable. Additional meta field MAY be added without the need to be referenced or registered in advance.</p>
 <p id="rfc.section.2.4.p.2">refs, synonyms SHALL be used to give further informations. refs is represented as an array containing one or more strings and SHALL be present. synonyms is represented as an array containing one or more strings and SHALL be present.</p>
 <p id="rfc.section.2.4.p.3">date, status MAY be used to give time information about an cluster. date is represented as a string describing a time or period and SHALL be present. status is represented as a string describing the current status of the clusters. It MAY also describe a time or period and SHALL be present.</p>
 <p id="rfc.section.2.4.p.4">colour fields MAY be used at predicates or values level to set a specify colour that MAY be used by the implementation. The colour field is described as an RGB colour fill in hexadecimal representation.</p>
