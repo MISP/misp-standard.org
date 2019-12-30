@@ -792,7 +792,7 @@
 <br>link, comment, text, hex, attachment, other, anonymised</dd>
 <dt>Artifacts dropped</dt>
 <dd style="margin-left: 8">
-<br>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, regkey, regkey|value, pattern-in-file, pattern-in-memory, pdb, stix2-pattern, yara, sigma, attachment, malware-sample, named pipe, mutex, windows-scheduled-task, windows-service-name, windows-service-displayname, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, cookie, gene, mime-type, anonymised</dd>
+<br>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, regkey, regkey|value, pattern-in-file, pattern-in-memory, pdb, stix2-pattern, yara, sigma, attachment, malware-sample, named pipe, mutex, windows-scheduled-task, windows-service-name, windows-service-displayname, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, cookie, gene, kusto-query, mime-type, anonymised</dd>
 <dt>Attribution</dt>
 <dd style="margin-left: 8">
 <br>threat-actor, campaign-name, campaign-id, whois-registrant-phone, whois-registrant-email, whois-registrant-name, whois-registrant-org, whois-registrar, whois-creation-date, comment, text, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, dns-soa-email, anonymised</dd>
@@ -807,7 +807,7 @@
 <br>text, link, comment, other, hex, anonymised</dd>
 <dt>Network activity</dt>
 <dd style="margin-left: 8">
-<br>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised, community-id, email-subject</dd>
+<br>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, email-src, eppn, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised, community-id, email-subject</dd>
 <dt>Other</dt>
 <dd style="margin-left: 8">
 <br>comment, text, other, size-in-bytes, counter, datetime, cpe, port, float, hex, phone-number, boolean, anonymised</dd>
@@ -828,7 +828,7 @@
 <br>first-name, middle-name, last-name, date-of-birth, place-of-birth, gender, passport-number, passport-country, passport-expiration, redress-number, nationality, visa-number, issue-date-of-the-visa, primary-residence, country-of-residence, special-service-request, frequent-flyer-number, travel-details, payment-details, place-port-of-original-embarkation, place-port-of-clearance, place-port-of-onward-foreign-destination, passenger-name-record-locator-number, comment, text, other, phone-number, identity-card-number, anonymised</dd>
 <dt>Social network</dt>
 <dd style="margin-left: 8">
-<br>github-username, github-repository, github-organisation, jabber-id, twitter-id, email-src, email-dst, comment, text, other, whois-registrant-email, anonymised</dd>
+<br>github-username, github-repository, github-organisation, jabber-id, twitter-id, email-src, email-dst, eppn, comment, text, other, whois-registrant-email, anonymised</dd>
 <dt>Support Tool</dt>
 <dd style="margin-left: 8">
 <br>link, text, attachment, comment, other, hex, anonymised</dd>
@@ -990,7 +990,7 @@
 <br>link, comment, text, hex, attachment, other, anonymised</dd>
 <dt>Artifacts dropped</dt>
 <dd style="margin-left: 8">
-<br>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, regkey, regkey|value, pattern-in-file, pattern-in-memory, pdb, stix2-pattern, yara, sigma, attachment, malware-sample, named pipe, mutex, windows-scheduled-task, windows-service-name, windows-service-displayname, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, cookie, gene, mime-type, anonymised</dd>
+<br>md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256, ssdeep, imphash, impfuzzy, authentihash, cdhash, filename, filename|md5, filename|sha1, filename|sha224, filename|sha256, filename|sha384, filename|sha512, filename|sha512/224, filename|sha512/256, filename|authentihash, filename|ssdeep, filename|tlsh, filename|imphash, filename|impfuzzy, filename|pehash, regkey, regkey|value, pattern-in-file, pattern-in-memory, pdb, stix2-pattern, yara, sigma, attachment, malware-sample, named pipe, mutex, windows-scheduled-task, windows-service-name, windows-service-displayname, comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, cookie, gene, kusto-query, mime-type, anonymised</dd>
 <dt>Attribution</dt>
 <dd style="margin-left: 8">
 <br>threat-actor, campaign-name, campaign-id, whois-registrant-phone, whois-registrant-email, whois-registrant-name, whois-registrant-org, whois-registrar, whois-creation-date, comment, text, x509-fingerprint-sha1, x509-fingerprint-md5, x509-fingerprint-sha256, other, dns-soa-email, anonymised</dd>
@@ -1005,7 +1005,7 @@
 <br>text, link, comment, other, hex, anonymised</dd>
 <dt>Network activity</dt>
 <dd style="margin-left: 8">
-<br>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised, community-id, email-subject</dd>
+<br>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, email-src, eppn, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised, community-id, email-subject</dd>
 <dt>Other</dt>
 <dd style="margin-left: 8">
 <br>comment, text, other, size-in-bytes, counter, datetime, cpe, port, float, hex, phone-number, boolean, anonymised</dd>
@@ -1026,7 +1026,7 @@
 <br>first-name, middle-name, last-name, date-of-birth, place-of-birth, gender, passport-number, passport-country, passport-expiration, redress-number, nationality, visa-number, issue-date-of-the-visa, primary-residence, country-of-residence, special-service-request, frequent-flyer-number, travel-details, payment-details, place-port-of-original-embarkation, place-port-of-clearance, place-port-of-onward-foreign-destination, passenger-name-record-locator-number, comment, text, other, phone-number, identity-card-number, anonymised</dd>
 <dt>Social network</dt>
 <dd style="margin-left: 8">
-<br>github-username, github-repository, github-organisation, jabber-id, twitter-id, email-src, email-dst, comment, text, other, whois-registrant-email, anonymised</dd>
+<br>github-username, github-repository, github-organisation, jabber-id, twitter-id, email-src, email-dst, eppn, comment, text, other, whois-registrant-email, anonymised</dd>
 <dt>Support Tool</dt>
 <dd style="margin-left: 8">
 <br>link, text, attachment, comment, other, hex, anonymised</dd>
