@@ -100,7 +100,7 @@ Table of Contents
    7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  51
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  51
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  51
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  51
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  52
      9.2.  Informative References  . . . . . . . . . . . . . . . . .  52
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  52
 
@@ -588,7 +588,7 @@ Internet-Draft              MISP core format                 August 2018
       hostname|port, email-dst-display-name, email-src-display-name,
       email-header, email-reply-to, email-x-mailer, email-mime-boundary,
       email-thread-index, email-message-id, mobile-application-id,
-      whois-registrant-email, anonymised
+      chrome-extension-id, whois-registrant-email, anonymised
 
    Payload installation
       md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256,
@@ -601,8 +601,8 @@ Internet-Draft              MISP core format                 August 2018
       traffic, pattern-in-memory, stix2-pattern, yara, sigma,
       vulnerability, weakness, attachment, malware-sample, malware-type,
       comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5,
-      x509-fingerprint-sha256, mobile-application-id, other, mime-type,
-      anonymised
+      x509-fingerprint-sha256, mobile-application-id, chrome-extension-
+      id, other, mime-type, anonymised
 
    Payload type
       comment, text, other, anonymised
@@ -985,7 +985,7 @@ Internet-Draft              MISP core format                 August 2018
       hostname|port, email-dst-display-name, email-src-display-name,
       email-header, email-reply-to, email-x-mailer, email-mime-boundary,
       email-thread-index, email-message-id, mobile-application-id,
-      whois-registrant-email, anonymised
+      chrome-extension-id, whois-registrant-email, anonymised
 
    Payload installation
       md5, sha1, sha224, sha256, sha384, sha512, sha512/224, sha512/256,
@@ -998,8 +998,8 @@ Internet-Draft              MISP core format                 August 2018
       traffic, pattern-in-memory, stix2-pattern, yara, sigma,
       vulnerability, weakness, attachment, malware-sample, malware-type,
       comment, text, hex, x509-fingerprint-sha1, x509-fingerprint-md5,
-      x509-fingerprint-sha256, mobile-application-id, other, mime-type,
-      anonymised
+      x509-fingerprint-sha256, mobile-application-id, chrome-extension-
+      id, other, mime-type, anonymised
 
    Payload type
 
@@ -2144,6 +2144,12 @@ Internet-Draft              MISP core format                 August 2018
          "timestamp": {
            "type": "string"
          },
+         "first_seen": {
+           "type": "string"
+         },
+         "last_seen": {
+           "type": "string"
+         },
          "distribution": {
            "type": "string"
          },
@@ -2172,12 +2178,6 @@ Internet-Draft              MISP core format                 August 2018
      "sighthing": {
        "type": "object",
        "additionalProperties": false,
-       "properties": {
-         "id": {
-           "type": "string"
-         },
-         "attribute_id": {
-           "type": "string"
 
 
 
@@ -2186,6 +2186,12 @@ Dulaunoy & Iklody       Expires February 9, 2019               [Page 39]
 Internet-Draft              MISP core format                 August 2018
 
 
+       "properties": {
+         "id": {
+           "type": "string"
+         },
+         "attribute_id": {
+           "type": "string"
          },
          "event_id": {
            "type": "string"
@@ -2228,12 +2234,6 @@ Internet-Draft              MISP core format                 August 2018
      "objectreference": {
        "type": "object",
        "additionalProperties": false,
-       "properties": {
-         "deleted": {
-           "type": "boolean"
-         },
-         "object_id": {
-           "type": "string"
 
 
 
@@ -2242,6 +2242,12 @@ Dulaunoy & Iklody       Expires February 9, 2019               [Page 40]
 Internet-Draft              MISP core format                 August 2018
 
 
+       "properties": {
+         "deleted": {
+           "type": "boolean"
+         },
+         "object_id": {
+           "type": "string"
          },
          "event_id": {
            "type": "string"
@@ -2284,12 +2290,6 @@ Internet-Draft              MISP core format                 August 2018
      "attribute": {
        "type": "object",
        "additionalProperties": false,
-       "properties": {
-         "id": {
-           "type": "string"
-         },
-         "old_id": {
-           "type": "string"
 
 
 
@@ -2298,6 +2298,12 @@ Dulaunoy & Iklody       Expires February 9, 2019               [Page 41]
 Internet-Draft              MISP core format                 August 2018
 
 
+       "properties": {
+         "id": {
+           "type": "string"
+         },
+         "old_id": {
+           "type": "string"
          },
          "type": {
            "type": "string"
@@ -2335,6 +2341,20 @@ Internet-Draft              MISP core format                 August 2018
          "timestamp": {
            "type": "string"
          },
+         "first_seen": {
+           "type": "string"
+         },
+         "last_seen": {
+           "type": "string"
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 42]
+
+Internet-Draft              MISP core format                 August 2018
+
+
+         },
          "comment": {
            "type": "string"
          },
@@ -2346,14 +2366,6 @@ Internet-Draft              MISP core format                 August 2018
          },
          "disable_correlation": {
            "type": "boolean"
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 42]
-
-Internet-Draft              MISP core format                 August 2018
-
-
          },
          "value": {
            "type": "string"
@@ -2390,6 +2402,14 @@ Internet-Draft              MISP core format                 August 2018
            "items": {
              "$ref": "#/defs/galaxy"
            }
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 43]
+
+Internet-Draft              MISP core format                 August 2018
+
+
          },
          "Tag": {
            "uniqueItems": true,
@@ -2402,14 +2422,6 @@ Internet-Draft              MISP core format                 August 2018
      },
      "event": {
        "type": "object",
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 43]
-
-Internet-Draft              MISP core format                 August 2018
-
-
        "additionalProperties": false,
        "properties": {
          "id": {
@@ -2446,6 +2458,14 @@ Internet-Draft              MISP core format                 August 2018
            "type": "string"
          },
          "timestamp": {
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 44]
+
+Internet-Draft              MISP core format                 August 2018
+
+
            "type": "string"
          },
          "distribution": {
@@ -2458,14 +2478,6 @@ Internet-Draft              MISP core format                 August 2018
            "type": "boolean"
          },
          "publish_timestamp": {
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 44]
-
-Internet-Draft              MISP core format                 August 2018
-
-
            "type": "string"
          },
          "sharing_group_id": {
@@ -2502,6 +2514,14 @@ Internet-Draft              MISP core format                 August 2018
          },
          "RelatedEvent": {
            "type": "array",
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 45]
+
+Internet-Draft              MISP core format                 August 2018
+
+
            "uniqueItems": true,
            "items": {
              "type": "object",
@@ -2514,14 +2534,6 @@ Internet-Draft              MISP core format                 August 2018
            }
          },
          "Galaxy": {
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 45]
-
-Internet-Draft              MISP core format                 August 2018
-
-
            "type": "array",
            "uniqueItems": true,
            "items": {
@@ -2558,6 +2570,14 @@ Internet-Draft              MISP core format                 August 2018
            "type": "string"
          },
          "exportable": {
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 46]
+
+Internet-Draft              MISP core format                 August 2018
+
+
            "type": "boolean"
          },
          "hide_tag": {
@@ -2570,14 +2590,6 @@ Internet-Draft              MISP core format                 August 2018
      },
      "galaxy": {
        "type": "object",
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 46]
-
-Internet-Draft              MISP core format                 August 2018
-
-
        "additionalProperties": false,
        "properties": {
          "id": {
@@ -2614,6 +2626,14 @@ Internet-Draft              MISP core format                 August 2018
        }
      },
      "galaxy_cluster": {
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 47]
+
+Internet-Draft              MISP core format                 August 2018
+
+
        "type": "object",
        "additionalProperties": false,
        "properties": {
@@ -2626,14 +2646,6 @@ Internet-Draft              MISP core format                 August 2018
          "type": {
            "type": "string"
          },
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 47]
-
-Internet-Draft              MISP core format                 August 2018
-
-
          "value": {
            "type": "string"
          },
@@ -2670,6 +2682,14 @@ Internet-Draft              MISP core format                 August 2018
    },
    "type": "object",
    "properties": {
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 48]
+
+Internet-Draft              MISP core format                 August 2018
+
+
      "Event": {
        "$ref": "#/defs/event"
      }
@@ -2678,17 +2698,6 @@ Internet-Draft              MISP core format                 August 2018
      "Event"
    ]
  }
-
-
-
-
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 48]
-
-Internet-Draft              MISP core format                 August 2018
-
 
 4.  Manifest
 
@@ -2729,6 +2738,14 @@ Internet-Draft              MISP core format                 August 2018
       representation of the associated MISP event file to ensure
       integrity of the file.  (SHOULD)
 
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 49]
+
+Internet-Draft              MISP core format                 August 2018
+
+
    o  integrity:pgp represents a detached PGP signature [RFC4880] of the
       associated MISP event file to ensure integrity of the file.
       (SHOULD)
@@ -2737,14 +2754,6 @@ Internet-Draft              MISP core format                 August 2018
    PGP signature is a MUST to ensure integrity of the manifest file.  A
    detached PGP signature for a manifest file is a manifest.json.asc
    file containing the PGP signature.
-
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 49]
-
-Internet-Draft              MISP core format                 August 2018
-
 
 4.1.1.  Sample Manifest
 
@@ -2785,6 +2794,14 @@ Internet-Draft              MISP core format                 August 2018
       },
       {
         "colour": "#3d7a00",
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 50]
+
+Internet-Draft              MISP core format                 August 2018
+
+
         "name": "circl:incident-classification=\"malware\""
       },
       {
@@ -2794,14 +2811,6 @@ Internet-Draft              MISP core format                 August 2018
     ],
     "timestamp": "1461764231",
     "date": "2016-04-27",
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 50]
-
-Internet-Draft              MISP core format                 August 2018
-
-
     "threat_level_id": "3"
   }
 }
@@ -2837,6 +2846,18 @@ Internet-Draft              MISP core format                 August 2018
 
 9.  References
 
+
+
+
+
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 51]
+
+Internet-Draft              MISP core format                 August 2018
+
+
 9.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -2848,15 +2869,6 @@ Internet-Draft              MISP core format                 August 2018
               Unique IDentifier (UUID) URN Namespace", RFC 4122,
               DOI 10.17487/RFC4122, July 2005,
               <https://www.rfc-editor.org/info/rfc4122>.
-
-
-
-
-
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 51]
-
-Internet-Draft              MISP core format                 August 2018
-
 
    [RFC4880]  Callas, J., Donnerhacke, L., Finney, H., Shaw, D., and R.
               Thayer, "OpenPGP Message Format", RFC 4880,
@@ -2888,6 +2900,20 @@ Internet-Draft              MISP core format                 August 2018
 
 Authors' Addresses
 
+
+
+
+
+
+
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 52]
+
+Internet-Draft              MISP core format                 August 2018
+
+
    Alexandre Dulaunoy
    Computer Incident Response Center Luxembourg
    16, bd d'Avranches
@@ -2909,4 +2935,34 @@ Authors' Addresses
 
 
 
-Dulaunoy & Iklody       Expires February 9, 2019               [Page 52]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dulaunoy & Iklody       Expires February 9, 2019               [Page 53]
