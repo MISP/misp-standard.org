@@ -421,9 +421,9 @@
 
   <meta name="dct.creator" content="Dulaunoy, A. and A. Iklody" />
   <meta name="dct.identifier" content="urn:ietf:id:" />
-  <meta name="dct.issued" scheme="ISO8601" content="2020-01-22" />
-  <meta name="dct.abstract" content="This document describes the MISP core format used to exchange indicators and threat information between MISP (Malware Information and threat Sharing Platform) instances.  The JSON format includes the overall structure along with the semantic associated for each respective key. The format is described to support other implementations which reuse the format and ensuring an interoperability with existing MISP  software and other Threat Intelligence Platforms." />
-  <meta name="description" content="This document describes the MISP core format used to exchange indicators and threat information between MISP (Malware Information and threat Sharing Platform) instances.  The JSON format includes the overall structure along with the semantic associated for each respective key. The format is described to support other implementations which reuse the format and ensuring an interoperability with existing MISP  software and other Threat Intelligence Platforms." />
+  <meta name="dct.issued" scheme="ISO8601" content="2020-05-26" />
+  <meta name="dct.abstract" content="This document describes the MISP core format used to exchange indicators and threat information between MISP (Open Source Threat Intelligence Sharing Platform formerly known as Malware Information Sharing Platform) instances.  The JSON format includes the overall structure along with the semantic associated for each respective key. The format is described to support other implementations which reuse the format and ensuring an interoperability with existing MISP  software and other Threat Intelligence Platforms." />
+  <meta name="description" content="This document describes the MISP core format used to exchange indicators and threat information between MISP (Open Source Threat Intelligence Sharing Platform formerly known as Malware Information Sharing Platform) instances.  The JSON format includes the overall structure along with the semantic associated for each respective key. The format is described to support other implementations which reuse the format and ensuring an interoperability with existing MISP  software and other Threat Intelligence Platforms." />
 
 </head>
 
@@ -441,12 +441,12 @@
 <td class="right">A. Iklody</td>
 </tr>
 <tr>
-<td class="left">Expires: July 25, 2020</td>
+<td class="left">Expires: November 27, 2020</td>
 <td class="right">CIRCL</td>
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">January 22, 2020</td>
+<td class="right">May 26, 2020</td>
 </tr>
 
     	
@@ -457,12 +457,12 @@
   <span class="filename"></span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>This document describes the MISP core format used to exchange indicators and threat information between MISP (Malware Information and threat Sharing Platform) instances.  The JSON format includes the overall structure along with the semantic associated for each respective key. The format is described to support other implementations which reuse the format and ensuring an interoperability with existing MISP <a href="#MISP-P" class="xref">[MISP-P]</a> software and other Threat Intelligence Platforms.</p>
+<p>This document describes the MISP core format used to exchange indicators and threat information between MISP (Open Source Threat Intelligence Sharing Platform formerly known as Malware Information Sharing Platform) instances.  The JSON format includes the overall structure along with the semantic associated for each respective key. The format is described to support other implementations which reuse the format and ensuring an interoperability with existing MISP <a href="#MISP-P" class="xref">[MISP-P]</a> software and other Threat Intelligence Platforms.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 25, 2020.</p>
+<p>This Internet-Draft will expire on November 27, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2020 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -804,7 +804,7 @@
 <br>btc, dash, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number, prtn, phone-number, comment, text, other, hex, anonymised</dd>
 <dt>Internal reference</dt>
 <dd style="margin-left: 8">
-<br>text, link, comment, other, hex, anonymised</dd>
+<br>text, link, comment, other, hex, anonymised, git-commit-id</dd>
 <dt>Network activity</dt>
 <dd style="margin-left: 8">
 <br>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, email-src, eppn, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised, community-id, email-subject</dd>
@@ -1002,7 +1002,7 @@
 <br>btc, dash, xmr, iban, bic, bank-account-nr, aba-rtn, bin, cc-number, prtn, phone-number, comment, text, other, hex, anonymised</dd>
 <dt>Internal reference</dt>
 <dd style="margin-left: 8">
-<br>text, link, comment, other, hex, anonymised</dd>
+<br>text, link, comment, other, hex, anonymised, git-commit-id</dd>
 <dt>Network activity</dt>
 <dd style="margin-left: 8">
 <br>ip-src, ip-dst, ip-dst|port, ip-src|port, port, hostname, domain, domain|ip, mac-address, mac-eui-64, email-dst, email-src, eppn, url, uri, user-agent, http-method, AS, snort, pattern-in-file, stix2-pattern, pattern-in-traffic, attachment, comment, text, x509-fingerprint-md5, x509-fingerprint-sha1, x509-fingerprint-sha256, ja3-fingerprint-md5, hassh-md5, hasshserver-md5, other, hex, cookie, hostname|port, bro, zeek, anonymised, community-id, email-subject</dd>
@@ -2314,7 +2314,7 @@
 <tr>
 <td class="reference"><b id="MISP-P">[MISP-P]</b></td>
 <td class="top">
-<a>Community, M.</a>, "<a href="https://github.com/MISP">MISP Project - Malware Information Sharing Platform and Threat Sharing</a>"</td>
+<a>Community, M.</a>, "<a href="https://github.com/MISP">MISP Project - Open Source Threat Intelligence Platform and Open Standards For Threat Information Sharing</a>"</td>
 </tr>
 <tr>
 <td class="reference"><b id="MISP-R">[MISP-R]</b></td>

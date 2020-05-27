@@ -385,7 +385,8 @@
 <link href="#rfc.section.2.3" rel="Chapter" title="2.3 Value">
 <link href="#rfc.section.2.3.1" rel="Chapter" title="2.3.1 Configuring the value format for a Namespace">
 <link href="#rfc.section.2.4" rel="Chapter" title="2.4 Bulk">
-<link href="#rfc.section.2.4.1" rel="Chapter" title="2.4.1 Response">
+<link href="#rfc.section.2.4.1" rel="Chapter" title="2.4.1 Request">
+<link href="#rfc.section.2.4.2" rel="Chapter" title="2.4.2 Response">
 <link href="#rfc.section.3" rel="Chapter" title="3 Security Considerations">
 <link href="#rfc.section.4" rel="Chapter" title="4 Acknowledgements">
 <link href="#rfc.references" rel="Chapter" title="5 Normative References">
@@ -397,7 +398,7 @@
 
   <meta name="dct.creator" content="Tricaud, S." />
   <meta name="dct.identifier" content="urn:ietf:id:" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-11-03" />
+  <meta name="dct.issued" scheme="ISO8601" content="2020-04-13" />
   <meta name="dct.abstract" content="This document describes the format used by SightingDB to give automated context to a given Attribute by counting occurrences and tracking times of observability.  SightingDB was designed to provide to MISP a Scalable and Fast way to store and retrieve Attributes." />
   <meta name="description" content="This document describes the format used by SightingDB to give automated context to a given Attribute by counting occurrences and tracking times of observability.  SightingDB was designed to provide to MISP a Scalable and Fast way to store and retrieve Attributes." />
 
@@ -417,8 +418,8 @@
 <td class="right">Devo Inc.</td>
 </tr>
 <tr>
-<td class="left">Expires: May 6, 2020</td>
-<td class="right">November 3, 2019</td>
+<td class="left">Expires: October 15, 2020</td>
+<td class="right">April 13, 2020</td>
 </tr>
 
     	
@@ -434,9 +435,9 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on May 6, 2020.</p>
+<p>This Internet-Draft will expire on October 15, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
-<p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>Copyright (c) 2020 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
 
   
@@ -466,7 +467,9 @@
 </li>
 </ul><li>2.4.   <a href="#rfc.section.2.4">Bulk</a>
 </li>
-<ul><li>2.4.1.   <a href="#rfc.section.2.4.1">Response</a>
+<ul><li>2.4.1.   <a href="#rfc.section.2.4.1">Request</a>
+</li>
+<li>2.4.2.   <a href="#rfc.section.2.4.2">Response</a>
 </li>
 </ul></ul><li>3.   <a href="#rfc.section.3">Security Considerations</a>
 </li>
@@ -494,7 +497,7 @@
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#overview" id="overview">Overview</a>
 </h1>
-<p id="rfc.section.2.1.p.1">The SightingDB format is in JSON <a href="#RFC8259" class="xref">[RFC8259]</a> format and used to query a SightingDB compatible connector. In SightingDB, a Sighting Object is composed of a single JSON object. This object contains the following fields: value, first<em>seen, last</em>seen, count, tags, ttl and manifold.</p>
+<p id="rfc.section.2.1.p.1">The SightingDB format is in JSON <a href="#RFC8259" class="xref">[RFC8259]</a> format and used to query a SightingDB compatible connector. In SightingDB, a Sighting Object is composed of a single JSON object. This object contains the following fields: value, first<em>seen, last</em>seen, count, tags, ttl and consensus.</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> <a href="#attribute-storage" id="attribute-storage">Attribute Storage</a>
 </h1>
@@ -507,10 +510,9 @@
 <p id="rfc.section.2.1.2.p.3">Reserved namespaces are:</p>
 <p id="rfc.section.2.1.2.p.4">_expired/&lt;namespace&gt;: Which contains all the attributes that expired, preserving the origin namespace</p>
 <p id="rfc.section.2.1.2.p.5">_shadow/&lt;namespace&gt;: When a value is searched and does not exists, it is stored there</p>
-<p id="rfc.section.2.1.2.p.6">_stats: Statistics</p>
-<p id="rfc.section.2.1.2.p.7">_config: Configuration</p>
-<p id="rfc.section.2.1.2.p.8">_all: All the Attributes in one place, used to retrieve the 'manifold' property.</p>
-<p id="rfc.section.2.1.2.p.9">The Attribute Key MUST always be the last part of the Namespace.</p>
+<p id="rfc.section.2.1.2.p.6">_config: Configuration</p>
+<p id="rfc.section.2.1.2.p.7">_all: All the Attributes in one place, used to retrieve the 'consensus' property.</p>
+<p id="rfc.section.2.1.2.p.8">The Attribute Key MUST always be the last part of the Namespace.</p>
 <h1 id="rfc.section.2.1.2.1">
 <a href="#rfc.section.2.1.2.1">2.1.2.1.</a> <a href="#sample-namespaces" id="sample-namespaces">Sample Namespaces</a>
 </h1>
@@ -547,9 +549,9 @@
 <p id="rfc.section.2.1.3.6.p.2">When an Attribute has this field set to 0, it means it is not set to expired. This is the default behavior.</p>
 <p id="rfc.section.2.1.3.6.p.3">When an Attribute has this field set to a number greater than 0, the expiration status is computed only at retrieval time.</p>
 <h1 id="rfc.section.2.1.3.7">
-<a href="#rfc.section.2.1.3.7">2.1.3.7.</a> <a href="#manifold" id="manifold">manifold</a>
+<a href="#rfc.section.2.1.3.7">2.1.3.7.</a> <a href="#consensus" id="consensus">consensus</a>
 </h1>
-<p id="rfc.section.2.1.3.7.p.1">When a given Attribute Value is stored in different namespaces, the manifold field keeps track of them so it returns in how many different places this attributes exists. This is a simple counter.</p>
+<p id="rfc.section.2.1.3.7.p.1">When a given Attribute Value is stored in different namespaces, the consensus field keeps track of them so it returns in how many different places this attributes exists. This is a simple counter.</p>
 <h1 id="rfc.section.2.2">
 <a href="#rfc.section.2.2">2.2.</a> <a href="#sightingdb-format-one-attribute" id="sightingdb-format-one-attribute">SightingDB Format - One Attribute</a>
 </h1>
@@ -560,7 +562,7 @@
   "count":578391,
   "tags":"",
   "ttl":0,
-  "manifold": 17
+  "consensus": 17
 }
 </pre>
 <h1 id="rfc.section.2.3">
@@ -586,20 +588,36 @@
 <p id="rfc.section.2.4.p.1">When data must be sent and received in large amounts, it is preferable to embed in JSON all the objects at once. As such, for reading and writing, the format is the following:</p>
 <pre>{
   "items": [
-    { "/your/namespace": "127.0.0.1" },
-    { "/your/other/namespace": "110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db" }
+    { "&lt;namespace&gt;": "&lt;value&gt;" },
+    { "&lt;namespace&gt;": "&lt;value&gt;", "timestamp": &lt;epoch&gt; }
   ]
 }
 </pre>
-<p id="rfc.section.2.4.p.2">Which will either store or retrieve the wanted data.</p>
+<p id="rfc.section.2.4.p.2">Where:</p>
+<p id="rfc.section.2.4.p.3">namespace: is the wanted namespace where to store the value</p>
+<p id="rfc.section.2.4.p.4">value: the value one want to track</p>
+<p id="rfc.section.2.4.p.5">timestamp: OPTIONAL epoch timestamp to set the value at.</p>
+<p id="rfc.section.2.4.p.6">The timestamp is how one can use SightingDB and use old datasets where the first seen and last seen is not relative to "right now".</p>
 <h1 id="rfc.section.2.4.1">
-<a href="#rfc.section.2.4.1">2.4.1.</a> <a href="#response" id="response">Response</a>
+<a href="#rfc.section.2.4.1">2.4.1.</a> <a href="#request" id="request">Request</a>
 </h1>
-<p id="rfc.section.2.4.1.p.1">The response when retrieving sightings also has the list of items, in order, one per line of the results:</p>
+<p id="rfc.section.2.4.1.p.1">A Proper request with two items is made like this:</p>
 <pre>{
   "items": [
-    { "first_seen":1530337182, "last_seen":1573110615, "count":93021, "tags":"", "ttl":0, "manifold": 1 },
-    { "first_seen":1562930418, "last_seen":1573110404, "count":1020492, "tags":"", "ttl":8912, "manifold": 3 }
+    { "/your/namespace": "127.0.0.1" },
+    { "/your/other/namespace": "110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db", "timestamp": 1586825229 }
+  ]
+}
+</pre>
+<p id="rfc.section.2.4.1.p.2">Which will either store or retrieve the wanted data.</p>
+<h1 id="rfc.section.2.4.2">
+<a href="#rfc.section.2.4.2">2.4.2.</a> <a href="#response" id="response">Response</a>
+</h1>
+<p id="rfc.section.2.4.2.p.1">The response when retrieving sightings also has the list of items, in order, one per line of the results:</p>
+<pre>{
+  "items": [
+    {"value": "Octave_Hergebel", "first_seen":1530337182, "last_seen":1573110615, "count":93021, "tags":"", "ttl":0, "consensus": 1},
+    {"value": "127.0.0.1", "first_seen":1562930418, "last_seen":1573110404, "count":1020492, "tags":"", "ttl":8912, "consensus": 3}
   ]
 }
 </pre>
