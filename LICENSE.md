@@ -1,3 +1,23 @@
+## MISP Standard formats
+
+#### Who
+- Alexandre Dulaunoy
+- Andras Iklody
+- Sami Mokaddem
+- Sascha Rommelfangen
+- Deborah Servili
+- Christian Studer
+- Raphael Vinot
+
+
+#### Copyright Notice
+
+Copyright (c) 2019 - 2021 IETF Trust and the persons identified as the document authors. All rights reserved.
+
+MISP Standard formats are subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review the formats documents carefully, as they describe your rights and restrictions with respect to the documents. Code Components extracted from the documents must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.
+
+## Minimal Mistakes Jekyll theme
+
 The MIT License (MIT)
 
 Copyright (c) 2013-2019 Michael Rose and contributors
