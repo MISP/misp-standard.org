@@ -40,4 +40,4 @@ activedrafts=on&rfcs=on).
 
 ## License
 
-See the [license](/LICENSE) document.
+See the [license](/LICENSE.md) document.
