@@ -17,7 +17,7 @@ As of 2017, the MISP format was extended with an object templating system, intro
 
 In order to preserve and foster the standard and its evolution, the MISP project spun off a new structure in 2019, with the aim to standardise the format under the [misp-standard.org](https://www.misp-standard.org).
 
-As of July 2019, [4 official standards](/standards) (MISP core format, MISP object template format, MISP taxonomy format and MISP galaxy format) are now published.
+As of November 2019, [5 official standards](/standards) (MISP core format, MISP object template format, MISP taxonomy format, MISP galaxy format, and SightingDB format) are now published.
 
 A host of proprietary and open source software are implementing and using the MISP standard in their respective software such as the [MISP Project](https://www.misp-project.org/), [The Hive](https://thehive-project.org/), [AIL Framework](https://github.com/CIRCL/AIL-framework), [PyMISP](https://github.com/MISP/PyMISP) and many more.
 
