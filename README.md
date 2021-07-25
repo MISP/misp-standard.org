@@ -32,11 +32,11 @@ other collections of data that can be used to mark, classify or label data in th
 - MISP warninglist format
 
 ## Contributing
-If you want to contribute to our IETF Internet-Draft for the MISP standard, [misp-rfc](https://github.com/MISP/misp-rfc) is the repository to propose changes. 
-Each format folder has several files of different extensions, including XML and Markdown (MD). 
-You should update only the Markdown file; the XML and ASCII for the IETF I-D are automatically generated.
-If a major release or updates happen in the format, we will [publish the I-D to the IETF](https://datatracker.ietf.org/doc/search/?name=misp&
-activedrafts=on&rfcs=on).
+
+If you want to contribute to our IETF Internet-Draft for the MISP standard, [misp-rfc](https://github.com/MISP/misp-rfc) is the repository to propose changes.
+- Each format folder has several files of different extensions, including XML and Markdown (MD).
+- You should update only the Markdown file; the XML and ASCII for the IETF I-D are automatically generated.
+- If a major release or updates happen in the format, we will [publish the I-D to the IETF](https://datatracker.ietf.org/doc/search/?name=misp&activedrafts=on&rfcs=on).
 
 ## License
 
