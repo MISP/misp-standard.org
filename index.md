@@ -7,9 +7,9 @@ header:
   overlay_image: /assets/images/misp-long.png
   overlay_filter: 0.8
 feature_row:
-  - url: https://github.com/CIRCL/AIL-framework
+  - url: https://github.com/AIL-Project/AIL-framework
     image_path: /assets/images/ail.png
-    alt: "AIL framework"
+    alt: "AIL frameworki (AIL Project)"
     excerpt: "AIL is a modular framework to analyse potential information leaks from unstructured data sources like pastes from Pastebin and similar services or unstructured data streams. The AIL framework is flexible and can be extended to support other functionalities to mine or process sensitive information (e.g. data leak prevention)."
   - url: https://www.misp-project.org/
     image_path: /assets/images/misp-small.png
