@@ -4,12 +4,13 @@
 
 Network Working Group                                        A. Dulaunoy
 Internet-Draft                                                 A. Iklody
-Expires: April 6, 2020                                        D. Servili
-                                                                   CIRCL
-                                                         October 4, 2019
+Intended status: Informational                                D. Servili
+Expires: 25 May 2022                                               CIRCL
+                                                        21 November 2021
 
 
                            MISP galaxy format
+                                draft-00
 
 Abstract
 
@@ -37,36 +38,31 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 6, 2020.
+   This Internet-Draft will expire on 25 May 2022.
 
 Copyright Notice
 
-   Copyright (c) 2019 IETF Trust and the persons identified as the
+   Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.
 
 
 
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 1]
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 1]
 
-Internet-Draft             MISP galaxy format               October 2019
+Internet-Draft             MISP galaxy format              November 2021
 
-
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
 
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
      1.1.  Conventions and Terminology . . . . . . . . . . . . . . .   2
-   2.  Format  . . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   2.  Format  . . . . . . . . . . . . . . . . . . . . . . . . . . .   2
      2.1.  Overview  . . . . . . . . . . . . . . . . . . . . . . . .   3
      2.2.  values  . . . . . . . . . . . . . . . . . . . . . . . . .   3
      2.3.  related . . . . . . . . . . . . . . . . . . . . . . . . .   3
@@ -75,9 +71,8 @@ Table of Contents
      3.1.  MISP galaxy format - galaxy . . . . . . . . . . . . . . .   9
      3.2.  MISP galaxy format - clusters . . . . . . . . . . . . . .  10
    4.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  14
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .  14
+   5.  Normative References  . . . . . . . . . . . . . . . . . . . .  14
+   6.  Informative References  . . . . . . . . . . . . . . . . . . .  14
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
 1.  Introduction
@@ -104,22 +99,20 @@ Table of Contents
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in RFC 2119 [RFC2119].
 
-
-
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 2]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
 2.  Format
 
    A cluster is composed of a value (MUST), a description (OPTIONAL) and
    metadata (OPTIONAL).
 
    Clusters are represented as a JSON [RFC8259] dictionary.
+
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 2]
+
+Internet-Draft             MISP galaxy format              November 2021
+
 
 2.1.  Overview
 
@@ -162,14 +155,6 @@ Internet-Draft             MISP galaxy format               October 2019
    Related contains a list of JSON key value pairs which describe the
    related values in this galaxy cluster or to other galaxy clusters.
    The JSON object contains three fields, dest-uuid, type and tags.  The
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 3]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
    dest-uuid represents the target UUID which encompasses a relation of
    some type.  The dest-uuid is represented as a string and MUST be
    present.  The type is represented as a string and MUST be present and
@@ -177,6 +162,14 @@ Internet-Draft             MISP galaxy format               October 2019
    objects [MISP-R].  The tags is a list of string which labels the
    related relationship such as the level of similarities, level of
    certainty, trust or confidence in the relationship, false-positive.
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 3]
+
+Internet-Draft             MISP galaxy format              November 2021
+
+
    A tag is represented in machine tag format which is a string an
    SHOULD be present.
 
@@ -218,14 +211,6 @@ Internet-Draft             MISP galaxy format               October 2019
    field is described as an RGB colour fill in hexadecimal
    representation.
 
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 4]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
    complexity, effectiveness, impact, possible_issues MAY be used to
    give further information in preventive-measure galaxy. complexity is
    represented by an enumerated value from a fixed vocabulary and SHALL
@@ -233,6 +218,13 @@ Internet-Draft             MISP galaxy format               October 2019
    a fixed vocabulary and SHALL be present. impact is represented by an
    enumerated value from a fixed vocabulary and SHALL be present.
    possible_issues is represented as a string and SHOULD be present.
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 4]
+
+Internet-Draft             MISP galaxy format              November 2021
+
 
    Example use of the complexity, effectiveness, impact, possible_issues
    fields in the preventive-measure galaxy:
@@ -277,9 +269,17 @@ Internet-Draft             MISP galaxy format               October 2019
 
 
 
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 5]
+
+
+
+
+
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 5]
 
-Internet-Draft             MISP galaxy format               October 2019
+Internet-Draft             MISP galaxy format              November 2021
 
 
    {
@@ -333,13 +333,13 @@ Internet-Draft             MISP galaxy format               October 2019
 
 
 
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 6]
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 6]
 
-Internet-Draft             MISP galaxy format               October 2019
+Internet-Draft             MISP galaxy format              November 2021
 
 
 {
-  "description": "Similar to Samas and BitPaymer, Ryuk is specifically used to target enterprise environments. Code comparison between versions of Ryuk and Hermes ransomware indicates that Ryuk was derived from the Hermes source code and has been under steady development since its release. Hermes is commodity ransomware that has been observed for sale on forums and used by multiple threat actors. However, Ryuk is only used by GRIM SPIDER and, unlike Hermes, Ryuk has only been used to target enterprise environments. Since Ryuk's appearance in August, the threat actors operating it have netted over 705.80 BTC across 52 transactions for a total current value of $3,701,893.98 USD.",
+  "description": "Similar to Samas and BitPaymer, Ryuk is specifically used to target enterprise environments. Code comparison between versions of Ryuk and Hermes ransomware indicates that Ryuk was derived from the Hermes source code and has been under steady development since its release. Hermes is commodity ransomware that has been observed for sale on forums and used by multiple threat actors. However, Ryuk is only used by GRIM SPIDER and, unlike Hermes, Ryuk has only been used to target enterprise environments. Since Ryuk’s appearance in August, the threat actors operating it have netted over 705.80 BTC across 52 transactions for a total current value of $3,701,893.98 USD.",
   "meta": {
     "ransomnotes-filenames": [
       "RyukReadMe.txt"
@@ -389,9 +389,9 @@ Internet-Draft             MISP galaxy format               October 2019
 
 
 
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 7]
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 7]
 
-Internet-Draft             MISP galaxy format               October 2019
+Internet-Draft             MISP galaxy format              November 2021
 
 
    Example use of the source-uuid, target-uuid fields in the mitre-
@@ -445,9 +445,9 @@ Internet-Draft             MISP galaxy format               October 2019
 
 
 
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 8]
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 8]
 
-Internet-Draft             MISP galaxy format               October 2019
+Internet-Draft             MISP galaxy format              November 2021
 
 
 {
@@ -501,9 +501,9 @@ Internet-Draft             MISP galaxy format               October 2019
 
 
 
-Dulaunoy, et al.          Expires April 6, 2020                 [Page 9]
+Dulaunoy, et al.           Expires 25 May 2022                  [Page 9]
 
-Internet-Draft             MISP galaxy format               October 2019
+Internet-Draft             MISP galaxy format              November 2021
 
 
 {
@@ -549,19 +549,24 @@ Internet-Draft             MISP galaxy format               October 2019
 
 3.2.  MISP galaxy format - clusters
 
+
+
+
+
+
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                 [Page 10]
+
+Internet-Draft             MISP galaxy format              November 2021
+
+
 {
   "$schema": "http://json-schema.org/schema#",
   "title": "Validator for misp-galaxies - Clusters",
   "id": "https://www.github.com/MISP/misp-galaxies/schema_clusters.json",
   "type": "object",
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                [Page 10]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
   "additionalProperties": false,
   "properties": {
     "description": {
@@ -605,19 +610,19 @@ Internet-Draft             MISP galaxy format               October 2019
             "type": "array",
             "additionalProperties": false,
             "items": {
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                 [Page 11]
+
+Internet-Draft             MISP galaxy format              November 2021
+
+
               "type": "object"
             },
             "properties": {
               "dest-uuid": {
                 "type": "string"
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                [Page 11]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
               },
               "type": {
                 "type": "string"
@@ -661,19 +666,19 @@ Internet-Draft             MISP galaxy format               October 2019
                 "type": "string"
               },
               "impact": {
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                 [Page 12]
+
+Internet-Draft             MISP galaxy format              November 2021
+
+
                 "type": "string"
               },
               "refs": {
                 "type": "array",
                 "uniqueItems": true,
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                [Page 12]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
                 "items": {
                   "type": "string"
                 }
@@ -717,19 +722,19 @@ Internet-Draft             MISP galaxy format               October 2019
       }
     },
     "authors": {
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                 [Page 13]
+
+Internet-Draft             MISP galaxy format              November 2021
+
+
       "type": "array",
       "uniqueItems": true,
       "items": {
         "type": "string"
       }
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                [Page 13]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
     }
   },
   "required": [
@@ -750,9 +755,7 @@ Internet-Draft             MISP galaxy format               October 2019
    The authors wish to thank all the MISP community who are supporting
    the creation of open standards in threat intelligence sharing.
 
-5.  References
-
-5.1.  Normative References
+5.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -769,7 +772,7 @@ Internet-Draft             MISP galaxy format               October 2019
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
 
-5.2.  Informative References
+6.  Informative References
 
    [CFR]      Relations, C. O. F., "Cyber Operations Tracker - Council
               on Foreign Relations", 2018,
@@ -778,12 +781,9 @@ Internet-Draft             MISP galaxy format               October 2019
 
 
 
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                [Page 14]
+Dulaunoy, et al.           Expires 25 May 2022                 [Page 14]
 
-Internet-Draft             MISP galaxy format               October 2019
+Internet-Draft             MISP galaxy format              November 2021
 
 
    [JSON-SCHEMA]
@@ -810,7 +810,7 @@ Authors' Addresses
    Alexandre Dulaunoy
    Computer Incident Response Center Luxembourg
    16, bd d'Avranches
-   Luxembourg  L-1611
+   L-L-1611 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
@@ -820,35 +820,28 @@ Authors' Addresses
    Andras Iklody
    Computer Incident Response Center Luxembourg
    16, bd d'Avranches
-   Luxembourg  L-1611
+   L-L-1611 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
    Email: andras.iklody@circl.lu
 
 
-
-
-
-
-
-
-
-
-
-
-Dulaunoy, et al.          Expires April 6, 2020                [Page 15]
-
-Internet-Draft             MISP galaxy format               October 2019
-
-
    Deborah Servili
    Computer Incident Response Center Luxembourg
    16, bd d'Avranches
-   Luxembourg  L-1611
+   L-L-1611 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                 [Page 15]
+
+Internet-Draft             MISP galaxy format              November 2021
+
+
    Email: deborah.servili@circl.lu
 
 
@@ -893,4 +886,11 @@ Internet-Draft             MISP galaxy format               October 2019
 
 
 
-Dulaunoy, et al.          Expires April 6, 2020                [Page 16]
+
+
+
+
+
+
+
+Dulaunoy, et al.           Expires 25 May 2022                 [Page 16]

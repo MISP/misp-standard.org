@@ -4,11 +4,12 @@
 
 Network Working Group                                        A. Dulaunoy
 Internet-Draft                                                 A. Iklody
-Expires: October 12, 2018                                          CIRCL
-                                                          April 10, 2018
+Intended status: Informational                                     CIRCL
+Expires: 25 May 2022                                    21 November 2021
 
 
                       MISP object template format
+                                draft-00
 
 Abstract
 
@@ -33,29 +34,28 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 12, 2018.
+   This Internet-Draft will expire on 25 May 2022.
 
 Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
+   Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.
 
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 1]
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 1]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 Table of Contents
@@ -70,12 +70,10 @@ Table of Contents
        2.1.4.  Object Relationships  . . . . . . . . . . . . . . . .   9
    3.  Directory . . . . . . . . . . . . . . . . . . . . . . . . . .  10
      3.1.  Existing and public MISP object templates . . . . . . . .  10
-   4.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  18
-   5.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
-     5.1.  Normative References  . . . . . . . . . . . . . . . . . .  18
-     5.2.  Informative References  . . . . . . . . . . . . . . . . .  18
-     5.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  19
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
+   4.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  34
+   5.  Normative References  . . . . . . . . . . . . . . . . . . . .  34
+   6.  Informative References  . . . . . . . . . . . . . . . . . . .  34
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
 
 1.  Introduction
 
@@ -109,9 +107,11 @@ Table of Contents
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 2]
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 2]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 2.  Format
@@ -165,9 +165,9 @@ Internet-Draft         MISP object template format            April 2018
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 3]
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 3]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 2.1.1.3.  required
@@ -221,9 +221,9 @@ Internet-Draft         MISP object template format            April 2018
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 4]
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 4]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 2.1.2.1.  description
@@ -277,9 +277,9 @@ Internet-Draft         MISP object template format            April 2018
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 5]
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 5]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 2.1.2.7.  sane_default
@@ -333,9 +333,9 @@ Internet-Draft         MISP object template format            April 2018
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 6]
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 6]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 {
@@ -389,9 +389,9 @@ Internet-Draft         MISP object template format            April 2018
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 7]
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 7]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 2.1.3.2.  credential object template
@@ -445,9 +445,9 @@ Internet-Draft         MISP object template format            April 2018
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 8]
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 8]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
     "format": {
@@ -501,9 +501,9 @@ Internet-Draft         MISP object template format            April 2018
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018                [Page 9]
+Dulaunoy & Iklody          Expires 25 May 2022                  [Page 9]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
 2.1.4.3.  format
@@ -527,457 +527,1343 @@ Internet-Draft         MISP object template format            April 2018
 
 3.1.  Existing and public MISP object templates
 
-   o  tsk-chats - An Object Template to gather information from
-      evidential or interesting exchange of messages identified during a
-      digital forensic investigation.
+   *  objects/ail-leak (https://github.com/MISP/misp-
+      objects/blob/main/objects/ail-leak/definition.json) - An
+      information leak as defined by the AIL Analysis Information Leak
+      framework.
 
-   o  tsk-web-bookmark - An Object Template to add evidential bookmarks
-      identified during a digital forensic investigation.
+   *  objects/ais-info (https://github.com/MISP/misp-
+      objects/blob/main/objects/ais-info/definition.json) - Automated
+      Indicator Sharing (AIS) Information Source Markings.
 
-   o  tsk-web-cookie - An TSK-Autopsy Object Template to represent
-      cookies identified during a forensic investigation.
+   *  objects/android-app (https://github.com/MISP/misp-
+      objects/blob/main/objects/android-app/definition.json) -
+      Indicators related to an Android app.
 
-   o  tsk-web-downloads - An Object Template to add web-downloads.
+   *  objects/android-permission (https://github.com/MISP/misp-
+      objects/blob/main/objects/android-permission/definition.json) - A
+      set of android permissions - one or more permission(s) which can
+      be linked to other objects (e.g. malware, app).
 
-   o  tsk-web-history - An Object Template to share web history
-      information.
-
-   o  tsk-web-search-query - An Object Template to share web search
-      query information.
-
-   o  ail-leak - An information leak as defined by the AIL Analysis
-      Information Leak framework.
-
-   o  ais-info - Automated Indicator Sharing (AIS) Information Source
-      Markings.
-
-   o  android-permission - A set of android permissions - one or more
-      permission(s) which can be linked to other objects (e.g. malware,
-      app).
+   *  objects/annotation (https://github.com/MISP/misp-
+      objects/blob/main/objects/annotation/definition.json) - An
+      annotation object allowing analysts to add annotations, comments,
+      executive summary to a MISP event, objects or attributes.
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 10]
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 10]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-   o  annotation - An annotation object allowing analysts to add
-      annotations, comments, executive summary to a MISP event, objects
-      or attributes.
+   *  objects/anonymisation (https://github.com/MISP/misp-
+      objects/blob/main/objects/anonymisation/definition.json) -
+      Anonymisation object describing an anonymisation technique used to
+      encode MISP attribute values.  Reference:
+      https://www.caida.org/tools/taxonomy/anonymization.xml
+      (https://www.caida.org/tools/taxonomy/anonymization.xml).
 
-   o  anonymisation - Anonymisation object describing an anonymisation
-      technique used to encode MISP attribute values.  Reference:
-      https://www.caida.org/tools/taxonomy/anonymization.xml [1].
+   *  objects/asn (https://github.com/MISP/misp-
+      objects/blob/main/objects/asn/definition.json) - Autonomous system
+      object describing an autonomous system which can include one or
+      more network operators management an entity (e.g.  ISP) along with
+      their routing policy, routing prefixes or alike.
 
-   o  asn - Autonomous system object describing an autonomous system
-      which can include one or more network operators management an
-      entity (e.g.  ISP) along with their routing policy, routing
-      prefixes or alike.
+   *  objects/attack-pattern (https://github.com/MISP/misp-
+      objects/blob/main/objects/attack-pattern/definition.json) - Attack
+      pattern describing a common attack pattern enumeration and
+      classification.
 
-   o  authenticode-signerinfo - Authenticode Signer Info.
+   *  objects/authentication-failure-report (https://github.com/MISP/
+      misp-objects/blob/main/objects/authentication-failure-report/
+      definition.json) - Authentication Failure Report.
 
-   o  av-signature - Antivirus detection signature.
+   *  objects/authenticode-signerinfo (https://github.com/MISP/misp-
+      objects/blob/main/objects/authenticode-signerinfo/definition.json)
+      - Authenticode Signer Info.
 
-   o  bank-account - An object describing bank account information based
-      on account description from goAML 4.0.
+   *  objects/av-signature (https://github.com/MISP/misp-
+      objects/blob/main/objects/av-signature/definition.json) -
+      Antivirus detection signature.
 
-   o  bgp-hijack - Object encapsulating BGP Hijack description as
-      specified, for example, by bgpstream.com.
+   *  objects/bank-account (https://github.com/MISP/misp-
+      objects/blob/main/objects/bank-account/definition.json) - An
+      object describing bank account information based on account
+      description from goAML 4.0.
 
-   o  cap-alert - Common Alerting Protocol Version (CAP) alert object.
+   *  objects/bgp-hijack (https://github.com/MISP/misp-
+      objects/blob/main/objects/bgp-hijack/definition.json) - Object
+      encapsulating BGP Hijack description as specified, for example, by
+      bgpstream.com.
 
-   o  cap-info - Common Alerting Protocol Version (CAP) info object.
+   *  objects/bgp-ranking (https://github.com/MISP/misp-
+      objects/blob/main/objects/bgp-ranking/definition.json) - BGP
+      Ranking object describing the ranking of an ASN for a given day,
+      along with its position, 1 being the most malicious ASN of the
+      day, with the highest ranking.  This object is meant to have a
+      relationship with the corresponding ASN object and represents its
+      ranking for a specific date.
 
-   o  cap-resource - Common Alerting Protocol Version (CAP) resource
-      object.
 
-   o  coin-address - An address used in a cryptocurrency.
 
-   o  cookie - An HTTP cookie (web cookie, browser cookie) is a small
-      piece of data that a server sends to the user's web browser.  The
-      browser may store it and send it back with the next request to the
-      same server.  Typically, it's used to tell if two requests came
-      from the same browser -- keeping a user logged-in, for example.
-      It remembers stateful information for the stateless HTTP protocol.
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 11]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/blog (https://github.com/MISP/misp-
+      objects/blob/main/objects/blog/definition.json) - Blog post like
+      Medium or WordPress.
+
+   *  objects/boleto (https://github.com/MISP/misp-
+      objects/blob/main/objects/boleto/definition.json) - A common form
+      of payment used in Brazil.
+
+   *  objects/btc-transaction (https://github.com/MISP/misp-
+      objects/blob/main/objects/btc-transaction/definition.json) - An
+      object to describe a Bitcoin transaction.  Best to be used with
+      bitcoin-wallet.
+
+   *  objects/btc-wallet (https://github.com/MISP/misp-
+      objects/blob/main/objects/btc-wallet/definition.json) - An object
+      to describe a Bitcoin wallet.  Best to be used with bitcoin-
+      transactions.
+
+   *  objects/cap-alert (https://github.com/MISP/misp-
+      objects/blob/main/objects/cap-alert/definition.json) - Common
+      Alerting Protocol Version (CAP) alert object.
+
+   *  objects/cap-info (https://github.com/MISP/misp-
+      objects/blob/main/objects/cap-info/definition.json) - Common
+      Alerting Protocol Version (CAP) info object.
+
+   *  objects/cap-resource (https://github.com/MISP/misp-
+      objects/blob/main/objects/cap-resource/definition.json) - Common
+      Alerting Protocol Version (CAP) resource object.
+
+   *  objects/coin-address (https://github.com/MISP/misp-
+      objects/blob/main/objects/coin-address/definition.json) - An
+      address used in a cryptocurrency.
+
+   *  objects/command (https://github.com/MISP/misp-
+      objects/blob/main/objects/command/definition.json) - Command
+      functionalities related to specific commands executed by a
+      program, whether it is malicious or not.  Command-line are
+      attached to this object for the related commands.
+
+   *  objects/command-line (https://github.com/MISP/misp-
+      objects/blob/main/objects/command-line/definition.json) - Command
+      line and options related to a specific command executed by a
+      program, whether it is malicious or not.
+
+   *  objects/cookie (https://github.com/MISP/misp-
+      objects/blob/main/objects/cookie/definition.json) - An HTTP cookie
+      (web cookie, browser cookie) is a small piece of data that a
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 12]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+      server sends to the user's web browser.  The browser may store it
+      and send it back with the next request to the same server.
+      Typically, it's used to tell if two requests came from the same
+      browser — (U+2014) keeping a user logged-in, for example.  It
+      remembers stateful information for the stateless HTTP protocol.
       (as defined by the Mozilla foundation.
 
-   o  cortex - Cortex object describing a complete cortex analysis.
-      Observables would be attribute with a relationship from this
-      object.
+   *  objects/cortex (https://github.com/MISP/misp-
+      objects/blob/main/objects/cortex/definition.json) - Cortex object
+      describing a complete cortex analysis.  Observables would be
+      attribute with a relationship from this object.
 
-   o  cortex-taxonomy - Cortex object describing an Cortex Taxonomy (or
-      mini report).
+   *  objects/cortex-taxonomy (https://github.com/MISP/misp-
+      objects/blob/main/objects/cortex-taxonomy/definition.json) -
+      Cortex object describing an Cortex Taxonomy (or mini report).
+
+   *  objects/course-of-action (https://github.com/MISP/misp-
+      objects/blob/main/objects/course-of-action/definition.json) - An
+      object describing a specific measure taken to prevent or respond
+      to an attack.
+
+   *  objects/covid19-csse-daily-report (https://github.com/MISP/misp-
+      objects/blob/main/objects/covid19-csse-daily-report/
+      definition.json) - CSSE COVID-19 Daily report.
+
+   *  objects/covid19-dxy-live-city (https://github.com/MISP/misp-
+      objects/blob/main/objects/covid19-dxy-live-city/definition.json) -
+      COVID 19 from dxy.cn - Aggregation by city.
+
+   *  objects/covid19-dxy-live-province (https://github.com/MISP/misp-
+      objects/blob/main/objects/covid19-dxy-live-province/
+      definition.json) - COVID 19 from dxy.cn - Aggregation by province.
+
+   *  objects/cowrie (https://github.com/MISP/misp-
+      objects/blob/main/objects/cowrie/definition.json) - Cowrie
+      honeypot object template.
+
+   *  objects/cpe-asset (https://github.com/MISP/misp-
+      objects/blob/main/objects/cpe-asset/definition.json) - An asset
+      which can be defined by a CPE.  This can be a generic asset.  CPE
+      is a structured naming scheme for information technology systems,
+      software, and packages.
+
+   *  objects/credential (https://github.com/MISP/misp-
+      objects/blob/main/objects/credential/definition.json) - Credential
+      describes one or more credential(s) including password(s), api
+      key(s) or decryption key(s).
 
 
 
 
-
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 11]
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 13]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-   o  course-of-action - An object describing a specific measure taken
-      to prevent or respond to an attack.
+   *  objects/credit-card (https://github.com/MISP/misp-
+      objects/blob/main/objects/credit-card/definition.json) - A payment
+      card like credit card, debit card or any similar cards which can
+      be used for financial transactions.
 
-   o  cowrie - Cowrie honeypot object template.
+   *  objects/crypto-material (https://github.com/MISP/misp-
+      objects/blob/main/objects/crypto-material/definition.json) -
+      Cryptographic materials such as public or/and private keys.
 
-   o  credential - Credential describes one or more credential(s)
-      including password(s), api key(s) or decryption key(s).
+   *  objects/cytomic-orion-file (https://github.com/MISP/misp-
+      objects/blob/main/objects/cytomic-orion-file/definition.json) -
+      Cytomic Orion File Detection.
 
-   o  credit-card - A payment card like credit card, debit card or any
-      similar cards which can be used for financial transactions.
+   *  objects/cytomic-orion-machine (https://github.com/MISP/misp-
+      objects/blob/main/objects/cytomic-orion-machine/definition.json) -
+      Cytomic Orion File at Machine Detection.
 
-   o  ddos - DDoS object describes a current DDoS activity from a
-      specific or/and to a specific target.  Type of DDoS can be
-      attached to the object as a taxonomy.
+   *  objects/dark-pattern-item (https://github.com/MISP/misp-
+      objects/blob/main/objects/dark-pattern-item/definition.json) - An
+      Item whose User Interface implements a dark pattern.
 
-   o  device - An object to define a device.
+   *  objects/ddos (https://github.com/MISP/misp-
+      objects/blob/main/objects/ddos/definition.json) - DDoS object
+      describes a current DDoS activity from a specific or/and to a
+      specific target.  Type of DDoS can be attached to the object as a
+      taxonomy.
 
-   o  diameter-attack - Attack as seen on diameter authentication
-      against a GSM, UMTS or LTE network.
+   *  objects/device (https://github.com/MISP/misp-
+      objects/blob/main/objects/device/definition.json) - An object to
+      define a device.
 
-   o  domain-ip - A domain and IP address seen as a tuple in a specific
-      time frame.
+   *  objects/diameter-attack (https://github.com/MISP/misp-
+      objects/blob/main/objects/diameter-attack/definition.json) -
+      Attack as seen on diameter authentication against a GSM, UMTS or
+      LTE network.
 
-   o  elf - Object describing a Executable and Linkable Format.
+   *  objects/dns-record (https://github.com/MISP/misp-
+      objects/blob/main/objects/dns-record/definition.json) - A set of
+      DNS records observed for a specific domain.
 
-   o  elf-section - Object describing a section of an Executable and
-      Linkable Format.
+   *  objects/domain-crawled (https://github.com/MISP/misp-
+      objects/blob/main/objects/domain-crawled/definition.json) - A
+      domain crawled over time.
 
-   o  email - Email object describing an email with meta-information.
-
-   o  exploit-poc - Exploit-poc object describing a proof of concept or
-      exploit of a vulnerability.  This object has often a relationship
-      with a vulnerability object.
-
-   o  facial-composite - An object which describes a facial composite.
-
-   o  fail2ban - Fail2ban event.
-
-   o  file - File object describing a file with meta-information.
-
-   o  forensic-case - An object template to describe a digital forensic
-      case.
-
-   o  forensic-evidence - An object template to describe a digital
-      forensic evidence.
-
-   o  geolocation - An object to describe a geographic location.
-
-
+   *  objects/domain-ip (https://github.com/MISP/misp-
+      objects/blob/main/objects/domain-ip/definition.json) - A domain/
+      hostname and IP address seen as a tuple in a specific time frame.
 
 
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 12]
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 14]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-   o  gtp-attack - GTP attack object as seen on a GSM, UMTS or LTE
-      network.
+   *  objects/elf (https://github.com/MISP/misp-
+      objects/blob/main/objects/elf/definition.json) - Object describing
+      a Executable and Linkable Format.
 
-   o  http-request - A single HTTP request header.
+   *  objects/elf-section (https://github.com/MISP/misp-
+      objects/blob/main/objects/elf-section/definition.json) - Object
+      describing a section of an Executable and Linkable Format.
 
-   o  ilr-impact - Institut Luxembourgeois de Regulation - Impact.
+   *  objects/email (https://github.com/MISP/misp-
+      objects/blob/main/objects/email/definition.json) - Email object
+      describing an email with meta-information.
 
-   o  ilr-notification-incident - Institut Luxembourgeois de Regulation
-      - Notification d'incident.
+   *  objects/employee (https://github.com/MISP/misp-
+      objects/blob/main/objects/employee/definition.json) - An employee
+      and related data points.
 
-   o  internal-reference - Internal reference.
+   *  objects/exploit-poc (https://github.com/MISP/misp-
+      objects/blob/main/objects/exploit-poc/definition.json) - Exploit-
+      poc object describing a proof of concept or exploit of a
+      vulnerability.  This object has often a relationship with a
+      vulnerability object.
 
-   o  interpol-notice - An object which describes a Interpol notice.
+   *  objects/facebook-account (https://github.com/MISP/misp-
+      objects/blob/main/objects/facebook-account/definition.json) -
+      Facebook account.
 
-   o  ip-api-address - IP Address information.  Useful if you are
-      pulling your ip information from ip-api.com.
+   *  objects/facebook-group (https://github.com/MISP/misp-
+      objects/blob/main/objects/facebook-group/definition.json) - Public
+      or private facebook group.
 
-   o  ip-port - An IP address (or domain or hostname) and a port seen as
-      a tuple (or as a triple) in a specific time frame.
+   *  objects/facebook-page (https://github.com/MISP/misp-
+      objects/blob/main/objects/facebook-page/definition.json) -
+      Facebook page.
 
-   o  irc - An IRC object to describe an IRC server and the associated
-      channels.
+   *  objects/facebook-post (https://github.com/MISP/misp-
+      objects/blob/main/objects/facebook-post/definition.json) - Post on
+      a Facebook wall.
 
-   o  ja3 - JA3 is a new technique for creating SSL client fingerprints
-      that are easy to produce and can be easily shared for threat
-      intelligence.  Fingerprints are composed of Client Hello packet;
-      SSL Version, Accepted Ciphers, List of Extensions, Elliptic
-      Curves, and Elliptic Curve Formats. https://github.com/salesforce/
-      ja3 [2].
+   *  objects/facial-composite (https://github.com/MISP/misp-
+      objects/blob/main/objects/facial-composite/definition.json) - An
+      object which describes a facial composite.
 
-   o  legal-entity - An object to describe a legal entity.
+   *  objects/fail2ban (https://github.com/MISP/misp-
+      objects/blob/main/objects/fail2ban/definition.json) - Fail2ban
+      event.
 
-   o  lnk - LNK object describing a Windows LNK binary file (aka Windows
-      shortcut).
 
-   o  macho - Object describing a file in Mach-O format.
 
-   o  macho-section - Object describing a section of a file in Mach-O
-      format.
 
-   o  mactime-timeline-analysis - Mactime template, used in forensic
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 15]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/favicon (https://github.com/MISP/misp-
+      objects/blob/main/objects/favicon/definition.json) - A favicon,
+      also known as a shortcut icon, website icon, tab icon, URL icon,
+      or bookmark icon, is a file containing one or more small icons,
+      associated with a particular website or web page.  The object
+      template can include the murmur3 hash of the favicon to facilitate
+      correlation.
+
+   *  objects/file (https://github.com/MISP/misp-
+      objects/blob/main/objects/file/definition.json) - File object
+      describing a file with meta-information.
+
+   *  objects/forensic-case (https://github.com/MISP/misp-
+      objects/blob/main/objects/forensic-case/definition.json) - An
+      object template to describe a digital forensic case.
+
+   *  objects/forensic-evidence (https://github.com/MISP/misp-
+      objects/blob/main/objects/forensic-evidence/definition.json) - An
+      object template to describe a digital forensic evidence.
+
+   *  objects/forged-document (https://github.com/MISP/misp-
+      objects/blob/main/objects/forged-document/definition.json) -
+      Object describing a forged document.
+
+   *  objects/ftm-Airplane (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Airplane/definition.json) - .
+
+   *  objects/ftm-Assessment (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Assessment/definition.json) - .
+
+   *  objects/ftm-Asset (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Asset/definition.json) - .
+
+   *  objects/ftm-Associate (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Associate/definition.json) - Non-
+      family association between two people.
+
+   *  objects/ftm-Audio (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Audio/definition.json) - .
+
+   *  objects/ftm-BankAccount (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-BankAccount/definition.json) - .
+
+   *  objects/ftm-Call (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Call/definition.json) - .
+
+   *  objects/ftm-Company (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Company/definition.json) - .
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 16]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/ftm-Contract (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Contract/definition.json) - An
+      contract or contract lot issued by an authority.  Multiple lots
+      may be awarded to different suppliers (see ContractAward). .
+
+   *  objects/ftm-ContractAward (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-ContractAward/definition.json) - A
+      contract or contract lot as awarded to a supplier.
+
+   *  objects/ftm-CourtCase (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-CourtCase/definition.json) - .
+
+   *  objects/ftm-CourtCaseParty (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-CourtCaseParty/definition.json) - .
+
+   *  objects/ftm-Debt (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Debt/definition.json) - A monetary
+      debt between two parties.
+
+   *  objects/ftm-Directorship (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Directorship/definition.json) - .
+
+   *  objects/ftm-Document (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Document/definition.json) - .
+
+   *  objects/ftm-Documentation (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Documentation/definition.json) - .
+
+   *  objects/ftm-EconomicActivity (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-EconomicActivity/definition.json) -
+      A foreign economic activity.
+
+   *  objects/ftm-Email (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Email/definition.json) - .
+
+   *  objects/ftm-Event (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Event/definition.json) - .
+
+   *  objects/ftm-Family (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Family/definition.json) - Family
+      relationship between two people.
+
+   *  objects/ftm-Folder (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Folder/definition.json) - .
+
+   *  objects/ftm-HyperText (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-HyperText/definition.json) - .
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 17]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/ftm-Image (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Image/definition.json) - .
+
+   *  objects/ftm-Land (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Land/definition.json) - .
+
+   *  objects/ftm-LegalEntity (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-LegalEntity/definition.json) - A
+      legal entity may be a person or a company.
+
+   *  objects/ftm-License (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-License/definition.json) - A grant
+      of land, rights or property.  A type of Contract.
+
+   *  objects/ftm-Membership (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Membership/definition.json) - .
+
+   *  objects/ftm-Message (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Message/definition.json) - .
+
+   *  objects/ftm-Organization (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Organization/definition.json) - .
+
+   *  objects/ftm-Ownership (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Ownership/definition.json) - .
+
+   *  objects/ftm-Package (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Package/definition.json) - .
+
+   *  objects/ftm-Page (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Page/definition.json) - .
+
+   *  objects/ftm-Pages (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Pages/definition.json) - .
+
+   *  objects/ftm-Passport (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Passport/definition.json) -
+      Passport.
+
+   *  objects/ftm-Payment (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Payment/definition.json) - A
+      monetary payment between two parties.
+
+   *  objects/ftm-Person (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Person/definition.json) - An
+      individual.
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 18]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/ftm-PlainText (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-PlainText/definition.json) - .
+
+   *  objects/ftm-PublicBody (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-PublicBody/definition.json) - A
+      public body, such as a ministry, department or state company.
+
+   *  objects/ftm-RealEstate (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-RealEstate/definition.json) - A
+      piece of land or property.
+
+   *  objects/ftm-Representation (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Representation/definition.json) - A
+      mediatory, intermediary, middleman, or broker acting on behalf of
+      a legal entity.
+
+   *  objects/ftm-Row (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Row/definition.json) - .
+
+   *  objects/ftm-Sanction (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Sanction/definition.json) - A
+      sanction designation.
+
+   *  objects/ftm-Succession (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Succession/definition.json) - Two
+      entities that legally succeed each other.
+
+   *  objects/ftm-Table (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Table/definition.json) - .
+
+   *  objects/ftm-TaxRoll (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-TaxRoll/definition.json) - A tax
+      declaration of an individual.
+
+   *  objects/ftm-UnknownLink (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-UnknownLink/definition.json) - .
+
+   *  objects/ftm-UserAccount (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-UserAccount/definition.json) - .
+
+   *  objects/ftm-Vehicle (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Vehicle/definition.json) - .
+
+   *  objects/ftm-Vessel (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Vessel/definition.json) - A boat or
+      ship.
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 19]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/ftm-Video (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Video/definition.json) - .
+
+   *  objects/ftm-Workbook (https://github.com/MISP/misp-
+      objects/blob/main/objects/ftm-Workbook/definition.json) - .
+
+   *  objects/geolocation (https://github.com/MISP/misp-
+      objects/blob/main/objects/geolocation/definition.json) - An object
+      to describe a geographic location.
+
+   *  objects/git-vuln-finder (https://github.com/MISP/misp-
+      objects/blob/main/objects/git-vuln-finder/definition.json) -
+      Export from git-vuln-finder.
+
+   *  objects/github-user (https://github.com/MISP/misp-
+      objects/blob/main/objects/github-user/definition.json) - GitHub
+      user.
+
+   *  objects/gitlab-user (https://github.com/MISP/misp-
+      objects/blob/main/objects/gitlab-user/definition.json) - GitLab
+      user.  Gitlab.com user or self-hosted GitLab instance.
+
+   *  objects/gtp-attack (https://github.com/MISP/misp-
+      objects/blob/main/objects/gtp-attack/definition.json) - GTP attack
+      object as seen on a GSM, UMTS or LTE network.
+
+   *  objects/http-request (https://github.com/MISP/misp-
+      objects/blob/main/objects/http-request/definition.json) - A single
+      HTTP request header.
+
+   *  objects/ilr-impact (https://github.com/MISP/misp-
+      objects/blob/main/objects/ilr-impact/definition.json) - Institut
+      Luxembourgeois de Regulation - Impact.
+
+   *  objects/ilr-notification-incident (https://github.com/MISP/misp-
+      objects/blob/main/objects/ilr-notification-incident/
+      definition.json) - Institut Luxembourgeois de Regulation -
+      Notification d'incident.
+
+   *  objects/image (https://github.com/MISP/misp-
+      objects/blob/main/objects/image/definition.json) - Object
+      describing an image file.
+
+   *  objects/impersonation (https://github.com/MISP/misp-
+      objects/blob/main/objects/impersonation/definition.json) -
+      Represent an impersonating account.
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 20]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/imsi-catcher (https://github.com/MISP/misp-
+      objects/blob/main/objects/imsi-catcher/definition.json) - IMSI
+      Catcher entry object based on the open source IMSI cather.
+
+   *  objects/instant-message (https://github.com/MISP/misp-
+      objects/blob/main/objects/instant-message/definition.json) -
+      Instant Message (IM) object template describing one or more IM
+      message.
+
+   *  objects/instant-message-group (https://github.com/MISP/misp-
+      objects/blob/main/objects/instant-message-group/definition.json) -
+      Instant Message (IM) group object template describing a public or
+      private IM group, channel or conversation.
+
+   *  objects/intel471-vulnerability-intelligence
+      (https://github.com/MISP/misp-objects/blob/main/objects/intel471-
+      vulnerability-intelligence/definition.json) - Intel 471
+      vulnerability intelligence object.
+
+   *  objects/intelmq_event (https://github.com/MISP/misp-
+      objects/blob/main/objects/intelmq_event/definition.json) - IntelMQ
+      Event.
+
+   *  objects/intelmq_report (https://github.com/MISP/misp-
+      objects/blob/main/objects/intelmq_report/definition.json) -
+      IntelMQ Report.
+
+   *  objects/internal-reference (https://github.com/MISP/misp-
+      objects/blob/main/objects/internal-reference/definition.json) -
+      Internal reference.
+
+   *  objects/interpol-notice (https://github.com/MISP/misp-
+      objects/blob/main/objects/interpol-notice/definition.json) - An
+      object which describes a Interpol notice.
+
+   *  objects/iot-device (https://github.com/MISP/misp-
+      objects/blob/main/objects/iot-device/definition.json) - An IoT
+      device.
+
+   *  objects/iot-firmware (https://github.com/MISP/misp-
+      objects/blob/main/objects/iot-firmware/definition.json) - A
+      firmware for an IoT device.
+
+   *  objects/ip-api-address (https://github.com/MISP/misp-
+      objects/blob/main/objects/ip-api-address/definition.json) - IP
+      Address information.  Useful if you are pulling your ip
+      information from ip-api.com.
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 21]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/ip-port (https://github.com/MISP/misp-
+      objects/blob/main/objects/ip-port/definition.json) - An IP address
+      (or domain or hostname) and a port seen as a tuple (or as a
+      triple) in a specific time frame.
+
+   *  objects/irc (https://github.com/MISP/misp-
+      objects/blob/main/objects/irc/definition.json) - An IRC object to
+      describe an IRC server and the associated channels.
+
+   *  objects/ja3 (https://github.com/MISP/misp-
+      objects/blob/main/objects/ja3/definition.json) - JA3 is a new
+      technique for creating SSL client fingerprints that are easy to
+      produce and can be easily shared for threat intelligence.
+      Fingerprints are composed of Client Hello packet; SSL Version,
+      Accepted Ciphers, List of Extensions, Elliptic Curves, and
+      Elliptic Curve Formats. https://github.com/salesforce/ja3
+      (https://github.com/salesforce/ja3).
+
+   *  objects/keybase-account (https://github.com/MISP/misp-
+      objects/blob/main/objects/keybase-account/definition.json) -
+      Information related to a keybase account, from API Users Object.
+
+   *  objects/leaked-document (https://github.com/MISP/misp-
+      objects/blob/main/objects/leaked-document/definition.json) -
+      Object describing a leaked document.
+
+   *  objects/legal-entity (https://github.com/MISP/misp-
+      objects/blob/main/objects/legal-entity/definition.json) - An
+      object to describe a legal entity.
+
+   *  objects/lnk (https://github.com/MISP/misp-
+      objects/blob/main/objects/lnk/definition.json) - LNK object
+      describing a Windows LNK binary file (aka Windows shortcut).
+
+   *  objects/macho (https://github.com/MISP/misp-
+      objects/blob/main/objects/macho/definition.json) - Object
+      describing a file in Mach-O format.
+
+   *  objects/macho-section (https://github.com/MISP/misp-
+      objects/blob/main/objects/macho-section/definition.json) - Object
+      describing a section of a file in Mach-O format.
+
+   *  objects/mactime-timeline-analysis (https://github.com/MISP/misp-
+      objects/blob/main/objects/mactime-timeline-analysis/
+      definition.json) - Mactime template, used in forensic
       investigations to describe the timeline of a file activity.
 
-   o  malware-config - Malware configuration recovered or extracted from
-      a malicious binary.
-
-   o  microblog - Microblog post like a Twitter tweet or a post on a
-      Facebook wall.
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 13]
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 22]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-   o  mutex - Object to describe mutual exclusion locks (mutex) as seen
-      in memory or computer program.
+   *  objects/malware-config (https://github.com/MISP/misp-
+      objects/blob/main/objects/malware-config/definition.json) -
+      Malware configuration recovered or extracted from a malicious
+      binary.
 
-   o  netflow - Netflow object describes an network object based on the
-      Netflowv5/v9 minimal definition.
+   *  objects/meme-image (https://github.com/MISP/misp-
+      objects/blob/main/objects/meme-image/definition.json) - Object
+      describing a meme (image).
 
-   o  network-connection - A local or remote network connection.
+   *  objects/microblog (https://github.com/MISP/misp-
+      objects/blob/main/objects/microblog/definition.json) - Microblog
+      post like a Twitter tweet or a post on a Facebook wall.
 
-   o  network-socket - Network socket object describes a local or remote
-      network connections based on the socket data structure.
+   *  objects/mutex (https://github.com/MISP/misp-
+      objects/blob/main/objects/mutex/definition.json) - Object to
+      describe mutual exclusion locks (mutex) as seen in memory or
+      computer program.
 
-   o  misc - An object which describes an organization.
+   *  objects/narrative (https://github.com/MISP/misp-
+      objects/blob/main/objects/narrative/definition.json) - Object
+      describing a narrative.
 
-   o  original-imported-file - Object describing the original file used
-      to import data in MISP.
+   *  objects/netflow (https://github.com/MISP/misp-
+      objects/blob/main/objects/netflow/definition.json) - Netflow
+      object describes an network object based on the Netflowv5/v9
+      minimal definition.
 
-   o  passive-dns - Passive DNS records as expressed in draft-dulaunoy-
-      dnsop-passive-dns-cof-01.
+   *  objects/network-connection (https://github.com/MISP/misp-
+      objects/blob/main/objects/network-connection/definition.json) - A
+      local or remote network connection.
 
-   o  paste - Paste or similar post from a website allowing to share
-      privately or publicly posts.
+   *  objects/network-socket (https://github.com/MISP/misp-
+      objects/blob/main/objects/network-socket/definition.json) -
+      Network socket object describes a local or remote network
+      connections based on the socket data structure.
 
-   o  pcap-metadata - Network packet capture metadata.
+   *  objects/news-agency (https://github.com/MISP/misp-
+      objects/blob/main/objects/news-agency/definition.json) - News
+      agencies compile news and disseminate news in bulk.
 
-   o  pe - Object describing a Portable Executable.
+   *  objects/news-media (https://github.com/MISP/misp-
+      objects/blob/main/objects/news-media/definition.json) - News media
+      are forms of mass media delivering news to the general public.
 
-   o  pe-section - Object describing a section of a Portable Executable.
-
-   o  person - An object which describes a person or an identity.
-
-   o  phishing - Phishing template to describe a phishing website and
-      its analysis.
-
-   o  phishing-kit - Object to describe a phishing-kit.
-
-   o  phone - A phone or mobile phone object which describe a phone.
-
-   o  process - Object describing a system process.
-
-   o  python-etvx-event-log - Event log object template to share
-      information of the activities conducted on a system. .
-
-   o  r2graphity - Indicators extracted from files using radare2 and
-      graphml.
-
-   o  regexp - An object describing a regular expression (regex or
-      regexp).  The object can be linked via a relationship to other
-
-
+   *  objects/organization (https://github.com/MISP/misp-
+      objects/blob/main/objects/organization/definition.json) - An
+      object which describes an organization.
 
 
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 14]
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 23]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-      attributes or objects to describe how it can be represented as a
-      regular expression.
+   *  objects/original-imported-file (https://github.com/MISP/misp-
+      objects/blob/main/objects/original-imported-file/definition.json)
+      - Object describing the original file used to import data in MISP.
 
-   o  registry-key - Registry key object describing a Windows registry
-      key with value and last-modified timestamp.
+   *  objects/parler-account (https://github.com/MISP/misp-
+      objects/blob/main/objects/parler-account/definition.json) - Parler
+      account.
 
-   o  regripper-NTUser - Regripper Object template designed to present
-      user specific configuration details extracted from the NTUSER.dat
-      hive.
+   *  objects/parler-comment (https://github.com/MISP/misp-
+      objects/blob/main/objects/parler-comment/definition.json) - Parler
+      comment.
 
-   o  regripper-sam-hive-single-user - Regripper Object template
-      designed to present user profile details extracted from the SAM
-      hive.
+   *  objects/parler-post (https://github.com/MISP/misp-
+      objects/blob/main/objects/parler-post/definition.json) - Parler
+      post (parley).
 
-   o  regripper-sam-hive-user-group - Regripper Object template designed
-      to present group profile details extracted from the SAM hive.
+   *  objects/passive-dns (https://github.com/MISP/misp-
+      objects/blob/main/objects/passive-dns/definition.json) - Passive
+      DNS records as expressed in draft-dulaunoy-dnsop-passive-dns-cof-
+      01.
 
-   o  regripper-software-hive-BHO - Regripper Object template designed
-      to gather information of the browser helper objects installed on
-      the system.
+   *  objects/paste (https://github.com/MISP/misp-
+      objects/blob/main/objects/paste/definition.json) - Paste or
+      similar post from a website allowing to share privately or
+      publicly posts.
 
-   o  regripper-software-hive-appInit-DLLS - Regripper Object template
-      designed to gather information of the DLL files installed on the
-      system.
+   *  objects/pcap-metadata (https://github.com/MISP/misp-
+      objects/blob/main/objects/pcap-metadata/definition.json) - Network
+      packet capture metadata.
 
-   o  regripper-software-hive-application-paths - Regripper Object
-      template designed to gather information of the application paths.
+   *  objects/pe (https://github.com/MISP/misp-
+      objects/blob/main/objects/pe/definition.json) - Object describing
+      a Portable Executable.
 
-   o  regripper-software-hive-applications-installed - Regripper Object
-      template designed to gather information of the applications
+   *  objects/pe-section (https://github.com/MISP/misp-
+      objects/blob/main/objects/pe-section/definition.json) - Object
+      describing a section of a Portable Executable.
+
+   *  objects/person (https://github.com/MISP/misp-
+      objects/blob/main/objects/person/definition.json) - An object
+      which describes a person or an identity.
+
+   *  objects/pgp-meta (https://github.com/MISP/misp-
+      objects/blob/main/objects/pgp-meta/definition.json) - Metadata
+      extracted from a PGP keyblock, message or signature.
+
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 24]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/phishing (https://github.com/MISP/misp-
+      objects/blob/main/objects/phishing/definition.json) - Phishing
+      template to describe a phishing website and its analysis.
+
+   *  objects/phishing-kit (https://github.com/MISP/misp-
+      objects/blob/main/objects/phishing-kit/definition.json) - Object
+      to describe a phishing-kit.
+
+   *  objects/phone (https://github.com/MISP/misp-
+      objects/blob/main/objects/phone/definition.json) - A phone or
+      mobile phone object which describe a phone.
+
+   *  objects/process (https://github.com/MISP/misp-
+      objects/blob/main/objects/process/definition.json) - Object
+      describing a system process.
+
+   *  objects/publication (https://github.com/MISP/misp-
+      objects/blob/main/objects/publication/definition.json) - An object
+      to describe a book, journal, or academic publication.
+
+   *  objects/python-etvx-event-log (https://github.com/MISP/misp-
+      objects/blob/main/objects/python-etvx-event-log/definition.json) -
+      Event log object template to share information of the activities
+      conducted on a system. .
+
+   *  objects/r2graphity (https://github.com/MISP/misp-
+      objects/blob/main/objects/r2graphity/definition.json) - Indicators
+      extracted from files using radare2 and graphml.
+
+   *  objects/reddit-account (https://github.com/MISP/misp-
+      objects/blob/main/objects/reddit-account/definition.json) - Reddit
+      account.
+
+   *  objects/reddit-comment (https://github.com/MISP/misp-
+      objects/blob/main/objects/reddit-comment/definition.json) - A
+      Reddit post comment.
+
+   *  objects/reddit-post (https://github.com/MISP/misp-
+      objects/blob/main/objects/reddit-post/definition.json) - A Reddit
+      post.
+
+   *  objects/reddit-subreddit (https://github.com/MISP/misp-
+      objects/blob/main/objects/reddit-subreddit/definition.json) -
+      Public or private subreddit.
+
+
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 25]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/regexp (https://github.com/MISP/misp-
+      objects/blob/main/objects/regexp/definition.json) - An object
+      describing a regular expression (regex or regexp).  The object can
+      be linked via a relationship to other attributes or objects to
+      describe how it can be represented as a regular expression.
+
+   *  objects/registry-key (https://github.com/MISP/misp-
+      objects/blob/main/objects/registry-key/definition.json) - Registry
+      key object describing a Windows registry key with value and last-
+      modified timestamp.
+
+   *  objects/regripper-NTUser (https://github.com/MISP/misp-
+      objects/blob/main/objects/regripper-NTUser/definition.json) -
+      Regripper Object template designed to present user specific
+      configuration details extracted from the NTUSER.dat hive.
+
+   *  objects/regripper-sam-hive-single-user (https://github.com/MISP/
+      misp-objects/blob/main/objects/regripper-sam-hive-single-user/
+      definition.json) - Regripper Object template designed to present
+      user profile details extracted from the SAM hive.
+
+   *  objects/regripper-sam-hive-user-group (https://github.com/MISP/
+      misp-objects/blob/main/objects/regripper-sam-hive-user-group/
+      definition.json) - Regripper Object template designed to present
+      group profile details extracted from the SAM hive.
+
+   *  objects/regripper-software-hive-BHO (https://github.com/MISP/misp-
+      objects/blob/main/objects/regripper-software-hive-BHO/
+      definition.json) - Regripper Object template designed to gather
+      information of the browser helper objects installed on the system.
+
+   *  objects/regripper-software-hive-appInit-DLLS
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      software-hive-appInit-DLLS/definition.json) - Regripper Object
+      template designed to gather information of the DLL files installed
+      on the system.
+
+   *  objects/regripper-software-hive-application-paths
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      software-hive-application-paths/definition.json) - Regripper
+      Object template designed to gather information of the application
+      paths.
+
+   *  objects/regripper-software-hive-applications-installed
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      software-hive-applications-installed/definition.json) - Regripper
+      Object template designed to gather information of the applications
       installed on the system.
 
-   o  regripper-software-hive-command-shell - Regripper Object template
-      designed to gather information of the shell commands executed on
-      the system.
-
-   o  regripper-software-hive-windows-general-info - Regripper Object
-      template designed to gather general windows information extracted
-      from the software-hive.
-
-   o  regripper-software-hive-software-run - Regripper Object template
-      designed to gather information of the applications set to run on
-      the system.
-
-   o  regripper-software-hive-userprofile-winlogon - Regripper Object
-      template designed to gather user profile information when the user
-      logs onto the system, gathered from the software hive.
 
 
-
-
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 15]
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 26]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-   o  regripper-system-hive-firewall-configuration - Regripper Object
-      template designed to present firewall configuration information
+   *  objects/regripper-software-hive-command-shell
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      software-hive-command-shell/definition.json) - Regripper Object
+      template designed to gather information of the shell commands
+      executed on the system.
+
+   *  objects/regripper-software-hive-software-run
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      software-hive-software-run/definition.json) - Regripper Object
+      template designed to gather information of the applications set to
+      run on the system.
+
+   *  objects/regripper-software-hive-userprofile-winlogon
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      software-hive-userprofile-winlogon/definition.json) - Regripper
+      Object template designed to gather user profile information when
+      the user logs onto the system, gathered from the software hive.
+
+   *  objects/regripper-software-hive-windows-general-info
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      software-hive-windows-general-info/definition.json) - Regripper
+      Object template designed to gather general windows information
+      extracted from the software-hive.
+
+   *  objects/regripper-system-hive-firewall-configuration
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      system-hive-firewall-configuration/definition.json) - Regripper
+      Object template designed to present firewall configuration
+      information extracted from the system-hive.
+
+   *  objects/regripper-system-hive-general-configuration
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      system-hive-general-configuration/definition.json) - Regripper
+      Object template designed to present general system properties
       extracted from the system-hive.
 
-   o  regripper-system-hive-general-configuration - Regripper Object
-      template designed to present general system properties extracted
-      from the system-hive.
+   *  objects/regripper-system-hive-network-information
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      system-hive-network-information/definition.json) - Regripper
+      object template designed to gather network information from the
+      system-hive.
 
-   o  regripper-system-hive-network-information. - Regripper object
-      template designed to gather network information from the system-
-      hive.
+   *  objects/regripper-system-hive-services-drivers
+      (https://github.com/MISP/misp-objects/blob/main/objects/regripper-
+      system-hive-services-drivers/definition.json) - Regripper Object
+      template designed to gather information regarding the services/
+      drivers from the system-hive.
 
-   o  regripper-system-hive-services-drivers - Regripper Object template
-      designed to gather information regarding the services/drivers from
-      the system-hive.
 
-   o  report - Metadata used to generate an executive level report.
 
-   o  research-scanner - Information related to known scanning activity
-      (e.g. from research projects).
 
-   o  rogue-dns - Rogue DNS as defined by CERT.br.
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 27]
+
+Internet-Draft         MISP object template format         November 2021
 
-   o  rtir - RTIR - Request Tracker for Incident Response.
 
-   o  sandbox-report - Sandbox report.
+   *  objects/report (https://github.com/MISP/misp-
+      objects/blob/main/objects/report/definition.json) - Metadata used
+      to generate an executive level report.
 
-   o  sb-signature - Sandbox detection signature.
+   *  objects/research-scanner (https://github.com/MISP/misp-
+      objects/blob/main/objects/research-scanner/definition.json) -
+      Information related to known scanning activity (e.g. from research
+      projects).
 
-   o  script - Object describing a computer program written to be run in
-      a special run-time environment.  The script or shell script can be
-      used for malicious activities but also as support tools for threat
+   *  objects/rogue-dns (https://github.com/MISP/misp-
+      objects/blob/main/objects/rogue-dns/definition.json) - Rogue DNS
+      as defined by CERT.br.
+
+   *  objects/rtir (https://github.com/MISP/misp-
+      objects/blob/main/objects/rtir/definition.json) - RTIR - Request
+      Tracker for Incident Response.
+
+   *  objects/sandbox-report (https://github.com/MISP/misp-
+      objects/blob/main/objects/sandbox-report/definition.json) -
+      Sandbox report.
+
+   *  objects/sb-signature (https://github.com/MISP/misp-
+      objects/blob/main/objects/sb-signature/definition.json) - Sandbox
+      detection signature.
+
+   *  objects/scheduled-event (https://github.com/MISP/misp-
+      objects/blob/main/objects/scheduled-event/definition.json) - Event
+      object template describing a gathering of individuals in
+      meatspace.
+
+   *  objects/scrippsco2-c13-daily (https://github.com/MISP/misp-
+      objects/blob/main/objects/scrippsco2-c13-daily/definition.json) -
+      Daily average C13 concentrations (ppm) derived from flask air
+      samples.
+
+   *  objects/scrippsco2-c13-monthly (https://github.com/MISP/misp-
+      objects/blob/main/objects/scrippsco2-c13-monthly/definition.json)
+      - Monthly average C13 concentrations (ppm) derived from flask air
+      samples.
+
+   *  objects/scrippsco2-co2-daily (https://github.com/MISP/misp-
+      objects/blob/main/objects/scrippsco2-co2-daily/definition.json) -
+      Daily average CO2 concentrations (ppm) derived from flask air
+      samples.
+
+
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 28]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/scrippsco2-co2-monthly (https://github.com/MISP/misp-
+      objects/blob/main/objects/scrippsco2-co2-monthly/definition.json)
+      - Monthly average CO2 concentrations (ppm) derived from flask air
+      samples.
+
+   *  objects/scrippsco2-o18-daily (https://github.com/MISP/misp-
+      objects/blob/main/objects/scrippsco2-o18-daily/definition.json) -
+      Daily average O18 concentrations (ppm) derived from flask air
+      samples.
+
+   *  objects/scrippsco2-o18-monthly (https://github.com/MISP/misp-
+      objects/blob/main/objects/scrippsco2-o18-monthly/definition.json)
+      - Monthly average O18 concentrations (ppm) derived from flask air
+      samples.
+
+   *  objects/script (https://github.com/MISP/misp-
+      objects/blob/main/objects/script/definition.json) - Object
+      describing a computer program written to be run in a special run-
+      time environment.  The script or shell script can be used for
+      malicious activities but also as support tools for threat
       analysts.
 
-   o  shell-commands - Object describing a series of shell commands
-      executed.  This object can be linked with malicious files in order
-      to describe a specific execution of shell commands.
+   *  objects/shell-commands (https://github.com/MISP/misp-
+      objects/blob/main/objects/shell-commands/definition.json) - Object
+      describing a series of shell commands executed.  This object can
+      be linked with malicious files in order to describe a specific
+      execution of shell commands.
 
-   o  short-message-service - Short Message Service (SMS) object
-      template describing one or more SMS message.  Restriction of the
-      initial format 3GPP 23.038 GSM character set doesn't apply.
+   *  objects/shodan-report (https://github.com/MISP/misp-
+      objects/blob/main/objects/shodan-report/definition.json) - Shodan
+      Report for a given IP.
 
-   o  shortened-link - Shortened link and its redirect target.
+   *  objects/short-message-service (https://github.com/MISP/misp-
+      objects/blob/main/objects/short-message-service/definition.json) -
+      Short Message Service (SMS) object template describing one or more
+      SMS message.  Restriction of the initial format 3GPP 23.038 GSM
+      character set doesn't apply.
 
-   o  splunk - Splunk / Splunk ES object.
+   *  objects/shortened-link (https://github.com/MISP/misp-
+      objects/blob/main/objects/shortened-link/definition.json) -
+      Shortened link and its redirect target.
 
-   o  ss7-attack - SS7 object of an attack seen on a GSM, UMTS or LTE
-      network via SS7 logging.
+   *  objects/social-media-group (https://github.com/MISP/misp-
+      objects/blob/main/objects/social-media-group/definition.json) -
+      Social media group object template describing a public or private
+      group or channel.
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 16]
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 29]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-   o  ssh-authorized-keys - An object to store ssh authorized keys file.
+   *  objects/splunk (https://github.com/MISP/misp-
+      objects/blob/main/objects/splunk/definition.json) - Splunk /
+      Splunk ES object.
 
-   o  stix2-pattern - An object describing a STIX pattern.  The object
-      can be linked via a relationship to other attributes or objects to
-      describe how it can be represented as a STIX pattern.
+   *  objects/ss7-attack (https://github.com/MISP/misp-
+      objects/blob/main/objects/ss7-attack/definition.json) - SS7 object
+      of an attack seen on a GSM, UMTS or LTE network via SS7 logging.
 
-   o  suricata - An object describing one or more Suricata rule(s) along
-      with version and contextual information.
+   *  objects/ssh-authorized-keys (https://github.com/MISP/misp-
+      objects/blob/main/objects/ssh-authorized-keys/definition.json) -
+      An object to store ssh authorized keys file.
 
-   o  target-system - Description about an targeted system, this could
-      potentially be a compromissed internal system.
+   *  objects/stix2-pattern (https://github.com/MISP/misp-
+      objects/blob/main/objects/stix2-pattern/definition.json) - An
+      object describing a STIX pattern.  The object can be linked via a
+      relationship to other attributes or objects to describe how it can
+      be represented as a STIX pattern.
 
-   o  threatgrid-report - ThreatGrid report.
+   *  objects/suricata (https://github.com/MISP/misp-
+      objects/blob/main/objects/suricata/definition.json) - An object
+      describing one or more Suricata rule(s) along with version and
+      contextual information.
 
-   o  timecode - Timecode object to describe a start of video sequence
-      (e.g.  CCTV evidence) and the end of the video sequence.
+   *  objects/target-system (https://github.com/MISP/misp-
+      objects/blob/main/objects/target-system/definition.json) -
+      Description about an targeted system, this could potentially be a
+      compromissed internal system.
 
-   o  timesketch-timeline - A timesketch timeline object based on
-      mandatory field in timesketch to describe a log entry.
+   *  objects/threatgrid-report (https://github.com/MISP/misp-
+      objects/blob/main/objects/threatgrid-report/definition.json) -
+      ThreatGrid report.
 
-   o  timesketch_message - A timesketch message entry.
+   *  objects/timecode (https://github.com/MISP/misp-
+      objects/blob/main/objects/timecode/definition.json) - Timecode
+      object to describe a start of video sequence (e.g.  CCTV evidence)
+      and the end of the video sequence.
 
-   o  timestamp - A generic timestamp object to represent time including
-      first time and last time seen.  Relationship will then define the
-      kind of time relationship.
+   *  objects/timesketch-timeline (https://github.com/MISP/misp-
+      objects/blob/main/objects/timesketch-timeline/definition.json) - A
+      timesketch timeline object based on mandatory field in timesketch
+      to describe a log entry.
 
-   o  tor-hiddenservice - Tor hidden service (onion service) object.
-
-   o  tor-node - Tor node (which protects your privacy on the internet
-      by hiding the connection between users Internet address and the
-      services used by the users) description which are part of the Tor
-      network at a time.
-
-   o  tracking-id - Analytics and tracking ID such as used in Google
-      Analytics or other analytic platform.
-
-   o  transaction - An object to describe a financial transaction.
-
-   o  url - url object describes an url along with its normalized field
-      (like extracted using faup parsing library) and its metadata.
-
-   o  vehicle - Vehicle object template to describe a vehicle
-      information and registration.
-
-   o  victim - Victim object describes the target of an attack or abuse.
-
-   o  virustotal-report - VirusTotal report.
-
+   *  objects/timesketch_message (https://github.com/MISP/misp-
+      objects/blob/main/objects/timesketch_message/definition.json) - A
+      timesketch message entry.
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 17]
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 30]
 
-Internet-Draft         MISP object template format            April 2018
+Internet-Draft         MISP object template format         November 2021
 
 
-   o  vulnerability - Vulnerability object describing a common
-      vulnerability enumeration which can describe published,
-      unpublished, under review or embargo vulnerability for software,
-      equipments or hardware.
+   *  objects/timestamp (https://github.com/MISP/misp-
+      objects/blob/main/objects/timestamp/definition.json) - A generic
+      timestamp object to represent time including first time and last
+      time seen.  Relationship will then define the kind of time
+      relationship.
 
-   o  whois - Whois records information for a domain name or an IP
-      address.
+   *  objects/tor-hiddenservice (https://github.com/MISP/misp-
+      objects/blob/main/objects/tor-hiddenservice/definition.json) - Tor
+      hidden service (onion service) object.
 
-   o  x509 - x509 object describing a X.509 certificate.
+   *  objects/tor-node (https://github.com/MISP/misp-
+      objects/blob/main/objects/tor-node/definition.json) - Tor node
+      (which protects your privacy on the internet by hiding the
+      connection between users Internet address and the services used by
+      the users) description which are part of the Tor network at a
+      time.
 
-   o  yabin - yabin.py generates Yara rules from function prologs, for
-      matching and hunting binaries. ref: https://github.com/AlienVault-
-      OTX/yabin [3].
+   *  objects/tracking-id (https://github.com/MISP/misp-
+      objects/blob/main/objects/tracking-id/definition.json) - Analytics
+      and tracking ID such as used in Google Analytics or other analytic
+      platform.
 
-   o  yara - An object describing a YARA rule along with its version.
+   *  objects/transaction (https://github.com/MISP/misp-
+      objects/blob/main/objects/transaction/definition.json) - An object
+      to describe a financial transaction.
+
+   *  objects/translation (https://github.com/MISP/misp-
+      objects/blob/main/objects/translation/definition.json) - Used to
+      keep a text and its translation.
+
+   *  objects/trustar_report (https://github.com/MISP/misp-
+      objects/blob/main/objects/trustar_report/definition.json) -
+      TruStar Report.
+
+   *  objects/tsk-chats (https://github.com/MISP/misp-
+      objects/blob/main/objects/tsk-chats/definition.json) - An Object
+      Template to gather information from evidential or interesting
+      exchange of messages identified during a digital forensic
+      investigation.
+
+   *  objects/tsk-web-bookmark (https://github.com/MISP/misp-
+      objects/blob/main/objects/tsk-web-bookmark/definition.json) - An
+      Object Template to add evidential bookmarks identified during a
+      digital forensic investigation.
+
+
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 31]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/tsk-web-cookie (https://github.com/MISP/misp-
+      objects/blob/main/objects/tsk-web-cookie/definition.json) - An
+      TSK-Autopsy Object Template to represent cookies identified during
+      a forensic investigation.
+
+   *  objects/tsk-web-downloads (https://github.com/MISP/misp-
+      objects/blob/main/objects/tsk-web-downloads/definition.json) - An
+      Object Template to add web-downloads.
+
+   *  objects/tsk-web-history (https://github.com/MISP/misp-
+      objects/blob/main/objects/tsk-web-history/definition.json) - An
+      Object Template to share web history information.
+
+   *  objects/tsk-web-search-query (https://github.com/MISP/misp-
+      objects/blob/main/objects/tsk-web-search-query/definition.json) -
+      An Object Template to share web search query information.
+
+   *  objects/twitter-account (https://github.com/MISP/misp-
+      objects/blob/main/objects/twitter-account/definition.json) -
+      Twitter account.
+
+   *  objects/twitter-list (https://github.com/MISP/misp-
+      objects/blob/main/objects/twitter-list/definition.json) - Twitter
+      list.
+
+   *  objects/twitter-post (https://github.com/MISP/misp-
+      objects/blob/main/objects/twitter-post/definition.json) - Twitter
+      post (tweet).
+
+   *  objects/url (https://github.com/MISP/misp-
+      objects/blob/main/objects/url/definition.json) - url object
+      describes an url along with its normalized field (like extracted
+      using faup parsing library) and its metadata.
+
+   *  objects/user-account (https://github.com/MISP/misp-
+      objects/blob/main/objects/user-account/definition.json) - .
+
+   *  objects/vehicle (https://github.com/MISP/misp-
+      objects/blob/main/objects/vehicle/definition.json) - Vehicle
+      object template to describe a vehicle information and
+      registration.
+
+   *  objects/victim (https://github.com/MISP/misp-
+      objects/blob/main/objects/victim/definition.json) - Victim object
+      describes the target of an attack or abuse.
+
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 32]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/virustotal-graph (https://github.com/MISP/misp-
+      objects/blob/main/objects/virustotal-graph/definition.json) -
+      VirusTotal graph.
+
+   *  objects/virustotal-report (https://github.com/MISP/misp-
+      objects/blob/main/objects/virustotal-report/definition.json) -
+      VirusTotal report.
+
+   *  objects/vulnerability (https://github.com/MISP/misp-
+      objects/blob/main/objects/vulnerability/definition.json) -
+      Vulnerability object describing a common vulnerability enumeration
+      which can describe published, unpublished, under review or embargo
+      vulnerability for software, equipments or hardware.
+
+   *  objects/weakness (https://github.com/MISP/misp-
+      objects/blob/main/objects/weakness/definition.json) - Weakness
+      object describing a common weakness enumeration which can describe
+      usable, incomplete, draft or deprecated weakness for software,
+      equipment of hardware.
+
+   *  objects/whois (https://github.com/MISP/misp-
+      objects/blob/main/objects/whois/definition.json) - Whois records
+      information for a domain name or an IP address.
+
+   *  objects/x509 (https://github.com/MISP/misp-
+      objects/blob/main/objects/x509/definition.json) - x509 object
+      describing a X.509 certificate.
+
+   *  objects/yabin (https://github.com/MISP/misp-
+      objects/blob/main/objects/yabin/definition.json) - yabin.py
+      generates Yara rules from function prologs, for matching and
+      hunting binaries. ref: https://github.com/AlienVault-OTX/yabin
+      (https://github.com/AlienVault-OTX/yabin).
+
+   *  objects/yara (https://github.com/MISP/misp-
+      objects/blob/main/objects/yara/definition.json) - An object
+      describing a YARA rule (or a YARA rule name) along with its
+      version.
+
+   *  objects/youtube-channel (https://github.com/MISP/misp-
+      objects/blob/main/objects/youtube-channel/definition.json) - A
+      YouTube channel.
+
+   *  objects/youtube-comment (https://github.com/MISP/misp-
+      objects/blob/main/objects/youtube-comment/definition.json) - A
+      YouTube video comment.
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 33]
+
+Internet-Draft         MISP object template format         November 2021
+
+
+   *  objects/youtube-playlist (https://github.com/MISP/misp-
+      objects/blob/main/objects/youtube-playlist/definition.json) - A
+      YouTube playlist.
+
+   *  objects/youtube-video (https://github.com/MISP/misp-
+      objects/blob/main/objects/youtube-video/definition.json) - A
+      YouTube video.
 
 4.  Acknowledgements
 
    The authors wish to thank all the MISP community who are supporting
    the creation of open standards in threat intelligence sharing.
 
-5.  References
-
-5.1.  Normative References
+5.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -994,7 +1880,7 @@ Internet-Draft         MISP object template format            April 2018
               DOI 10.17487/RFC8259, December 2017,
               <https://www.rfc-editor.org/info/rfc8259>.
 
-5.2.  Informative References
+6.  Informative References
 
    [MISP-O]   Community, M., "MISP Objects - shared and common object
               templates", <https://github.com/MISP/misp-objects>.
@@ -1003,37 +1889,30 @@ Internet-Draft         MISP object template format            April 2018
               community, M., "MISP objects directory", 2018,
               <https://www.misp-project.org/objects.html>.
 
-
-
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 18]
-
-Internet-Draft         MISP object template format            April 2018
-
-
-5.3.  URIs
-
-   [1] https://www.caida.org/tools/taxonomy/anonymization.xml
-
-   [2] https://github.com/salesforce/ja3
-
-   [3] https://github.com/AlienVault-OTX/yabin
-
 Authors' Addresses
 
    Alexandre Dulaunoy
    Computer Incident Response Center Luxembourg
    16, bd d'Avranches
-   Luxembourg  L-1611
+   L-L-1611 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 34]
+
+Internet-Draft         MISP object template format         November 2021
+
+
    Email: alexandre.dulaunoy@circl.lu
 
 
    Andras Iklody
    Computer Incident Response Center Luxembourg
    16, bd d'Avranches
-   Luxembourg  L-1611
+   L-L-1611 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
@@ -1061,4 +1940,21 @@ Authors' Addresses
 
 
 
-Dulaunoy & Iklody       Expires October 12, 2018               [Page 19]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Dulaunoy & Iklody          Expires 25 May 2022                 [Page 35]
