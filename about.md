@@ -41,8 +41,8 @@ A host of proprietary and open source software are implementing and using the MI
 ~~~
 CIRCL
 c/o securitymadein.lu
-16, bd d'Avranches
-Luxembourg, L-1160
+122, rue Adolphe Fischer
+Luxembourg, L-1521
 Luxembourg
 (+352) 247 88444
 info@misp-project.org
