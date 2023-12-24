@@ -11,29 +11,28 @@
 <meta content="
        This document describes the MISP galaxy format which describes a simple JSON format to represent galaxies and clusters that can be attached to MISP events or attributes. A public directory of MISP galaxies is available and relies on the MISP galaxy format. MISP galaxies are used to add further informations on a MISP event. MISP galaxy is a public repository     of known malware, threats actors and various other collections of data that can be used to mark, classify or label data in threat information sharing. 
     " name="description">
-<meta content="xml2rfc 3.9.1" name="generator">
-<meta content="draft-00" name="ietf.draft">
+<meta content="xml2rfc 3.12.1" name="generator">
+<meta content="draft-08" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.9.1
-    Python 3.6.9
+  xml2rfc 3.12.1
+    Python 3.8.10
     appdirs 1.4.4
-    ConfigArgParse 1.5.2
-    google-i18n-address 2.3.5
-    html5lib 1.0.1
-    intervaltree 2.1.0
-    Jinja2 2.11.2
+    ConfigArgParse 1.5.3
+    google-i18n-address 2.5.0
+    html5lib 1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.2
     kitchen 1.2.6
-    lxml 4.6.3
+    lxml 4.9.2
     pycairo 1.16.2
-    pycountry 18.12.8
-    pyflakes 2.1.1
-    PyYAML 5.4.1
-    requests 2.25.1
-    setuptools 57.1.0
-    six 1.15.0
-    WeasyPrint 48
+    pycountry 22.3.5
+    pyflakes 2.4.0
+    PyYAML 6.0
+    requests 2.31.0
+    setuptools 68.1.2
+    six 1.16.0
 -->
-<link href="misp-standard-galaxy-format.xml" rel="alternate" type="application/rfc+xml">
+<link href="raw.md.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -386,6 +385,12 @@ hr {
 #identifiers dd {
   float: left;
   margin-bottom: 0;
+}
+/* Fix PDF info block run off issue */
+@media print {
+  #identifiers dd {
+    float: none;
+  }
 }
 #identifiers .authors .author {
   display: inline-block;
@@ -1081,7 +1086,7 @@ tr:nth-child(2n+1) > td {
 }
 /* Change the approach to avoiding breaks inside artwork etc. */
 figure, pre, table, .artwork, .sourcecode  {
-  break-before: avoid-page;
+  break-before: auto;
   break-after: auto;
 }
 /* Avoid breaks between <dt> and <dd> */
@@ -1182,11 +1187,11 @@ li > p:last-of-type {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">MISP galaxy format</td>
-<td class="right">November 2021</td>
+<td class="right">December 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Dulaunoy, et al.</td>
-<td class="center">Expires 25 May 2022</td>
+<td class="center">Expires 26 June 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1196,15 +1201,15 @@ li > p:last-of-type {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">Network Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-00</dd>
+<dd class="internet-draft">draft-08</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-11-21" class="published">21 November 2021</time>
+<time datetime="2023-12-24" class="published">24 December 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-05-25">25 May 2022</time></dd>
+<dd class="expires"><time datetime="2024-06-26">26 June 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1246,7 +1251,7 @@ li > p:last-of-type {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1255,7 +1260,7 @@ li > p:last-of-type {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2021 IETF Trust and the persons identified as the
+            Copyright (c) 2023 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1271,53 +1276,53 @@ li > p:last-of-type {
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty ulBare compact toc">
-<li class="ulEmpty ulBare compact toc" id="section-toc.1-1.1">
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
-<ul class="ulEmpty compact toc ulBare">
-<li class="ulEmpty compact toc ulBare" id="section-toc.1-1.1.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-conventions-and-terminology" class="xref">Conventions and Terminology</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty ulBare compact toc" id="section-toc.1-1.2">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-format" class="xref">Format</a></p>
-<ul class="ulEmpty compact toc ulBare">
-<li class="ulEmpty compact toc ulBare" id="section-toc.1-1.2.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-overview" class="xref">Overview</a></p>
 </li>
-              <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.2.2.2">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-values" class="xref">values</a></p>
 </li>
-              <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.2.2.3">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-related" class="xref">related</a></p>
 </li>
-              <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.2.2.4">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-meta" class="xref">meta</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty ulBare compact toc" id="section-toc.1-1.3">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-json-schema" class="xref">JSON Schema</a></p>
-<ul class="ulEmpty compact toc ulBare">
-<li class="ulEmpty compact toc ulBare" id="section-toc.1-1.3.2.1">
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-misp-galaxy-format-galaxy" class="xref">MISP galaxy format - galaxy</a></p>
 </li>
-              <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.3.2.2">
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-misp-galaxy-format-clusters" class="xref">MISP galaxy format - clusters</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty ulBare compact toc" id="section-toc.1-1.4">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
-          <li class="ulEmpty ulBare compact toc" id="section-toc.1-1.5">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-          <li class="ulEmpty ulBare compact toc" id="section-toc.1-1.6">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
-          <li class="ulEmpty ulBare compact toc" id="section-toc.1-1.7">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
@@ -1376,7 +1381,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
 <a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-related" class="section-name selfRef">related</a>
         </h3>
 <p id="section-2.3-1">Related contains a list of JSON key value pairs which describe the related values in this galaxy cluster or to other galaxy clusters. The JSON object contains three fields, dest-uuid, type and tags. The dest-uuid represents the target UUID which encompasses a relation of some type. The dest-uuid is represented as a string and <span class="bcp14">MUST</span> be present. The type is represented as a string and <span class="bcp14">MUST</span> be present and <span class="bcp14">SHOULD</span> be selected from the relationship types available in MISP objects <span>[<a href="#MISP-R" class="xref">MISP-R</a>]</span>.  The tags is a list of string which labels the related relationship such as the level of similarities, level of certainty, trust or confidence in the relationship, false-positive. A tag is represented in machine tag format which is a string an <span class="bcp14">SHOULD</span> be present.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.3-2">
+<div class="alignLeft art-text artwork" id="section-2.3-2">
 <pre>"related": [ {
   "dest-uuid": "f873db71-3d53-41d5-b141-530675ade27a",
   "type": "similar",
@@ -1391,13 +1396,13 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
         <h3 id="name-meta">
 <a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-meta" class="section-name selfRef">meta</a>
         </h3>
-<p id="section-2.4-1">Meta contains a list of custom defined JSON key value pairs. Users <span class="bcp14">SHOULD</span> reuse commonly used keys such as complexity, effectiveness, country, possible_issues, colour, motive, impact, refs, synonyms, status, date, encryption, extensions, ransomnotes, ransomnotes-filenames, ransomnotes-refs, suspected-victims, suspected-state-sponsor, type-of-incident, target-category, cfr-suspected-victims, cfr-suspected-state-sponsor, cfr-type-of-incident, cfr-target-category, suspected-victims, suspected-state-sponsor, attribution-confidence, payment-method, price, spoken-language, official-refs wherever applicable. Additional meta field <span class="bcp14">MAY</span> be added without the need to be referenced or registered in advance.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.4-1">Meta contains a list of custom defined JSON key value pairs. Users <span class="bcp14">SHOULD</span> reuse commonly used keys such as complexity, effectiveness, country, external_id, possible_issues, colour, motive, impact, refs, synonyms, status, date, encryption, extensions, ransomnotes, ransomnotes-filenames, ransomnotes-refs, suspected-victims, suspected-state-sponsor, type-of-incident, target-category, cfr-suspected-victims, cfr-suspected-state-sponsor, cfr-type-of-incident, cfr-target-category, suspected-victims, suspected-state-sponsor, attribution-confidence, payment-method, price, spoken-language, official-refs wherever applicable. Additional meta field <span class="bcp14">MAY</span> be added without the need to be referenced or registered in advance.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
 <p id="section-2.4-2">refs, synonyms, official-refs <span class="bcp14">SHALL</span> be used to give further informations. refs is represented as an array containing one or more strings and <span class="bcp14">SHALL</span> be present. synonyms is represented as an array containing one or more strings and <span class="bcp14">SHALL</span> be present. official-refs is represented as an array containing one or more strings and <span class="bcp14">SHALL</span> be present.<a href="#section-2.4-2" class="pilcrow">¶</a></p>
 <p id="section-2.4-3">date, status <span class="bcp14">MAY</span> be used to give time information about an cluster. date is represented as a string describing a time or period and <span class="bcp14">SHALL</span> be present. status is represented as a string describing the current status of the clusters. It <span class="bcp14">MAY</span> also describe a time or period and <span class="bcp14">SHALL</span> be present.<a href="#section-2.4-3" class="pilcrow">¶</a></p>
 <p id="section-2.4-4">colour fields <span class="bcp14">MAY</span> be used at predicates or values level to set a specify colour that <span class="bcp14">MAY</span> be used by the implementation. The colour field is described as an RGB colour fill in hexadecimal representation.<a href="#section-2.4-4" class="pilcrow">¶</a></p>
-<p id="section-2.4-5">complexity, effectiveness, impact, possible<em>issues <span class="bcp14">MAY</span> be used to give further information in preventive-measure galaxy. complexity is represented by an enumerated value from a fixed vocabulary and <span class="bcp14">SHALL</span> be present. effectiveness is represented by an enumerated value from a fixed vocabulary and <span class="bcp14">SHALL</span> be present. impact is represented by an enumerated value from a fixed vocabulary and <span class="bcp14">SHALL</span> be present. possible</em>issues is represented as a string and <span class="bcp14">SHOULD</span> be present.<a href="#section-2.4-5" class="pilcrow">¶</a></p>
+<p id="section-2.4-5">complexity, effectiveness, impact, possible_issues <span class="bcp14">MAY</span> be used to give further information in preventive-measure galaxy. complexity is represented by an enumerated value from a fixed vocabulary and <span class="bcp14">SHALL</span> be present. effectiveness is represented by an enumerated value from a fixed vocabulary and <span class="bcp14">SHALL</span> be present. impact is represented by an enumerated value from a fixed vocabulary and <span class="bcp14">SHALL</span> be present. possible_issues is represented as a string and <span class="bcp14">SHOULD</span> be present.<a href="#section-2.4-5" class="pilcrow">¶</a></p>
 <p id="section-2.4-6">Example use of the complexity, effectiveness, impact, possible_issues fields in the preventive-measure galaxy:<a href="#section-2.4-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4-7">
+<div class="alignLeft art-text artwork" id="section-2.4-7">
 <pre>{
   "meta": {
     "refs": [
@@ -1419,7 +1424,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
 </div>
 <p id="section-2.4-8">country, motive, spoken-language <span class="bcp14">MAY</span> be used to give further information in threat-actor galaxy. country is represented as a string and <span class="bcp14">SHOULD</span> be present. motive is represented as a string and <span class="bcp14">SHOULD</span> be present. spoken-language is represented as an array containing one or more strings describing a language using ISO 639-2 code and <span class="bcp14">SHALL</span> be present.<a href="#section-2.4-8" class="pilcrow">¶</a></p>
 <p id="section-2.4-9">Example use of the country, motive fields in the threat-actor galaxy:<a href="#section-2.4-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4-10">
+<div class="alignLeft art-text artwork" id="section-2.4-10">
 <pre>{
   "meta": {
     "country": "CN",
@@ -1443,7 +1448,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
 </div>
 <p id="section-2.4-11">encryption, extensions, ransomnotes, ransomnotes-filenames, ransomnotes-refs, payment-method, price <span class="bcp14">MAY</span> be used to give further information in ransomware galaxy. encryption is represented as a string and <span class="bcp14">SHALL</span> be present. extensions is represented as an array containing one or more strings and <span class="bcp14">SHALL</span> be present. ransomnotes is represented as an array containing one or more strings ans <span class="bcp14">SHALL</span> be present. ransomnotes-filenames is represented as an array containing one or more strings ans <span class="bcp14">SHALL</span> be present. ransomnotes-refs is represented as an array containing one or more strings ans <span class="bcp14">SHALL</span> be present. payment-method is represented as a string and <span class="bcp14">SHALL</span> be present. price is represented as a string and <span class="bcp14">SHALL</span> be present.<a href="#section-2.4-11" class="pilcrow">¶</a></p>
 <p id="section-2.4-12">Example use of the encryption, extensions, ransomnotes fields in the ransomware galaxy:<a href="#section-2.4-12" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4-13">
+<div class="alignLeft art-text artwork" id="section-2.4-13">
 <pre>{
   "description": "Similar to Samas and BitPaymer, Ryuk is specifically used to target enterprise environments. Code comparison between versions of Ryuk and Hermes ransomware indicates that Ryuk was derived from the Hermes source code and has been under steady development since its release. Hermes is commodity ransomware that has been observed for sale on forums and used by multiple threat actors. However, Ryuk is only used by GRIM SPIDER and, unlike Hermes, Ryuk has only been used to target enterprise environments. Since Ryuk’s appearance in August, the threat actors operating it have netted over 705.80 BTC across 52 transactions for a total current value of $3,701,893.98 USD.",
   "meta": {
@@ -1464,7 +1469,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
 </pre><a href="#section-2.4-13" class="pilcrow">¶</a>
 </div>
 <p id="section-2.4-14">Example use of the payment-method, price fields in the ransomware galaxy:<a href="#section-2.4-14" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4-15">
+<div class="alignLeft art-text artwork" id="section-2.4-15">
 <pre>{
   "description": "This is most likely to affect English speaking users, since the note is written in English. English is understood worldwide, thus anyone can be harmed. The hacker spread the virus using email spam, fake updates, and harmful attachments. All your files are compromised including music, MS Office, Open Office, pictures, videos, shared online files etc..",
   "meta": {
@@ -1489,7 +1494,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
 </div>
 <p id="section-2.4-16">source-uuid, target-uuid <span class="bcp14">SHALL</span> be used to describe relationships. source-uuid and target-uuid represent the Universally Unique IDentifier (UUID) <span>[<a href="#RFC4122" class="xref">RFC4122</a>]</span> of the value reference. source-uuid and target-uuid <span class="bcp14">MUST</span> be preserved.<a href="#section-2.4-16" class="pilcrow">¶</a></p>
 <p id="section-2.4-17">Example use of the source-uuid, target-uuid fields in the mitre-enterprise-attack-relationship galaxy:<a href="#section-2.4-17" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4-18">
+<div class="alignLeft art-text artwork" id="section-2.4-18">
 <pre>{
   "meta": {
     "source-uuid": "222fbd21-fc4f-4b7e-9f85-0e6e3a76c33f",
@@ -1502,7 +1507,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
 </div>
 <p id="section-2.4-19">cfr-suspected-victims, cfr-suspected-state-sponsor, cfr-type-of-incident and cfr-target-category <span class="bcp14">MAY</span> be used to report information gathered from CFR's (Council on Foreign Relations) <span>[<a href="#CFR" class="xref">CFR</a>]</span> Cyber Operations Tracker.  cfr-suspected-victims is represented as an array containing one or more strings and <span class="bcp14">SHALL</span> be present. cfr-suspected-state-sponsor is represented as a string and <span class="bcp14">SHALL</span> be present. cfr-type-of-incident is represented as a string or an array and <span class="bcp14">SHALL</span> be present. <span class="bcp14">RECOMMENDED</span> but not exhaustive list of possible values for cfr-type-of-incident includes "Espionage", "Denial of service", "Sabotage". cfr-target-category is represented as an array containing one or more strings ans <span class="bcp14">SHALL</span> be present. <span class="bcp14">RECOMMENDED</span> but not exhaustive list of possible values for cfr-target-category includes "Private sector", "Government", "Civil society", "Military".<a href="#section-2.4-19" class="pilcrow">¶</a></p>
 <p id="section-2.4-20">Example use of the cfr-suspected-victims, cfr-suspected-state-sponsor, cfr-type-of-incident, cfr-target-category fields in the threat-actor galaxy:<a href="#section-2.4-20" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4-21">
+<div class="alignLeft art-text artwork" id="section-2.4-21">
 <pre>{
   "meta": {
     "country": "CN",
@@ -1527,7 +1532,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
 </pre><a href="#section-2.4-21" class="pilcrow">¶</a>
 </div>
 <p id="section-2.4-22">attribution-confidence <span class="bcp14">MAY</span> be used to indicate the confidence about an attribution given by country or cfr-suspected-state-sponsor. attribution-confidence is represented on a scale from 0 to 100, where 50 means "no information", the values under 50 mean "probably not, almost certainly not to impossibility", the values above 50 means "from probable, almost certain to certainty" and <span class="bcp14">SHALL</span> be present if country or cfr-suspected-state-sponsor are present.<a href="#section-2.4-22" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4-23">
+<div class="alignLeft art-text artwork" id="section-2.4-23">
 <pre>Impossibility        no information          Certainty
                            +
                            |
@@ -1551,7 +1556,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
         <h3 id="name-misp-galaxy-format-galaxy">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-misp-galaxy-format-galaxy" class="section-name selfRef">MISP galaxy format - galaxy</a>
         </h3>
-<div class="artwork art-text alignLeft" id="section-3.1-1">
+<div class="alignLeft art-text artwork" id="section-3.1-1">
 <pre>{
   "$schema": "http://json-schema.org/schema#",
   "title": "Validator for misp-galaxies - Galaxies",
@@ -1601,7 +1606,7 @@ The uuid represents the Universally Unique IDentifier (UUID) <span>[<a href="#RF
         <h3 id="name-misp-galaxy-format-clusters">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-misp-galaxy-format-clusters" class="section-name selfRef">MISP galaxy format - clusters</a>
         </h3>
-<div class="artwork art-text alignLeft" id="section-3.2-1">
+<div class="alignLeft art-text artwork" id="section-3.2-1">
 <pre>{
   "$schema": "http://json-schema.org/schema#",
   "title": "Validator for misp-galaxies - Clusters",
@@ -1806,27 +1811,27 @@ of open standards in threat intelligence sharing.<a href="#section-4-1" class="p
 <dl class="references">
 <dt id="CFR">[CFR]</dt>
       <dd>
-<span class="refAuthor">Relations, C. O. F.</span>, <span class="refTitle">"Cyber Operations Tracker - Council on Foreign Relations"</span>, <span class="refContent"></span>, <time datetime="2018" class="refDate">2018</time>, <span>&lt;<a href="https://www.cfr.org/interactive/cyber-operations">https://www.cfr.org/interactive/cyber-operations</a>&gt;</span>. </dd>
+<span class="refAuthor">Relations, C. O. F.</span>, <span class="refTitle">"Cyber Operations Tracker - Council on Foreign Relations"</span>, <time datetime="2018" class="refDate">2018</time>, <span>&lt;<a href="https://www.cfr.org/interactive/cyber-operations">https://www.cfr.org/interactive/cyber-operations</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="JSON-SCHEMA">[JSON-SCHEMA]</dt>
       <dd>
-<span class="refAuthor">Wright, A.</span>, <span class="refTitle">"JSON Schema: A Media Type for Describing JSON Documents"</span>, <span class="refContent"></span>, <time datetime="2016" class="refDate">2016</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-wright-json-schema">https://tools.ietf.org/html/draft-wright-json-schema</a>&gt;</span>. </dd>
+<span class="refAuthor">Wright, A.</span>, <span class="refTitle">"JSON Schema: A Media Type for Describing JSON Documents"</span>, <time datetime="2016" class="refDate">2016</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-wright-json-schema">https://tools.ietf.org/html/draft-wright-json-schema</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MISP-G">[MISP-G]</dt>
       <dd>
-<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Galaxy - Public Repository"</span>, <span class="refContent"></span>, <span>&lt;<a href="https://github.com/MISP/misp-galaxy">https://github.com/MISP/misp-galaxy</a>&gt;</span>. </dd>
+<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Galaxy - Public Repository"</span>, <span>&lt;<a href="https://github.com/MISP/misp-galaxy">https://github.com/MISP/misp-galaxy</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MISP-G-DOC">[MISP-G-DOC]</dt>
       <dd>
-<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Galaxy - Documentation of the Public Repository"</span>, <span class="refContent"></span>, <span>&lt;<a href="https://www.misp-project.org/galaxy.html">https://www.misp-project.org/galaxy.html</a>&gt;</span>. </dd>
+<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Galaxy - Documentation of the Public Repository"</span>, <span>&lt;<a href="https://www.misp-project.org/galaxy.html">https://www.misp-project.org/galaxy.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MISP-P">[MISP-P]</dt>
       <dd>
-<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Project - Malware Information Sharing Platform and Threat Sharing"</span>, <span class="refContent"></span>, <span>&lt;<a href="https://github.com/MISP">https://github.com/MISP</a>&gt;</span>. </dd>
+<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Project - Malware Information Sharing Platform and Threat Sharing"</span>, <span>&lt;<a href="https://github.com/MISP">https://github.com/MISP</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MISP-R">[MISP-R]</dt>
     <dd>
-<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Object Relationship Types - common vocabulary of relationships"</span>, <span class="refContent"></span>, <span>&lt;<a href="https://github.com/MISP/misp-objects/tree/master/relationships">https://github.com/MISP/misp-objects/tree/master/relationships</a>&gt;</span>. </dd>
+<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Object Relationship Types - common vocabulary of relationships"</span>, <span>&lt;<a href="https://github.com/MISP/misp-objects/tree/master/relationships">https://github.com/MISP/misp-objects/tree/master/relationships</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -1838,8 +1843,8 @@ of open standards in threat intelligence sharing.<a href="#section-4-1" class="p
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Alexandre Dulaunoy</span></div>
 <div dir="auto" class="left"><span class="org">Computer Incident Response Center Luxembourg</span></div>
-<div dir="auto" class="left"><span class="street-address">16, bd d'Avranches</span></div>
-<div dir="auto" class="left">L-<span class="postal-code">L-1611</span> <span class="locality">Luxembourg</span>
+<div dir="auto" class="left"><span class="street-address">122, rue Adolphe Fischer</span></div>
+<div dir="auto" class="left">L-<span class="postal-code">L-1521</span> <span class="locality">Luxembourg</span>
 </div>
 <div dir="auto" class="left"><span class="country-name">Luxembourg</span></div>
 <div class="tel">
@@ -1854,8 +1859,8 @@ of open standards in threat intelligence sharing.<a href="#section-4-1" class="p
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Andras Iklody</span></div>
 <div dir="auto" class="left"><span class="org">Computer Incident Response Center Luxembourg</span></div>
-<div dir="auto" class="left"><span class="street-address">16, bd d'Avranches</span></div>
-<div dir="auto" class="left">L-<span class="postal-code">L-1611</span> <span class="locality">Luxembourg</span>
+<div dir="auto" class="left"><span class="street-address">122, rue Adolphe Fischer</span></div>
+<div dir="auto" class="left">L-<span class="postal-code">L-1521</span> <span class="locality">Luxembourg</span>
 </div>
 <div dir="auto" class="left"><span class="country-name">Luxembourg</span></div>
 <div class="tel">
@@ -1870,8 +1875,8 @@ of open standards in threat intelligence sharing.<a href="#section-4-1" class="p
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Deborah Servili</span></div>
 <div dir="auto" class="left"><span class="org">Computer Incident Response Center Luxembourg</span></div>
-<div dir="auto" class="left"><span class="street-address">16, bd d'Avranches</span></div>
-<div dir="auto" class="left">L-<span class="postal-code">L-1611</span> <span class="locality">Luxembourg</span>
+<div dir="auto" class="left"><span class="street-address">122, rue Adolphe Fischer</span></div>
+<div dir="auto" class="left">L-<span class="postal-code">L-1521</span> <span class="locality">Luxembourg</span>
 </div>
 <div dir="auto" class="left"><span class="country-name">Luxembourg</span></div>
 <div class="tel">

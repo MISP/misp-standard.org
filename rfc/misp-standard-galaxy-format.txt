@@ -5,12 +5,12 @@
 Network Working Group                                        A. Dulaunoy
 Internet-Draft                                                 A. Iklody
 Intended status: Informational                                D. Servili
-Expires: 25 May 2022                                               CIRCL
-                                                        21 November 2021
+Expires: 26 June 2024                                              CIRCL
+                                                        24 December 2023
 
 
                            MISP galaxy format
-                                draft-00
+                                draft-08
 
 Abstract
 
@@ -38,11 +38,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 May 2022.
+   This Internet-Draft will expire on 26 June 2024.
 
 Copyright Notice
 
-   Copyright (c) 2021 IETF Trust and the persons identified as the
+   Copyright (c) 2023 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 1]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 1]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 2]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 2]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
 2.1.  Overview
@@ -165,9 +165,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 3]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 3]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
    A tag is represented in machine tag format which is a string an
@@ -183,15 +183,15 @@ Internet-Draft             MISP galaxy format              November 2021
 
    Meta contains a list of custom defined JSON key value pairs.  Users
    SHOULD reuse commonly used keys such as complexity, effectiveness,
-   country, possible_issues, colour, motive, impact, refs, synonyms,
-   status, date, encryption, extensions, ransomnotes, ransomnotes-
-   filenames, ransomnotes-refs, suspected-victims, suspected-state-
-   sponsor, type-of-incident, target-category, cfr-suspected-victims,
-   cfr-suspected-state-sponsor, cfr-type-of-incident, cfr-target-
-   category, suspected-victims, suspected-state-sponsor, attribution-
-   confidence, payment-method, price, spoken-language, official-refs
-   wherever applicable.  Additional meta field MAY be added without the
-   need to be referenced or registered in advance.
+   country, external_id, possible_issues, colour, motive, impact, refs,
+   synonyms, status, date, encryption, extensions, ransomnotes,
+   ransomnotes-filenames, ransomnotes-refs, suspected-victims,
+   suspected-state-sponsor, type-of-incident, target-category, cfr-
+   suspected-victims, cfr-suspected-state-sponsor, cfr-type-of-incident,
+   cfr-target-category, suspected-victims, suspected-state-sponsor,
+   attribution-confidence, payment-method, price, spoken-language,
+   official-refs wherever applicable.  Additional meta field MAY be
+   added without the need to be referenced or registered in advance.
 
    refs, synonyms, official-refs SHALL be used to give further
    informations. refs is represented as an array containing one or more
@@ -221,9 +221,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 4]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 4]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
    Example use of the complexity, effectiveness, impact, possible_issues
@@ -277,9 +277,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 5]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 5]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
    {
@@ -333,9 +333,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 6]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 6]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
 {
@@ -389,9 +389,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 7]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 7]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
    Example use of the source-uuid, target-uuid fields in the mitre-
@@ -445,9 +445,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 8]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 8]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
 {
@@ -501,9 +501,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                  [Page 9]
+Dulaunoy, et al.          Expires 26 June 2024                  [Page 9]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
 {
@@ -557,9 +557,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                 [Page 10]
+Dulaunoy, et al.          Expires 26 June 2024                 [Page 10]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
 {
@@ -613,9 +613,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                 [Page 11]
+Dulaunoy, et al.          Expires 26 June 2024                 [Page 11]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
               "type": "object"
@@ -669,9 +669,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                 [Page 12]
+Dulaunoy, et al.          Expires 26 June 2024                 [Page 12]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
                 "type": "string"
@@ -725,9 +725,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                 [Page 13]
+Dulaunoy, et al.          Expires 26 June 2024                 [Page 13]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
       "type": "array",
@@ -781,9 +781,9 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                 [Page 14]
+Dulaunoy, et al.          Expires 26 June 2024                 [Page 14]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
    [JSON-SCHEMA]
@@ -809,8 +809,8 @@ Authors' Addresses
 
    Alexandre Dulaunoy
    Computer Incident Response Center Luxembourg
-   16, bd d'Avranches
-   L-L-1611 Luxembourg
+   122, rue Adolphe Fischer
+   L-L-1521 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
@@ -819,8 +819,8 @@ Authors' Addresses
 
    Andras Iklody
    Computer Incident Response Center Luxembourg
-   16, bd d'Avranches
-   L-L-1611 Luxembourg
+   122, rue Adolphe Fischer
+   L-L-1521 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
@@ -829,17 +829,17 @@ Authors' Addresses
 
    Deborah Servili
    Computer Incident Response Center Luxembourg
-   16, bd d'Avranches
-   L-L-1611 Luxembourg
+   122, rue Adolphe Fischer
+   L-L-1521 Luxembourg
    Luxembourg
 
    Phone: +352 247 88444
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                 [Page 15]
+Dulaunoy, et al.          Expires 26 June 2024                 [Page 15]
 
-Internet-Draft             MISP galaxy format              November 2021
+Internet-Draft             MISP galaxy format              December 2023
 
 
    Email: deborah.servili@circl.lu
@@ -893,4 +893,4 @@ Internet-Draft             MISP galaxy format              November 2021
 
 
 
-Dulaunoy, et al.           Expires 25 May 2022                 [Page 16]
+Dulaunoy, et al.          Expires 26 June 2024                 [Page 16]
