@@ -13,29 +13,28 @@ represent machine tags (also called triple tags) vocabularies. A public director
 called MISP taxonomies is available and relies on the MISP taxonomy format. MISP taxonomies are used to classify
 cyber security events, threats, suspicious events, or indicators. 
     " name="description">
-<meta content="xml2rfc 3.9.1" name="generator">
-<meta content="draft-00" name="ietf.draft">
+<meta content="xml2rfc 3.12.1" name="generator">
+<meta content="draft-08" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.9.1
-    Python 3.6.9
+  xml2rfc 3.12.1
+    Python 3.8.10
     appdirs 1.4.4
-    ConfigArgParse 1.5.2
-    google-i18n-address 2.3.5
-    html5lib 1.0.1
-    intervaltree 2.1.0
-    Jinja2 2.11.2
+    ConfigArgParse 1.5.3
+    google-i18n-address 2.5.0
+    html5lib 1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.2
     kitchen 1.2.6
-    lxml 4.6.3
+    lxml 4.9.2
     pycairo 1.16.2
-    pycountry 18.12.8
-    pyflakes 2.1.1
-    PyYAML 5.4.1
-    requests 2.25.1
-    setuptools 57.1.0
-    six 1.15.0
-    WeasyPrint 48
+    pycountry 22.3.5
+    pyflakes 2.4.0
+    PyYAML 6.0
+    requests 2.31.0
+    setuptools 68.1.2
+    six 1.16.0
 -->
-<link href="misp-standard-taxonomy-format.xml" rel="alternate" type="application/rfc+xml">
+<link href="raw.md.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">/*
 
@@ -388,6 +387,12 @@ hr {
 #identifiers dd {
   float: left;
   margin-bottom: 0;
+}
+/* Fix PDF info block run off issue */
+@media print {
+  #identifiers dd {
+    float: none;
+  }
 }
 #identifiers .authors .author {
   display: inline-block;
@@ -1083,7 +1088,7 @@ tr:nth-child(2n+1) > td {
 }
 /* Change the approach to avoiding breaks inside artwork etc. */
 figure, pre, table, .artwork, .sourcecode  {
-  break-before: avoid-page;
+  break-before: auto;
   break-after: auto;
 }
 /* Avoid breaks between <dt> and <dd> */
@@ -1184,11 +1189,11 @@ li > p:last-of-type {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">MISP taxonomy format</td>
-<td class="right">November 2021</td>
+<td class="right">December 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Dulaunoy &amp; Iklody</td>
-<td class="center">Expires 25 May 2022</td>
+<td class="center">Expires 26 June 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1198,15 +1203,15 @@ li > p:last-of-type {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">Network Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-00</dd>
+<dd class="internet-draft">draft-08</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-11-21" class="published">21 November 2021</time>
+<time datetime="2023-12-24" class="published">24 December 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-05-25">25 May 2022</time></dd>
+<dd class="expires"><time datetime="2024-06-26">26 June 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1247,7 +1252,7 @@ cyber security events, threats, suspicious events, or indicators.<a href="#secti
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1256,7 +1261,7 @@ cyber security events, threats, suspicious events, or indicators.<a href="#secti
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2021 IETF Trust and the persons identified as the
+            Copyright (c) 2023 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1272,8 +1277,8 @@ cyber security events, threats, suspicious events, or indicators.<a href="#secti
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty compact toc ulBare">
-<li class="ulEmpty compact toc ulBare" id="section-toc.1-1.1">
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
@@ -1281,7 +1286,7 @@ cyber security events, threats, suspicious events, or indicators.<a href="#secti
 </li>
             </ul>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.2">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-format" class="xref">Format</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
@@ -1309,7 +1314,7 @@ cyber security events, threats, suspicious events, or indicators.<a href="#secti
 </li>
             </ul>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.3">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-directory" class="xref">Directory</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
@@ -1317,7 +1322,7 @@ cyber security events, threats, suspicious events, or indicators.<a href="#secti
 </li>
             </ul>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.4">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-sample-taxonomy-in-misp-tax" class="xref">Sample Taxonomy in MISP taxonomy format</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
@@ -1331,19 +1336,19 @@ cyber security events, threats, suspicious events, or indicators.<a href="#secti
 </li>
             </ul>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.5">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-json-schema" class="xref">JSON Schema</a></p>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.6">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-acknowledgements" class="xref">Acknowledgements</a></p>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.7">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.8">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
-          <li class="ulEmpty compact toc ulBare" id="section-toc.1-1.9">
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
@@ -1383,7 +1388,7 @@ document are to be interpreted as described in RFC 2119 <span>[<a href="#RFC2119
       </h2>
 <p id="section-2-1">A machine tag is composed of a namespace (<span class="bcp14">MUST</span>), a predicate (<span class="bcp14">MUST</span>) and an optional value (<span class="bcp14">OPTIONAL</span>).<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">Machine tags are represented as a string. Below listed are a set of sample machine tags for different namespaces such as tlp, admiralty-scale and osint.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2-3">
+<div class="alignLeft art-text artwork" id="section-2-3">
 <pre>tlp:amber
 admiralty-scale:information-credibility="1"
 osint:source-type="blog-post"
@@ -1430,7 +1435,7 @@ to describe machine tag (aka triple tag) vocabularies.<a href="#section-2-4" cla
           </h4>
 <p id="section-2.4.1-1">colour fields <span class="bcp14">MAY</span> be used at predicates or values level to set a specify colour that <span class="bcp14">MAY</span> be used by the implementation. The colour field is described as an RGB colour fill in hexadecimal representation.<a href="#section-2.4.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.4.1-2">Example use of the colour field in the Traffic Light Protocol (TLP):<a href="#section-2.4.1-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4.1-3">
+<div class="alignLeft art-text artwork" id="section-2.4.1-3">
 <pre>"predicates": [
     {
       "colour": "#CC0033",
@@ -1468,7 +1473,7 @@ The field is represented as a JSON number. Implementations <span class="bcp14">S
 <p id="section-2.4.3-2">The decimal range for numerical_value <span class="bcp14">SHOULD</span> use a range from 0 up to 100. The range is recommended to support common mathematical properties
 among taxonomies.<a href="#section-2.4.3-2" class="pilcrow">¶</a></p>
 <p id="section-2.4.3-3">Example use of the numerical_value in the MISP confidence level:<a href="#section-2.4.3-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-2.4.3-4">
+<div class="alignLeft art-text artwork" id="section-2.4.3-4">
 <pre>    {
      "predicate": "confidence-level",
      "entry": [
@@ -1527,7 +1532,7 @@ A taxonomies array describes the taxonomy available with the description, name a
         <h3 id="name-sample-manifest">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-sample-manifest" class="section-name selfRef">Sample Manifest</a>
         </h3>
-<div class="artwork art-text alignLeft" id="section-3.1-1">
+<div class="alignLeft art-text artwork" id="section-3.1-1">
 <pre>{
   "version": "20161009",
   "license": "CC-0",
@@ -1565,7 +1570,7 @@ A taxonomies array describes the taxonomy available with the description, name a
         <h3 id="name-admiralty-scale-taxonomy">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-admiralty-scale-taxonomy" class="section-name selfRef">Admiralty Scale Taxonomy</a>
         </h3>
-<div class="artwork art-text alignLeft" id="section-4.1-1">
+<div class="alignLeft art-text artwork" id="section-4.1-1">
 <pre>  "namespace": "admiralty-scale",
   "description": "The Admiralty Scale (also called the NATO System)
                   is used to rank the reliability of a source and
@@ -1651,7 +1656,7 @@ A taxonomies array describes the taxonomy available with the description, name a
         <h3 id="name-open-source-intelligence-cl">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-open-source-intelligence-cl" class="section-name selfRef">Open Source Intelligence - Classification</a>
         </h3>
-<div class="artwork art-text alignLeft" id="section-4.2-1">
+<div class="alignLeft art-text artwork" id="section-4.2-1">
 <pre>{
   "values": [
     {
@@ -1785,365 +1790,605 @@ A taxonomies array describes the taxonomy available with the description, name a
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-available-taxonomies-in-the" class="section-name selfRef">Available taxonomies in the public directory</a>
         </h3>
 <p id="section-4.3-1">The public directory of MISP taxonomies <span>[<a href="#MISP-T" class="xref">MISP-T</a>]</span> contains a variety of taxonomy in various fields such as:<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-4.3-2">
+<span class="break"></span><dl class="dlCompact dlParallel" id="section-4.3-2">
           <dt id="section-4.3-2.1">CERT-XLM:</dt>
           <dd style="margin-left: 1.5em" id="section-4.3-2.2">CERT-XLM Security Incident Classification.<a href="#section-4.3-2.2" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.3">DML:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.4">The Detection Maturity Level (DML) model is a capability maturity model for referencing ones maturity in detecting cyber attacks.  It's designed for organizations who perform intel-driven detection and response and who put an emphasis on having a mature detection program.<a href="#section-4.3-2.4" class="pilcrow">¶</a>
+<dt id="section-4.3-2.3">DFRLab-dichotomies-of-disinformation:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.4">DFRLab Dichotomies of Disinformation.<a href="#section-4.3-2.4" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.5">PAP:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.6">The Permissible Actions Protocol - or short: PAP - was designed to indicate how the received information can be used.<a href="#section-4.3-2.6" class="pilcrow">¶</a>
+<dt id="section-4.3-2.5">DML:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.6">The Detection Maturity Level (DML) model is a capability maturity model for referencing ones maturity in detecting cyber attacks.  It's designed for organizations who perform intel-driven detection and response and who put an emphasis on having a mature detection program.<a href="#section-4.3-2.6" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.7">access-method:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.8">The access method used to remotely access a system.<a href="#section-4.3-2.8" class="pilcrow">¶</a>
+<dt id="section-4.3-2.7">GrayZone:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.8">Gray Zone of Active defense includes all elements which lay between reactive defense elements and offensive operations. It does fill the gray spot between them. Taxo may be used for active defense planning or modeling.<a href="#section-4.3-2.8" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.9">accessnow:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.10">Access Now classification to classify an issue (such as security, human rights, youth rights).<a href="#section-4.3-2.10" class="pilcrow">¶</a>
+<dt id="section-4.3-2.9">PAP:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.10">The Permissible Actions Protocol - or short: PAP - was designed to indicate how the received information can be used.<a href="#section-4.3-2.10" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.11">action-taken:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.12">Action taken in the case of a security incident (CSIRT perspective).<a href="#section-4.3-2.12" class="pilcrow">¶</a>
+<dt id="section-4.3-2.11">access-method:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.12">The access method used to remotely access a system.<a href="#section-4.3-2.12" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.13">admiralty-scale:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.14">The Admiralty Scale (also called the NATO System) is used to rank the reliability of a source and the credibility of an information.<a href="#section-4.3-2.14" class="pilcrow">¶</a>
+<dt id="section-4.3-2.13">accessnow:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.14">Access Now classification to classify an issue (such as security, human rights, youth rights).<a href="#section-4.3-2.14" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.15">adversary:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.16">An overview and description of the adversary infrastructure.<a href="#section-4.3-2.16" class="pilcrow">¶</a>
+<dt id="section-4.3-2.15">action-taken:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.16">Action taken in the case of a security incident (CSIRT perspective).<a href="#section-4.3-2.16" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.17">ais-marking:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.18">AIS Marking Schema implementation is maintained by the National Cybersecurity and Communication Integration Center (NCCIC) of the U.S. Department of Homeland Security (DHS)<a href="#section-4.3-2.18" class="pilcrow">¶</a>
+<dt id="section-4.3-2.17">admiralty-scale:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.18">The Admiralty Scale or Ranking (also called the NATO System) is used to rank the reliability of a source and the credibility of an information. Reference based on FM 2-22.3 (FM 34-52) HUMAN INTELLIGENCE COLLECTOR OPERATIONS and NATO documents.<a href="#section-4.3-2.18" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.19">analyst-assessment:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.20">A series of assessment predicates describing the analyst capabilities to perform analysis. These assessment can be assigned by the analyst him/herself or by another party evaluating the analyst.<a href="#section-4.3-2.20" class="pilcrow">¶</a>
+<dt id="section-4.3-2.19">adversary:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.20">An overview and description of the adversary infrastructure<a href="#section-4.3-2.20" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.21">approved-category-of-action:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.22">A pre-approved category of action for indicators being shared with partners (MIMIC).<a href="#section-4.3-2.22" class="pilcrow">¶</a>
+<dt id="section-4.3-2.21">ais-marking:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.22">The AIS Marking Schema implementation is maintained by the National Cybersecurity and Communication Integration Center (NCCIC) of the U.S. Department of Homeland Security (DHS)<a href="#section-4.3-2.22" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.23">binary-class:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.24">Custom taxonomy for types of binary file.<a href="#section-4.3-2.24" class="pilcrow">¶</a>
+<dt id="section-4.3-2.23">analyst-assessment:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.24">A series of assessment predicates describing the analyst capabilities to perform analysis. These assessment can be assigned by the analyst him/herself or by another party evaluating the analyst.<a href="#section-4.3-2.24" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.25">cccs:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.26">Internal taxonomy for CCCS.<a href="#section-4.3-2.26" class="pilcrow">¶</a>
+<dt id="section-4.3-2.25">approved-category-of-action:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.26">A pre-approved category of action for indicators being shared with partners (MIMIC).<a href="#section-4.3-2.26" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.27">circl:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.28">CIRCL Taxonomy is a simple scheme for incident classification and area topic where the incident took place.<a href="#section-4.3-2.28" class="pilcrow">¶</a>
+<dt id="section-4.3-2.27">artificial-satellites:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.28">This taxonomy was designed to describe artificial satellites<a href="#section-4.3-2.28" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.29">collaborative-intelligence:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.30">Collaborative intelligence support language is a common language to support analysts to perform their analysis to get crowdsourced support when using threat intelligence sharing platform like MISP.<a href="#section-4.3-2.30" class="pilcrow">¶</a>
+<dt id="section-4.3-2.29">aviation:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.30">A taxonomy describing security threats or incidents against the aviation sector.<a href="#section-4.3-2.30" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.31">common-taxonomy:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.32">The Common Taxonomy for Law Enforcement and The National Network of CSIRTs bridges the gap between the CSIRTs and international Law Enforcement communities by adding a legislative framework to facilitate the harmonisation of incident reporting to competent authorities, the development of useful statistics and sharing information within the entire cybercrime ecosystem.<a href="#section-4.3-2.32" class="pilcrow">¶</a>
+<dt id="section-4.3-2.31">binary-class:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.32">Custom taxonomy for types of binary file.<a href="#section-4.3-2.32" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.33">copine-scale:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.34">The COPINE Scale is a rating system created in Ireland and used in the United Kingdom to categorise the severity of images of child sex abuse.<a href="#section-4.3-2.34" class="pilcrow">¶</a>
+<dt id="section-4.3-2.33">cccs:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.34">Internal taxonomy for CCCS.<a href="#section-4.3-2.34" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.35">cryptocurrency-threat:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.36">Threats targetting cryptocurrency, based on CipherTrace report.<a href="#section-4.3-2.36" class="pilcrow">¶</a>
+<dt id="section-4.3-2.35">circl:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.36">CIRCL Taxonomy - Schemes of Classification in Incident Response and Detection.<a href="#section-4.3-2.36" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.37">csirt<em>case</em>classification:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.38">FIRST CSIRT Case Classification.<a href="#section-4.3-2.38" class="pilcrow">¶</a>
+<dt id="section-4.3-2.37">cnsd:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.38">La presente taxonomia es la primera versi&amp;#243;n disponible para el Centro Nacional de Seguridad Digital del Per&amp;#250;.<a href="#section-4.3-2.38" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.39">cssa:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.40">The CSSA agreed sharing taxonomy.<a href="#section-4.3-2.40" class="pilcrow">¶</a>
+<dt id="section-4.3-2.39">coa:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.40">Course of action taken within organization to discover, detect, deny, disrupt, degrade, deceive and/or destroy an attack.<a href="#section-4.3-2.40" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.41">cyber-threat-framework:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.42">Cyber Threat Framework was developed by the US Government to enable consistent characterization and categorization of cyber threat events, and to identify trends or changes in the activities of cyber adversaries. <a href="https://www.dni.gov/index.php/cyber-threat-framework">https://www.dni.gov/index.php/cyber-threat-framework</a><a href="#section-4.3-2.42" class="pilcrow">¶</a>
+<dt id="section-4.3-2.41">collaborative-intelligence:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.42">Collaborative intelligence support language is a common language to support analysts to perform their analysis to get crowdsourced support when using threat intelligence sharing platform like MISP. The objective of this language is to advance collaborative analysis and to share earlier than later.<a href="#section-4.3-2.42" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.43">data-classification:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.44">Data classification for data potentially at risk of exfiltration based on table 2.1 of Solving Cyber Risk book.<a href="#section-4.3-2.44" class="pilcrow">¶</a>
+<dt id="section-4.3-2.43">common-taxonomy:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.44">Common Taxonomy for Law enforcement and CSIRTs<a href="#section-4.3-2.44" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.45">dcso-sharing:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.46">DCSO Sharing Taxonomy to classify certain types of MISP events using the DCSO Event Guide<a href="#section-4.3-2.46" class="pilcrow">¶</a>
+<dt id="section-4.3-2.45">copine-scale:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.46">The COPINE Scale is a rating system created in Ireland and used in the United Kingdom to categorise the severity of images of child sex abuse. The scale was developed by staff at the COPINE (Combating Paedophile Information Networks in Europe) project. The COPINE Project was founded in 1997, and is based in the Department of Applied Psychology, University College Cork, Ireland.<a href="#section-4.3-2.46" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.47">ddos:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.48">Distributed Denial of Service - or short: DDoS - taxonomy supports the description of Denial of Service attacks and especially the types they belong too.<a href="#section-4.3-2.48" class="pilcrow">¶</a>
+<dt id="section-4.3-2.47">course-of-action:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.48">A Course Of Action analysis considers six potential courses of action for the development of a cyber security capability.<a href="#section-4.3-2.48" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.49">de-vs:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.50">Taxonomy for the handling of protectively marked information in MISP with German (DE) Government classification markings (VS)<a href="#section-4.3-2.50" class="pilcrow">¶</a>
+<dt id="section-4.3-2.49">crowdsec:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.50">Crowdsec IP address classifications and behaviors taxonomy.<a href="#section-4.3-2.50" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.51">dhs-ciip-sectors:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.52">DHS critical sectors as described in <a href="https://www.dhs.gov/critical-infrastructure-sectors">https://www.dhs.gov/critical-infrastructure-sectors</a>.<a href="#section-4.3-2.52" class="pilcrow">¶</a>
+<dt id="section-4.3-2.51">cryptocurrency-threat:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.52">Threats targetting cryptocurrency, based on CipherTrace report.<a href="#section-4.3-2.52" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.53">diamond-model:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.54">The Diamond Model for Intrusion Analysis, a phase-based model developed by Lockheed Martin, aims to help categorise and identify the stage of an attack.<a href="#section-4.3-2.54" class="pilcrow">¶</a>
+<dt id="section-4.3-2.53">csirt-americas:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.54">Taxonom&amp;#237;a CSIRT Am&amp;#233;ricas.<a href="#section-4.3-2.54" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.55">dni-ism:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.56">ISM (Information Security Marking Metadata) V13 as described by DNI.gov (Director of National Intelligence - US).<a href="#section-4.3-2.56" class="pilcrow">¶</a>
+<dt id="section-4.3-2.55">csirt_case_classification:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.56">It is critical that the CSIRT provide consistent and timely response to the customer, and that sensitive information is handled appropriately.  This document provides the guidelines needed for CSIRT Incident Managers (IM) to classify the case category, criticality level, and sensitivity level for each CSIRT case.  This information will be entered into the Incident Tracking System (ITS) when a case is created.  Consistent case classification is required for the CSIRT to provide accurate reporting to management on a regular basis.  In addition, the classifications will provide CSIRT IM's with proper case handling procedures and will form the basis of SLA's between the CSIRT and other Company departments.<a href="#section-4.3-2.56" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.57">domain-abuse:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.58">Taxonomy to tag domain names used for cybercrime.<a href="#section-4.3-2.58" class="pilcrow">¶</a>
+<dt id="section-4.3-2.57">cssa:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.58">The CSSA agreed sharing taxonomy.<a href="#section-4.3-2.58" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.59">drugs:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.60">A taxonomy based on the superclass and class of drugs, based on <a href="https://www.drugbank.ca/releases/latest">https://www.drugbank.ca/releases/latest</a><a href="#section-4.3-2.60" class="pilcrow">¶</a>
+<dt id="section-4.3-2.59">cti:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.60">Cyber Threat Intelligence cycle to control workflow state of your process.<a href="#section-4.3-2.60" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.61">economical-impact:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.62">Economical impact is a taxonomy to describe the financial impact as positive or negative gain to the tagged information.<a href="#section-4.3-2.62" class="pilcrow">¶</a>
+<dt id="section-4.3-2.61">current-event:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.62">Current events - Schemes of Classification in Incident Response and Detection<a href="#section-4.3-2.62" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.63">ecsirt:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.64">eCSIRT incident classification Appendix C of the eCSIRT EU project including IntelMQ updates.<a href="#section-4.3-2.64" class="pilcrow">¶</a>
+<dt id="section-4.3-2.63">cyber-threat-framework:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.64">Cyber Threat Framework was developed by the US Government to enable consistent characterization and categorization of cyber threat events, and to identify trends or changes in the activities of cyber adversaries. <a href="https://www.dni.gov/index.php/cyber-threat-framework">https://www.dni.gov/index.php/cyber-threat-framework</a><a href="#section-4.3-2.64" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.65">enisa:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.66">ENISA Threat Taxonomy - A tool for structuring threat information as published in <a href="https://www.enisa.europa.eu/topics/threat-risk-management/threats-and-trends/enisa-threat-landscape/etl2015/enisa-threat-taxonomy-a-tool-for-structuring-threat-information">https://www.enisa.europa.eu/topics/threat-risk-management/threats-and-trends/enisa-threat-landscape/etl2015/enisa-threat-taxonomy-a-tool-for-structuring-threat-information</a><a href="#section-4.3-2.66" class="pilcrow">¶</a>
+<dt id="section-4.3-2.65">cycat:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.66">Taxonomy used by CyCAT, the Universal Cybersecurity Resource Catalogue, to categorize the namespaces it supports and uses.<a href="#section-4.3-2.66" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.67">estimative-language:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.68">Estimative language - including likelihood or probability of event based on the Intelligence Community Directive 203 (ICD 203) (6.2.(a)) and JP 2-0, Joint Intelligence.<a href="#section-4.3-2.68" class="pilcrow">¶</a>
+<dt id="section-4.3-2.67">cytomic-orion:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.68">Taxonomy to describe desired actions for Cytomic Orion<a href="#section-4.3-2.68" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.69">eu-marketop-and-publicadmin:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.70">Market operators and public administrations that must comply to some notifications requirements under EU NIS directive.<a href="#section-4.3-2.70" class="pilcrow">¶</a>
+<dt id="section-4.3-2.69">dark-web:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.70">Criminal motivation and content detection the dark web: A categorisation model for law enforcement. ref: Janis Dalins, Campbell Wilson, Mark Carman. Taxonomy updated by MISP Project and extended by the JRC (Joint Research Centre) of the European Commission.<a href="#section-4.3-2.70" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.71">eu-nis-sector-and-subsectors:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.72">Sectors and sub sectors as identified by the NIS Directive.<a href="#section-4.3-2.72" class="pilcrow">¶</a>
+<dt id="section-4.3-2.71">data-classification:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.72">Data classification for data potentially at risk of exfiltration based on table 2.1 of Solving Cyber Risk book.<a href="#section-4.3-2.72" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.73">euci:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.74">EU classified information (EUCI) means any information or material designated by a EU security classification, the unauthorised disclosure of which could cause varying degrees of prejudice to the interests of the European Union or of one or more of the Member States as described in COUNCIL DECISION of 23 September 2013 on the security rules for protecting EU classified information<a href="#section-4.3-2.74" class="pilcrow">¶</a>
+<dt id="section-4.3-2.73">dcso-sharing:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.74">Taxonomy defined in the DCSO MISP Event Guide. It provides guidance for the creation and consumption of MISP events in a way that minimises the extra effort for the sending party, while enhancing the usefulness for receiving parties.<a href="#section-4.3-2.74" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.75">europol-event:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.76">EUROPOL type of events taxonomy.<a href="#section-4.3-2.76" class="pilcrow">¶</a>
+<dt id="section-4.3-2.75">ddos:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.76">Distributed Denial of Service - or short: DDoS - taxonomy supports the description of Denial of Service attacks and especially the types they belong too.<a href="#section-4.3-2.76" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.77">europol-incident:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.78">EUROPOL class of incident taxonomy.<a href="#section-4.3-2.78" class="pilcrow">¶</a>
+<dt id="section-4.3-2.77">de-vs:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.78">German (DE) Government classification markings (VS).<a href="#section-4.3-2.78" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.79">event-assessment:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.80">A series of assessment predicates describing the event assessment performed to make judgement(s) under a certain level of uncertainty.<a href="#section-4.3-2.80" class="pilcrow">¶</a>
+<dt id="section-4.3-2.79">death-possibilities:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.80">Taxonomy of Death Possibilities<a href="#section-4.3-2.80" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.81">event-classification:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.82">Event Classification.<a href="#section-4.3-2.82" class="pilcrow">¶</a>
+<dt id="section-4.3-2.81">deception:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.82">Deception is an important component of information operations, valuable for both offense and defense.<a href="#section-4.3-2.82" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.83">exercise:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.84">Exercise is a taxonomy to describe if the information is part of one or more cyber or crisis exercise.<a href="#section-4.3-2.84" class="pilcrow">¶</a>
+<dt id="section-4.3-2.83">dga:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.84">A taxonomy to describe domain-generation algorithms often called DGA. Ref: A Comprehensive Measurement Study of Domain Generating Malware Daniel Plohmann and others.<a href="#section-4.3-2.84" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.85">false-positive:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.86">This taxonomy aims to ballpark the expected amount of false positives.<a href="#section-4.3-2.86" class="pilcrow">¶</a>
+<dt id="section-4.3-2.85">dhs-ciip-sectors:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.86">DHS critical sectors as in <a href="https://www.dhs.gov/critical-infrastructure-sectors">https://www.dhs.gov/critical-infrastructure-sectors</a><a href="#section-4.3-2.86" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.87">file-type:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.88">List of known file types.<a href="#section-4.3-2.88" class="pilcrow">¶</a>
+<dt id="section-4.3-2.87">diamond-model:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.88">The Diamond Model for Intrusion Analysis establishes the basic atomic element of any intrusion activity, the event, composed of four core features: adversary, infrastructure, capability, and victim.<a href="#section-4.3-2.88" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.89">flesch-reading-ease:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.90">Flesch Reading Ease is a revised system for determining the comprehension difficulty of written material. The scoring of the flesh score can have a maximum of 121.22 and there is no limit on how low a score can be (negative score are valid).<a href="#section-4.3-2.90" class="pilcrow">¶</a>
+<dt id="section-4.3-2.89">diamond-model-for-influence-operations:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.90">The diamond model for influence operations analysis is a framework that leads analysts and researchers toward a comprehensive understanding of a malign influence campaign by addressing the socio-political, technical, and psychological aspects of the campaign. The diamond model for influence operations analysis consists of 5 components: 4 corners and a core element. The 4 corners are divided into 2 axes: influencer and audience on the socio-political axis, capabilities and infrastructure on the technical axis. Narrative makes up the core of the diamond.<a href="#section-4.3-2.90" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.91">fpf:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.92">The Future of Privacy Forum (FPF) <a href="https://fpf.org/2016/04/25/a-visual-guide-to-practical-data-de-identification/">visual guide to practical de-identification</a> taxonomy is used to evaluate the degree of identifiability of personal data and the types of pseudonymous data, de-identified data and anonymous data. The work of FPF is licensed under a creative commons attribution 4.0 international license.<a href="#section-4.3-2.92" class="pilcrow">¶</a>
+<dt id="section-4.3-2.91">dni-ism:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.92">A subset of Information Security Marking Metadata ISM as required by Executive Order (EO) 13526. As described by DNI.gov as Data Encoding Specifications for Information Security Marking Metadata in Controlled Vocabulary Enumeration Values for ISM<a href="#section-4.3-2.92" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.93">fr-classif:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.94">French gov information classification system.<a href="#section-4.3-2.94" class="pilcrow">¶</a>
+<dt id="section-4.3-2.93">domain-abuse:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.94">Domain Name Abuse - taxonomy to tag domain names used for cybercrime.<a href="#section-4.3-2.94" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.95">gdpr:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.96">Taxonomy related to the REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)<a href="#section-4.3-2.96" class="pilcrow">¶</a>
+<dt id="section-4.3-2.95">doping-substances:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.96">This taxonomy aims to list doping substances<a href="#section-4.3-2.96" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.97">gsma-attack-category:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.98">Taxonomy used by GSMA for their information sharing program with telco describing the attack categories<a href="#section-4.3-2.98" class="pilcrow">¶</a>
+<dt id="section-4.3-2.97">drugs:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.98">A taxonomy based on the superclass and class of drugs. Based on <a href="https://www.drugbank.ca/releases/latest">https://www.drugbank.ca/releases/latest</a><a href="#section-4.3-2.98" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.99">gsma-fraud:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.100">Taxonomy used by GSMA for their information sharing program with telco describing the various aspects of fraud<a href="#section-4.3-2.100" class="pilcrow">¶</a>
+<dt id="section-4.3-2.99">economical-impact:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.100">Economical impact is a taxonomy to describe the financial impact as positive or negative gain to the tagged information (e.g. data exfiltration loss, a positive gain for an adversary).<a href="#section-4.3-2.100" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.101">gsma-network-technology:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.102">Taxonomy used by GSMA for their information sharing program with telco describing the types of infrastructure. WiP<a href="#section-4.3-2.102" class="pilcrow">¶</a>
+<dt id="section-4.3-2.101">ecsirt:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.102">Incident Classification by the ecsirt.net version mkVI of 31 March 2015 enriched with IntelMQ taxonomy-type mapping.<a href="#section-4.3-2.102" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.103">honeypot-basic:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.104">Christian Seifert, Ian Welch, Peter Komisarczuk, <span class="unicode">‘ (U+2018)</span>Taxonomy of Honeypots<span class="unicode">’ (U+2019)</span>, Technical Report CS-TR-06/12, VICTORIA UNIVERSITY OF WELLINGTON, School of Mathematical and Computing Sciences, June 2006, <a href="http://www.mcs.vuw.ac.nz/comp/Publications/archive/CS-TR-06/CS-TR-06-12.pdf">http://www.mcs.vuw.ac.nz/comp/Publications/archive/CS-TR-06/CS-TR-06-12.pdf</a><a href="#section-4.3-2.104" class="pilcrow">¶</a>
+<dt id="section-4.3-2.103">enisa:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.104">The present threat taxonomy is an initial version that has been developed on the basis of available ENISA material. This material has been used as an ENISA-internal structuring aid for information collection and threat consolidation purposes. It emerged in the time period 2012-2015.<a href="#section-4.3-2.104" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.105">iep:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.106">Forum of Incident Response and Security Teams (FIRST) Information Exchange Policy (IEP) framework.<a href="#section-4.3-2.106" class="pilcrow">¶</a>
+<dt id="section-4.3-2.105">estimative-language:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.106">Estimative language to describe quality and credibility of underlying sources, data, and methodologies based Intelligence Community Directive 203 (ICD 203) and JP 2-0, Joint Intelligence<a href="#section-4.3-2.106" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.107">ifx-vetting:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.108">The IFX taxonomy is used to categorise information (MISP events and attributes) to aid in the intelligence vetting process<a href="#section-4.3-2.108" class="pilcrow">¶</a>
+<dt id="section-4.3-2.107">eu-marketop-and-publicadmin:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.108">Market operators and public administrations that must comply to some notifications requirements under EU NIS directive<a href="#section-4.3-2.108" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.109">incident-disposition:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.110">How an incident is classified in its process to be resolved. The taxonomy is inspired from NASA Incident Response and Management Handbook.<a href="#section-4.3-2.110" class="pilcrow">¶</a>
+<dt id="section-4.3-2.109">eu-nis-sector-and-subsectors:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.110">Sectors, subsectors, and digital services as identified by the NIS Directive<a href="#section-4.3-2.110" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.111">infoleak:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.112">A taxonomy describing information leaks and especially information classified as being potentially leaked.<a href="#section-4.3-2.112" class="pilcrow">¶</a>
+<dt id="section-4.3-2.111">euci:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.112">EU classified information (EUCI) means any information or material designated by a EU security classification, the unauthorised disclosure of which could cause varying degrees of prejudice to the interests of the European Union or of one or more of the Member States.<a href="#section-4.3-2.112" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.113">information-security-data-source:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.114">Taxonomy to classify the information security data sources<a href="#section-4.3-2.114" class="pilcrow">¶</a>
+<dt id="section-4.3-2.113">europol-event:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.114">This taxonomy was designed to describe the type of events<a href="#section-4.3-2.114" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.115">information-security-indicators:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.116">Information security indicators have been standardized by the ETSI Industrial Specification Group (ISG) ISI. These indicators provide the basis to switch from a qualitative to a quantitative culture in IT Security Scope of measurements: External and internal threats (attempt and success), user's deviant behaviours, nonconformities and/or vulnerabilities (software, configuration, behavioural, general security framework). ETSI GS ISI 001-1 (V1.1.2): ISI Indicators<a href="#section-4.3-2.116" class="pilcrow">¶</a>
+<dt id="section-4.3-2.115">europol-incident:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.116">This taxonomy was designed to describe the type of incidents by class.<a href="#section-4.3-2.116" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.117">interception-method:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.118">The interception method used to intercept traffic.<a href="#section-4.3-2.118" class="pilcrow">¶</a>
+<dt id="section-4.3-2.117">event-assessment:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.118">A series of assessment predicates describing the event assessment performed to make judgement(s) under a certain level of uncertainty.<a href="#section-4.3-2.118" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.119">kill-chain:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.120">Cyber Kill Chain from Lockheed Martin as described in Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains.<a href="#section-4.3-2.120" class="pilcrow">¶</a>
+<dt id="section-4.3-2.119">event-classification:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.120">Classification of events as seen in tools such as RT/IR, MISP and other<a href="#section-4.3-2.120" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.121">maec-delivery-vectors:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.122">Vectors used to deliver malware based on MAEC 5.0<a href="#section-4.3-2.122" class="pilcrow">¶</a>
+<dt id="section-4.3-2.121">exercise:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.122">Exercise is a taxonomy to describe if the information is part of one or more cyber or crisis exercise.<a href="#section-4.3-2.122" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.123">maec-malware-behavior:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.124">Malware behaviours based on MAEC 5.0<a href="#section-4.3-2.124" class="pilcrow">¶</a>
+<dt id="section-4.3-2.123">extended-event:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.124">Reasons why an event has been extended. This taxonomy must be used on the extended event. The competitive analysis aspect is from Psychology of Intelligence Analysis by Richard J. Heuer, Jr. ref:<a href="http://www.foo.be/docs/intelligence/PsychofIntelNew.pdf">http://www.foo.be/docs/intelligence/PsychofIntelNew.pdf</a><a href="#section-4.3-2.124" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.125">maec-malware-capabilities:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.126">Malware Capabilities based on MAEC 5.0<a href="#section-4.3-2.126" class="pilcrow">¶</a>
+<dt id="section-4.3-2.125">failure-mode-in-machine-learning:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.126">The purpose of this taxonomy is to jointly tabulate both the of these failure modes in a single place. Intentional failures wherein the failure is caused by an active adversary attempting to subvert the system to attain her goals - either to misclassify the result, infer private training data, or to steal the underlying algorithm. Unintentional failures wherein the failure is because an ML system produces a formally correct but completely unsafe outcome.<a href="#section-4.3-2.126" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.127">maec-malware-obfuscation-methods:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.128">Obfuscation methods used by malware based on MAEC 5.0<a href="#section-4.3-2.128" class="pilcrow">¶</a>
+<dt id="section-4.3-2.127">false-positive:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.128">This taxonomy aims to ballpark the expected amount of false positives.<a href="#section-4.3-2.128" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.129">malware_classification:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.130">Malware classification based on a SANS whitepaper about malware.<a href="#section-4.3-2.130" class="pilcrow">¶</a>
+<dt id="section-4.3-2.129">file-type:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.130">List of known file types.<a href="#section-4.3-2.130" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.131">misp:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.132">Internal MISP taxonomy.<a href="#section-4.3-2.132" class="pilcrow">¶</a>
+<dt id="section-4.3-2.131">financial:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.132">Financial taxonomy to describe financial services, infrastructure and financial scope.<a href="#section-4.3-2.132" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.133">monarc-threat:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.134">MONARC threat taxonomy.<a href="#section-4.3-2.134" class="pilcrow">¶</a>
+<dt id="section-4.3-2.133">flesch-reading-ease:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.134">Flesch Reading Ease is a revised system for determining the comprehension difficulty of written material. The scoring of the flesh score can have a maximum of 121.22 and there is no limit on how low a score can be (negative score are valid).<a href="#section-4.3-2.134" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.135">ms-caro-malware:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.136">Malware Type and Platform classification based on Microsoft's implementation of the Computer Antivirus Research Organization (CARO) Naming Scheme and Malware Terminology.<a href="#section-4.3-2.136" class="pilcrow">¶</a>
+<dt id="section-4.3-2.135">fpf:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.136">The Future of Privacy Forum (FPF) <a href="https://fpf.org/2016/04/25/a-visual-guide-to-practical-data-de-identification/">visual guide to practical de-identification</a> taxonomy is used to evaluate the degree of identifiability of personal data and the types of pseudonymous data, de-identified data and anonymous data. The work of FPF is licensed under a creative commons attribution 4.0 international license.<a href="#section-4.3-2.136" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.137">ms-caro-malware-full:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.138">Malware Type and Platform classification based on Microsoft's implementation of the Computer Antivirus Research Organization (CARO) Naming Scheme and Malware Terminology.<a href="#section-4.3-2.138" class="pilcrow">¶</a>
+<dt id="section-4.3-2.137">fr-classif:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.138">French gov information classification system<a href="#section-4.3-2.138" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.139">nato:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.140">Marking of Classified and Unclassified materials as described by the North Atlantic Treaty Organization, NATO.<a href="#section-4.3-2.140" class="pilcrow">¶</a>
+<dt id="section-4.3-2.139">gdpr:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.140">Taxonomy related to the REGULATION (EU) 2016/679 OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation)<a href="#section-4.3-2.140" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.141">nis:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.142">NIS Cybersecurity Incident Taxonomy.<a href="#section-4.3-2.142" class="pilcrow">¶</a>
+<dt id="section-4.3-2.141">gea-nz-activities:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.142">Information needed to track or monitor moments, periods or events that occur over time. This type of information is focused on occurrences that must be tracked for business reasons or represent a specific point in the evolution of 'The Business'.<a href="#section-4.3-2.142" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.143">open_threat:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.144">Open Threat Taxonomy v1.1 base on James Tarala of SANS ref. - <a href="http://www.auditscripts.com/resources/open_threat_taxonomy_v1.1a.pdf">http://www.auditscripts.com/resources/open_threat_taxonomy_v1.1a.pdf</a><a href="#section-4.3-2.144" class="pilcrow">¶</a>
+<dt id="section-4.3-2.143">gea-nz-entities:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.144">Information relating to instances of entities or things.<a href="#section-4.3-2.144" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.145">osint:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.146">Open Source Intelligence - Classification (MISP taxonomies).<a href="#section-4.3-2.146" class="pilcrow">¶</a>
+<dt id="section-4.3-2.145">gea-nz-motivators:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.146">Information relating to authority or governance.<a href="#section-4.3-2.146" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.147">passivetotal:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.148">Tags for RiskIQ's passivetotal service<a href="#section-4.3-2.148" class="pilcrow">¶</a>
+<dt id="section-4.3-2.147">gsma-attack-category:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.148">Taxonomy used by GSMA for their information sharing program with telco describing the attack categories<a href="#section-4.3-2.148" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.149">pentest:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.150">Penetration test (pentest) classification.<a href="#section-4.3-2.150" class="pilcrow">¶</a>
+<dt id="section-4.3-2.149">gsma-fraud:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.150">Taxonomy used by GSMA for their information sharing program with telco describing the various aspects of fraud<a href="#section-4.3-2.150" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.151">priority-level:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.152">After an incident is scored, it is assigned a priority level. The six levels listed below are aligned with NCCIC, DHS, and the CISS to help provide a common lexicon when discussing incidents. This priority assignment drives NCCIC urgency, pre-approved incident response offerings, reporting requirements, and recommendations for leadership escalation. Generally, incident priority distribution should follow a similar pattern to the graph below. Based on <a href="https://www.us-cert.gov/NCCIC-Cyber-Incident-Scoring-System">https://www.us-cert.gov/NCCIC-Cyber-Incident-Scoring-System</a>.<a href="#section-4.3-2.152" class="pilcrow">¶</a>
+<dt id="section-4.3-2.151">gsma-network-technology:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.152">Taxonomy used by GSMA for their information sharing program with telco describing the types of infrastructure. WiP<a href="#section-4.3-2.152" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.153">rsit:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.154">Reference Security Incident Classification Taxonomy.<a href="#section-4.3-2.154" class="pilcrow">¶</a>
+<dt id="section-4.3-2.153">honeypot-basic:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.154">Updated (CIRCL, Seamus Dowling and EURECOM) from Christian Seifert, Ian Welch, Peter Komisarczuk, 'Taxonomy of Honeypots', Technical Report CS-TR-06/12, VICTORIA UNIVERSITY OF WELLINGTON, School of Mathematical and Computing Sciences, June 2006, <a href="http://www.mcs.vuw.ac.nz/comp/Publications/archive/CS-TR-06/CS-TR-06-12.pdf">http://www.mcs.vuw.ac.nz/comp/Publications/archive/CS-TR-06/CS-TR-06-12.pdf</a><a href="#section-4.3-2.154" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.155">rt<em>event</em>status:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.156">Status of events used in Request Tracker.<a href="#section-4.3-2.156" class="pilcrow">¶</a>
+<dt id="section-4.3-2.155">ics:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.156">FIRST.ORG CTI SIG - MISP Proposal for ICS/OT Threat Attribution (IOC) Project<a href="#section-4.3-2.156" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.157">runtime-packer:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.158">Runtime or software packer used to combine compressed data with the decompression code. The decompression code can add additional obfuscations mechanisms including polymorphic-packer or other obfuscation techniques. This taxonomy lists all the known or official packer used for legitimate use or for packing malicious binaries.<a href="#section-4.3-2.158" class="pilcrow">¶</a>
+<dt id="section-4.3-2.157">iep:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.158">Forum of Incident Response and Security Teams (FIRST) Information Exchange Policy (IEP) framework<a href="#section-4.3-2.158" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.159">smart-airports-threats:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.160">Threat taxonomy in the scope of securing smart airports by ENISA.<a href="#section-4.3-2.160" class="pilcrow">¶</a>
+<dt id="section-4.3-2.159">iep2-policy:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.160">Forum of Incident Response and Security Teams (FIRST) Information Exchange Policy (IEP) v2.0 Policy<a href="#section-4.3-2.160" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.161">stealth_malware:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.162">Classification based on malware stealth techniques.<a href="#section-4.3-2.162" class="pilcrow">¶</a>
+<dt id="section-4.3-2.161">iep2-reference:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.162">Forum of Incident Response and Security Teams (FIRST) Information Exchange Policy (IEP) v2.0 Reference<a href="#section-4.3-2.162" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.163">stix-ttp:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.164">Representation of the behavior or modus operandi of cyber adversaries (a.k.a TTP) as normalized in STIX<a href="#section-4.3-2.164" class="pilcrow">¶</a>
+<dt id="section-4.3-2.163">ifx-vetting:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.164">The IFX taxonomy is used to categorise information (MISP events and attributes) to aid in the intelligence vetting process<a href="#section-4.3-2.164" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.165">targeted-threat-index:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.166">The Targeted Threat Index is a metric for assigning an overall threat ranking score to email messages that deliver malware to a victim<span class="unicode">’ (U+2019)</span>s computer. The TTI metric was first introduced at SecTor 2013 by Seth Hardy as part of the talk <span class="unicode">“ (U+201C)</span>RATastrophe: Monitoring a Malware Menagerie<span class="unicode">” (U+201D)</span> along with Katie Kleemola and Greg Wiseman.<a href="#section-4.3-2.166" class="pilcrow">¶</a>
+<dt id="section-4.3-2.165">incident-disposition:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.166">How an incident is classified in its process to be resolved. The taxonomy is inspired from NASA Incident Response and Management Handbook. <a href="https://www.nasa.gov/pdf/589502main_ITS-HBK-2810.09-02%20%5bNASA%20Information%20Security%20Incident%20Management%5d.pdf#page=9">https://www.nasa.gov/pdf/589502main_ITS-HBK-2810.09-02%20%5bNASA%20Information%20Security%20Incident%20Management%5d.pdf#page=9</a><a href="#section-4.3-2.166" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.167">tlp:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.168">The Traffic Light Protocol - or short: TLP - was designed with the objective to create a favorable classification scheme for sharing sensitive information while keeping the control over its distribution at the same time. Extended with TLP:EX:CHR.<a href="#section-4.3-2.168" class="pilcrow">¶</a>
+<dt id="section-4.3-2.167">infoleak:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.168">A taxonomy describing information leaks and especially information classified as being potentially leaked. The taxonomy is based on the work by CIRCL on the AIL framework. The taxonomy aim is to be used at large to improve classification of leaked information.<a href="#section-4.3-2.168" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.169">tor:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.170">Taxonomy to describe Tor network infrastructure<a href="#section-4.3-2.170" class="pilcrow">¶</a>
+<dt id="section-4.3-2.169">information-origin:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.170">Taxonomy for tagging information by its origin: human-generated or AI-generated.<a href="#section-4.3-2.170" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.171">type:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.172">Taxonomy to describe different types of intelligence gathering discipline which can be described the origin of intelligence.<a href="#section-4.3-2.172" class="pilcrow">¶</a>
+<dt id="section-4.3-2.171">information-security-data-source:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.172">Taxonomy to classify the information security data sources.<a href="#section-4.3-2.172" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.173">use-case-applicability:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.174">The Use Case Applicability categories reflect standard resolution categories, to clearly display alerting rule configuration problems.<a href="#section-4.3-2.174" class="pilcrow">¶</a>
+<dt id="section-4.3-2.173">information-security-indicators:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.174">A full set of operational indicators for organizations to use to benchmark their security posture.<a href="#section-4.3-2.174" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.175">veris:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.176">Vocabulary for Event Recording and Incident Sharing (VERIS).<a href="#section-4.3-2.176" class="pilcrow">¶</a>
+<dt id="section-4.3-2.175">interactive-cyber-training-audience:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.176">Describes the target of cyber training and education.<a href="#section-4.3-2.176" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.177">vocabulaire-des-probabilites-estimatives:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.178">Vocabulaire des probabilit<span class="unicode">é (U+00E9)</span>s estimatives<a href="#section-4.3-2.178" class="pilcrow">¶</a>
+<dt id="section-4.3-2.177">interactive-cyber-training-technical-setup:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.178">The technical setup consists of environment structure, deployment, and orchestration.<a href="#section-4.3-2.178" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.3-2.179">workflow:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.180">Workflow support language is a common language to support intelligence analysts to perform their analysis on data and information.<a href="#section-4.3-2.180" class="pilcrow">¶</a>
+<dt id="section-4.3-2.179">interactive-cyber-training-training-environment:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.180">The training environment details the environment around the training, consisting of training type and scenario.<a href="#section-4.3-2.180" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.181">interactive-cyber-training-training-setup:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.182">The training setup further describes the training itself with the scoring, roles, the training mode as well as the customization level.<a href="#section-4.3-2.182" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.183">interception-method:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.184">The interception method used to intercept traffic.<a href="#section-4.3-2.184" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.185">ioc:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.186">An IOC classification to facilitate automation of malicious and non malicious artifacts<a href="#section-4.3-2.186" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.187">iot:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.188">Internet of Things taxonomy, based on IOT UK report <a href="https://iotuk.org.uk/wp-content/uploads/2017/01/IOT-Taxonomy-Report.pdf">https://iotuk.org.uk/wp-content/uploads/2017/01/IOT-Taxonomy-Report.pdf</a><a href="#section-4.3-2.188" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.189">kill-chain:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.190">The Cyber Kill Chain, a phase-based model developed by Lockheed Martin, aims to help categorise and identify the stage of an attack.<a href="#section-4.3-2.190" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.191">maec-delivery-vectors:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.192">Vectors used to deliver malware based on MAEC 5.0<a href="#section-4.3-2.192" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.193">maec-malware-behavior:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.194">Malware behaviours based on MAEC 5.0<a href="#section-4.3-2.194" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.195">maec-malware-capabilities:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.196">Malware Capabilities based on MAEC 5.0<a href="#section-4.3-2.196" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.197">maec-malware-obfuscation-methods:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.198">Obfuscation methods used by malware based on MAEC 5.0<a href="#section-4.3-2.198" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.199">malware_classification:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.200">Classification based on different categories. Based on <a href="https://www.sans.org/reading-room/whitepapers/incident/malware-101-viruses-32848">https://www.sans.org/reading-room/whitepapers/incident/malware-101-viruses-32848</a><a href="#section-4.3-2.200" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.201">misinformation-website-label:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.202">classification for the identification of type of misinformation among websites. Source:False, Misleading, Clickbait-y, and/or Satirical News Sources by Melissa Zimdars 2019<a href="#section-4.3-2.202" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.203">misp:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.204">MISP taxonomy to infer with MISP behavior or operation.<a href="#section-4.3-2.204" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.205">misp-workflow:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.206">MISP workflow taxonomy to support result of workflow execution.<a href="#section-4.3-2.206" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.207">monarc-threat:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.208">MONARC Threats Taxonomy<a href="#section-4.3-2.208" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.209">ms-caro-malware:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.210">Malware Type and Platform classification based on Microsoft's implementation of the Computer Antivirus Research Organization (CARO) Naming Scheme and Malware Terminology. Based on <a href="https://www.microsoft.com/en-us/security/portal/mmpc/shared/malwarenaming.aspx">https://www.microsoft.com/en-us/security/portal/mmpc/shared/malwarenaming.aspx</a>, <a href="https://www.microsoft.com/security/portal/mmpc/shared/glossary.aspx">https://www.microsoft.com/security/portal/mmpc/shared/glossary.aspx</a>, <a href="https://www.microsoft.com/security/portal/mmpc/shared/objectivecriteria.aspx">https://www.microsoft.com/security/portal/mmpc/shared/objectivecriteria.aspx</a>, and <a href="http://www.caro.org/definitions/index.html">http://www.caro.org/definitions/index.html</a>. Malware families are extracted from Microsoft SIRs since 2008 based on <a href="https://www.microsoft.com/security/sir/archive/default.aspx">https://www.microsoft.com/security/sir/archive/default.aspx</a> and <a href="https://www.microsoft.com/en-us/security/portal/threat/threats.aspx">https://www.microsoft.com/en-us/security/portal/threat/threats.aspx</a>. Note that SIRs do NOT include all Microsoft malware families.<a href="#section-4.3-2.210" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.211">ms-caro-malware-full:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.212">Malware Type and Platform classification based on Microsoft's implementation of the Computer Antivirus Research Organization (CARO) Naming Scheme and Malware Terminology. Based on <a href="https://www.microsoft.com/en-us/security/portal/mmpc/shared/malwarenaming.aspx">https://www.microsoft.com/en-us/security/portal/mmpc/shared/malwarenaming.aspx</a>, <a href="https://www.microsoft.com/security/portal/mmpc/shared/glossary.aspx">https://www.microsoft.com/security/portal/mmpc/shared/glossary.aspx</a>, <a href="https://www.microsoft.com/security/portal/mmpc/shared/objectivecriteria.aspx">https://www.microsoft.com/security/portal/mmpc/shared/objectivecriteria.aspx</a>, and <a href="http://www.caro.org/definitions/index.html">http://www.caro.org/definitions/index.html</a>. Malware families are extracted from Microsoft SIRs since 2008 based on <a href="https://www.microsoft.com/security/sir/archive/default.aspx">https://www.microsoft.com/security/sir/archive/default.aspx</a> and <a href="https://www.microsoft.com/en-us/security/portal/threat/threats.aspx">https://www.microsoft.com/en-us/security/portal/threat/threats.aspx</a>. Note that SIRs do NOT include all Microsoft malware families.<a href="#section-4.3-2.212" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.213">mwdb:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.214">Malware Database (mwdb) Taxonomy - Tags used across the platform<a href="#section-4.3-2.214" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.215">nato:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.216">NATO classification markings.<a href="#section-4.3-2.216" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.217">nis:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.218">The taxonomy is meant for large scale cybersecurity incidents, as mentioned in the Commission Recommendation of 13 September 2017, also known as the blueprint. It has two core parts: The nature of the incident, i.e. the underlying cause, that triggered the incident, and the impact of the incident, i.e. the impact on services, in which sector(s) of economy and society.<a href="#section-4.3-2.218" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.219">nis2:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.220">The taxonomy is meant for large scale cybersecurity incidents, as mentioned in the Commission Recommendation of 13 May 2022, also known as the provisional agreement. It has two core parts: The nature of the incident, i.e. the underlying cause, that triggered the incident, and the impact of the incident, i.e. the impact on services, in which sector(s) of economy and society.<a href="#section-4.3-2.220" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.221">open_threat:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.222">Open Threat Taxonomy v1.1 base on James Tarala of SANS <a href="http://www.auditscripts.com/resources/open_threat_taxonomy_v1.1a.pdf">http://www.auditscripts.com/resources/open_threat_taxonomy_v1.1a.pdf</a>, <a href="https://files.sans.org/summit/Threat_Hunting_Incident_Response_Summit_2016/PDFs/Using-Open-Tools-to-Convert-Threat-Intelligence-into-Practical-Defenses-James-Tarala-SANS-Institute.pdf">https://files.sans.org/summit/Threat_Hunting_Incident_Response_Summit_2016/PDFs/Using-Open-Tools-to-Convert-Threat-Intelligence-into-Practical-Defenses-James-Tarala-SANS-Institute.pdf</a>, <a href="https://www.youtube.com/watch?v=5rdGOOFC_yE">https://www.youtube.com/watch?v=5rdGOOFC_yE</a>, and <a href="https://www.rsaconference.com/writable/presentations/file_upload/str-r04_using-an-open-source-threat-model-for-prioritized-defense-final.pdf">https://www.rsaconference.com/writable/presentations/file_upload/str-r04_using-an-open-source-threat-model-for-prioritized-defense-final.pdf</a><a href="#section-4.3-2.222" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.223">osint:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.224">Open Source Intelligence - Classification (MISP taxonomies)<a href="#section-4.3-2.224" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.225">pandemic:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.226">Pandemic<a href="#section-4.3-2.226" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.227">passivetotal:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.228">Tags from RiskIQ's PassiveTotal service<a href="#section-4.3-2.228" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.229">pentest:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.230">Penetration test (pentest) classification.<a href="#section-4.3-2.230" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.231">phishing:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.232">Taxonomy to classify phishing attacks including techniques, collection mechanisms and analysis status.<a href="#section-4.3-2.232" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.233">poison-taxonomy:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.234">Non-exhaustive taxonomy of natural poison<a href="#section-4.3-2.234" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.235">political-spectrum:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.236">A political spectrum is a system to characterize and classify different political positions in relation to one another.<a href="#section-4.3-2.236" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.237">priority-level:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.238">After an incident is scored, it is assigned a priority level. The six levels listed below are aligned with NCCIC, DHS, and the CISS to help provide a common lexicon when discussing incidents. This priority assignment drives NCCIC urgency, pre-approved incident response offerings, reporting requirements, and recommendations for leadership escalation. Generally, incident priority distribution should follow a similar pattern to the graph below. Based on <a href="https://www.us-cert.gov/NCCIC-Cyber-Incident-Scoring-System">https://www.us-cert.gov/NCCIC-Cyber-Incident-Scoring-System</a>.<a href="#section-4.3-2.238" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.239">pyoti:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.240">PyOTI automated enrichment schemes for point in time classification of indicators.<a href="#section-4.3-2.240" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.241">ransomware:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.242">Ransomware is used to define ransomware types and the elements that compose them.<a href="#section-4.3-2.242" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.243">ransomware-roles:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.244">The seven roles seen in most ransomware incidents.<a href="#section-4.3-2.244" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.245">retention:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.246">Add a retenion time to events to automatically remove the IDS-flag on ip-dst or ip-src attributes. We calculate the time elapsed based on the date of the event. Supported time units are: d(ays), w(eeks), m(onths), y(ears). The numerical_value is just for sorting in the web-interface and is not used for calculations.<a href="#section-4.3-2.246" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.247">rsit:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.248">Reference Security Incident Classification Taxonomy<a href="#section-4.3-2.248" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.249">rt_event_status:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.250">Status of events used in Request Tracker.<a href="#section-4.3-2.250" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.251">runtime-packer:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.252">Runtime or software packer used to combine compressed or encrypted data with the decompression or decryption code. This code can add additional obfuscations mechanisms including polymorphic-packer or other obfuscation techniques. This taxonomy lists all the known or official packer used for legitimate use or for packing malicious binaries.<a href="#section-4.3-2.252" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.253">scrippsco2-fgc:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.254">Flags describing the sample<a href="#section-4.3-2.254" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.255">scrippsco2-fgi:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.256">Flags describing the sample for isotopic data (C14, O18)<a href="#section-4.3-2.256" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.257">scrippsco2-sampling-stations:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.258">Sampling stations of the Scripps CO2 Program<a href="#section-4.3-2.258" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.259">sentinel-threattype:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.260">Sentinel indicator threat types.<a href="#section-4.3-2.260" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.261">smart-airports-threats:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.262">Threat taxonomy in the scope of securing smart airports by ENISA. <a href="https://www.enisa.europa.eu/publications/securing-smart-airports">https://www.enisa.europa.eu/publications/securing-smart-airports</a><a href="#section-4.3-2.262" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.263">social-engineering-attack-vectors:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.264">Attack vectors used in social engineering as described in 'A Taxonomy of Social Engineering Defense Mechanisms' by Dalal Alharthi and others.<a href="#section-4.3-2.264" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.265">srbcert:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.266">SRB-CERT Taxonomy - Schemes of Classification in Incident Response and Detection<a href="#section-4.3-2.266" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.267">state-responsibility:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.268">A spectrum of state responsibility to more directly tie the goals of attribution to the needs of policymakers.<a href="#section-4.3-2.268" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.269">stealth_malware:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.270">Classification based on malware stealth techniques. Described in <a href="https://vxheaven.org/lib/pdf/Introducing%20Stealth%20Malware%20Taxonomy.pdf">https://vxheaven.org/lib/pdf/Introducing%20Stealth%20Malware%20Taxonomy.pdf</a><a href="#section-4.3-2.270" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.271">stix-ttp:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.272">TTPs are representations of the behavior or modus operandi of cyber adversaries.<a href="#section-4.3-2.272" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.273">targeted-threat-index:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.274">The Targeted Threat Index is a metric for assigning an overall threat ranking score to email messages that deliver malware to a victim's computer. The TTI metric was first introduced at SecTor 2013 by Seth Hardy as part of the talk "RATastrophe: Monitoring a Malware Menagerie" along with Katie Kleemola and Greg Wiseman.<a href="#section-4.3-2.274" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.275">thales_group:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.276">Thales Group Taxonomy - was designed with the aim of enabling desired sharing and preventing unwanted sharing between Thales Group security communities.<a href="#section-4.3-2.276" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.277">threatmatch:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.278">The ThreatMatch Sectors, Incident types, Malware types and Alert types are applicable for any ThreatMatch instances and should be used for all CIISI and TIBER Projects.<a href="#section-4.3-2.278" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.279">threats-to-dns:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.280">An overview of some of the known attacks related to DNS as described by Torabi, S., Boukhtouta, A., Assi, C., &amp; Debbabi, M. (2018) in Detecting Internet Abuse by Analyzing Passive DNS Traffic: A Survey of Implemented Systems. IEEE Communications Surveys &amp; Tutorials, 1-1. doi:10.1109/comst.2018.2849614<a href="#section-4.3-2.280" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.281">tlp:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.282">The Traffic Light Protocol (TLP) (v2.0) was created to facilitate greater sharing of potentially sensitive information and more effective collaboration. Information sharing happens from an information source, towards one or more recipients. TLP is a set of four standard labels (a fifth label is included in amber to limit the diffusion) used to indicate the sharing boundaries to be applied by the recipients. Only labels listed in this standard are considered valid by FIRST. This taxonomy includes additional labels for backward compatibility which are no more validated by FIRST SIG.<a href="#section-4.3-2.282" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.283">tor:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.284">Taxonomy to describe Tor network infrastructure<a href="#section-4.3-2.284" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.285">trust:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.286">The Indicator of Trust provides insight about data on what can be trusted and known as a good actor. Similar to a whitelist but on steroids, reusing features one would use with Indicators of Compromise, but to filter out what is known to be good.<a href="#section-4.3-2.286" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.287">type:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.288">Taxonomy to describe different types of intelligence gathering discipline which can be described the origin of intelligence.<a href="#section-4.3-2.288" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.289">unified-kill-chain:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.290">The Unified Kill Chain is a refinement to the Kill Chain.<a href="#section-4.3-2.290" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.291">use-case-applicability:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.292">The Use Case Applicability categories reflect standard resolution categories, to clearly display alerting rule configuration problems.<a href="#section-4.3-2.292" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.293">veris:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.294">Vocabulary for Event Recording and Incident Sharing (VERIS)<a href="#section-4.3-2.294" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.295">vmray:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.296">VMRay taxonomies to map VMRay Thread Identifier scores and artifacts.<a href="#section-4.3-2.296" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.297">vocabulaire-des-probabilites-estimatives:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.298">Ce vocabulaire attribue des valeurs en pourcentage &amp;#224; certains &amp;#233;nonc&amp;#233;s de probabilit&amp;#233;<a href="#section-4.3-2.298" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.3-2.299">workflow:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.300">Workflow support language is a common language to support intelligence analysts to perform their analysis on data and information.<a href="#section-4.3-2.300" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2159,7 +2404,7 @@ A taxonomies array describes the taxonomy available with the description, name a
 <p id="section-5-1">The JSON Schema <span>[<a href="#JSON-SCHEMA" class="xref">JSON-SCHEMA</a>]</span> below defines the structure of the MISP taxonomy document
 as literally described before. The JSON Schema is used validating a MISP taxonomy. The validation
 is a <em>MUST</em> if the taxonomy is included in the MISP taxonomies directory.<a href="#section-5-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft" id="section-5-2">
+<div class="alignLeft art-text artwork" id="section-5-2">
 <pre>{
   "$schema": "http://json-schema.org/schema#",
   "title": "Validator for misp-taxonomies",
@@ -2331,19 +2576,19 @@ of open standards in threat intelligence sharing.<a href="#section-6-1" class="p
 <dl class="references">
 <dt id="JSON-SCHEMA">[JSON-SCHEMA]</dt>
       <dd>
-<span class="refAuthor">Wright, A.</span>, <span class="refTitle">"JSON Schema: A Media Type for Describing JSON Documents"</span>, <span class="refContent"></span>, <time datetime="2016" class="refDate">2016</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-wright-json-schema">https://tools.ietf.org/html/draft-wright-json-schema</a>&gt;</span>. </dd>
+<span class="refAuthor">Wright, A.</span>, <span class="refTitle">"JSON Schema: A Media Type for Describing JSON Documents"</span>, <time datetime="2016" class="refDate">2016</time>, <span>&lt;<a href="https://tools.ietf.org/html/draft-wright-json-schema">https://tools.ietf.org/html/draft-wright-json-schema</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MISP-P">[MISP-P]</dt>
       <dd>
-<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Project - Malware Information Sharing Platform and Threat Sharing"</span>, <span class="refContent"></span>, <span>&lt;<a href="https://github.com/MISP">https://github.com/MISP</a>&gt;</span>. </dd>
+<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Project - Malware Information Sharing Platform and Threat Sharing"</span>, <span>&lt;<a href="https://github.com/MISP">https://github.com/MISP</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="MISP-T">[MISP-T]</dt>
       <dd>
-<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Taxonomies - shared and common vocabularies of tags"</span>, <span class="refContent"></span>, <span>&lt;<a href="https://github.com/MISP/misp-taxonomies">https://github.com/MISP/misp-taxonomies</a>&gt;</span>. </dd>
+<span class="refAuthor">Community, M.</span>, <span class="refTitle">"MISP Taxonomies - shared and common vocabularies of tags"</span>, <span>&lt;<a href="https://github.com/MISP/misp-taxonomies">https://github.com/MISP/misp-taxonomies</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="machine-tags">[machine-tags]</dt>
     <dd>
-<span class="refAuthor">Cope, A. S.</span>, <span class="refTitle">"Machine tags"</span>, <span class="refContent"></span>, <time datetime="2007" class="refDate">2007</time>, <span>&lt;<a href="https://www.flickr.com/groups/51035612836@N01/discuss/72157594497877875/">https://www.flickr.com/groups/51035612836@N01/discuss/72157594497877875/</a>&gt;</span>. </dd>
+<span class="refAuthor">Cope, A. S.</span>, <span class="refTitle">"Machine tags"</span>, <time datetime="2007" class="refDate">2007</time>, <span>&lt;<a href="https://www.flickr.com/groups/51035612836@N01/discuss/72157594497877875/">https://www.flickr.com/groups/51035612836@N01/discuss/72157594497877875/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -2355,8 +2600,8 @@ of open standards in threat intelligence sharing.<a href="#section-6-1" class="p
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Alexandre Dulaunoy</span></div>
 <div dir="auto" class="left"><span class="org">Computer Incident Response Center Luxembourg</span></div>
-<div dir="auto" class="left"><span class="street-address">16, bd d'Avranches</span></div>
-<div dir="auto" class="left">L-<span class="postal-code">L-1611</span> <span class="locality">Luxembourg</span>
+<div dir="auto" class="left"><span class="street-address">122, rue Adolphe Fischer</span></div>
+<div dir="auto" class="left">L-<span class="postal-code">L-1521</span> <span class="locality">Luxembourg</span>
 </div>
 <div dir="auto" class="left"><span class="country-name">Luxembourg</span></div>
 <div class="tel">
@@ -2371,8 +2616,8 @@ of open standards in threat intelligence sharing.<a href="#section-6-1" class="p
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Andras Iklody</span></div>
 <div dir="auto" class="left"><span class="org">Computer Incident Response Center Luxembourg</span></div>
-<div dir="auto" class="left"><span class="street-address">16, bd d'Avranches</span></div>
-<div dir="auto" class="left">L-<span class="postal-code">L-1611</span> <span class="locality">Luxembourg</span>
+<div dir="auto" class="left"><span class="street-address">122, rue Adolphe Fischer</span></div>
+<div dir="auto" class="left">L-<span class="postal-code">L-1521</span> <span class="locality">Luxembourg</span>
 </div>
 <div dir="auto" class="left"><span class="country-name">Luxembourg</span></div>
 <div class="tel">
