@@ -45,7 +45,7 @@ This document describes the MISP galaxy format which describes a simple JSON for
 
 Specification: [TXT](https://www.misp-standard.org/rfc/misp-standard-galaxy-format.txt) - [HTML](https://www.misp-standard.org/rfc/misp-standard-galaxy-format.html)
 
-Galaxy library: [HTML](https://www.misp-project.org/galaxy.html) - [PDF](https://www.misp-project.org/galaxy.pdf)
+Galaxy library: [HTML](https://www.misp-galaxy.org) - [PDF](https://www.misp-project.org/galaxy.pdf)
 
 Lead: [MISP Project](https://www.misp-project.org/)
 
