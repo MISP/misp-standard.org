@@ -8,9 +8,6 @@ header:
   overlay_filter: 0.8
 ---
 
-
-# MISP Standard Committee Charter
-
 # MISP Standard Committee Charter
 
 ## Introduction

@@ -49,6 +49,12 @@ Galaxy library: [HTML](https://www.misp-galaxy.org) - [PDF](https://www.misp-pro
 
 Lead: [MISP Project](https://www.misp-project.org/)
 
+## Threat Actor Naming
+
+This document provides advice on the naming of threat actors (also known as malicious actors).  The objective is to provide practical advice for organizations such as security vendors or organizations attributing incidents to a group of threat actors.  It also discusses the implications of naming a threat actor for intelligence analysts and threat intelligence platforms such as MISP.
+
+Specification: [TXT](https://www.misp-standard.org/rfc/threat-actor-naming.txt) - [HTML](https://www.misp-standard.org/rfc/threat-actor-naming.html)
+
 ## SightingDB format
 
 This document describes the format used by SightingDB to give automated context to a given Attribute by counting occurrences and tracking times of observability.  SightingDB was designed to provide to MISP and other tools an interoperable, scalable and fast way to store and retrieve attributes sightings.
@@ -56,9 +62,4 @@ This document describes the format used by SightingDB to give automated context 
 Specification: [TXT](https://www.misp-standard.org/rfc/sightingdb-format.txt) - [HTML](https://www.misp-standard.org/rfc/sightingdb-format.html)
 
 Lead: [Devo Inc](https://www.devo.com/)
-
-# Upcoming standards
-
-- MISP warninglist format
-
 
