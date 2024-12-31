@@ -2,6 +2,7 @@
 title: About
 layout: single
 author_profile: false
+toc: true
 ---
 
 The MISP standard is a collaborative intelligence standard, powering intelligence and information exchange, sharing and modeling. The misp-standard.org is a standards body developing free and open standards through sane open-source collaboration.
@@ -40,7 +41,7 @@ A host of proprietary and open source software are implementing and using the MI
 
 ~~~
 CIRCL
-c/o securitymadein.lu
+c/o LHC g.i.e. 
 122, rue Adolphe Fischer
 Luxembourg, L-1521
 Luxembourg

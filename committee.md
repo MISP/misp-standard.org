@@ -1,8 +1,11 @@
 ---
-layout: splash
+layout: single 
 title: MISP Standard Committee 
-excerpt: ""
+excerpt: "The MISP Standard Committee is dedicated to the development, maintenance, and promotion of open standards for threat intelligence sharing."
 author_profile: false
+toc: true
+toc_label: Committee Overview
+classes: wide
 header:
   overlay_image: /assets/images/misp-long.png
   overlay_filter: 0.8
@@ -45,6 +48,12 @@ The **MISP Standard Committee** is dedicated to the development, maintenance, an
 ### Publication
 
 - **Draft Preparation**: Approved standards are formatted according to IETF guidelines for I-Ds.
+- **MISP Standard Publication**: The standard is published on the MISP Standard website.
 - **IETF Submission**: Submit the drafts to the IETF for official publication and initiate the standardization process.
-- **Ongoing Maintenance**: Monitor and revise drafts based on IETF feedback and evolving community needs.
+- **Ongoing Maintenance**: Monitor and revise drafts based on MISP standard, IETF feedback and evolving community needs.
 
+## Objectives
+
+- **Streamline Standardization**: Maintain a simple, low-bureaucracy standardization process.
+- **Ensure Open Accessibility**: Make standards openly accessible and readily reusable.
+- **Enable Continuous Evolution**: Provide regular updates to standards in response to community needs.

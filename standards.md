@@ -1,8 +1,10 @@
 ---
-layout: splash
+layout: single 
 title: MISP Published Standards
 excerpt: "Official Published MISP Standards"
 author_profile: false
+toc: true
+toc_label: MISP Standards Overview
 header:
   overlay_image: /assets/images/misp-long.png
   overlay_filter: 0.8
