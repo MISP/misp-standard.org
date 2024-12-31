@@ -18,21 +18,29 @@ feature_row:
   - url: https://thehive-project.org/
     image_path: /assets/images/thehive.png
     alt: "The Hive Project"
-    excerpt: " A 4-in-1 Security Incident Response Platform A scalable, open source and free Security Incident Response Platform, tightly integrated with MISP (Malware Information Sharing Platform), designed to make life easier for SOCs, CSIRTs, CERTs and any information security practitioner dealing with security incidents that need to be investigated and acted upon swiftly. "
+    excerpt: "A 4-in-1 Security Incident Response Platform A scalable, open source and free Security Incident Response Platform, tightly integrated with MISP (Malware Information Sharing Platform), designed to make life easier for SOCs, CSIRTs, CERTs and any information security practitioner dealing with security incidents that need to be investigated and acted upon swiftly. "
+  - url: https://github.com/flowintel/flowintel
+    image_path: /assets/images/flowintel.png
+    alt: "FlowIntel"
+    excerpt: "An open source platform to support analysts to organise their case and tasks"
+  - url: https://github.com/MISP/SkillAegis 
+    image_path: /assets/images/skillaegis.svg
+    alt: "SkillAegis"
+    excerpt: "SkillAegis is a platform to design, run, and monitor exercise scenarios, enhancing skills in applications like MISP and training users in best practices for information management and protective tools. Its gamification system makes learning engaging, ensuring users acquire essential technical skills and adhere to industry standards."
 ---
 
 
 # MISP Standard
 
-At misp-standard.org, we build a simple, efficient and flexible [set of standards](/standards/) to support information exchange and data modeling in different fields, such as:
+At [misp-standard.org](https://misp-standard.org), we develop a straightforward, efficient, and flexible [set of standards](/standards/) to facilitate information exchange and data modeling across various domains, including:
 
-- Cybersecurity intelligence
+- Cybersecurity intelligence (CTI)
 - Threat intelligence
-- Financial fraud
-- Vulnerability information
-- Border control information
-- Digital Forensic and Incident Response
-- Intelligence at large
+- Financial fraud prevention
+- Vulnerability management
+- Border control operations
+- Digital Forensics and Incident Response (DFIR)
+- Broader intelligence disciplines
 
 ## Software using MISP standards
 
