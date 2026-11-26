@@ -9,6 +9,16 @@ excerpt: MISP Standard is a standards body that develops free and open formats f
 <p class="misp-document__lead">The formats support cyber threat intelligence, digital forensics and incident response, vulnerability management, financial fraud prevention, border control, and other intelligence work.</p>
 
 <section class="misp-document__section" markdown="1">
+## Why open standards matter
+
+Cybersecurity teams need to exchange information across organizations and tools. An open standard gives each tool a public specification for both the structure of a record and the meaning of its fields. Teams can test how consistently their tools interpret that record, reuse integrations across partners, and keep workflows portable as they adopt new products.
+
+For example, an incident response team can share a phishing domain in a MISP event. The [MISP core format]({{ '/standards/' | relative_url }}#misp-core-format) identifies it as a domain and ties it to the investigation. Tags from a shared [MISP taxonomy]({{ '/standards/' | relative_url }}#misp-taxonomy-format) can describe the threat or convey how widely the information may be shared. A receiving team can match the domain against its own alerts and use the context to decide how to respond.
+
+That handoff depends on both teams using compatible versions of the standards, interpreting fields consistently, and enforcing the sharing rules in their own systems.
+</section>
+
+<section class="misp-document__section" markdown="1">
 ## History
 
 <div class="misp-history" markdown="1">
