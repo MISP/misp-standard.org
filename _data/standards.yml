@@ -1,0 +1,65 @@
+- title: MISP core format
+  id: misp-core-format
+  specification: misp-standard-core
+  description: Exchange threat indicators, events, and related intelligence between MISP instances and other platforms using a shared JSON format.
+  featured: true
+  lead:
+    name: MISP Project
+    url: https://www.misp-project.org/
+
+- title: MISP object template format
+  id: misp-object-template-format
+  specification: misp-standard-object-template-format
+  description: Define reusable JSON templates for structured MISP objects, including their attributes and relationships.
+  featured: true
+  library:
+    name: Object template library
+    url: https://www.misp-project.org/objects.html
+    pdf: https://www.misp-project.org/objects.pdf
+  lead:
+    name: MISP Project
+    url: https://www.misp-project.org/
+
+- title: MISP taxonomy format
+  id: misp-taxonomy-format
+  specification: misp-standard-taxonomy-format
+  description: Define machine-readable vocabularies for tagging and classifying security events, threats, and indicators.
+  featured: true
+  library:
+    name: Taxonomy library
+    url: https://www.misp-project.org/taxonomies.html
+    pdf: https://www.misp-project.org/taxonomies.pdf
+  lead:
+    name: MISP Project
+    url: https://www.misp-project.org/
+
+- title: MISP galaxy format
+  id: misp-galaxy-format
+  specification: misp-standard-galaxy-format
+  description: Organize threat actors, malware, and other contextual data into clusters that can be attached to MISP events and attributes.
+  library:
+    name: Galaxy library
+    url: https://www.misp-galaxy.org
+    pdf: https://www.misp-project.org/galaxy.pdf
+  lead:
+    name: MISP Project
+    url: https://www.misp-project.org/
+
+- title: MispQL query language
+  id: mispql-format
+  specification: mispql-format
+  description: Query cyber threat intelligence using a read-only, SQL-like language with a JSON representation for Boolean filters.
+  status: Internet-Draft
+
+- title: Threat Actor Naming
+  id: threat-actor-naming
+  specification: threat-actor-naming
+  description: Apply practical guidance for naming threat actors and communicating attribution across organizations and intelligence platforms.
+
+- title: SightingDB format
+  id: sightingdb-format
+  specification: sightingdb-format
+  description: Record how often and when an indicator was observed so MISP and other tools can share sightings consistently.
+  lead:
+    name: Devo Inc
+    url: https://www.devo.com/

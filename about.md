@@ -7,6 +7,8 @@ toc: true
 
 The MISP standard is a collaborative intelligence standard, powering intelligence and information exchange, sharing and modeling. The misp-standard.org is a standards body developing free and open standards through sane open-source collaboration.
 
+The formats support work in cyber threat intelligence, digital forensics and incident response, vulnerability management, financial fraud prevention, border control, and other intelligence disciplines.
+
 # History
 
 In 2012, a group of organisations joined forces in order to work on an open-source project, aiming to enable the exchange of cybersecurity information, called [MISP](https://www.misp-project.org/). Over the years,
