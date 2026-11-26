@@ -5,12 +5,12 @@ title: MISP Standards
 excerpt: Specifications and drafts for exchanging, modeling, querying, and classifying threat intelligence.
 ---
 
-<header class="misp-directory__intro">
+<header class="misp-page-intro">
   <h1>MISP standards</h1>
   <p>{{ page.excerpt }}</p>
 </header>
 
-<nav class="misp-directory__index" aria-label="On this page">
+<nav class="misp-section-index" aria-label="On this page">
   <ul>
     {% for standard in site.data.standards %}
     <li><a href="#{{ standard.id }}">{{ standard.title }}</a></li>

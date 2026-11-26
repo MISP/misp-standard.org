@@ -1,30 +1,39 @@
 ---
-title: About
-layout: single
-author_profile: false
+title: About MISP Standard
+layout: misp-information
+classes: misp-site
 toc: true
+excerpt: MISP Standard is a standards body that develops free and open formats for exchanging and modeling intelligence across tools and organizations.
 ---
 
-The MISP standard is a collaborative intelligence standard, powering intelligence and information exchange, sharing and modeling. The misp-standard.org is a standards body developing free and open standards through sane open-source collaboration.
+<p class="misp-document__lead">The formats support cyber threat intelligence, digital forensics and incident response, vulnerability management, financial fraud prevention, border control, and other intelligence work.</p>
 
-The formats support work in cyber threat intelligence, digital forensics and incident response, vulnerability management, financial fraud prevention, border control, and other intelligence disciplines.
+<section class="misp-document__section" markdown="1">
+## History
 
-# History
+<div class="misp-history" markdown="1">
+### 2012
 
-In 2012, a group of organisations joined forces in order to work on an open-source project, aiming to enable the exchange of cybersecurity information, called [MISP](https://www.misp-project.org/). Over the years,
-the project grew larger and a wide range of organisations became both users of and contributors to the project.
+A group of organizations started [MISP](https://www.misp-project.org/) as an open-source project for sharing cybersecurity information. Over time, more organizations adopted and contributed to it.
 
-In 2016, as part of an effort to enable interoperability and to support integrators, the team behind the open-source project began documenting the formats and protocols used by the MISP software, which lead to more users, contributors and organisations starting to rely on the MISP formats and protocols for information and intelligence exchange.
+### 2016
 
-As of 2017, the MISP format was extended with an object templating system, introducing the ability for anyone to control their own custom data-models without depending on third-party validation or consensus.
+The project began documenting MISP's formats and protocols so other tools could exchange intelligence with MISP and integrators could rely on a shared specification.
 
-In order to preserve and foster the standard and its evolution, the MISP project spun off a new structure in 2019, with the aim to standardise the format under the [misp-standard.org](https://www.misp-standard.org).
+### 2017
 
-As of November 2019, [5 official standards](/standards) (MISP core format, MISP object template format, MISP taxonomy format, MISP galaxy format, and SightingDB format) are now published.
+MISP added object templates so teams could define their own data models without relying on a central approval process.
 
-A host of proprietary and open source software are implementing and using the MISP standard in their respective software such as the [MISP Project](https://www.misp-project.org/), [The Hive](https://thehive-project.org/), [AIL Framework](https://github.com/CIRCL/AIL-framework), [PyMISP](https://github.com/MISP/PyMISP) and many more.
+### 2019
 
-# Who
+The project formed [misp-standard.org](https://www.misp-standard.org) to maintain and develop the formats. By November, it had published five standards covering the MISP core, object template, taxonomy, galaxy, and SightingDB formats.
+</div>
+
+Open-source and proprietary tools use the [MISP standards]({{ '/standards/' | relative_url }}), including [MISP](https://www.misp-project.org/), [TheHive](https://thehive-project.org/), [AIL Framework](https://github.com/CIRCL/AIL-framework), and [PyMISP](https://github.com/MISP/PyMISP).
+</section>
+
+<section class="misp-document__section" markdown="1">
+## People {#who}
 
 - Alexandre Dulaunoy
 - Andras Iklody
@@ -33,20 +42,28 @@ A host of proprietary and open source software are implementing and using the MI
 - Deborah Servili
 - Christian Studer
 - Raphael Vinot
+{:.misp-people}
+</section>
 
-# Sponsors
+<section class="misp-document__section" markdown="1">
+## Sponsors
 
-![](https://www.misp-project.org/assets/images/logo.png)
-![](https://www.misp-project.org/assets/images/en_cef.png)
+<ul class="misp-sponsors">
+  <li><img src="https://www.misp-project.org/assets/images/logo.png" alt="CIRCL, Computer Incident Response Center Luxembourg" width="108" height="40"></li>
+  <li><img src="https://www.misp-project.org/assets/images/en_cef.png" alt="Co-financed by the European Union, Connecting Europe Facility" width="280" height="40"></li>
+</ul>
+</section>
 
-# Contact
+<section class="misp-document__section" markdown="1">
+## Contact
 
-~~~
-CIRCL
-c/o LHC g.i.e. 
-122, rue Adolphe Fischer
-Luxembourg, L-1521
-Luxembourg
-(+352) 247 88444
-info@misp-project.org
-~~~
+<address class="misp-contact">
+  <strong>CIRCL</strong><br>
+  c/o LHC g.i.e.<br>
+  122, rue Adolphe Fischer<br>
+  Luxembourg, L-1521<br>
+  Luxembourg<br>
+  <a href="tel:+35224788444">(+352) 247 88444</a><br>
+  <a href="mailto:info@misp-project.org">info@misp-project.org</a>
+</address>
+</section>

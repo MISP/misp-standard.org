@@ -1,0 +1,22 @@
+---
+layout: splash
+---
+
+<header class="misp-page-intro"{% if page.intro_id %} id="{{ page.intro_id }}"{% endif %}>
+  <h1 id="page-title">{{ page.title }}</h1>
+  <p>{{ page.excerpt }}</p>
+</header>
+
+{% if page.toc %}
+  <div class="misp-document">
+    <nav class="misp-section-index misp-document__index" aria-label="On this page">
+      <p aria-hidden="true">On this page</p>
+      {% include toc.html html=content sanitize=true h_min=2 h_max=2 %}
+    </nav>
+    <div class="misp-document__body">
+      {{ content }}
+    </div>
+  </div>
+{% else %}
+  {{ content }}
+{% endif %}

@@ -3,7 +3,7 @@ layout: posts
 title: "Bridging Standards, Connecting Communities: The Latest MISP-STIX Library is Here"
 modified:
 categories: blog
-excerpt:  
+excerpt: Version 2025.6.12 of the MISP-STIX library helps teams exchange threat intelligence by converting between the MISP core format and OASIS STIX.
 tags: []
 image:
   feature:
