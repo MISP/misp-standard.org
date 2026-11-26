@@ -45,6 +45,12 @@
     name: MISP Project
     url: https://www.misp-project.org/
 
+- title: MispQL query language
+  id: mispql-format
+  specification: mispql-format
+  description: Query cyber threat intelligence using a read-only, SQL-like language with a JSON representation for Boolean filters.
+  status: Internet-Draft
+
 - title: Threat Actor Naming
   id: threat-actor-naming
   specification: threat-actor-naming

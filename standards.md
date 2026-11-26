@@ -1,12 +1,12 @@
 ---
 layout: splash
 classes: misp-site
-title: MISP Published Standards
-excerpt: Published specifications for exchanging, modeling, and classifying threat intelligence.
+title: MISP Standards
+excerpt: Specifications and drafts for exchanging, modeling, querying, and classifying threat intelligence.
 ---
 
 <header class="misp-directory__intro">
-  <h1>Published MISP standards</h1>
+  <h1>MISP standards</h1>
   <p>{{ page.excerpt }}</p>
 </header>
 
@@ -25,8 +25,11 @@ excerpt: Published specifications for exchanging, modeling, and classifying thre
     <div>
       <h2 id="{{ standard.id }}-title">{{ standard.title }}</h2>
       <p>{{ standard.description }}</p>
-      {% if standard.library or standard.lead %}
+      {% if standard.library or standard.lead or standard.status %}
       <ul class="misp-standard__resources">
+        {% if standard.status %}
+        <li>{{ standard.status }}</li>
+        {% endif %}
         {% if standard.library %}
         <li>
           <a href="{{ standard.library.url }}">{{ standard.library.name }}</a>

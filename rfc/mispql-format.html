@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>MispQL: A Query Language for Cyber Threat Intelligence</title>
+<meta content="Alexandre Dulaunoy" name="author">
+<meta content="Andras Iklody" name="author">
+<meta content="
+       MispQL is a read-only, SQL-like query language for cyber threat
+intelligence (CTI). This document specifies its text syntax using
+Augmented Backus-Naur Form (ABNF), its query semantics, and a JSON
+representation for its Boolean filters. A CTI platform can implement
+MispQL over its own data model by describing the tables, fields, types,
+and operators it supports. A transport binding describes how the Python
+MispQL client uses the complex-search interface in MISP 3.0. 
+    " name="description">
+<meta content="xml2rfc 3.35.0" name="generator">
+<meta content="draft-dulaunoy-mispql-00" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.35.0
+    Python 3.12.14
+    ConfigArgParse 1.10.2
+    google-i18n-address 3.1.1
+    intervaltree 3.2.1
+    Jinja2 3.1.6
+    lxml 6.1.3
+    natsort 8.4.0
+    platformdirs 4.14.8
+    pycountry 26.2.16
+    PyYAML 6.0.4
+    requests 2.34.2
+    wcwidth 0.9.5
+-->
+<link href="raw.md.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">/*
+
+  NOTE: Changes at the bottom of this file overrides some earlier settings.
+
+  Once the style has stabilized and has been adopted as an official RFC style,
+  this can be consolidated so that style settings occur only in one place, but
+  for now the contents of this file consists first of the initial CSS work as
+  provided to the RFC Formatter (xml2rfc) work, followed by itemized and
+  commented changes found necessary during the development of the v3
+  formatters.
+
+*/
+
+/* fonts */
+@import url('https://static.ietf.org/fonts/noto-sans/import.css'); /* Sans-serif */
+@import url('https://static.ietf.org/fonts/noto-serif/import.css'); /* Serif (print) */
+@import url('https://static.ietf.org/fonts/roboto-mono/import.css'); /* Monospace */
+
+:root {
+  --font-sans: 'Noto Sans', Arial, Helvetica, sans-serif;
+  --font-serif: 'Noto Serif', 'Times', 'Times New Roman', serif;
+  --font-mono: 'Roboto Mono', Courier, 'Courier New', monospace;
+}
+
+@viewport {
+  zoom: 1.0;
+}
+@-ms-viewport {
+  width: extend-to-zoom;
+  zoom: 1.0;
+}
+/* general and mobile first */
+html {
+}
+body {
+  max-width: 90%;
+  margin: 1.5em auto;
+  color: #222;
+  background-color: #fff;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-wrap: break-word;
+}
+.ears {
+  display: none;
+}
+
+/* headings */
+#title, h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0.5em;
+  font-weight: bold;
+  line-height: 1.3;
+}
+#title {
+  clear: both;
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 0.5em 0;
+  padding: 1em 0 0.5em;
+}
+.author {
+  padding-bottom: 4px;
+}
+h1 {
+  font-size: 26px;
+  margin: 1em 0;
+}
+h2 {
+  font-size: 22px;
+  margin-top: -20px;  /* provide offset for in-page anchors */
+  padding-top: 33px;
+}
+h3 {
+  font-size: 18px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h4 {
+  font-size: 16px;
+  margin-top: -36px;  /* provide offset for in-page anchors */
+  padding-top: 42px;
+}
+h5, h6 {
+  font-size: 14px;
+}
+#n-copyright-notice {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+/* general structure */
+p {
+  padding: 0;
+  margin: 0 0 1em 0;
+  text-align: left;
+}
+div, span {
+  position: relative;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+@media print {
+  svg {
+    max-height: 850px;
+    max-width: 660px;
+  }
+}
+svg[font-family~="serif" i], svg [font-family~="serif" i] {
+  font-family: var(--font-serif);
+}
+svg[font-family~="sans-serif" i], svg [font-family~="sans-serif" i] {
+  font-family: var(--font-sans);
+}
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  padding: 1em 1em 0;
+  margin-bottom: 1.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  display: table;
+  border: none;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 1em 2em;
+}
+ol ol, ul ul, ol ul, ul ol {
+  margin-left: 1em;
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+.ulCompact li {
+  margin: 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+}
+ul.empty li, .ulEmpty li {
+  margin-top: 0.5em;
+}
+ul.ulBare, li.ulBare {
+  margin-left: 0em !important;
+}
+ul.compact, .ulCompact,
+ol.compact, .olCompact {
+  line-height: 100%;
+  margin: 0 0 0 2em;
+}
+
+/* definition lists */
+dl {
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+/* 
+dl.nohang > dt {
+  float: none;
+}
+*/
+dl > dd {
+  margin-bottom: .8em;
+  min-height: 1.3em;
+}
+dl.compact > dd, .dlCompact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+
+/* links */
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #22e; /* Arlen: WCAG 2019 */
+}
+a[href]:hover {
+  background-color: #f2f2f2;
+}
+figcaption a[href],
+a[href].selfRef {
+  color: #222;
+}
+/* XXX probably not this:
+a.selfRef:hover {
+  background-color: transparent;
+  cursor: default;
+} */
+
+/* Figures */
+tt, code, pre {
+  background-color: #f9f9f9;
+  font-family: var(--font-mono);
+}
+pre {
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 1em;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption {
+  font-style: italic;
+  margin: 0 0 1em 0;
+}
+@media screen {
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+    max-width: calc(100% - 22px);
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 1.2em 2em;
+}
+blockquote {
+  background-color: #f9f9f9;
+  color: #111; /* Arlen: WCAG 2019 */
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 1em 0;
+}
+blockquote > *:last-child {
+  margin-bottom: 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+.xref {
+  overflow-wrap: normal;
+}
+
+/* tables */
+table {
+  width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5em 0.75em;
+}
+th {
+  text-align: left;
+  background-color: #e9e9e9;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f5f5f5;
+}
+table caption {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+table p {
+  /* XXX to avoid bottom margin on table row signifiers. If paragraphs should
+     be allowed within tables more generally, it would be far better to select on a class. */
+  margin: 0;
+}
+sub,
+sup {
+ white-space: nowrap;
+}
+
+/* pilcrow */
+a.pilcrow {
+  color: #666; /* Arlen: AHDJ 2019 */
+  text-decoration: none;
+  visibility: hidden;
+  user-select: none;
+  -ms-user-select: none;
+  -o-user-select:none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+@media screen {
+  aside:hover > a.pilcrow,
+  p:hover > a.pilcrow,
+  blockquote:hover > a.pilcrow,
+  div:hover > a.pilcrow,
+  li:hover > a.pilcrow,
+  pre:hover > a.pilcrow {
+    visibility: visible;
+  }
+  a.pilcrow:hover {
+    background-color: transparent;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.bcp14 {
+  font-variant: small-caps;
+}
+
+.role {
+  font-variant: all-small-caps;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: 0.9em;
+}
+#identifiers dt {
+  width: 3em;
+  clear: left;
+}
+#identifiers dd {
+  float: left;
+  margin-bottom: 0;
+}
+/* Fix PDF info block run off issue */
+@media print {
+  #identifiers dd {
+    max-width: 100%;
+  }
+}
+#identifiers .authors .author {
+  display: inline-block;
+  margin-right: 1.5em;
+}
+#identifiers .authors .org {
+  font-style: italic;
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #666; /* Arlen: WCAG 2019 */
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: left;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc  {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+}
+nav.toc ul {
+  margin: 0 0.5em 0 0;
+  padding: 0;
+  list-style: none;
+}
+nav.toc li {
+  line-height: 1.3em;
+  margin: 0.75em 0;
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+/* references */
+.references dt {
+  text-align: right;
+  font-weight: bold;
+  min-width: 7em;
+}
+.references dd {
+  margin-left: 8em;
+  overflow: auto;
+}
+
+.refInstance {
+  margin-bottom: 1.25em;
+}
+
+.refSubseries {
+  margin-bottom: 1.25em;
+}
+
+.references .ascii {
+  margin-bottom: 0.25em;
+}
+
+/* index */
+.index ul {
+  margin: 0 0 0 1em;
+  padding: 0;
+  list-style: none;
+}
+.index ul ul {
+  margin: 0;
+}
+.index li {
+  margin: 0;
+  text-indent: -2em;
+  padding-left: 2em;
+  padding-bottom: 5px;
+}
+.indexIndex {
+  margin: 0.5em 0 1em;
+}
+.index a {
+  font-weight: 700;
+}
+/* make the index two-column on all but the smallest screens */
+@media (min-width: 600px) {
+  .index ul {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+  }
+  .index ul ul {
+    -moz-column-count: 1;
+    -moz-column-gap: 0;
+  }
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  margin: 1em 0;
+}
+
+address.vcard .nameRole {
+  font-weight: 700;
+  margin-left: 0;
+}
+address.vcard .label {
+  font-family: var(--font-sans);
+  margin: 0.5em 0;
+}
+address.vcard .type {
+  display: none;
+}
+.alternative-contact {
+  margin: 1.5em 0 1em;
+}
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+
+/* temporary notes */
+.rfcEditorRemove::before {
+  position: absolute;
+  top: 0.2em;
+  right: 0.2em;
+  padding: 0.2em;
+  content: "The RFC Editor will remove this note";
+  color: #9e2a00; /* Arlen: WCAG 2019 */
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+}
+.rfcEditorRemove {
+  position: relative;
+  padding-top: 1.8em;
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  border-radius: 3px;
+}
+.cref {
+  background-color: #ffd; /* Arlen: WCAG 2019 */
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+/* alternative layout for smaller screens */
+@media screen and (max-width: 1023px) {
+  body {
+    padding-top: 2em;
+  }
+  #title {
+    padding: 1em 0;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    margin-top: -18px;  /* provide offset for in-page anchors */
+    padding-top: 38px;
+  }
+  #identifiers dd {
+    max-width: 60%;
+  }
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    border-bottom: 1px solid #ccc;
+  }
+  #toc h2 {
+    margin: -1px 0 0 0;
+    padding: 4px 0 4px 6px;
+    padding-right: 1em;
+    min-width: 190px;
+    font-size: 1.1em;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+  }
+  #toc h2::before { /* css hamburger */
+    float: right;
+    position: relative;
+    width: 1em;
+    height: 1px;
+    left: -164px;
+    margin: 6px 0 0 0;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+    content: "";
+  }
+  #toc nav {
+    display: none;
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+}
+
+/* alternative layout for wide screens */
+@media screen and (min-width: 1024px) {
+  body {
+    max-width: 724px;
+    margin: 42px auto;
+    padding-left: 1.5em;
+    padding-right: 29em;
+  }
+  #toc {
+    position: fixed;
+    top: 42px;
+    right: 42px;
+    width: 25%;
+    margin: 0;
+    padding: 0 1em;
+    z-index: 1;
+  }
+  #toc h2 {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 0;
+    overflow: auto;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre {
+    page-break-inside: avoid;
+  }
+  figure {
+    overflow: scroll;
+  }
+  .breakable pre {
+    break-inside: auto;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  h2+*, h3+*, h4+*, h5+*, h6+* {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+/* This is commented out here, as the string-set: doesn't
+   pass W3C validation currently */
+/*
+.ears thead .left {
+  string-set: ears-top-left content();
+}
+
+.ears thead .center {
+  string-set: ears-top-center content();
+}
+
+.ears thead .right {
+  string-set: ears-top-right content();
+}
+
+.ears tfoot .left {
+  string-set: ears-bottom-left content();
+}
+
+.ears tfoot .center {
+  string-set: ears-bottom-center content();
+}
+
+.ears tfoot .right {
+  string-set: ears-bottom-right content();
+}
+*/
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+  /* The following is commented out here, but set appropriately by in code, as
+     the content depends on the document */
+  /*
+  @top-left {
+    content: 'Internet-Draft';
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-left {
+    content: string(ears-top-left);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-center {
+    content: string(ears-top-center);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @top-right {
+    content: string(ears-top-right);
+    vertical-align: bottom;
+    border-bottom: solid 1px #ccc;
+  }
+  @bottom-left {
+    content: string(ears-bottom-left);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-center {
+    content: string(ears-bottom-center);
+    vertical-align: top;
+    border-top: solid 1px #ccc;
+  }
+  @bottom-right {
+      content: '[Page ' counter(page) ']';
+      vertical-align: top;
+      border-top: solid 1px #ccc;
+  }
+  */
+
+}
+
+/* Changes introduced to fix issues found during implementation */
+/* Make sure links are clickable even if overlapped by following H* */
+a {
+  z-index: 2;
+}
+/* Separate body from document info even without intervening H1 */
+section {
+  clear: both;
+}
+
+
+/* Top align author divs, to avoid names without organization dropping level with org names */
+.author {
+  vertical-align: top;
+}
+
+/* Leave room in document info to show Internet-Draft on one line */
+#identifiers dt {
+  width: 8em;
+}
+
+/* Don't waste quite as much whitespace between label and value in doc info */
+#identifiers dd {
+  margin-left: 1em;
+}
+
+/* Give floating toc a background color (needed when it's a div inside section */
+#toc {
+  background-color: white;
+}
+
+/* Make the collapsed ToC header render white on gray also when it's a link */
+@media screen and (max-width: 1023px) {
+  #toc h2 a,
+  #toc h2 a:link,
+  #toc h2 a:focus,
+  #toc h2 a:hover,
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+}
+
+/* Give the bottom of the ToC some whitespace */
+@media screen and (min-width: 1024px) {
+  #toc {
+    padding: 0 0 1em 1em;
+  }
+}
+
+/* Style section numbers with more space between number and title */
+.section-number {
+  padding-right: 0.5em;
+}
+
+/* prevent monospace from becoming overly large */
+tt, code, pre {
+  font-size: 95%;
+}
+
+/* Fix the height/width aspect for ascii art*/
+.sourcecode pre,
+.art-text pre {
+  line-height: 1.12;
+}
+
+
+/* Add styling for a link in the ToC that points to the top of the document */
+a.toplink {
+  float: right;
+  margin-right: 0.5em;
+}
+
+/* Fix the dl styling to match the RFC 7992 attributes */
+dl > dt,
+dl.dlParallel > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.dlNewline > dt {
+  float: none;
+}
+
+/* Provide styling for table cell text alignment */
+table td.text-left,
+table th.text-left {
+  text-align: left;
+}
+table td.text-center,
+table th.text-center {
+  text-align: center;
+}
+table td.text-right,
+table th.text-right {
+  text-align: right;
+}
+
+/* Make the alternative author contact information look less like just another
+   author, and group it closer with the primary author contact information */
+.alternative-contact {
+  margin: 0.5em 0 0.25em 0;
+}
+address .non-ascii {
+  margin: 0 0 0 2em;
+}
+
+/* With it being possible to set tables with alignment
+  left, center, and right, { width: 100%; } does not make sense */
+table {
+  width: auto;
+}
+
+/* Avoid reference text that sits in a block with very wide left margin,
+   because of a long floating dt label.*/
+.references dd {
+  overflow: visible;
+}
+
+/* Control caption placement */
+caption {
+  caption-side: bottom;
+}
+
+/* Limit the width of the author address vcard, so names in right-to-left
+   script don't end up on the other side of the page. */
+
+address.vcard {
+  max-width: 30em;
+  margin-right: auto;
+}
+
+/* For address alignment dependent on LTR or RTL scripts */
+address div.left {
+  text-align: left;
+}
+address div.right {
+  text-align: right;
+}
+
+/* Provide table alignment support.  We can't use the alignX classes above
+   since they do unwanted things with caption and other styling. */
+table.right {
+ margin-left: auto;
+ margin-right: 0;
+}
+table.center {
+ margin-left: auto;
+ margin-right: auto;
+}
+table.left {
+ margin-left: 0;
+ margin-right: auto;
+}
+
+/* Give the table caption label the same styling as the figcaption */
+caption a[href] {
+  color: #222;
+}
+
+@media print {
+  .toplink {
+    display: none;
+  }
+
+  /* avoid overwriting the top border line with the ToC header */
+  #toc {
+    padding-top: 1px;
+  }
+
+  /* Avoid page breaks inside dl and author address entries */
+  .vcard {
+    page-break-inside: avoid;
+  }
+
+}
+/* Tweak the bcp14 keyword presentation */
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+/* Tweak the invisible space above H* in order not to overlay links in text above */
+ h2 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 31px;
+ }
+ h3 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+ h4 {
+  margin-top: -18px;  /* provide offset for in-page anchors */
+  padding-top: 24px;
+ }
+/* Float artwork pilcrow to the right */
+@media screen {
+  .artwork a.pilcrow {
+    display: block;
+    line-height: 0.7;
+    margin-top: 0.15em;
+  }
+}
+/* Make pilcrows on dd visible */
+@media screen {
+  dd:hover > a.pilcrow {
+    visibility: visible;
+  }
+}
+/* Make the placement of figcaption match that of a table's caption
+   by removing the figure's added bottom margin */
+.alignLeft.art-text,
+.alignCenter.art-text,
+.alignRight.art-text {
+   margin-bottom: 0;
+}
+.alignLeft,
+.alignCenter,
+.alignRight {
+  margin: 1em 0 0 0;
+}
+/* In print, the pilcrow won't show on hover, so prevent it from taking up space,
+   possibly even requiring a new line */
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+/* Styling for the external metadata */
+div#external-metadata {
+  background-color: #eee;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  display: none;
+}
+div#internal-metadata {
+  padding: 0.5em;                       /* to match the external-metadata padding */
+}
+/* Styling for title RFC Number */
+h1#rfcnum {
+  clear: both;
+  margin: 0 0 -1em;
+  padding: 1em 0 0 0;
+}
+/* Make .olPercent look the same as <ol><li> */
+dl.olPercent > dd {
+  margin-bottom: 0.25em;
+  min-height: initial;
+}
+/* Give aside some styling to set it apart */
+aside {
+  border-left: 1px solid #ddd;
+  margin: 1em 0 1em 2em;
+  padding: 0.2em 2em;
+}
+aside > dl,
+aside > ol,
+aside > ul,
+aside > table,
+aside > p {
+  margin-bottom: 0.5em;
+}
+/* Additional page break settings */
+@media print {
+  figcaption, table caption {
+    page-break-before: avoid;
+  }
+  table {
+    page-break-inside: avoid;
+  }
+}
+/* Font size adjustments for print */
+@media print {
+  body  { font-size: 10pt;      line-height: normal; max-width: 96%; }
+  h1    { font-size: 1.72em;    padding-top: 1.5em; } /* 1*1.2*1.2*1.2 */
+  h2    { font-size: 1.44em;    padding-top: 1.5em; } /* 1*1.2*1.2 */
+  h3    { font-size: 1.2em;     padding-top: 1.5em; } /* 1*1.2 */
+  h4    { font-size: 1em;       padding-top: 1.5em; }
+  h5, h6 { font-size: 1em;      margin: initial; padding: 0.5em 0 0.3em; }
+}
+/* Sourcecode margin in print, when there's no pilcrow */
+@media print {
+  .artwork,
+  .artwork > pre,
+  .sourcecode {
+    margin-bottom: 1em;
+  }
+}
+/* Avoid narrow tables forcing too narrow table captions, which may render badly */
+table {
+  min-width: 20em;
+}
+/* ol type a */
+ol.type-a { list-style-type: lower-alpha; }
+ol.type-A { list-style-type: upper-alpha; }
+ol.type-i { list-style-type: lower-roman; }
+ol.type-I { list-style-type: upper-roman; }
+/* Apply the print table and row borders in general, on request from the RPC,
+and increase the contrast between border and odd row background slightly */
+table {
+  border: 1px solid #ddd;
+}
+td {
+  border-top: 1px solid #ddd;
+}
+tr {
+  break-inside: avoid;
+}
+tr:nth-child(2n+1) > td {
+  background-color: #f8f8f8;
+}
+/* Use style rules to govern display of the TOC. */
+@media screen and (max-width: 1023px) {
+  #toc nav { display: none; }
+  #toc.active nav { display: block; }
+}
+/* Add support for keepWithNext */
+.keepWithNext {
+  break-after: avoid-page;
+  break-after: avoid-page;
+}
+/* Add support for keepWithPrevious */
+.keepWithPrevious {
+  break-before: avoid-page;
+}
+/* Change the approach to avoiding breaks inside artwork etc. */
+figure, pre, table, .artwork, .sourcecode  {
+  break-before: auto;
+  break-after: auto;
+}
+/* Avoid breaks between <dt> and <dd> */
+dl {
+  break-before: auto;
+  break-inside: auto;
+}
+dt {
+  break-before: auto;
+  break-after: avoid-page;
+}
+dd {
+  break-before: avoid-page;
+  break-after: auto;
+  orphans: 3;
+  widows: 3
+}
+span.break, dd.break {
+  margin-bottom: 0;
+  min-height: 0;
+  break-before: auto;
+  break-inside: auto;
+  break-after: auto;
+}
+/* Undo break-before ToC */
+@media print {
+  #toc {
+    break-before: auto;
+  }
+}
+/* Text in compact lists should not get extra bottom margin space,
+   since that would makes the list not compact */
+ul.compact p, .ulCompact p,
+ol.compact p, .olCompact p {
+ margin: 0;
+}
+/* But the list as a whole needs the extra space at the end */
+section ul.compact,
+section .ulCompact,
+section ol.compact,
+section .olCompact {
+  margin-bottom: 1em;                    /* same as p not within ul.compact etc. */
+}
+/* The tt and code background above interferes with for instance table cell
+   backgrounds.  Changed to something a bit more selective. */
+tt, code {
+  background-color: transparent;
+}
+p tt, p code, li tt, li code, dt tt, dt code {
+  background-color: #f8f8f8;
+}
+/* Tweak the pre margin -- 0px doesn't come out well */
+pre {
+   margin-top: 0.5px;
+}
+/* Tweak the compact list text */
+ul.compact, .ulCompact,
+ol.compact, .olCompact,
+dl.compact, .dlCompact {
+  line-height: normal;
+}
+/* Don't add top margin for nested lists */
+li > ul, li > ol, li > dl,
+dd > ul, dd > ol, dd > dl,
+dl > dd > dl {
+  margin-top: initial;
+}
+/* Elements that should not be rendered on the same line as a <dt> */
+/* This should match the element list in writer.text.TextWriter.render_dl() */
+dd > div.artwork:first-child,
+dd > aside:first-child,
+dd > blockquote:first-child,
+dd > figure:first-child,
+dd > ol:first-child,
+dd > div.sourcecode:first-child,
+dd > table:first-child,
+dd > ul:first-child {
+  clear: left;
+}
+/* fix for weird browser behaviour when <dd/> is empty */
+dt+dd:empty::before{
+  content: "\00a0";
+}
+/* Make paragraph spacing inside <li> smaller than in body text, to fit better within the list */
+li > p {
+  margin-bottom: 0.5em
+}
+/* Don't let p margin spill out from inside list items */
+li > p:last-of-type:only-child {
+  margin-bottom: 0;
+}
+</style>
+<link href="rfc-local.css" rel="stylesheet" type="text/css">
+<script type="application/javascript">async function addMetadata(){try{const e=document.styleSheets[0].cssRules;for(let t=0;t<e.length;t++)if(/#identifiers/.exec(e[t].selectorText)){const a=e[t].cssText.replace("#identifiers","#external-updates");document.styleSheets[0].insertRule(a,document.styleSheets[0].cssRules.length)}}catch(e){console.log(e)}const e=document.getElementById("external-metadata");if(e)try{var t,a="",o=function(e){const t=document.getElementsByTagName("meta");for(let a=0;a<t.length;a++)if(t[a].getAttribute("name")===e)return t[a].getAttribute("content");return""}("rfc.number");if(o){t="https://www.rfc-editor.org/rfc/rfc"+o+".json";try{const e=await fetch(t);a=await e.json()}catch(e){t=document.URL.indexOf("html")>=0?document.URL.replace(/html$/,"json"):document.URL+".json";const o=await fetch(t);a=await o.json()}}if(!a)return;e.style.display="block";const s="",d="https://datatracker.ietf.org/doc",n="https://datatracker.ietf.org/ipr/search",c="https://www.rfc-editor.org/info",l=a.doc_id.toLowerCase(),i=a.doc_id.slice(0,3).toLowerCase(),f=a.doc_id.slice(3).replace(/^0+/,""),u={status:"Status",obsoletes:"Obsoletes",obsoleted_by:"Obsoleted By",updates:"Updates",updated_by:"Updated By",see_also:"See Also",errata_url:"Errata"};let h="<dl style='overflow:hidden' id='external-updates'>";["status","obsoletes","obsoleted_by","updates","updated_by","see_also","errata_url"].forEach(e=>{if("status"==e){a[e]=a[e].toLowerCase();var t=a[e].split(" "),o=t.length,w="",p=1;for(let e=0;e<o;e++)p<o?w=w+r(t[e])+" ":w+=r(t[e]),p++;a[e]=w}else if("obsoletes"==e||"obsoleted_by"==e||"updates"==e||"updated_by"==e){var g,m="",b=1;g=a[e].length;for(let t=0;t<g;t++)a[e][t]&&(a[e][t]=String(a[e][t]).toLowerCase(),m=b<g?m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>, ":m+"<a href='"+s+"/rfc/".concat(a[e][t])+"'>"+a[e][t].slice(3)+"</a>",b++);a[e]=m}else if("see_also"==e){var y,L="",C=1;y=a[e].length;for(let t=0;t<y;t++)if(a[e][t]){a[e][t]=String(a[e][t]);var _=a[e][t].slice(0,3),v=a[e][t].slice(3).replace(/^0+/,"");L=C<y?"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>, ":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>, ":"RFC"!=_?L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+_+" "+v+"</a>":L+"<a href='"+s+"/info/"+_.toLowerCase().concat(v.toLowerCase())+"'>"+v+"</a>",C++}a[e]=L}else if("errata_url"==e){var R="";R=a[e]?R+"<a href='"+a[e]+"'>Errata exist</a> | <a href='"+d+"/"+l+"'>Datatracker</a>| <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>":"<a href='"+d+"/"+l+"'>Datatracker</a> | <a href='"+n+"/?"+i+"="+f+"&submit="+i+"'>IPR</a> | <a href='"+c+"/"+l+"'>Info page</a>",a[e]=R}""!=a[e]?"Errata"==u[e]?h+=`<dt>More info:</dt><dd>${a[e]}</dd>`:h+=`<dt>${u[e]}:</dt><dd>${a[e]}</dd>`:"Errata"==u[e]&&(h+=`<dt>More info:</dt><dd>${a[e]}</dd>`)}),h+="</dl>",e.innerHTML=h}catch(e){console.log(e)}else console.log("Could not locate metadata <div> element");function r(e){return e.charAt(0).toUpperCase()+e.slice(1)}}window.removeEventListener("load",addMetadata),window.addEventListener("load",addMetadata);</script>
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">MispQL</td>
+<td class="right">November 2026</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Dulaunoy &amp; Iklody</td>
+<td class="center">Expires 30 May 2027</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">Network Working Group</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-dulaunoy-mispql-00</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2026-11-26" class="published">26 November 2026</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Informational</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2027-05-30">30 May 2027</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">A. Dulaunoy</div>
+<div class="org">CIRCL</div>
+</div>
+<div class="author">
+      <div class="author-name">A. Iklody</div>
+<div class="org">CIRCL</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">MispQL: A Query Language for Cyber Threat Intelligence</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">MispQL is a read-only, SQL-like query language for cyber threat
+intelligence (CTI). This document specifies its text syntax using
+Augmented Backus-Naur Form (ABNF), its query semantics, and a JSON
+representation for its Boolean filters. A CTI platform can implement
+MispQL over its own data model by describing the tables, fields, types,
+and operators it supports. A transport binding describes how the Python
+MispQL client uses the complex-search interface in MISP 3.0.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 30 May 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2026 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-conventions-and-terminology" class="internal xref">Conventions and Terminology</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-text-syntax" class="internal xref">Text Syntax</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
+                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-lexical-rules" class="internal xref">Lexical Rules</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-abnf" class="internal xref">ABNF</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-query-semantics" class="internal xref">Query Semantics</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-schema-profiles-and-validat" class="internal xref">Schema Profiles and Validation</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-filtering-and-types" class="internal xref">Filtering and Types</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-projection-counting-orderin" class="internal xref">Projection, Counting, Ordering, and Pagination</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-discovery-and-session-comma" class="internal xref">Discovery and Session Commands</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-json-filter-representation" class="internal xref">JSON Filter Representation</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-filter-sort-and-page" class="internal xref">Filter, Sort, and Page</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-count-recent-indicators" class="internal xref">Count Recent Indicators</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
+                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-discovery-and-quoting" class="internal xref">Discovery and Quoting</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
+                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-negation-and-membership" class="internal xref">Negation and Membership</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="auto internal xref">5.5</a>.  <a href="#name-invalid-queries" class="internal xref">Invalid Queries</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-misp-binding" class="internal xref">MISP Binding</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-implementation-status" class="internal xref">Implementation Status</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+                <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="introduction">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">CTI platforms store indicators, event reports, analyst annotations, and
+other records that analysts need to search across tools. MispQL provides
+a common way to express such searches, including Boolean conditions,
+projection, sorting, pagination, and counts. The language originated
+in the MISP project. Its earlier MISP query format <span>[<a href="#MISP-QUERY" class="cite xref">MISP-QUERY</a>]</span>
+describes legacy REST filters. This document specifies MispQL text and
+composable filter trees as a separate interface.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">A <em>table</em> is a named collection of records exposed by a platform. A
+<em>schema profile</em> defines the tables and semantics an implementation
+exposes to a caller. A <em>binding</em> maps a query or its filter to a
+particular execution interface. Implementations can share the language
+across different storage engines and transports. A query that names
+fields from a particular profile is portable to platforms that expose
+the same profile and implement the capabilities the query uses.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<div id="conventions-and-terminology">
+<section id="section-1.1">
+        <h3 id="name-conventions-and-terminology">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-conventions-and-terminology" class="section-name selfRef">Conventions and Terminology</a>
+        </h3>
+<p id="section-1.1-1">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+"OPTIONAL" in this document are to be interpreted as described in
+BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they appear in
+all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="text-syntax">
+<section id="section-2">
+      <h2 id="name-text-syntax">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-text-syntax" class="section-name selfRef">Text Syntax</a>
+      </h2>
+<p id="section-2-1">This section defines the grammar in ABNF <span>[<a href="#RFC5234" class="cite xref">RFC5234</a>]</span>. Quoted ABNF
+strings are ASCII case-insensitive. Literal input is UTF-8
+<span>[<a href="#RFC3629" class="cite xref">RFC3629</a>]</span>. The start rule is <code>script</code>. A semicolon separates
+statements. Leading, repeated, and trailing semicolons are allowed.
+The final statement can end at end of input.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<div id="lexical-rules">
+<section id="section-2.1">
+        <h3 id="name-lexical-rules">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-lexical-rules" class="section-name selfRef">Lexical Rules</a>
+        </h3>
+<p id="section-2.1-1">Before applying the statement rules, a lexer MUST use the following
+token boundaries to resolve adjacent tokens.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-2.1-2.1">A maximal run of ASCII letters, digits, and underscores is one
+word. A word beginning with a digit MUST consist entirely of
+digits. A lexer MUST NOT split a word to obtain a keyword or
+integer. For example, <code>SELECTid</code> and <code>100AND</code> are single words.<a href="#section-2.1-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-2.1-2.2">
+            <code>reserved</code> enumerates the keywords. Those words are recognized
+case-insensitively and MUST be quoted with backticks when used
+as identifiers. Unquoted identifiers are folded to ASCII
+lowercase. Quoted identifiers preserve their spelling and MUST
+decode to a nonempty value.<a href="#section-2.1-2.2" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-2.1-2.3">Single and double quotes delimit strings. Backticks delimit
+identifiers. Two consecutive copies of the current delimiter
+within a quoted token encode one copy of that delimiter.
+Backslash is an ordinary character. A lexer MUST consume a
+quoted token through its first undoubled closing delimiter.<a href="#section-2.1-2.3" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-2.1-2.4">Outside quotes, <code>--</code> starts a comment through the next LF or end
+of input. The lexer consumes the longest comparison operator
+available, so <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code>, and <code>!=</code> are each a single token.
+Optional whitespace and comments occur only at the positions of
+<code>ws</code>. In particular, a hyphenated name contains no whitespace.<a href="#section-2.1-2.4" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</div>
+<div id="abnf">
+<section id="section-2.2">
+        <h3 id="name-abnf">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-abnf" class="section-name selfRef">ABNF</a>
+        </h3>
+<p id="section-2.2-1">The lexical rules and the ABNF together define syntactic validity.
+Schema and clause checks are applied after parsing.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<div class="breakable lang-abnf sourcecode" id="section-2.2-2">
+<pre>script          = ws *(";" ws)
+                  [statement *(ws 1*(";" ws) statement)
+                   ws *(";" ws)] [eof-comment]
+
+statement       = select-stmt / show-tables / describe-stmt
+                  / session-stmt
+select-stmt     = "SELECT" ws projection ws "FROM" ws name
+                  [ws where-clause] [ws order-clause]
+                  [ws limit-clause] [ws offset-clause]
+                  [ws format-clause]
+
+projection      = "*" / "COUNT" ws "(" ws "*" ws ")"
+                  / field *(ws "," ws field)
+where-clause    = "WHERE" ws expression
+order-clause    = "ORDER" ws "BY" ws order-item
+                  *(ws "," ws order-item)
+order-item      = field [ws ("ASC" / "DESC")]
+limit-clause    = "LIMIT" ws uint
+offset-clause   = "OFFSET" ws uint
+format-clause   = "FORMAT" ws format-name
+
+expression      = and-expr *(ws "OR" ws and-expr)
+and-expr        = not-expr *(ws "AND" ws not-expr)
+not-expr        = "NOT" ws not-expr / "(" ws expression ws ")"
+                  / predicate
+predicate       = field ws (comparison ws literal
+                  / [ "NOT" ws ] ("IN" ws literal-list
+                  / "LIKE" ws string))
+comparison      = "&lt;=" / "&gt;=" / "&lt;&gt;" / "!=" / "=" / "&lt;" / "&gt;"
+literal-list    = "(" ws literal *(ws "," ws literal) ws ")"
+literal         = string / integer / "TRUE" / "FALSE"
+integer         = ["-" ws] uint
+uint            = 1*DIGIT
+
+show-tables     = "SHOW" ws "TABLES"
+describe-stmt   = ("DESCRIBE" / "DESC") ws name
+session-stmt    = "SHOW" ws "DATABASES"
+                  / "USE" ws database-name / "WHOAMI"
+
+field           = name *(ws "." ws name)
+name            = bare-name / quoted-name
+bare-name       = word-name  ; excluding reserved words
+word-name       = (ALPHA / "_") *(ALPHA / DIGIT / "_")
+hyphen-tail     = *("-" (word-name / uint))
+format-name     = word-name hyphen-tail / quoted-name / string
+database-name   = bare-name hyphen-tail / quoted-name
+
+reserved        = "AND" / "ASC" / "BY" / "COUNT" / "DATABASES"
+                  / "DESC" / "DESCRIBE" / "FALSE" / "FORMAT"
+                  / "FROM" / "IN" / "LIKE" / "LIMIT" / "NOT"
+                  / "OFFSET" / "OR" / "ORDER" / "SELECT" / "SHOW"
+                  / "TABLES" / "TRUE" / "USE" / "WHERE" / "WHOAMI"
+
+string          = squote *(sq-char / squote squote) squote
+                  / DQUOTE *(dq-char / DQUOTE DQUOTE) DQUOTE
+quoted-name     = backtick 1*(bt-char / backtick backtick)
+                  backtick
+squote          = %x27
+backtick        = %x60
+sq-char         = quoted-ws / %x20-26 / %x28-7E / utf8-non-ascii
+dq-char         = quoted-ws / %x20-21 / %x23-7E / utf8-non-ascii
+bt-char         = quoted-ws / %x20-5F / %x61-7E / utf8-non-ascii
+quoted-ws       = HTAB / CR / LF
+
+ws              = *(SP / HTAB / CR / LF / line-comment)
+line-comment    = "--" *comment-char LF
+eof-comment     = "--" *comment-char
+comment-char    = HTAB / CR / %x20-7E / utf8-non-ascii
+
+utf8-non-ascii  = %xC2-DF tail-byte
+                  / %xE0 %xA0-BF tail-byte
+                  / %xE1-EC 2tail-byte
+                  / %xED %x80-9F tail-byte
+                  / %xEE-EF 2tail-byte
+                  / %xF0 %x90-BF 2tail-byte
+                  / %xF1-F3 3tail-byte
+                  / %xF4 %x80-8F 2tail-byte
+tail-byte       = %x80-BF
+</pre><a href="#section-2.2-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="query-semantics">
+<section id="section-3">
+      <h2 id="name-query-semantics">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-query-semantics" class="section-name selfRef">Query Semantics</a>
+      </h2>
+<div id="schema-profiles-and-validation">
+<section id="section-3.1">
+        <h3 id="name-schema-profiles-and-validat">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-schema-profiles-and-validat" class="section-name selfRef">Schema Profiles and Validation</a>
+        </h3>
+<p id="section-3.1-1">An implementation MUST validate the syntax and all names, value
+types, operators, and clause combinations for the selected binding
+and schema profile. It MUST reject an invalid or unsupported query as a
+whole, without running a version with any condition or clause omitted.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">A profile MUST document the exposed tables, filter fields and their
+types and permitted operators, projected and sortable fields,
+comparison and sort collations, default ordering, and any defaults
+or limits on result size. Filter, projection, and sort capabilities
+can differ for the same field. A profile MUST also describe any
+aliases, how qualification and nested names are resolved, and how a
+field drawn from related or multivalued records matches. For example, a
+profile might define a related field to match a parent when at least
+one visible child satisfies the predicate. Two independent predicates
+on related fields do not imply that the same child satisfies both
+predicates, unless the profile explicitly defines that behavior.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1-3">A field name can be a single identifier or a dotted path. A dot
+inside a backtick-quoted identifier is part of that identifier.
+A binding that flattens paths MUST resolve the name against the
+profile before translating it and reject ambiguous mappings.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">An implementation of the portable query language MUST support
+row selection, projection, Boolean filters, and counting on at
+least one exposed table. Operator support is described per field.
+An implementation MUST support discovery through the text commands
+or an equivalent programmatic interface. Support for a particular
+schema profile, sort field, output format, or session command can
+be claimed independently. The MISP binding has profile-specific
+restrictions described below.<a href="#section-3.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="filtering-and-types">
+<section id="section-3.2">
+        <h3 id="name-filtering-and-types">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-filtering-and-types" class="section-name selfRef">Filtering and Types</a>
+        </h3>
+<p id="section-3.2-1"><code>WHERE</code> selects rows for which the expression is true. Parentheses
+group expressions. From highest to lowest precedence, predicates
+and parenthesized expressions bind before unary <code>NOT</code>, which binds
+before <code>AND</code>, which binds before <code>OR</code>. <code>AND</code> requires all operands
+to match and <code>OR</code> requires at least one. A query without <code>WHERE</code>
+selects all visible rows subject to the other clauses and limits.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2"><code>=</code> tests equality. <code>!=</code> and <code>&lt;&gt;</code> are equivalent spellings.
+<code>IN</code> tests equality with any member of a nonempty list. <code>LIKE</code>
+matches a string using a pattern that contains a nonempty literal
+portion and one <code>%</code> at the beginning, at the end, or at both ends.
+A <code>%</code> matches zero or more characters. An internal <code>%</code> is invalid
+in this pattern. Underscore and backslash are literal characters in
+the portable pattern syntax. <code>!=</code>, <code>NOT IN</code>, and <code>NOT LIKE</code> are
+the Boolean complements of <code>=</code>, <code>IN</code>, and <code>LIKE</code> respectively in
+the portable semantics.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-3">The ordered comparison operators <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code> apply
+to ordered types declared in the profile. For portable field types
+these are integers, timestamps, dates, and datetimes. Strings,
+integers, and Booleans are distinct literal types. A numeric string
+MUST NOT be silently converted to an integer. Each operand of <code>IN</code>
+MUST be valid for the declared field type. A literal has no NULL,
+floating-point, or implicit field-reference form. In the portable
+semantics a missing or null field does not satisfy a positive
+predicate. Its negation is true when the positive predicate is false.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">A profile that exposes timestamps SHOULD accept integer seconds
+since 1970-01-01 00:00:00 UTC. Profiles MAY support relative time
+on temporal fields using a quoted unsigned decimal followed by
+<code>d</code>, <code>h</code>, <code>m</code>, or <code>s</code> for days, hours, minutes, or seconds ago.
+A profile that supports relative time MUST specify its clock,
+calendar and time zone rules, and permitted units for each temporal
+type. It MUST use one reference time per logical query, including
+pages that together implement one query. Date and datetime strings
+are lexical strings and are checked against the field type after
+parsing.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.2-5">A binding that provides special field or operator semantics MUST
+document them as profile-specific behavior. A translator MUST
+reject a query if it cannot preserve the requested semantics.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="projection-counting-ordering-and-pagination">
+<section id="section-3.3">
+        <h3 id="name-projection-counting-orderin">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-projection-counting-orderin" class="section-name selfRef">Projection, Counting, Ordering, and Pagination</a>
+        </h3>
+<p id="section-3.3-1"><code>SELECT *</code> returns the profile's default row representation.
+An explicit projection returns the listed fields in the specified
+order. <code>SELECT COUNT(*)</code> returns one nonnegative integer giving
+the number of visible rows that match the filter. It requires a
+<code>WHERE</code> and MUST NOT contain <code>ORDER BY</code>, <code>LIMIT</code>, <code>OFFSET</code>, or
+<code>FORMAT</code>. An ordinary row query MUST include <code>WHERE</code> or <code>LIMIT</code>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2"><code>ORDER BY</code> compares the listed keys in order. The first key that
+differs determines the order. <code>ASC</code> is the default direction and
+<code>DESC</code> reverses it. A profile MUST specify where missing and null
+sort keys appear. An implementation SHOULD use a stable
+tie-breaker for paginated results. <code>OFFSET</code> skips a zero-based
+number of matching rows in the effective order, and <code>LIMIT</code> caps
+the remaining results at a positive whole number. <code>OFFSET</code>
+requires <code>LIMIT</code>. Concurrent data changes can affect paging when
+the binding provides no snapshot isolation.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3"><code>FORMAT</code> requests a representation supported by the binding.
+The profile MUST specify any restrictions on combining a format
+with projection or pagination. An implementation MUST reject an
+unsupported format rather than silently choosing a different one.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="discovery-and-session-commands">
+<section id="section-3.4">
+        <h3 id="name-discovery-and-session-comma">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-discovery-and-session-comma" class="section-name selfRef">Discovery and Session Commands</a>
+        </h3>
+<p id="section-3.4-1"><code>SHOW TABLES</code> lists the tables available to the caller.
+<code>DESCRIBE table</code> (also <code>DESC table</code>) describes the table's
+schema and query capabilities. A profile SHOULD expose this
+information programmatically, including limits where available.
+Discovery MUST respect the caller's authorization.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2"><code>SHOW DATABASES</code>, <code>USE</code>, and <code>WHOAMI</code> are optional client
+session commands. They list configured connections, select a
+configured connection for subsequent statements, or display the
+identity associated with the active connection, respectively.
+They do not change data or form part of the filter representation.
+An implementation without session support MUST reject such a
+statement explicitly.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="json-filter-representation">
+<section id="section-4">
+      <h2 id="name-json-filter-representation">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-json-filter-representation" class="section-name selfRef">JSON Filter Representation</a>
+      </h2>
+<p id="section-4-1">A binding MAY exchange the <code>WHERE</code> expression as a JSON
+<span>[<a href="#RFC8259" class="cite xref">RFC8259</a>]</span> tree. This section defines the tree for that binding.
+Each node is an object with exactly one member. Duplicate member
+names MUST be rejected before evaluating a tree. The names <code>AND</code>,
+<code>OR</code>, and <code>NOT</code> are reserved, case-sensitive tree keys.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<table class="center" id="table-1">
+        <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
+<thead>
+          <tr>
+            <th class="text-left" rowspan="1" colspan="1">Node</th>
+            <th class="text-left" rowspan="1" colspan="1">Member value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <code>AND</code> or <code>OR</code>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">A nonempty array of nodes</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <code>NOT</code>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">One node</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">A profile-resolved field name</td>
+            <td class="text-left" rowspan="1" colspan="1">A scalar or a one-member operator object</td>
+          </tr>
+        </tbody>
+      </table>
+<p id="section-4-3">A scalar MUST be a JSON string, Boolean, or integer number. JSON
+integers in this format use the JSON integer syntax without a
+fraction or exponent. Senders SHOULD stay within the interoperable
+exact-integer range of JSON when the receiver's precision is
+unknown. JSON null is invalid. An unwrapped scalar is shorthand
+for equality. Operator object keys are the case-sensitive strings
+in the following table.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<table class="center" id="table-2">
+        <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
+<thead>
+          <tr>
+            <th class="text-left" rowspan="1" colspan="1">Operator keys</th>
+            <th class="text-left" rowspan="1" colspan="1">Member value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <code>=</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">A scalar accepted by the field</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <code>IN</code>, <code>NOT IN</code>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">A nonempty array of scalars accepted by the field</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <code>LIKE</code>, <code>NOT LIKE</code>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">A pattern string</td>
+          </tr>
+        </tbody>
+      </table>
+<p id="section-4-5">A translator MUST preserve the Boolean grouping and literal
+types, normalize <code>&lt;&gt;</code> to <code>!=</code>, and resolve field names using the
+profile. It MAY flatten adjacent identical <code>AND</code> or <code>OR</code> nodes
+where grouping has no effect on the profile semantics. Table
+selection, projection, paging, sorting, and output representation
+remain outside the tree. This document defines no common request
+envelope or result serialization for those parameters.<a href="#section-4-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="examples">
+<section id="section-5">
+      <h2 id="name-examples">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+      </h2>
+<p id="section-5-1">These examples use an <code>attributes</code> table with integer <code>id</code> and
+<code>timestamp</code> fields and string <code>type</code> and <code>value</code> fields.
+<code>timestamp</code> is a UTC epoch timestamp and also accepts relative
+time. The table supports sorting by <code>id</code> and projecting <code>id</code>,
+<code>type</code>, and <code>value</code>. A CTI platform can map those fields to
+its native indicator records.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="filter-sort-and-page">
+<section id="section-5.1">
+        <h3 id="name-filter-sort-and-page">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-filter-sort-and-page" class="section-name selfRef">Filter, Sort, and Page</a>
+        </h3>
+<p id="section-5.1-1">The following query selects domain and destination-IP attributes
+with <code>id</code> greater than 50000, orders them by decreasing <code>id</code>,
+skips ten matches, and returns up to ten rows.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+<div class="lang-sql sourcecode" id="section-5.1-2">
+<pre>SELECT id, type, value FROM attributes
+WHERE (type = 'domain' OR type = 'ip-dst') AND id &gt; 50000
+ORDER BY id DESC LIMIT 10 OFFSET 10;
+</pre><a href="#section-5.1-2" class="pilcrow">¶</a>
+</div>
+<p id="section-5.1-3">The filter tree for this query is:<a href="#section-5.1-3" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-5.1-4">
+<pre>{
+  "AND": [
+    {"OR": [{"type": "domain"}, {"type": "ip-dst"}]},
+    {"id": {"&gt;": 50000}}
+  ]
+}
+</pre><a href="#section-5.1-4" class="pilcrow">¶</a>
+</div>
+<p id="section-5.1-5"><code>type IN ('domain', 'ip-dst')</code> is equivalent to the parenthesized
+disjunction in this profile.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="count-recent-indicators">
+<section id="section-5.2">
+        <h3 id="name-count-recent-indicators">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-count-recent-indicators" class="section-name selfRef">Count Recent Indicators</a>
+        </h3>
+<p id="section-5.2-1">This query counts visible domain attributes whose value ends in
+<code>.example.org</code> and whose timestamp is at least as recent as the
+cutoff seven days ago.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<div class="lang-sql sourcecode" id="section-5.2-2">
+<pre>SELECT COUNT(*) FROM attributes
+WHERE type = 'domain' AND value LIKE '%.example.org'
+  AND timestamp &gt;= '7d';
+</pre><a href="#section-5.2-2" class="pilcrow">¶</a>
+</div>
+<p id="section-5.2-3">The portable filter tree is:<a href="#section-5.2-3" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-5.2-4">
+<pre>{
+  "AND": [
+    {"type": "domain"},
+    {"value": {"LIKE": "%.example.org"}},
+    {"timestamp": {"&gt;=": "7d"}}
+  ]
+}
+</pre><a href="#section-5.2-4" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="discovery-and-quoting">
+<section id="section-5.3">
+        <h3 id="name-discovery-and-quoting">
+<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-discovery-and-quoting" class="section-name selfRef">Discovery and Quoting</a>
+        </h3>
+<div class="lang-sql sourcecode" id="section-5.3-1">
+<pre>SHOW TABLES;
+DESCRIBE attributes;
+-- The literal value contains a single quote.
+SELECT id FROM attributes WHERE value = 'analyst''s note' LIMIT 1;
+</pre><a href="#section-5.3-1" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="negation-and-membership">
+<section id="section-5.4">
+        <h3 id="name-negation-and-membership">
+<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-negation-and-membership" class="section-name selfRef">Negation and Membership</a>
+        </h3>
+<p id="section-5.4-1">The following query selects attributes that are neither a domain
+nor a destination IP and have an ID of at least 50000.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
+<div class="lang-sql sourcecode" id="section-5.4-2">
+<pre>SELECT id FROM attributes
+WHERE NOT (type IN ('domain', 'ip-dst')) AND id &gt;= 50000;
+</pre><a href="#section-5.4-2" class="pilcrow">¶</a>
+</div>
+<div class="lang-json sourcecode" id="section-5.4-3">
+<pre>{
+  "AND": [
+    {"NOT": {"type": {"IN": ["domain", "ip-dst"]}}},
+    {"id": {"&gt;=": 50000}}
+  ]
+}
+</pre><a href="#section-5.4-3" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="invalid-queries">
+<section id="section-5.5">
+        <h3 id="name-invalid-queries">
+<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-invalid-queries" class="section-name selfRef">Invalid Queries</a>
+        </h3>
+<ul class="compact">
+<li class="compact" id="section-5.5-1.1">
+            <code>SELECT * FROM attributes WHERE id IN ();</code> is a syntax error
+because <code>IN</code> requires at least one operand.<a href="#section-5.5-1.1" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-5.5-1.2">
+            <code>SELECT * FROM attributes WHERE id = '50001';</code> parses but
+fails type validation for an integer field.<a href="#section-5.5-1.2" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-5.5-1.3">
+            <code>SELECT * FROM attributes WHERE id &gt; 50000 OFFSET 10;</code>
+parses but fails validation because <code>OFFSET</code> requires <code>LIMIT</code>.<a href="#section-5.5-1.3" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-5.5-1.4">
+            <code>SELECT COUNT(*) FROM attributes WHERE id &gt; 50000 LIMIT 1;</code>
+parses but fails validation because a count has no <code>LIMIT</code>.<a href="#section-5.5-1.4" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-5.5-1.5">
+            <code>SELECT * FROM attributes WHERE value LIKE 'a%b%';</code>
+parses but fails pattern validation because <code>%</code> is internal.<a href="#section-5.5-1.5" class="pilcrow">¶</a>
+</li>
+        </ul>
+</section>
+</div>
+</section>
+</div>
+<div id="misp-binding">
+<section id="section-6">
+      <h2 id="name-misp-binding">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-misp-binding" class="section-name selfRef">MISP Binding</a>
+      </h2>
+<p id="section-6-1">The MISP complex-search interface <span>[<a href="#MISP-COMPLEX" class="cite xref">MISP-COMPLEX</a>]</span> accepts the
+filter tree in the <code>query</code> member of a JSON body sent by HTTP POST
+to the selected <code>restSearch</code> endpoint. The table determines the
+endpoint. For example, <code>attributes</code> maps to
+<code>/attributes/restSearch</code>, while <code>notes</code> maps to
+<code>/analyst_data/restSearch/Note</code>. The corresponding <code>queryDescribe</code>
+endpoints expose field types, operators, sort capabilities, and
+limits. Access to complex queries requires the applicable MISP
+permission. MISP applies its access controls and any legacy
+filters in conjunction with the supplied query.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-2">For the paging example, the Python client can send the following
+body to <code>/attributes/restSearch</code>. MISP numbers pages from one.
+The client projects the returned rows to the requested columns.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-6-3">
+<pre>{
+  "returnFormat": "json",
+  "limit": 10,
+  "page": 2,
+  "order": ["id desc"],
+  "query": {
+    "AND": [
+      {"OR": [{"type": "domain"}, {"type": "ip-dst"}]},
+      {"id": {"&gt;": 50000}}
+    ]
+  }
+}
+</pre><a href="#section-6-3" class="pilcrow">¶</a>
+</div>
+<p id="section-6-4">For an arbitrary offset the Python client can fetch adjacent pages
+and trim parsed rows as necessary. For an export returned verbatim,
+it requires the offset to be a multiple of the limit. A count is
+read from the body for attributes and from <code>X-Result-Count</code> for
+events using a one-row metadata request. These transport details
+are specific to this binding.<a href="#section-6-4" class="pilcrow">¶</a></p>
+<p id="section-6-5">MISP field semantics are defined by the target endpoint. For example,
+some related fields on events and objects allow only positive
+operators. Negated tag filters can also redact nested results, and
+tags have special matching rules. MISP validates pattern and value
+forms, including rejecting empty strings on its string fields and
+rejecting equality or membership strings that begin or end with
+<code>%</code>. Datetime interpretation can depend on the table. A client
+targeting MISP MUST use its advertised capabilities and binding
+rules rather than assuming that syntactic validity implies support.<a href="#section-6-5" class="pilcrow">¶</a></p>
+<p id="section-6-6">Some versions of MISP can ignore an unrecognized <code>query</code> key.
+A client MUST establish support before sending a filter and MUST
+treat denied or unavailable discovery as a failure to execute the
+filtered query. The Python client checks the response from
+<code>/attributes/queryDescribe</code> before using the complex-search
+interface, scoped to its active connection.<a href="#section-6-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="implementation-status">
+<section id="section-7">
+      <h2 id="name-implementation-status">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-implementation-status" class="section-name selfRef">Implementation Status</a>
+      </h2>
+<p id="section-7-1">The open-source MispQL CLI and Python library <span>[<a href="#MISPQL-PY" class="cite xref">MISPQL-PY</a>]</span>
+implement the text lexer, parser, and compiler. The compiler
+produces request plans for the MISP binding. The CLI executes the
+requests, while the library also supports callers that handle
+transport themselves.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-2">The MISP 3.0 development branch <span>[<a href="#MISP-3" class="cite xref">MISP-3</a>]</span> implements the
+server side of that binding. Its complex-query engine validates
+the JSON tree and evaluates it through MISP's REST search
+endpoints <span>[<a href="#MISP-COMPLEX" class="cite xref">MISP-COMPLEX</a>]</span>. The server interface consumes
+structured filters. The Python client provides the text syntax
+in front of it. These are implementations of complementary
+parts of the binding. The proposed portable profile rules in
+this draft can be used by other CTI platforms.<a href="#section-7-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-8">
+      <h2 id="name-security-considerations">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-8-1">MispQL input and all decoded field names and values are untrusted.
+A service MUST resolve field names and operators against an
+allowlist and use parameterized values or a structured backend
+query API. It MUST NOT treat MispQL source or decoded strings as
+backend SQL or command text.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-2">Authorization MUST apply before filtering, projection, sorting,
+counting, paging, and other observable operations. An
+implementation MUST also enforce authorization for related
+records consulted by predicates. A service MUST NOT expose
+restricted data through counts, sort keys, cursors, or discovery.
+A client MUST NOT retry a denied or unsupported filter as an
+unfiltered search.<a href="#section-8-2" class="pilcrow">¶</a></p>
+<p id="section-8-3">Implementations SHOULD bound input size, tree depth, number of
+nodes, operand lengths, list sizes, page size, and execution
+time. Large disjunctions, substring searches, negation, and
+queries over related records can be costly even when they return
+few results. Implementations SHOULD apply limits before backend
+execution where possible and return a clear error when execution
+cannot finish within the applicable limits.<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-4">Queries, errors, and responses may contain sensitive intelligence.
+Remote bindings SHOULD use authenticated and encrypted transport.
+Implementations SHOULD avoid exposing credentials or sensitive
+literals in diagnostic messages and logs. Clients that support
+multiple connections MUST scope credentials to their intended
+service and SHOULD make the active connection apparent before
+executing a query.<a href="#section-8-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-9">
+      <h2 id="name-iana-considerations">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-9-1">This document requests no IANA actions.<a href="#section-9-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<section id="section-10">
+      <h2 id="name-references">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<section id="section-10.1">
+        <h3 id="name-normative-references">
+<a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC3629">[RFC3629]</dt>
+        <dd>
+<span class="refAuthor">Yergeau, F.</span>, <span class="refTitle">"UTF-8, a transformation format of ISO 10646"</span>, <span class="seriesInfo">STD 63</span>, <span class="seriesInfo">RFC 3629</span>, <span class="seriesInfo">DOI 10.17487/RFC3629</span>, <time datetime="2003-11" class="refDate">November 2003</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3629">https://www.rfc-editor.org/info/rfc3629</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5234">[RFC5234]</dt>
+        <dd>
+<span class="refAuthor">Crocker, D., Ed.</span> and <span class="refAuthor">P. Overell</span>, <span class="refTitle">"Augmented BNF for Syntax Specifications: ABNF"</span>, <span class="seriesInfo">STD 68</span>, <span class="seriesInfo">RFC 5234</span>, <span class="seriesInfo">DOI 10.17487/RFC5234</span>, <time datetime="2008-01" class="refDate">January 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5234">https://www.rfc-editor.org/info/rfc5234</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+        <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8259">[RFC8259]</dt>
+      <dd>
+<span class="refAuthor">Bray, T., Ed.</span>, <span class="refTitle">"The JavaScript Object Notation (JSON) Data Interchange Format"</span>, <span class="seriesInfo">STD 90</span>, <span class="seriesInfo">RFC 8259</span>, <span class="seriesInfo">DOI 10.17487/RFC8259</span>, <time datetime="2017-12" class="refDate">December 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8259">https://www.rfc-editor.org/info/rfc8259</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<section id="section-10.2">
+        <h3 id="name-informative-references">
+<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="MISP-3">[MISP-3]</dt>
+        <dd>
+<span class="refAuthor">MISP Project</span>, <span class="refTitle">"MISP 3.0 development branch"</span>, <span>&lt;<a href="https://github.com/MISP/MISP/tree/3.0_wip">https://github.com/MISP/MISP/tree/3.0_wip</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MISP-COMPLEX">[MISP-COMPLEX]</dt>
+        <dd>
+<span class="refAuthor">MISP Project</span>, <span class="refTitle">"Complex queries in restSearch"</span>, <span>&lt;<a href="https://github.com/MISP/MISP/blob/3.0_wip/docs/restsearch-complex-query.md">https://github.com/MISP/MISP/blob/3.0_wip/docs/restsearch-complex-query.md</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MISP-QUERY">[MISP-QUERY]</dt>
+        <dd>
+<span class="refAuthor">Dulaunoy, A.</span> and <span class="refAuthor">A. Iklody</span>, <span class="refTitle">"MISP query format"</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://github.com/MISP/misp-rfc/blob/main/misp-query-format/raw.md">https://github.com/MISP/misp-rfc/blob/main/misp-query-format/raw.md</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="MISPQL-PY">[MISPQL-PY]</dt>
+      <dd>
+<span class="refAuthor">MISP Project</span>, <span class="refTitle">"MispQL CLI and Python library"</span>, <span>&lt;<a href="https://github.com/MISP/MispQL">https://github.com/MISP/MispQL</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</section>
+<div id="authors-addresses">
+<section id="appendix-A">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Alexandre Dulaunoy</span></div>
+<div dir="auto" class="left"><span class="org">Computer Incident Response Center Luxembourg</span></div>
+<div dir="auto" class="left"><span class="street-address">122, rue Adolphe Fischer</span></div>
+<div dir="auto" class="left">L-<span class="postal-code">L-1521</span> <span class="locality">Luxembourg</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">Luxembourg</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:alexandre.dulaunoy@circl.lu" class="email">alexandre.dulaunoy@circl.lu</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Andras Iklody</span></div>
+<div dir="auto" class="left"><span class="org">Computer Incident Response Center Luxembourg</span></div>
+<div dir="auto" class="left"><span class="street-address">122, rue Adolphe Fischer</span></div>
+<div dir="auto" class="left">L-<span class="postal-code">L-1521</span> <span class="locality">Luxembourg</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">Luxembourg</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:andras.iklody@circl.lu" class="email">andras.iklody@circl.lu</a>
+</div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
