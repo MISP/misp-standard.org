@@ -1,59 +1,59 @@
 ---
-layout: single 
-title: MISP Standard Committee 
-excerpt: "The MISP Standard Committee is dedicated to the development, maintenance, and promotion of open standards for threat intelligence sharing."
-author_profile: false
+title: MISP Standard Committee Charter
+layout: misp-information
+classes: misp-site
+intro_id: misp-standard-committee-charter
 toc: true
-toc_label: Committee Overview
-classes: wide
-header:
-  overlay_image: /assets/images/misp-long.png
-  overlay_filter: 0.8
+excerpt: How the committee develops, reviews, and publishes open standards for threat intelligence sharing.
 ---
 
-# MISP Standard Committee Charter
-
+<section class="misp-document__section" markdown="1">
 ## Introduction
 
-The **MISP Standard Committee** is dedicated to the development, maintenance, and promotion of open standards for threat intelligence sharing. Operating under the auspices of [misp-standard.org](https://misp-standard.org), the committee ensures that all standards are relevant, up-to-date, and published as Internet-Drafts (I-D) through the Internet Engineering Task Force (IETF) and MISP standard publication.
+The MISP Standard Committee maintains and promotes open standards under [misp-standard.org](https://misp-standard.org). It keeps the standards up to date, publishes them on the MISP Standard website, and submits them as Internet-Drafts to the Internet Engineering Task Force (IETF).
+</section>
 
+<section class="misp-document__section" markdown="1">
 ## Objectives
 
-- **Accept New Standards**: Evaluate and approve proposals for new MISP standards that enhance threat intelligence sharing capabilities.
-- **Update Existing Standards**: Regularly review and revise existing standards to address emerging cybersecurity challenges and technological advancements.
-- **Publish as IETF Internet-Drafts**: Ensure all standards are documented and submitted as IETF I-Ds for broader community engagement and potential adoption as formal RFCs.
+- Evaluate and approve proposals for new MISP standards that improve threat intelligence sharing.
+- Review and revise existing standards as cybersecurity needs and technology change.
+- Submit standards as IETF Internet-Drafts for wider community review and possible adoption as RFCs.
+</section>
 
-## Model of Operation
+<section class="misp-document__section" markdown="1">
+## Model of operation
 
 ### Membership
 
-- **Open Participation**: Membership is open to all individuals and organizations interested in contributing to MISP standards.
-- **Diverse Representation**: Encourage participation from various sectors, including cybersecurity experts, industry professionals, academics, and government agencies.
+Participation is open to individuals and organizations interested in contributing to MISP standards. The committee encourages participation across cybersecurity, industry, academia, and government.
 
 ### Meetings
 
-- **Regular Sessions**: Conduct monthly virtual meetings to discuss proposals, updates, and committee activities.
-- **Special Meetings**: Schedule additional meetings as needed for urgent matters or in-depth discussions.
+The committee meets online each month to discuss proposals, updates, and committee activities. It schedules additional meetings for urgent matters or topics that need more time.
 
-### Proposal Submission
+### Proposal submission
 
-- **Documentation Requirements**: Proposals must include a detailed description, objectives, and any relevant technical specifications.
+Proposals must include a detailed description, objectives, and any relevant technical specifications.
 
-### Review and Approval
+### Review and approval
 
-- **Initial Assessment**: A designated review team evaluates submissions for completeness and relevance.
-- **Community Feedback**: Publish proposals for a 30-day public comment period to gather broader input.
-- **Final Decision**: The committee votes on proposals after considering all feedback; a majority vote is required for approval.
+1. A designated review team checks submissions for completeness and relevance.
+2. Proposals are published for 30 days of public comment.
+3. The committee considers the feedback and votes. Approval requires a majority.
 
 ### Publication
 
-- **Draft Preparation**: Approved standards are formatted according to IETF guidelines for I-Ds.
-- **MISP Standard Publication**: The standard is published on the MISP Standard website.
-- **IETF Submission**: Submit the drafts to the IETF for official publication and initiate the standardization process.
-- **Ongoing Maintenance**: Monitor and revise drafts based on MISP standard, IETF feedback and evolving community needs.
+1. Format approved standards as IETF Internet-Drafts.
+2. Publish the standards on the MISP Standard website.
+3. Submit the drafts to the IETF to begin the standardization process.
+4. Revise drafts in response to feedback from the MISP and IETF communities and to evolving needs.
+</section>
 
-## Objectives
+<section class="misp-document__section" markdown="1">
+## Operating principles {#objectives-1}
 
-- **Streamline Standardization**: Maintain a simple, low-bureaucracy standardization process.
-- **Ensure Open Accessibility**: Make standards openly accessible and readily reusable.
-- **Enable Continuous Evolution**: Provide regular updates to standards in response to community needs.
+- Keep the standardization process simple.
+- Make standards openly available and easy to reuse.
+- Update standards regularly to reflect community needs.
+</section>
