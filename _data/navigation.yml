@@ -1,11 +1,11 @@
 # main links
 main:
-  - title: "About"
-    url: /about/
   - title: "Standards"
     url: /standards/
-  - title: "Commitee"
-    url: /committee/ 
+  - title: "About"
+    url: /about/
+  - title: "Committee"
+    url: /committee/
   - title: "News"
     url: /post/
   # - title: "Sample Posts"
