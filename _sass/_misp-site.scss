@@ -209,6 +209,19 @@
   }
 }
 
+.misp-projects__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+
+  a {
+    color: #21568b;
+    text-underline-offset: 0.15em;
+  }
+}
+
 .misp-projects__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
