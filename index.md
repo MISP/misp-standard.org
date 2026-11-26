@@ -46,8 +46,22 @@ projects:
   </div>
 </section>
 
+{% assign website_repository = "https://github.com/MISP/misp-standard.org" %}
+{% capture tool_suggestion %}
+- Tool name:
+- Website or repository:
+- MISP standard used and how:
+- Short description:
+{% endcapture %}
+
 <section class="misp-projects" aria-labelledby="misp-projects-title">
-  <h2 id="misp-projects-title">Software using MISP standards</h2>
+  <div class="misp-projects__header">
+    <h2 id="misp-projects-title">Software using MISP standards</h2>
+    <div class="misp-actions">
+      <a class="misp-button misp-button--outline" href="{{ website_repository }}/issues/new?title={{ 'Add a tool using MISP standards' | url_encode }}&amp;body={{ tool_suggestion | strip | url_encode }}">Add your tool</a>
+      <a href="{{ website_repository }}/edit/master/index.md">Edit on GitHub</a>
+    </div>
+  </div>
   <ul class="misp-projects__list">
     {% for project in page.projects %}
     <li class="misp-project">
